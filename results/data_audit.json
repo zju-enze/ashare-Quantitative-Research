@@ -1,0 +1,12 @@
+{
+  "raw_stock_months": 699093,
+  "stocks": 5647,
+  "delisted_stocks_observed": 310,
+  "adjustment_changes_over_1pp": 26235,
+  "historical_st_stock_months": 25688,
+  "income_conflicting_report_dates": 6,
+  "balance_conflicting_report_dates": 5,
+  "eligible_stock_months": 623463,
+  "missing_forward_returns": 401,
+  "usable_stock_months": 623062
+}

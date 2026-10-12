@@ -1,0 +1,10 @@
+.local/
+data/
+.venv/
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.env
+*.parquet
+*.log
+notebooks/*.html
