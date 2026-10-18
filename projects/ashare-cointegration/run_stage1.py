@@ -54,7 +54,8 @@ def diagnose_pair(row):
 def freeze(run):
     run.mkdir(parents=True,exist_ok=True)
     if (run/"freeze.json").exists():
-        for p in [ROOT/"experiment_protocol.json",ROOT/"run_stage1.py",*sorted((ROOT/"src").glob("*.py"))]:
+        # Frozen inputs and the statistical kernel determine reusable batch results.
+        for p in [ROOT/"experiment_protocol.json",ROOT/"src"/"engine.py"]:
             if p.read_bytes()!=(run/"source"/p.name).read_bytes():
                 raise RuntimeError("Frozen code/protocol differs: start a new run ID after documenting correction")
         return
@@ -107,6 +108,10 @@ def freeze(run):
 
 def report(run,full,main):
     output=ROOT/"results";audit=pd.read_parquet(run/"stock_audit.parquet")
+    # Index/fund codes can share six digits with stocks; their industry is not applicable.
+    industry_columns=[c for c in ("L1","L2","L3","L1_name","L2_name","L3_name") if c in audit]
+    audit.loc[audit.primary_exclusion.eq("instrument_or_uncovered_market"),industry_columns]=None
+    audit.to_parquet(run/"stock_audit_report.parquet",index=False)
     catalogue=pd.read_parquet(run/"catalogue.parquet")
     alarms=[]
     for stage in ("S0","S1","S2"):

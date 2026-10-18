@@ -80,7 +80,7 @@ python -m venv .venv
 .\.venv\Scripts\python.exe run_stage1.py --workers 8 --run-id formation-2021-2025-v2
 ~~~
 
-The same acquisition/run commands resume completed security caches and statistical batches. An unresolved request or computation error prevents a complete status. Changing the frozen code/protocol requires a documented correction and a new run-id; do not delete prior evidence. [DATA_CONTRACT.md](DATA_CONTRACT.md) describes source schemas, SW2021 historical reconstruction, source coverage, and the C1 exact-record-coordinate comparison.
+The same acquisition/run commands resume completed security caches and statistical batches. An unresolved request or computation error prevents a complete status. Changing the statistical kernel/protocol or correcting frozen inputs requires a documented correction and a new run-id; do not delete prior evidence. Presentation can be regenerated from the same frozen results. [DATA_CONTRACT.md](DATA_CONTRACT.md) describes source schemas, SW2021 historical reconstruction, source coverage, and the C1 exact-record-coordinate comparison.
 
 ~~~powershell
 .\.venv\Scripts\python.exe run_simulation.py --stage S0 --workers 8

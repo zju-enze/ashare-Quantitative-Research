@@ -32,6 +32,9 @@ class PipelineTests(unittest.TestCase):
                 pd.DataFrame(dict(date=dates,adjusted_close=values)).to_parquet(folder/"adjusted.parquet")
                 rows.append(dict(code=code,ts_code=ts_code,name=ts_code,L2="G",L3=f"L{i//2}",
                                  exclusion_tags=[],primary_exclusion=None))
+            rows.append(dict(code="sh.000001",ts_code="000001.SH",name="index",L2="G",L3="L0",
+                             exclusion_tags=["instrument_or_uncovered_market"],
+                             primary_exclusion="instrument_or_uncovered_market"))
             u=pd.DataFrame(rows)
             cat=pd.DataFrame(dict(industry_code=["G","L0","L1","EMPTY"],level=["L2","L3","L3","L2"]))
             with patch.object(run_stage1,"ROOT",root),patch.object(run_stage1,"initial_universe",return_value=(u,cat,dates)),patch.object(
@@ -44,6 +47,10 @@ class PipelineTests(unittest.TestCase):
                 main=pd.read_csv(root/"results"/"main_evidence.csv")
                 self.assertEqual(set(main.candidate_id),set(full.loc[full.reject_L2_Holm,"candidate_id"]))
                 self.assertTrue((main.beta<0).any())
+                flow=pd.read_csv(root/"results"/"stock_flow.csv")
+                unknown=flow[(flow.domain=="L2")&(flow.family=="UNKNOWN")&
+                             (flow.step=="instrument_or_uncovered_market")]
+                self.assertEqual(unknown.newly_excluded.tolist(),[1])
                 run_stage1.main()
                 pd.testing.assert_frame_equal(full,pd.read_parquet(run/"full_results.parquet"))
                 modified=json.loads((root/"experiment_protocol.json").read_text(encoding="utf8"))
