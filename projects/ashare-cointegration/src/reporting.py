@@ -21,13 +21,14 @@ def charts(run,full,main,output):
         ax.legend(frameon=False)
     fig.suptitle("Fixed complete families; local L2 totals are not global FWER control")
     fig.savefig(folder/"correction_counts.png");plt.close(fig)
-    if main.empty:return
+    if main.empty:return []
     universe=pd.read_parquet(run/"U.parquet");codes={c:i for i,c in enumerate(universe.ts_code)}
     values=np.load(run/"prices.npy",mmap_mode="r")
     import json
     dates=pd.to_datetime(json.loads((run/"freeze.json").read_text())["calendar"])
     # Predeclared illustration rule: first candidate_id in the first three represented L2 families.
     examples=main.sort_values(["L2","candidate_id"]).groupby("L2",sort=True).head(1).head(3)
+    paths=[]
     for index,row in enumerate(examples.itertuples(),1):
         a=values[:,codes[row.A]];b=values[:,codes[row.B]]
         fitted=row.alpha+row.beta*b;residual=a-fitted
@@ -38,4 +39,6 @@ def charts(run,full,main,output):
         axes[1].plot(dates,residual,lw=.8,color="#256d85");axes[1].axhline(0,color="grey",lw=.5)
         axes[1].set_ylabel("OLS residual")
         fig.suptitle(f"{row.candidate_id}: identification-period illustration, no trading claim")
-        fig.savefig(folder/f"relation_{index}.png");plt.close(fig)
+        path=folder/f"relation_{index}.png"
+        fig.savefig(path);plt.close(fig);paths.append(path)
+    return paths

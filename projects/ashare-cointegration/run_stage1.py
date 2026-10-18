@@ -108,6 +108,15 @@ def freeze(run):
 def report(run,full,main):
     output=ROOT/"results";audit=pd.read_parquet(run/"stock_audit.parquet")
     catalogue=pd.read_parquet(run/"catalogue.parquet")
+    alarms=[]
+    for stage in ("S0","S1","S2"):
+        path=output/"simulation"/(stage+"_summary.csv")
+        if path.exists():
+            summary=pd.read_csv(path)
+            alarms.extend(stage+"/"+s for s in summary.loc[summary.main_alarm,"scenario"].unique())
+    alarm_note=("已执行的预定机制触发固定L2-Holm FWER警报："+", ".join(alarms)+
+        "。具体重复数、家族和Wilson区间见各阶段summary.csv；这是有限机制诊断，不改变主规格。"
+        if alarms else "当前没有已记录的主方法校准警报；未完成校准不记为通过。")
     names=catalogue.set_index("industry_code")
     main["L2_name"]=main.L2.map(names.L2_name) if "L2_name" in names else main.L2
     for side in ("A","B"):
@@ -115,6 +124,7 @@ def report(run,full,main):
     counts=full.compute_status.isin(VALID).groupby(full.L2).sum()
     main["L2_valid_EG"]=main.L2.map(counts)
     main["formation_start"]="2021-01-01";main["formation_end"]="2025-12-31"
+    main["calibration_warning"]=alarm_note
     main.to_csv(output/"main_evidence.csv",index=False,encoding="utf-8-sig")
     families=[]
     for domain,level,key in [("L3","L3","L3_family"),("L2","L2","L2"),("GLOBAL",None,None)]:
@@ -166,10 +176,20 @@ def report(run,full,main):
 形成期：2021—2025；日历 {len(ledger['calendar'])} 日。
 审计后股票池 U={ledger['stocks']}；候选 H={len(full)}，T={ledger['T']}，C={ledger['C']}。
 主清单共 {len(main)} 对，见 main_evidence.csv，未按 beta、GLOBAL 结果或未来应用条件过滤。
+其中T层 {int((main.layer=='T').sum())} 对、C层 {int((main.layer=='C').sum())} 对；
+非正beta {int((main.beta<=0).sum()) if 'beta' in main else 0} 对，按同一规则保留。
+
+H中有效名义EG {int(full.compute_status.isin(VALID).sum())} 对；
+预检占位 {int((full.compute_status=='precheck_placeholder').sum())} 对；
+数值占位 {int((full.compute_status=='numerically_ineligible').sum())} 对。
+有限统计量尾部零 {int((full.compute_status=='tail_unresolved').sum())} 对，逐行保留来源与警示。
 
 主结果是**各二级行业分别按名义0.05校正后的发现汇总**，不声明合并全市场FWER为5%。
 在既定样本、模型规格和多重校正规则下，主表各对拒绝无协整原假设，获得协整证据。
 名义校正发现，预定校准诊断尚未完成；实际模拟进度与警报见 simulation/。
+**{alarm_note}**
+不能把清单解释为已经实证验证的5%错误控制；未完成机制不记为通过，
+也不按BH的FWER判定其FDR控制失效。已作的实现排查见simulation/中的独立记录。
 
 完整逐对结果、冻结 U/H、逐股 ADF 与逐证券排除记录位于本地 {run.relative_to(ROOT).as_posix()}。
 families.csv 保留空家族、全部占位、零发现和各校正域；stock_flow.csv 包括 UNKNOWN。
@@ -178,7 +198,8 @@ view_overlap.csv 在T共同支持上比较九视角，在H上比较六视角。
 行业来自当前申万官方历史变迁记录重建，不是2025当时归档快照。价格采用BaoStock记录值的
 累计后复权坐标。原生坐标先以Decimal验证 raw×factor 与直接接口逐行完全相等，再除以同一首日因子；
 该零误差恒等校验不推断供应商未公开的潜在因子舍入规则，也不等于独立核实所有公司行动。
-样本限于来源覆盖、2025年底存续且满足五年严格连续交易条件的普通A股，不能外推至所有A股。
+样本限于来源覆盖的沪深市场、2025年底存续且满足五年严格连续交易条件的普通A股。
+北交所未覆盖；不能外推至所有A股。
 
 EG使用statsmodels 0.15.0的价格水平、常数项、AIC、maxlag=None路径及近似渐近MacKinnon p值。
 Holm理论保证以输入p值有效为前提；BH还需要相应依赖条件。多重校正不修复模型错设或尾部近似误差。
@@ -186,7 +207,12 @@ Holm理论保证以输入p值有效为前提；BH还需要相应依赖条件。�
 这些关系不证明永久均衡、未来收敛或交易盈利；第二、第三阶段均planned_deferred。
 """
     (output/"STAGE1_REPORT.md").write_text(text,encoding="utf8")
-    charts(run,full,main,output)
+    examples=charts(run,full,main,output)
+    with (output/"STAGE1_REPORT.md").open("a",encoding="utf8") as handle:
+        handle.write("\n## 校正视角与形成期个案图\n\n![校正发现数](figures/correction_counts.png)\n\n")
+        for image in examples:
+            handle.write(f"![形成期关系示例]({image.relative_to(output).as_posix()})\n\n")
+        handle.write("个案图按L2与candidate_id顺序选取前三个有发现行业的首对，仅用于检查形成期拟合与残差；完整发现见CSV。\n" if examples else "无主发现，未绘制个案图。\n")
 
 
 def main():

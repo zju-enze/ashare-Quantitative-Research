@@ -1,0 +1,38 @@
+{
+  "purpose": "Investigate predeclared N1 Holm FWER alarm; not tune market specification",
+  "status": "sampled_rejections_match_real_coint",
+  "rows": [
+    {
+      "scenario": "N1",
+      "repetition": 3,
+      "candidate_id": "S00001__S00007",
+      "library_stat": -5.059535645774354,
+      "audited_stat": -5.059535645774354,
+      "library_p": 0.00012777091269598482,
+      "saved_p": 0.00012777091269598482,
+      "true_alternative": false
+    },
+    {
+      "scenario": "N1",
+      "repetition": 3,
+      "candidate_id": "S03003__S03005",
+      "library_stat": -5.452518938168809,
+      "audited_stat": -5.452518938168809,
+      "library_p": 2.2306857957342306e-05,
+      "saved_p": 2.2306857957342306e-05,
+      "true_alternative": false
+    },
+    {
+      "scenario": "N1",
+      "repetition": 3,
+      "candidate_id": "S03004__S03009",
+      "library_stat": -5.731036085531182,
+      "audited_stat": -5.731036085531182,
+      "library_p": 6.034415478814691e-06,
+      "saved_p": 6.034415478814691e-06,
+      "true_alternative": false
+    }
+  ],
+  "DGP_review": "N1 lambda=.1>0; each stock has a distinct W column; normalized loadings preserve rank-two pair trend structure; no hidden cointegrated cluster in N1",
+  "conclusion": "No implementation discrepancy identified in this check; retain finite-sample calibration warning. Not proof of all code paths."
+}
