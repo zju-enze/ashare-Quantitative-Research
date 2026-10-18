@@ -77,7 +77,7 @@ python -m venv .venv
 .\fetch_sources.ps1
 .\.venv\Scripts\python.exe collect_market.py --workers 8
 .\.venv\Scripts\python.exe scripts/verify_action_cases.py
-.\.venv\Scripts\python.exe run_stage1.py --workers 8 --run-id formation-2021-2025-v1
+.\.venv\Scripts\python.exe run_stage1.py --workers 8 --run-id formation-2021-2025-v2
 ~~~
 
 The same acquisition/run commands resume completed security caches and statistical batches. An unresolved request or computation error prevents a complete status. Changing the frozen code/protocol requires a documented correction and a new run-id; do not delete prior evidence. [DATA_CONTRACT.md](DATA_CONTRACT.md) describes source schemas, SW2021 historical reconstruction, source coverage, and the C1 exact-record-coordinate comparison.

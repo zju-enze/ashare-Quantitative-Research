@@ -4,6 +4,9 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
+# 689 is the STAR depositary-receipt range, not ordinary A shares.
+ORDINARY_CODE_PATTERN = r"^(sh\.(60|688)|sz\.(00|30))"
+
 
 def industry_snapshot(source):
     catalogue = pd.read_excel(source/"SwClassCode_2021.xls",dtype=str)
@@ -43,7 +46,7 @@ def initial_universe(source):
     if basic.code.duplicated().any() or asof.code.duplicated().any():
         raise ValueError("Duplicate source security identity")
     asof_codes=set(asof.code)
-    asof_ordinary=set(asof.loc[asof.code.str.match(r"^(sh\.(60|68)|sz\.(00|30))"),"code"])
+    asof_ordinary=set(asof.loc[asof.code.str.match(ORDINARY_CODE_PATTERN),"code"])
     if asof_ordinary-set(basic.code):
         raise ValueError("As-of ordinary shares missing from identity response")
     dates=pd.read_csv(source/"calendar.csv",dtype=str)
@@ -54,7 +57,7 @@ def initial_universe(source):
     basic["ts_code"]=basic.symbol+"."+basic.code.str[:2].str.upper()
     basic["name"]=basic.code.map(asof.set_index("code").code_name).fillna(basic.code_name)
     basic=basic.merge(industry,on="symbol",how="left",validate="many_to_one")
-    ordinary=(basic.type=="1") & basic.code.str.match(r"^(sh\.(60|68)|sz\.(00|30))")
+    ordinary=(basic.type=="1") & basic.code.str.match(ORDINARY_CODE_PATTERN)
     labels=[]
     for i,r in basic.iterrows():
         reasons=[]

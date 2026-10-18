@@ -9,7 +9,7 @@
     "plan_path": "EXPERIMENT_PLAN.md",
     "implementation_clarifications": "REVIEW_AND_IMPLEMENTATION.md",
     "executable_config_present": true,
-    "executable_version": "1.2-implementation.1"
+    "executable_version": "1.2-implementation.2"
   },
   "design_review": {
     "status": "passed_for_stage1_implementation",
@@ -28,10 +28,12 @@
     "current_tests": "tests/; real coint, zero origin, single/eight workers, Decimal coordinate, end-to-end freeze/resume"
   },
   "stage1_production": {
-    "status": "market_data_acquisition_running",
+    "status": "correcting_instrument_scope",
     "candidate_manifest_frozen": false,
     "empirical_discoveries_produced": false,
-    "preliminary_stock_requests": 3952
+    "preliminary_stock_requests": 3952,
+    "prior_run_invalidated": "formation-2021-2025-v1",
+    "replacement_run": "formation-2021-2025-v2"
   },
   "stage1_calibration": {
     "status": "S0_complete_S1_running",

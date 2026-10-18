@@ -1,7 +1,7 @@
 {
   "status": "passed",
-  "test_methods": 7,
-  "run_at": "2026-10-18T08:48:08.774177+00:00",
+  "test_methods": 8,
+  "run_at": "2026-10-18T09:02:51.105696+00:00",
   "command": ".venv/Scripts/python.exe -m unittest discover -s tests -v",
   "coverage": [
     "actual coint versus audited kernel including lag/nobs",
@@ -11,7 +11,9 @@
     "single/eight process equality",
     "exact Decimal coordinate and seed/calendar cases",
     "fixed simulation truth and normalization",
-    "full freeze/run/resume and negative-beta main discovery"
+    "full freeze/run/resume and negative-beta main discovery",
+    "ordinary A-share scope excludes actual 689009 depositary receipt"
   ],
-  "historical_15_checks_reexecuted": false
+  "historical_15_checks_reexecuted": false,
+  "additional_targeted_pipeline_check": "passed after adding per-row input/library/source versions"
 }

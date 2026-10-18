@@ -1,5 +1,5 @@
 {
-  "version": "1.2-implementation.1",
+  "version": "1.2-implementation.2",
   "designed_on": "2026-10-18",
   "status": "effective_fixed_stage1_protocol",
   "design_document": "EXPERIMENT_PLAN.md",
@@ -36,7 +36,9 @@
       "adjustment",
       "I1_diagnostic_pair_placeholder",
       "numerical_pair_placeholder"
-    ]
+    ],
+    "ordinary_code_pattern": "^(sh\\.(60|688)|sz\\.(00|30))",
+    "depositary_receipts": "excluded; source type=1 does not establish ordinary-share identity"
   },
   "adjustment": {
     "source": "BaoStock backAdjustFactor event series",

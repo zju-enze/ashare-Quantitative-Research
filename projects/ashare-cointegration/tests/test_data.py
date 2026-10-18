@@ -1,10 +1,15 @@
 import unittest
 import numpy as np
 import pandas as pd
-from src.data import audit_quotes
+from src.data import audit_quotes,ORDINARY_CODE_PATTERN
 
 
 class DataTests(unittest.TestCase):
+    def test_depositary_receipt_is_not_ordinary_share(self):
+        codes=pd.Series(["sh.689009","sh.688981","sh.600036","sz.000001","sz.300750","sh.900901","sz.159915"])
+        self.assertEqual(codes.str.match(ORDINARY_CODE_PATTERN).tolist(),
+                         [False,True,True,True,True,False,False])
+
     def test_coordinate_seed_and_decimal_identity(self):
         dates=["2021-01-04","2021-01-05","2021-01-06"]
         raw=pd.DataFrame(dict(date=dates,close=["10.0000","5.0000","6.0000"],

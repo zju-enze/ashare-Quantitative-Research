@@ -36,9 +36,9 @@ class PipelineTests(unittest.TestCase):
             cat=pd.DataFrame(dict(industry_code=["G","L0","L1","EMPTY"],level=["L2","L3","L3","L2"]))
             with patch.object(run_stage1,"ROOT",root),patch.object(run_stage1,"initial_universe",return_value=(u,cat,dates)),patch.object(
                 run_stage1.subprocess,"check_output",return_value="synthetic-fixture"),patch(
-                "sys.argv",["run_stage1.py","--workers","2"]):
+                "sys.argv",["run_stage1.py","--workers","2","--run-id","synthetic"]):
                 run_stage1.main()
-                run=root/".local"/"production"/"formation-2021-2025-v1"
+                run=root/".local"/"production"/"synthetic"
                 full=pd.read_parquet(run/"full_results.parquet")
                 self.assertEqual(len(full),6)
                 main=pd.read_csv(root/"results"/"main_evidence.csv")

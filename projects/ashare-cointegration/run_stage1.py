@@ -12,7 +12,7 @@ import subprocess
 import numpy as np
 import pandas as pd
 import statsmodels
-from src.data import initial_universe
+from src.data import initial_universe,ORDINARY_CODE_PATTERN
 from src.engine import applicability,candidates,correct,test_pair,VALID,METHODS
 from src.reporting import charts
 
@@ -217,13 +217,14 @@ Holm理论保证以输入p值有效为前提；BH还需要相应依赖条件。�
 
 def main():
     parser=argparse.ArgumentParser()
-    parser.add_argument("--run-id",default="formation-2021-2025-v1")
+    parser.add_argument("--run-id",default="formation-2021-2025-v2")
     parser.add_argument("--workers",type=int,default=8)
     args=parser.parse_args()
     if Path(args.run_id).name!=args.run_id:raise ValueError("run-id must be one directory name")
     if statsmodels.__version__!="0.15.0":raise RuntimeError("Frozen statsmodels 0.15.0 required")
     protocol=json.loads((ROOT/"experiment_protocol.json").read_text(encoding="utf8"))
     assert protocol["formation"]==["2021-01-01","2025-12-31"],"Unsupported formation specification"
+    assert protocol["universe"]["ordinary_code_pattern"]==ORDINARY_CODE_PATTERN,"Instrument scope mismatch"
     assert protocol["primary_result"]=={"domain":"L2","method":"holm","alpha":.05},"Unsupported primary rule"
     for key,value in {"trend":"c","autolag":"aic","maxlag":None,"directions_per_pair":1}.items():
         assert protocol["cointegration"][key]==value,"Protocol/EG implementation mismatch"
@@ -238,6 +239,8 @@ def main():
         if not (run/"ADF.json").exists():
             with ProcessPoolExecutor(max_workers=args.workers,initializer=initialize,initargs=(str(run),)) as pool:
                 gates=dict(pool.map(diagnose_stock,universe.ts_code,chunksize=8))
+            for gate in gates.values():
+                gate.update(input_version=args.run_id,statsmodels_version=statsmodels.__version__)
             write_json(run/"ADF.json",gates)
         (run/"batches").mkdir(exist_ok=True)
         with ProcessPoolExecutor(max_workers=args.workers,initializer=initialize,initargs=(str(run),)) as pool:
@@ -257,6 +260,11 @@ def main():
             raw=registry.assign(compute_status=pd.Series(dtype=str),p_for_adjustment=pd.Series(dtype=float))
         if raw.candidate_id.tolist()!=registry.candidate_id.tolist():
             raise RuntimeError("Candidate registry coverage/order mismatch")
+        raw["input_version"]=args.run_id
+        raw["statsmodels_version"]=statsmodels.__version__
+        raw["code_version"]=json.loads((run/"freeze.json").read_text())["source_git_commit"]
+        raw["L3_applicable"]=raw.layer.eq("T")
+        raw["GLOBAL_family"]="GLOBAL"
         full,main=correct(raw)
         full.to_parquet(run/"full_results.parquet",index=False)
         report(run,full,main)

@@ -1,0 +1,11 @@
+{
+  "recorded_at": "2026-10-18T09:01:01.245852+00:00",
+  "status": "prior_run_invalidated_replacement_pending",
+  "prior_run": "formation-2021-2025-v1",
+  "replacement_run": "formation-2021-2025-v2",
+  "reason": "689009.SH is a depositary receipt, not an ordinary A share; BaoStock type=1 alone was insufficient",
+  "evidence": "https://big5.sse.com.cn/site/cht/www.sse.com.cn/disclosure/listedinfo/announcement/c/new/2025-06-17/689009_20250617_5A8B.pdf",
+  "affected_candidates_removed": 8,
+  "affected_L2": "280400",
+  "scope": "Retain all old frozen inputs and outputs; refreeze and rerun ADF/EG and all correction domains. Decision based on instrument identity, not p-values. Simulation DGP unaffected."
+}
