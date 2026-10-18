@@ -84,10 +84,12 @@
       "held_at": "2026-10-18T19:10:26.983141+08:00",
       "resume_requires_explicit_user_instruction": true,
       "execution_target": "remote:qzwx2026",
-      "deployment_status": "preflight_complete_not_deployed",
-      "engineering_change": "ENG-003",
+      "deployment_status": "deployed_verified_not_started",
+      "engineering_change": "ENG-004",
       "recommended_workers": 1,
-      "blas_threads_per_worker": 1
+      "blas_threads_per_worker": 1,
+      "remote_project_directory": "/home/qzwx2026/experiments/ashare-cointegration/repo/projects/ashare-cointegration",
+      "prepared_workers": 1
     },
     "runtime_status_files": "results/simulation/*_status.json",
     "N1_full_1000_L2_Holm_FWER": [
@@ -112,9 +114,9 @@
   "stage3": {
     "status": "planned_deferred"
   },
-  "recorded_at": "2026-10-18T19:33:48.452645+08:00",
+  "recorded_at": "2026-10-18T20:01:55.620101+08:00",
   "remote_execution_plan": {
-    "status": "preflight_complete_not_deployed",
+    "status": "deployed_verified_S2_held",
     "host_alias": "qzwx2026",
     "ssh_tunnel_command": "ssh -N -L 28867:127.0.0.1:18867 qzwx2026",
     "local_forward_port": 28867,
@@ -127,16 +129,22 @@
       "S2 calibration",
       "subsequent long-running training/computation in this project"
     ],
-    "remote_workdir": null,
-    "remote_environment_verified": false,
+    "remote_workdir": "/home/qzwx2026/experiments/ashare-cointegration/repo/projects/ashare-cointegration",
+    "remote_environment_verified": true,
     "automatic_start": false,
-    "engineering_change": "ENG-003",
+    "engineering_change": "ENG-004",
     "recorded_at": "2026-10-18T19:25:03.407756+08:00",
     "resource_preflight": "passed_with_2_vCPU_limit",
     "proposed_remote_workdir": "/home/qzwx2026/experiments/ashare-cointegration",
     "recommended_workers": 1,
     "blas_threads_per_worker": 1,
-    "evidence": "results/remote_preflight.json",
-    "checked_at": "2026-10-18T19:33:48.452645+08:00"
+    "evidence": "results/remote_deployment.json",
+    "checked_at": "2026-10-18T19:33:48.452645+08:00",
+    "python_version": "3.11.9",
+    "deployment_started_at": "2026-10-18T19:50:56.757276+08:00",
+    "python_executable": "/home/qzwx2026/experiments/ashare-cointegration/repo/projects/ashare-cointegration/.venv/bin/python",
+    "validated_code_commit": "0bc14b310c106a6ec9f6a2da00b4c0636e63a323",
+    "prepared_workers": 1,
+    "deployment_completed_at": "2026-10-18T20:01:55.620101+08:00"
   }
 }

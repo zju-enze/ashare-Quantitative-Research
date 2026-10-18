@@ -8,7 +8,7 @@
 |---|---|---|
 |第一阶段市场统计|已完成，不因本次调整重跑|2,984只；67,678对；110对名义发现|
 |S1|继续当前8进程运行，成功结束后保留全部结果和检查点|12560/16,000，状态running|
-|S2|held_by_user；远端连接/资源已核实，独立环境待部署，建议1进程|0/2,000，尚未执行|
+|S2|held_by_user；远端独立环境已部署并通过一致性检查，后续显式使用1进程|0/2,000，尚未执行|
 |后续长时间训练/计算|计划安排在远端qzwx2026；具体任务仍须按其阶段授权|未启动|
 
 进度读取时刻：2026-10-18 19:12:47（Asia/Shanghai）。这是带时间的快照，不冒充实时进度；最新运行状态见 results/simulation/S1_status.json 和 S2_status.json。
@@ -107,6 +107,66 @@ Git、rsync、tmux、screen可用。uv 0.12.6和micromamba 2.8.1位于用户.loc
 下一步若获准部署，应在独立目录准备Python 3.11环境，优先与本地3.11.9对齐，安装锁定依赖并记录实际Python/BLAS版本；传入同版源码、协议及所需完成状态/检查点，执行小型非S2生产的一致性核对。资源配置建议workers=1、BLAS线程=1；不沿用本机8进程及其耗时估计。
 
 S2仍为held_by_user、0/2,000。本轮没有运行任何S2面板、正式Monte Carlo或训练，没有修改已有服务、安装依赖或迁移文件。部署准备和解除暂停是不同操作；即使环境准备好，仍须用户明确要求恢复S2后才启动。现有本地S1安排不变。
+
+## ENG-004：独立环境部署与跨平台一致性检查（已完成；S2仍暂停）
+
+### 开始时记录
+
+- 开始记录时间：2026-10-18T19:50:56.757276+08:00（Asia/Shanghai）。
+- 用户授权：在qzwx2026建立独立Python 3.11环境，部署项目、安装锁定依赖，并按1进程/BLAS单线程完成必要一致性检查；不得启动S2或影响现有QZWX服务。
+- 独立工作区：/home/qzwx2026/experiments/ashare-cointegration。
+- 源码目录：工作区下repo/projects/ashare-cointegration；虚拟环境为该目录下.venv，独立Python 3.11.9运行时位于工作区python/。
+- 部署源码：0bc14b3（含单工作进程跨平台检查脚本）；采用Git稀疏工作区，只检出本项目。GitHub直接克隆发生GnuTLS中断，改用本机Git bundle经SSH传输并保留提交历史。
+- Python已安装为3.11.9，与本机补丁版本一致。uv自动产生的本项目Python快捷链接，经确认目标后移入工作区bin/；未修改全局shell配置或借用QZWX服务环境。
+- 依赖安装进行中：远端下载迟缓，改在本机取得锁定版本的Linux轮子，经SSH传入后在独立环境离线安装，不修改锁定版本。
+- 检查计划：使用同一份固定合成输入，对照真实coint、预检、特殊零值、三域校正、负beta保留及Parquet读写；工作进程数1，并读取实际OpenBLAS线程数。本机基准已通过；远端结果尚待完成。
+- 暂停边界：S2始终held_by_user；不调用正式S2面板生成/计算，不迁移市场原始价格或自动恢复任何阶段。现有本地S1安排不变。
+- 最终依赖、比对结果与服务检查完成后补记在本条及results/remote_deployment.json中；当前不标记部署通过。
+
+### 完成验收
+
+完成时间：2026-10-18T20:01:55.620101+08:00（Asia/Shanghai）。证据：results/remote_deployment.json；完整合成基准与远端返回结果保留在两端.local/remote-prep/。
+
+|项目|实际结果|
+|---|---|
+|独立Python|3.11.9，与本机补丁版本一致；运行时与.venv均在独立工作区|
+|锁定依赖|requirements.lock.txt的25个包逐一精确匹配；pip check通过|
+|执行规模|合成检查仅1个工作进程；NumPy与SciPy OpenBLAS getter均返回1线程|
+|Windows/Linux比对|EG统计量最大绝对差1.77636e-15；p值最大差6.66134e-16；在既定容差内，发现集合一致|
+|补充测试|远端6项engine/data/hold测试通过；没有运行8进程测试或S2机制面板|
+|已有服务|QZWX三个已记录进程PID和启动时间未变，18867仍监听；未修改或重启服务环境|
+|S2|held_by_user，0/2,000；没有任何S2面板输出|
+
+源码验收提交：0bc14b310c106a6ec9f6a2da00b4c0636e63a323。后续同步仅包含本次部署文档和状态，不改变已验证的统计代码。
+
+部署过程中，GitHub直接克隆发生TLS中断，使用本机Git bundle传输；远端uv/pip在线安装进展缓慢，停止的仅是经命令行核实的本项目安装进程，改为SSH传输Linux轮子后离线安装。补充测试首次调用遇到末尾换行符参数问题，改用单行SSH命令后6项全部通过。没有为了部署更换任何锁定包版本。
+
+### 实际目录与后续使用
+
+- 工作区：/home/qzwx2026/experiments/ashare-cointegration
+- 项目目录：/home/qzwx2026/experiments/ashare-cointegration/repo/projects/ashare-cointegration
+- Python：/home/qzwx2026/experiments/ashare-cointegration/repo/projects/ashare-cointegration/.venv/bin/python
+- 独立运行时：/home/qzwx2026/experiments/ashare-cointegration/python/
+- 离线轮子：/home/qzwx2026/experiments/ashare-cointegration/wheels/
+- 合成检查资料：项目目录下.local/remote-prep/
+
+复核环境的一致性检查命令如下，只运行固定合成案例，不执行S2：
+
+~~~bash
+cd /home/qzwx2026/experiments/ashare-cointegration/repo/projects/ashare-cointegration
+nice -n 10 .venv/bin/python scripts/check_remote_consistency.py --fixture .local/remote-prep/synthetic.npz --reference .local/remote-prep/windows_reference.json --output .local/remote-prep/linux_result.json
+~~~
+
+S2仍需用户明确恢复，并先同步本机S1最终完成状态和汇总。远端仓库内的S1文件只是导入的本机快照，不代表远端正在执行S1，也不能把它改写成complete。S2自身使用人工生成数据，无需为了启动它上传市场原始价格。
+
+以下命令仅记录为未来获准后的启动方式，本轮没有执行；必须显式传入workers=1，不能省略后沿用通用入口的8进程默认值。入口内部设置BLAS单线程，实际getter已核实。
+
+~~~bash
+cd /home/qzwx2026/experiments/ashare-cointegration/repo/projects/ashare-cointegration
+nice -n 10 .venv/bin/python run_simulation.py --stage S2 --workers 1
+~~~
+
+本次一致性通过只证明所检合成路径在两个平台上相容，不替代完整S2校准，也不消除既有N1统计警报。长时间运行性能未测试，所有本机检查点和历史记录继续保留。
 
 ## 后续维护约定
 

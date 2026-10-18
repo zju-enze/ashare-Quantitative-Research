@@ -8,8 +8,10 @@
   "held_at": "2026-10-18T19:10:26.983141+08:00",
   "resume_requires_explicit_user_instruction": true,
   "execution_target": "remote:qzwx2026",
-  "deployment_status": "preflight_complete_not_deployed",
-  "engineering_change": "ENG-003",
+  "deployment_status": "deployed_verified_not_started",
+  "engineering_change": "ENG-004",
   "recommended_workers": 1,
-  "blas_threads_per_worker": 1
+  "blas_threads_per_worker": 1,
+  "remote_project_directory": "/home/qzwx2026/experiments/ashare-cointegration/repo/projects/ashare-cointegration",
+  "prepared_workers": 1
 }
