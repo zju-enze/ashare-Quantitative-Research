@@ -54,8 +54,8 @@
     "statistical_source_commit": "1f3ef9da4b411d5084f3d01319f8a638ac948b70"
   },
   "stage1_calibration": {
-    "status": "S1_running_S2_held_by_user",
-    "snapshot_at": "2026-10-18T11:12:47.288824+00:00",
+    "status": "S1_complete_S2_running_remote",
+    "snapshot_at": "2026-10-18T12:21:46.914833+00:00",
     "S0": {
       "stage": "S0",
       "status": "complete",
@@ -67,31 +67,30 @@
     },
     "S1": {
       "stage": "S1",
-      "status": "running",
-      "completed": 12560,
+      "status": "complete",
+      "completed": 16000,
       "planned": 16000,
       "repeats_per_scenario": 1000,
       "workers": 8,
-      "updated_at": "2026-10-18T11:12:47.288824+00:00"
+      "updated_at": "2026-10-18T12:07:54.361337+00:00",
+      "recovered_from_checkpoints": true,
+      "engineering_change": "ENG-005",
+      "recovery_note": "All 16000 metric and pair checkpoints exist; metric family/repetition coverage verified; summary regenerated once without recomputation."
     },
     "S2": {
       "stage": "S2",
-      "status": "held_by_user",
+      "status": "running",
       "completed": 0,
       "planned": 2000,
-      "automatic_start": false,
-      "hold_reason": "User requested S1 finish without automatically continuing to S2",
-      "held_at": "2026-10-18T19:10:26.983141+08:00",
-      "resume_requires_explicit_user_instruction": true,
-      "execution_target": "remote:qzwx2026",
-      "deployment_status": "deployed_verified_not_started",
-      "engineering_change": "ENG-004",
-      "recommended_workers": 1,
-      "blas_threads_per_worker": 1,
-      "remote_project_directory": "/home/qzwx2026/experiments/ashare-cointegration/repo/projects/ashare-cointegration",
-      "prepared_workers": 1
+      "repeats_per_scenario": 500,
+      "workers": 2,
+      "updated_at": "2026-10-18T12:21:11.367378+00:00",
+      "snapshot_source": "remote:qzwx2026",
+      "snapshot_at": "2026-10-18T12:21:46.914833+00:00",
+      "checkpoint_completed": 6,
+      "engineering_change": "ENG-006"
     },
-    "runtime_status_files": "results/simulation/*_status.json",
+    "runtime_status_files": "Remote results/simulation/*_status.json; local S2 file is a dated snapshot",
     "N1_full_1000_L2_Holm_FWER": [
       0.293,
       0.281,
@@ -101,12 +100,11 @@
     "N1_Wilson_lower_above_005": true,
     "interpretation": "Finite-sample stress failure observed; not unconditional market error control",
     "remaining": [
-      "finish current local S1 and preserve checkpoints",
-      "keep S2 held; prepare remote execution only when requested",
-      "run S2 on qzwx2026 only after explicit release and environment verification",
-      "refresh diagnostics/report after authorized stages finish"
+      "Complete authorized S2 calibration on qzwx2026 with two workers and one BLAS thread per worker",
+      "Refresh diagnostics/report after S2 completes"
     ],
-    "engineering_change_log": "ENGINEERING_CHANGES.md"
+    "engineering_change_log": "ENGINEERING_CHANGES.md",
+    "runtime_estimate": "results/simulation/S2_runtime_estimate.json"
   },
   "stage2": {
     "status": "planned_deferred"
@@ -114,15 +112,15 @@
   "stage3": {
     "status": "planned_deferred"
   },
-  "recorded_at": "2026-10-18T20:01:55.620101+08:00",
+  "recorded_at": "2026-10-18T12:21:46.914833+00:00",
   "remote_execution_plan": {
-    "status": "deployed_verified_S2_held",
+    "status": "S2_running_remote",
     "host_alias": "qzwx2026",
     "ssh_tunnel_command": "ssh -N -L 28867:127.0.0.1:18867 qzwx2026",
     "local_forward_port": 28867,
     "remote_forward_host": "127.0.0.1",
     "remote_forward_port": 18867,
-    "service_on_remote_port": "not_verified",
+    "service_on_remote_port": "existing_QZWX_service_preserved",
     "public_key_configuration": "user_confirmed",
     "connection_verified_this_change": true,
     "target_scope": [
@@ -132,11 +130,11 @@
     "remote_workdir": "/home/qzwx2026/experiments/ashare-cointegration/repo/projects/ashare-cointegration",
     "remote_environment_verified": true,
     "automatic_start": false,
-    "engineering_change": "ENG-004",
+    "engineering_change": "ENG-006",
     "recorded_at": "2026-10-18T19:25:03.407756+08:00",
     "resource_preflight": "passed_with_2_vCPU_limit",
     "proposed_remote_workdir": "/home/qzwx2026/experiments/ashare-cointegration",
-    "recommended_workers": 1,
+    "recommended_workers": 2,
     "blas_threads_per_worker": 1,
     "evidence": "results/remote_deployment.json",
     "checked_at": "2026-10-18T19:33:48.452645+08:00",
@@ -144,7 +142,13 @@
     "deployment_started_at": "2026-10-18T19:50:56.757276+08:00",
     "python_executable": "/home/qzwx2026/experiments/ashare-cointegration/repo/projects/ashare-cointegration/.venv/bin/python",
     "validated_code_commit": "0bc14b310c106a6ec9f6a2da00b4c0636e63a323",
-    "prepared_workers": 1,
-    "deployment_completed_at": "2026-10-18T20:01:55.620101+08:00"
+    "prepared_workers": 2,
+    "deployment_completed_at": "2026-10-18T20:01:55.620101+08:00",
+    "started_at": "2026-10-18T12:08:43.275826+00:00",
+    "workers": 2,
+    "launch_evidence": "results/simulation/S2_launch.json",
+    "parallel_started_at": "2026-10-18T12:17:09.371481+00:00",
+    "runtime_estimate": "results/simulation/S2_runtime_estimate.json",
+    "estimated_total_compute_hours": 58.66551524441324
   }
 }

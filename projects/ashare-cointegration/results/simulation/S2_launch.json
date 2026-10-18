@@ -1,0 +1,20 @@
+{
+  "pid": 4118406,
+  "launched_at": "2026-10-18T12:08:43.275826+00:00",
+  "host": "qzwx2026",
+  "project_directory": "/home/qzwx2026/experiments/ashare-cointegration/repo/projects/ashare-cointegration",
+  "workers": 2,
+  "blas_threads_per_worker": 1,
+  "log": "/home/qzwx2026/experiments/ashare-cointegration/repo/projects/ashare-cointegration/.local/simulation/S2_remote.log",
+  "engineering_change": "ENG-006",
+  "previous_single_worker_pid": 4116423,
+  "parallel_started_at": "2026-10-18T12:17:09.371481+00:00",
+  "switch_reason": "User authorized maximum remote CPU utilization; two logical CPUs available; existing QZWX services preserved; nice=10 retained.",
+  "verified_at": "2026-10-18T12:21:46.914833+00:00",
+  "running_worker_pids": [
+    4119306,
+    4119307
+  ],
+  "checkpoint_completed": 6,
+  "verified_status": "running"
+}

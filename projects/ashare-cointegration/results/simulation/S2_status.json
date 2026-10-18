@@ -1,17 +1,13 @@
 {
   "stage": "S2",
-  "status": "held_by_user",
+  "status": "running",
   "completed": 0,
   "planned": 2000,
-  "automatic_start": false,
-  "hold_reason": "User requested S1 finish without automatically continuing to S2",
-  "held_at": "2026-10-18T19:10:26.983141+08:00",
-  "resume_requires_explicit_user_instruction": true,
-  "execution_target": "remote:qzwx2026",
-  "deployment_status": "deployed_verified_not_started",
-  "engineering_change": "ENG-004",
-  "recommended_workers": 1,
-  "blas_threads_per_worker": 1,
-  "remote_project_directory": "/home/qzwx2026/experiments/ashare-cointegration/repo/projects/ashare-cointegration",
-  "prepared_workers": 1
+  "repeats_per_scenario": 500,
+  "workers": 2,
+  "updated_at": "2026-10-18T12:21:11.367378+00:00",
+  "snapshot_source": "remote:qzwx2026",
+  "snapshot_at": "2026-10-18T12:21:46.914833+00:00",
+  "checkpoint_completed": 6,
+  "engineering_change": "ENG-006"
 }
