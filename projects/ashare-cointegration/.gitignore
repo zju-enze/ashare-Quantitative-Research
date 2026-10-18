@@ -1,0 +1,13 @@
+# Vendor inputs, caches, checkpoints, and credentials remain local.
+.local/
+data/
+checkpoints/
+.cache/
+.venv/
+.env
+.env.*
+!.env.example
+__pycache__/
+*.py[cod]
+*.log
+.ipynb_checkpoints/

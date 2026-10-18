@@ -1,0 +1,36 @@
+{
+  "project": "ashare-cointegration",
+  "recorded_date": "2026-10-18",
+  "current_stage": 1,
+  "protocol": {
+    "supplied_version": "1.2",
+    "source": "user-supplied experiment plan",
+    "source_sha256": "31262589ee82fff1472574f92462398c43ab1ff1fec13a0db466cd48ec95930d",
+    "plan_path": "EXPERIMENT_PLAN.md",
+    "implementation_clarifications": "REVIEW_AND_IMPLEMENTATION.md",
+    "executable_config_present": false
+  },
+  "design_review": {
+    "status": "passed_for_stage1_implementation",
+    "clarifications": ["C1_adjustment_coordinate_and_precision", "C2_verify_actual_implementation_evidence", "C3_l2_holm_fwer_trigger"],
+    "repository_inspection_base_commit": "8cf065e6a7127b97441d44009b962c7b366c4ed4"
+  },
+  "implementation_validation": {
+    "status": "not_run_in_this_repository",
+    "production_code_present": false,
+    "historical_checks_claimed_in_plan_independently_verified": false
+  },
+  "stage1_production": {
+    "status": "not_started_full_market",
+    "candidate_manifest_frozen": false,
+    "empirical_discoveries_produced": false
+  },
+  "stage1_calibration": {
+    "status": "planned_not_executed",
+    "S0": "not_run",
+    "S1": "not_run",
+    "S2": "not_run"
+  },
+  "stage2": {"status": "planned_deferred"},
+  "stage3": {"status": "planned_deferred"}
+}
