@@ -1,0 +1,809 @@
+{
+  "version": "1.2-implementation.1",
+  "designed_on": "2026-10-18",
+  "status": "effective_fixed_stage1_protocol",
+  "design_document": "EXPERIMENT_PLAN.md",
+  "formation": [
+    "2021-01-01",
+    "2025-12-31"
+  ],
+  "classification_asof": "2025-12-31",
+  "interpretation": "Stage 1 identifies 2021-2025 same-industry cointegration evidence; downstream applicability is not its qualification or completion condition.",
+  "primary_result": {
+    "domain": "L2",
+    "method": "holm",
+    "alpha": 0.05
+  },
+  "universe": {
+    "instrument": "ordinary A shares",
+    "listing_no_later_than_first_formation_session": true,
+    "listed_at_formation_end": true,
+    "exclude_ST_at_formation_end": true,
+    "exclude_using_2026_information": false,
+    "industry": "SW2021 explicit catalogue and historical membership, reconstructed as of 2025-12-31 unless contemporaneous archive proven",
+    "coverage": "full common trading calendar, valid positive close, actual trading records, reconciled events",
+    "price_fill": "none",
+    "unresolved_taxonomy_or_identity": "exclude_with_reason",
+    "uncovered_markets": "explicitly_report_not_silently_call_full_A_share",
+    "primary_exclusion_order": [
+      "instrument_or_uncovered_market",
+      "identity",
+      "listing_history",
+      "end_2025_survival_or_unknown",
+      "end_2025_ST_or_unknown",
+      "classification",
+      "raw_data_and_continuity",
+      "adjustment",
+      "I1_diagnostic_pair_placeholder",
+      "numerical_pair_placeholder"
+    ]
+  },
+  "adjustment": {
+    "source": "BaoStock backAdjustFactor event series",
+    "join": "backward_asof_effective_date",
+    "normalization": "raw_price * factor / first_formation_day_factor",
+    "dtype": "float64",
+    "raw_inputs_preserved": true,
+    "requires_all_corporate_action_types": true,
+    "account_return_equivalent": false,
+    "seed": "last valid cumulative factor strictly before first formation session; then apply same-day events",
+    "missing_seed": "backfill evidence to prior event or prove no past action/initial factor; never use future event",
+    "factor_half_unit": null,
+    "price_comparison_tolerance": "exact Decimal(P_raw)*Decimal(F_returned)==Decimal(Q_API); bound 0 for given records only",
+    "ratio_relative_tolerance": null,
+    "residual_definition": "adjusted_A-alpha-beta*adjusted_B; subtract intercept once",
+    "residual_mean_tolerance": "1e-10*max(1,RMS(A),abs(alpha),RMS(beta*B))",
+    "downstream_coordinate_contract": "Any later evaluation must extend the same formation anchor; no OOS access is required for stage 1.",
+    "residual_variance_audit": "Save residual mean/variance/scale. Existing EG numerical-invalid rules remain; future z-standardization eligibility is not a stage-1 discovery filter.",
+    "comparison_coordinate": "raw_price * cumulative_factor versus native hfq API before normalization",
+    "precision_source_status": "recorded_decimal_identity_no_latent_rounding_assumption"
+  },
+  "candidates": {
+    "primary_layer": "same_L3",
+    "supplement_layer": "same_L2_different_L3",
+    "cross_L2": false,
+    "enumeration": "all unordered pairs passing predefined data requirements",
+    "direction": "lexicographically smaller standard ts_code as A; A on B",
+    "statistical_prefilter": false,
+    "both_layers_registered_before_EG": true
+  },
+  "unit_root_diagnostic": {
+    "test": "ADF",
+    "levels_and_first_differences": true,
+    "regression": "c",
+    "autolag": "AIC",
+    "maxlag": null,
+    "alpha": 0.05,
+    "compatible_rule": "level p >= 0.05 and difference p < 0.05; diagnostic compatibility, not proof",
+    "incompatible_pair_raw_p": null,
+    "incompatible_pair_adjustment_placeholder": 1.0,
+    "retain_planned_family_position": true,
+    "proof_scope": "p_tilde=p on gate, else 1 is marginally conservative under valid original p and fixed family; no gate/EG independence needed; does not prove I(1), model validity or BH dependence"
+  },
+  "cointegration": {
+    "test": "Engle-Granger",
+    "price_transform": "adjusted price levels",
+    "trend": "c",
+    "autolag": "aic",
+    "maxlag": null,
+    "directions_per_pair": 1,
+    "alternative_windows_or_transforms": false,
+    "error_raw_p": null,
+    "error_adjustment_placeholder": 1.0,
+    "unresolved_numerical_errors_block_complete_status": true,
+    "library_version": "statsmodels 0.15.0",
+    "residual_adf_regression": "n",
+    "default_maxlag_formula": "min(ceil(12*(N/100)**0.25),N//2-ntrend-1)",
+    "maxlag_at_1212": 23,
+    "pvalue_interpretation": "MacKinnon approximate asymptotic, not unconditional finite-sample calibration",
+    "zero_p_handling": {
+      "near_collinearity_or_nonfinite_stat": "library value retained; raw_p null; adjustment input 1",
+      "finite_stat_boundary_or_CDF_zero": "retain nominal raw zero with tail_unresolved flag"
+    },
+    "tail_c_N2_min_statistic": -18.86,
+    "audit_fields": [
+      "N_input",
+      "L_max",
+      "used_lag",
+      "AIC_best",
+      "N_effective",
+      "rank",
+      "condition_number",
+      "R_squared",
+      "alpha",
+      "beta",
+      "mu",
+      "sigma",
+      "residual_variance_ratio",
+      "warning_class",
+      "p_library",
+      "p_raw",
+      "p_zero_origin",
+      "p_for_adjustment",
+      "gate_status",
+      "parameter_valid",
+      "compute_status"
+    ],
+    "beta_sign_filter": null,
+    "application_filters": [],
+    "residual_diagnostics_role": "statistical relation estimation and numerical audit only"
+  },
+  "corrections": {
+    "alpha": 0.05,
+    "methods": {
+      "BF": "bonferroni",
+      "Holm": "holm",
+      "BH": "fdr_bh"
+    },
+    "domains": {
+      "L3": {
+        "family": "same L3 code",
+        "eligible_layer": [
+          "same_L3"
+        ],
+        "cross_L3_result": null
+      },
+      "L2": {
+        "family": "same L2 code",
+        "eligible_layer": [
+          "same_L3",
+          "same_L2_different_L3"
+        ]
+      },
+      "GLOBAL": {
+        "family": "all registered same-L2 candidates across all L2 groups",
+        "eligible_layer": [
+          "same_L3",
+          "same_L2_different_L3"
+        ]
+      }
+    },
+    "input": "full frozen raw results with explicitly labelled non-rejection placeholders",
+    "independent_not_sequential": true,
+    "take_minimum_across_methods_or_domains": false,
+    "primary_support_comparison": "Compare nine views on same-L3 pairs; six views on all pairs",
+    "local_guarantee_is_global": false,
+    "BH_dependence_guarantee": "Conditional; shared-stock dependence does not establish PRDS",
+    "FWER_claim": "specified-family nominal control conditional on valid true-null inputs; Holm needs no between-pair independence",
+    "finite_sample_guarantee_claimed": false,
+    "same_family_method_nesting": [
+      "BF subset Holm",
+      "Holm subset BH"
+    ],
+    "incremental_sets": [
+      "BF",
+      "Holm minus BF",
+      "BH minus Holm"
+    ],
+    "cross_domain_BH_nesting_assumed": false,
+    "nine_views_need_mechanical_ninefold_adjustment": false,
+    "empty_empty_Jaccard": null,
+    "incremental_comparison_scope_current": "formation-period statistical evidence and set differences",
+    "main_discovery_definition": "valid nominal EG result with reject_L2_Holm=true; no beta, speed, borrow, cost or OOS filter"
+  },
+  "execution": {
+    "workers": 8,
+    "blas_threads_per_worker": 1,
+    "compute_EG_once_per_pair": true,
+    "cuda": "permitted only after equivalent-kernel validation; not required or benchmarked",
+    "production_requires_completed_MC": false,
+    "production_requires_later_stages": false,
+    "runtime_status_path": "results/production_status.json"
+  },
+  "outputs": [
+    "stock_identity_and_qualification",
+    "industry_versions_history_snapshot",
+    "all_exclusion_tags_primary_reason_and_flow_counts",
+    "canonical_prices_events_and_seed_checks",
+    "full_candidate_registry_and_family_sizes",
+    "stock_ADF_diagnostics",
+    "complete_EG_results_and_numerical_audit",
+    "full_domain_method_corrections",
+    "L2_Holm_cointegration_evidence_list",
+    "nonrejections_inapplicable_numerical_and_zero_discovery_reports",
+    "core_incremental_statistical_comparison",
+    "calibration_status_and_separate_diagnostics",
+    "stage1_run_manifest_and_correction_history"
+  ],
+  "revised_on": "2026-10-18",
+  "classification": {
+    "src": "SW2021",
+    "source": "official SW2021 catalogue and change-event history",
+    "code_namespace": "official classification code, not index ticker",
+    "interval_convention": "[entry_time,next_entry_time)",
+    "boundary_evidence": "entry events; no entry on 2025-12-31 in downloaded history; no affected year-end endpoint case",
+    "conflicting_effective_events": "exclude, never choose by sort order",
+    "use_is_pub_as_membership_filter": false,
+    "snapshot_default_label": "reconstructed_from_current_official_history",
+    "published_at": null,
+    "times_distinguished": [
+      "effective_from",
+      "source_updated_at",
+      "retrieved_at"
+    ],
+    "legacy_28_L1_source": "retired; origin remains unverified"
+  },
+  "simulation": {
+    "status": "runtime_status_in_results/simulation",
+    "N": 1212,
+    "burnin": 2000,
+    "generator": "NumPy PCG64",
+    "seed": "SeedSequence([20261018,stage_id,scenario_id,repetition_id])",
+    "DGP": "a_gj+c_j*(M+S_g+lambda*W_g,cluster)+sigma_e*e_gj",
+    "a_gj": "10000+5*(g*n+j)",
+    "c_j": "0.8+0.4*j/(n-1)",
+    "residual": "e=phi*e_prev+sqrt(1-phi**2)*v, v iid normal; always stationary",
+    "mixed_cluster": "j mod5 0/1 cluster1, 2/3 cluster2, 4 unique singleton",
+    "stress_applies_to": "trend innovations, not stationary residual",
+    "simulation_data_eligibility": "fixed complete artificial panel; do not truncate/resample on price sign",
+    "scenarios": [
+      {
+        "id": "N0",
+        "truth": "all_null",
+        "trend_innovations": "gaussian",
+        "lambda": 1.0,
+        "phi": 0.5,
+        "sigma_e": 0.25
+      },
+      {
+        "id": "N1",
+        "truth": "all_null",
+        "trend_innovations": "gaussian",
+        "lambda": 0.1,
+        "phi": 0.5,
+        "sigma_e": 0.25
+      },
+      {
+        "id": "N2",
+        "truth": "all_null",
+        "trend_innovations": "AR1_0.5_gaussian",
+        "lambda": 1.0,
+        "phi": 0.5,
+        "sigma_e": 0.25
+      },
+      {
+        "id": "N3",
+        "truth": "all_null",
+        "trend_innovations": "standardized_t5",
+        "lambda": 1.0,
+        "phi": 0.5,
+        "sigma_e": 0.25
+      },
+      {
+        "id": "N4",
+        "truth": "all_null",
+        "trend_innovations": "stationary_GARCH_0.05_0.05_0.90",
+        "lambda": 1.0,
+        "phi": 0.5,
+        "sigma_e": 0.25
+      },
+      {
+        "id": "N5",
+        "truth": "all_null",
+        "trend_innovations": "deterministic_sd_jump_1_to_3_at_half",
+        "lambda": 1.0,
+        "phi": 0.5,
+        "sigma_e": 0.25
+      },
+      {
+        "id": "N6",
+        "truth": "all_null",
+        "trend_innovations": "deterministic_sd_drop_3_to_1_after_first_quarter",
+        "lambda": 1.0,
+        "phi": 0.5,
+        "sigma_e": 0.25,
+        "scale_formula": "s_t=3 if 0<=t<floor(N/4), otherwise 1"
+      },
+      {
+        "id": "N7",
+        "truth": "all_null",
+        "trend_innovations": "AR1_0.5_t5_then_sd_jump",
+        "lambda": 1.0,
+        "phi": 0.5,
+        "sigma_e": 0.25
+      },
+      {
+        "id": "A0",
+        "truth": "all_alternative",
+        "trend_innovations": "gaussian",
+        "lambda": 1.0,
+        "phi": 0.8,
+        "sigma_e": 0.25
+      },
+      {
+        "id": "A1",
+        "truth": "all_alternative",
+        "trend_innovations": "gaussian",
+        "lambda": 1.0,
+        "phi": 0.8,
+        "sigma_e": 1.0
+      },
+      {
+        "id": "A2",
+        "truth": "all_alternative",
+        "trend_innovations": "gaussian",
+        "lambda": 1.0,
+        "phi": 0.95,
+        "sigma_e": 0.25
+      },
+      {
+        "id": "A3",
+        "truth": "all_alternative",
+        "trend_innovations": "gaussian",
+        "lambda": 1.0,
+        "phi": 0.95,
+        "sigma_e": 1.0
+      },
+      {
+        "id": "A4",
+        "truth": "all_alternative",
+        "trend_innovations": "gaussian",
+        "lambda": 1.0,
+        "phi": 0.99,
+        "sigma_e": 0.25
+      },
+      {
+        "id": "A5",
+        "truth": "all_alternative",
+        "trend_innovations": "gaussian",
+        "lambda": 1.0,
+        "phi": 0.99,
+        "sigma_e": 1.0
+      },
+      {
+        "id": "M0",
+        "truth": "mixed_mod5_clusters",
+        "trend_innovations": "gaussian",
+        "lambda": 1.0,
+        "phi": 0.95,
+        "sigma_e": 1.0
+      },
+      {
+        "id": "M1",
+        "truth": "mixed_mod5_clusters",
+        "trend_innovations": "deterministic_sd_jump_1_to_3_at_half",
+        "lambda": 1.0,
+        "phi": 0.95,
+        "sigma_e": 1.0
+      }
+    ],
+    "stages": [
+      {
+        "id": 0,
+        "name": "S0",
+        "L2": 2,
+        "stocks_per_L2": 4,
+        "L3_per_L2": 2,
+        "scenarios": "all16",
+        "repetitions": 5,
+        "family_sizes": [
+          1,
+          6,
+          12
+        ]
+      },
+      {
+        "id": 1,
+        "name": "S1",
+        "L2": 4,
+        "stocks_per_L2": 10,
+        "L3_per_L2": 2,
+        "scenarios": "all16",
+        "repetitions": 1000,
+        "family_sizes": [
+          10,
+          45,
+          180
+        ]
+      },
+      {
+        "id": 2,
+        "name": "S2",
+        "L2": 4,
+        "stocks_per_L2": 30,
+        "L3_per_L2": 2,
+        "scenarios": [
+          "N1",
+          "N5",
+          "N6",
+          "M1"
+        ],
+        "repetitions": 500,
+        "family_sizes": [
+          105,
+          435,
+          1740
+        ]
+      }
+    ],
+    "entry_conditions": "Simulation stages retain their own engineering/prior-stage completion conditions; these do not require Monte Carlo completion before stage1 list production.",
+    "outputs": [
+      "rejection_rate",
+      "FWER",
+      "FDR",
+      "unconditional_power",
+      "gate_pass_and_power_loss",
+      "core_incremental_truth",
+      "warnings",
+      "MCSE",
+      "Wilson_interval",
+      "runtime"
+    ],
+    "MCSE_unit": "independent whole-panel replicate, not family or pair",
+    "diagnostic_flag": "per mechanism AND fixed L2 family, L2-Holm Wilson lower95>.05; diagnostic, not simultaneous guarantee",
+    "budget_hours": {
+      "S1": [
+        4,
+        8
+      ],
+      "S2": [
+        4,
+        8
+      ]
+    },
+    "individual_extreme_tail_bootstrap": false,
+    "shuffle_price_rows": false,
+    "proof_for_real_market": false,
+    "relationship_to_production": "may run alongside or after stage1 production; separate completion flags",
+    "normalization_formula": "Y_gj,t=100*X_gj,t/X_gj,0; each series uses one fixed nonzero constant",
+    "zero_normalization_denominator": "engineering-invalid replicate; record and diagnose, do not resample silently",
+    "S0_mixed_truth_per_L2": {
+      "T": {
+        "alternative": 2,
+        "null": 0
+      },
+      "C": {
+        "alternative": 0,
+        "null": 4
+      }
+    },
+    "Wilson_unit": "each fixed L2 family over independent whole-panel repetitions; B trials, never family_count*B",
+    "family_average_uncertainty": "average within each replicate, then MCSE across replicates; not pooled binomial Wilson"
+  },
+  "data_correction": {
+    "task_interruption": "rerun same task only if inputs unchanged; never double-count",
+    "formation_stock_price_or_factor": "stock diagnostic; all incident EG tests and parameters; affected full L3/L2 families and all GLOBAL corrections; evidence list and stage1 report",
+    "eligibility_or_industry": "rebuild affected U/H/families and direction; reuse only unaffected identical-input raw tests; recorrect affected domains and all GLOBAL; refresh evidence list",
+    "downstream_products_if_they_exist": "mark affected application sets, baselines, weights or OOS products stale; their reconstruction is not a stage1 completion requirement",
+    "oos_only_correction": "only later-stage paths/events/metrics/reports; do not recompute stage1 unless a formation-input error is independently established",
+    "definition_change": "new experiment version",
+    "preserve_old_versions_and_evidence": true
+  },
+  "title": "A 股同业协整关系识别及后续应用：分阶段实验计划",
+  "current_stage": 1,
+  "stage1": {
+    "question": "预先限定的同业股票对中，哪些配对具有协整证据，证据来源、校正、适用范围和限制是什么？",
+    "primary_output": "complete L2-Holm cointegration evidence list and statistical report",
+    "required_configuration": [
+      "formation",
+      "universe",
+      "classification",
+      "adjustment",
+      "candidates",
+      "unit_root_diagnostic",
+      "cointegration",
+      "corrections",
+      "execution"
+    ],
+    "production_preconditions": [
+      "data_and_version_checks",
+      "frozen_stock_and_pair_registry",
+      "statistical_implementation_engineering_checks"
+    ],
+    "execution_route": [
+      "version_and_data_checks",
+      "stock_and_pair_registry",
+      "implementation_checks",
+      "stock_diagnostics_and_EG",
+      "full_family_corrections",
+      "evidence_list_and_report"
+    ],
+    "monte_carlo_complete_required_for_list_delivery": false,
+    "later_stage_required_for_completion": false,
+    "beta_sign_is_discovery_gate": false,
+    "parameter_estimates_saved": [
+      "alpha",
+      "beta",
+      "residual_mean",
+      "residual_std",
+      "residual_variance_ratio"
+    ],
+    "report_when_calibration_pending": "名义校正发现，预定校准诊断尚未完成",
+    "discovery_sentence": "在既定样本、模型规格和多重校正规则下，拒绝无协整原假设，获得协整证据。",
+    "production_complete_requires": [
+      "all_candidates_accounted_for",
+      "all_unresolved_compute_errors_resolved_or_report_incomplete",
+      "all_families_corrected",
+      "all_main_discoveries_listed",
+      "nonrejections_inapplicable_numerical_and_zero_discovery_rows_reported",
+      "claims_scoped_and_calibration_status_disclosed"
+    ]
+  },
+  "independent_status": {
+    "market": "results/production_status.json",
+    "calibration": "results/simulation/{S0,S1,S2}_status.json",
+    "later_application": {
+      "stage2": "planned_deferred",
+      "stage3": "planned_deferred"
+    }
+  },
+  "later_stages": {
+    "stage2": {
+      "name": "多空组合构建与样本外探索",
+      "status": "planned_deferred",
+      "enabled": false,
+      "required_by_stage1": false,
+      "reference_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "questions": [
+        "application meaning of beta and hedge quantities",
+        "which statistical relations suit long-short usage",
+        "fixed-relation continuation and spread dynamics",
+        "further application selection and independent validation"
+      ],
+      "inputs": [
+        "frozen_stage1_full_results",
+        "evidence_list",
+        "formation_parameters",
+        "price_coordinate_metadata"
+      ],
+      "expected_outputs": [
+        "separately_defined_application_sets",
+        "hedge_interpretation",
+        "frozen_OOS_exploration_protocol",
+        "selection_and_validation_history"
+      ],
+      "entry_conditions": [
+        "stage1_report_and_limitations_available",
+        "stage2_questions_selection_metrics_benchmark_and_aggregation_fixed_before_own_evaluation"
+      ],
+      "draft_document": "STAGE2_PROTOCOL_DRAFT.md",
+      "preserved_v1_1_draft": {
+        "baseline": {
+          "choice": "all_candidates",
+          "eligibility": "same H, both stocks pass applicability diagnostic, finite/full-rank/standardizable own formation parameters",
+          "includes_selected": true,
+          "unselected_interpretation": "not selected, not known noncointegrated",
+          "sampling": false,
+          "strata": [
+            "L2",
+            "T_or_C"
+          ],
+          "frozen_before_oos_access": true,
+          "resource_evidence_for_sampling": false
+        },
+        "holdout_validation": {
+          "freeze": [
+            "sets",
+            "baseline_eligibility",
+            "alpha",
+            "beta",
+            "mu",
+            "sigma_ddof1",
+            "strata",
+            "weights"
+          ],
+          "refit_in_holdout": false,
+          "primary_metric": "D_i=mean(z_i,t**2 over valid dates)",
+          "valid_dates": "both legs actual trading, positive finite prices, verified effective factors, finite z",
+          "zero_valid_dates": null,
+          "pair_equal_weight_summary": "mean over observable D with frozen_count, evaluable_count, date and pair coverage",
+          "cross_stratum_weights": "baseline frozen pair count in stratum / baseline count on declared support",
+          "cross_stratum_missing_layer": "aggregate NA; report covered weight mass and known contribution; no renormalization",
+          "T_comparison_support": "baseline T only for nine views",
+          "H_comparison_support": "baseline H for six L2/GLOBAL views",
+          "all_selected_and_failed_records_retained": true,
+          "ordinary_independent_pair_ttests": false,
+          "partial_2026": "same mature-cohort rule with explicit cutoff",
+          "posthoc_best_method_selection": false,
+          "episode": {
+            "trigger": "two adjacent valid market sessions: abs(previous_z)<2 and abs(current_z)>=2; no active event",
+            "entry_abs_z": 2.0,
+            "return_abs_z": 0.5,
+            "followup_sessions": [
+              1,
+              20
+            ],
+            "trigger_day_in_followup": false,
+            "outcome_priority": [
+              "invalid_before_hit -> unassessable",
+              "valid target hit -> success and stop",
+              "day20 no hit -> not_returned_within_20d",
+              "cutoff before day20 -> administratively_censored"
+            ],
+            "states": [
+              "success",
+              "not_returned_within_20d",
+              "unassessable",
+              "administratively_censored"
+            ],
+            "later_gap_overwrites_success": false,
+            "same_day_end_rearm": "allowed if valid and abs(z)<2; no same-day retrigger",
+            "after_gap": "reset; first valid inside date may arm, subsequent adjacent valid crossing required",
+            "directional_crossing_is_success": false,
+            "mature": "trigger_index+20<=cutoff_index, independent of status",
+            "recent_fast_success": "success with mature=false, supplementary only",
+            "main_denominators": {
+              "S": "mature success",
+              "F": "mature not_returned",
+              "U": "mature unassessable",
+              "N": "S+F+U",
+              "evaluable_rate": "S/(S+F)",
+              "unknown_bounds": "[S/N,(S+U)/N]",
+              "zero_denominator": null
+            },
+            "bounds_scope": "identified mature events only; not CI, population probability or missed-trigger coverage",
+            "return_time_label": "first hit time among mature events succeeding within 20 sessions"
+          },
+          "band_diagnostics": [
+            "initial_outside_or_unknown",
+            "valid_day_outside_fraction",
+            "longest_observed_outside_run_cut_at_gaps",
+            "gap_or_window_truncation_flags",
+            "zero_event_reason_tags",
+            "valid_adjacent_date_count"
+          ],
+          "zero_event_reasons": [
+            "no_valid_dates",
+            "observed_inside_only",
+            "initial_outside_persistent_observed",
+            "no_identified_crossing",
+            "crossing_unidentifiable_at_gaps"
+          ],
+          "event_stratum_summary": "pair equal-weight over defined mature rates plus separately labelled pooled-event S/F/U summaries; coverage retained"
+        },
+        "standardization_threshold": "sigma<=1e-12*max(1,sd(A))"
+      },
+      "S_LS_B_LS_directional_MAE_status": "not implemented in inspected files; concepts for later specification"
+    },
+    "stage3": {
+      "name": "交易可实现性与含成本验证",
+      "status": "planned_deferred",
+      "enabled": false,
+      "required_by_stage1": false,
+      "inputs": [
+        "stage2_application_candidates",
+        "explicit_trade_rules",
+        "corporate_actions_and_execution_inputs"
+      ],
+      "questions": [
+        "raw_share_conversion_and_accounting",
+        "borrow_eligibility_inventory_rates",
+        "timing_two_leg_fills",
+        "cost_capital_returns_and_risk"
+      ],
+      "expected_outputs": [
+        "execution_assumption_register",
+        "position_cash_and_cost_ledger",
+        "conditional_or_supported_net_performance"
+      ],
+      "entry_conditions": [
+        "separate_execution_account_and_cost_protocol",
+        "evidence_or_explicit_assumptions_for_execution"
+      ],
+      "preserved_v1_1_boundary": {
+        "in_this_version": false,
+        "reason": "This version freezes statistical screening and relation validation; execution and account protocol required before viewing its holdout performance",
+        "borrow_conditions": "unobserved; conditional scenarios only"
+      }
+    }
+  },
+  "result_schema": {
+    "candidate": [
+      "candidate_id",
+      "input_version",
+      "code_A",
+      "name_A",
+      "code_B",
+      "name_B",
+      "L2",
+      "L3_A",
+      "L3_B",
+      "layer_T_C",
+      "family_ids",
+      "m_plan"
+    ],
+    "test": [
+      "I1_A_status",
+      "I1_B_status",
+      "EG_executed",
+      "EG_stat",
+      "p_library",
+      "p_raw",
+      "p_for_adjustment",
+      "placeholder_reason",
+      "L_max",
+      "used_lag",
+      "N_input",
+      "N_effective",
+      "warning_class",
+      "p_zero_origin",
+      "compute_status",
+      "alpha",
+      "beta",
+      "residual_mean",
+      "residual_std",
+      "residual_variance_ratio"
+    ],
+    "correction": [
+      "candidate_id",
+      "domain",
+      "family_id",
+      "m_plan",
+      "method",
+      "p_adjusted",
+      "reject",
+      "applicable"
+    ],
+    "evidence": [
+      "identity_and_industry",
+      "identification_period",
+      "N_input",
+      "N_effective",
+      "fixed_direction",
+      "estimated_equation",
+      "EG_stat",
+      "p_raw",
+      "L2_Holm_p",
+      "L2_family_id",
+      "L2_family_size",
+      "applicability_and_numerical_status",
+      "nominal_claim_and_limitations",
+      "calibration_status"
+    ]
+  },
+  "revision_history": [
+    {
+      "version": "1.1",
+      "archive_plan": "archive/EXPERIMENT_PLAN.v1.1.md",
+      "archive_config": "archive/experiment_protocol.v1.1.json",
+      "revision_started_at": "2026-10-18T14:07:37+08:00",
+      "revision_completed_at": "2026-10-18T14:28:31+08:00",
+      "review_records": "review_v1_1 (retained, not rerun in v1.2)"
+    }
+  ],
+  "implementation_clarifications": "REVIEW_AND_IMPLEMENTATION.md",
+  "source_adaptation": {
+    "industry": "Official SW2021 catalogue and stock classification change-event history; native classification codes; intervals [entry,next_entry); no Tushare credentials",
+    "snapshot_type": "reconstructed_from_current_official_history",
+    "published_at": null,
+    "historical_materials": "Copied from local quant_lab; historical tests not rerun; current production tests separate"
+  },
+  "execution_runtime": {
+    "workers": 8,
+    "BLAS_threads_per_worker": 1,
+    "price_access_end": "2025-12-31",
+    "coint_audit": "source-equivalent production kernel checked against real coint; source module statsmodels.tsa.stattools._stattools"
+  },
+  "source_plan_freeze_ledger": {
+    "revision_started_at": "2026-10-18T15:26:18+08:00",
+    "revision_completed_at": "2026-10-18T15:39:11+08:00",
+    "candidate_registry_frozen_at": null,
+    "formation_parameters_frozen_at": null,
+    "baseline_and_weights_frozen_at": null,
+    "first_oos_result_access_at": null,
+    "first_oos_result_access_status": "historical_first_access_not_reliably_logged; none in this revision",
+    "oos_data_cutoff": null,
+    "prospective_segment_rule": "first market session after latest actual candidate/parameter/baseline freeze; not before 2026-01-01",
+    "prior_context": "Prior acquisition and coverage discussion included 2026 data; do not claim never exposed",
+    "ledger_scope": "Shared historical audit; later-stage timestamps are not stage1 dependencies"
+  },
+  "freeze_ledger": {
+    "actual_market_freeze_path": ".local/production/{run-id}/freeze.json",
+    "historical_first_oos_access": "unknown; prior exposure not erased"
+  },
+  "source_plan_revision_access_scope": {
+    "real_2026_paths_read": false,
+    "real_2026_outcomes_read": false,
+    "full_market_EG_run": false,
+    "full_Monte_Carlo_run": false,
+    "trading_backtest_run": false
+  },
+  "current_access_policy": {
+    "price_end": "2025-12-31",
+    "no_real_2026_price_evaluation": true,
+    "later_stages": "planned_deferred"
+  }
+}

@@ -8,9 +8,11 @@
 
 ## Current status
 
-The supplied v1.2 plan has passed independent design review with the execution clarifications recorded below. This directory currently contains the plan and implementation handoff. Production code, validated market-data inputs, completed Monte Carlo diagnostics, and empirical discoveries have not yet been added.
+The v1.2 plan and implementation clarifications now have an independent Python environment, a production statistical kernel, free-source acquisition and audits, frozen-family batch execution, reporting, and resumable S0/S1/S2 simulation.
 
-Checks and local artifacts mentioned in the supplied plan retain their original provenance; those statements have not been independently reproduced in this repository. See [RESEARCH_STATUS.json](RESEARCH_STATUS.json).
+Market acquisition and S1 are currently running. S0 completed all 80 prescribed panels; its small-repetition diagnostic alarms are retained. Market candidates and empirical findings will be reported only after the full input audit and frozen-family execution finish. See [RESEARCH_STATUS.json](RESEARCH_STATUS.json), [acquisition status](results/acquisition_status.json), and [simulation status](results/simulation/S1_status.json).
+
+Historical v1.2 configuration and rule-check artifacts were located in the local quant_lab workspace and copied to archive/. Their claimed 15 checks were not rerun here. Current production-path tests are separate; they exercise real coint, lag diagnostics, zero-value provenance, complete families, one/eight workers, exact decimal price coordinates, and the frozen pipeline's resume path.
 
 ## Reading and implementation order
 
@@ -64,4 +66,40 @@ Keep this project's configuration, dependencies, source, tests, runtime entry po
 
 The [existing value-signal study](../../VALUE_SIGNAL_RESEARCH.md) uses a monthly analysis pipeline and a 2005–2024 sample boundary. Its presence does not establish validated 2021–2025 daily prices, adjustment factors, or historical industry membership for this project. Reuse requires a documented compatibility check.
 
-Production commands will be documented when implemented. Every run must identify the effective protocol, data versions, environment, and actual completion status. Return to the [repository overview](../../README.md).
+## Reproduce and resume Stage 1
+
+Run these commands in projects/ashare-cointegration/ using Python 3.11:
+
+~~~powershell
+python -m venv .venv
+.\.venv\Scripts\python.exe -m pip install -r requirements.lock.txt
+.\.venv\Scripts\python.exe -m unittest discover -s tests -v
+.\fetch_sources.ps1
+.\.venv\Scripts\python.exe collect_market.py --workers 8
+.\.venv\Scripts\python.exe scripts/verify_action_cases.py
+.\.venv\Scripts\python.exe run_stage1.py --workers 8 --run-id formation-2021-2025-v1
+~~~
+
+The same acquisition/run commands resume completed security caches and statistical batches. An unresolved request or computation error prevents a complete status. Changing the frozen code/protocol requires a documented correction and a new run-id; do not delete prior evidence. [DATA_CONTRACT.md](DATA_CONTRACT.md) describes source schemas, SW2021 historical reconstruction, source coverage, and the C1 exact-record-coordinate comparison.
+
+~~~powershell
+.\.venv\Scripts\python.exe run_simulation.py --stage S0 --workers 8
+.\.venv\Scripts\python.exe run_simulation.py --stage S1 --workers 8
+.\.venv\Scripts\python.exe run_simulation.py --stage S2 --workers 8
+~~~
+
+S0 → S1 → S2 completion dependencies concern engineering completeness, not favourable rejection rates. Each repetition has a local checkpoint; rerunning the same stage reuses completed repetitions. Nominal market discovery production does not wait for complete calibration.
+
+| Output | Location |
+|---|---|
+| Effective protocol and environment | experiment_protocol.json; results/environment.json |
+| Raw responses and per-security audit | .local/sources/; .local/market/ |
+| Complete frozen U/H, prices, stock exclusions, ADF and pair results | .local/production/{run-id}/ |
+| Full primary evidence table and statistical report | results/main_evidence.csv; results/STAGE1_REPORT.md (created after market execution) |
+| Full family accounting and cross-view comparison | results/families.csv; results/view_overlap.csv |
+| Simulated panels and per-repetition evidence | .local/simulation/ |
+| Calibration completion and family-level diagnostics | results/simulation/ |
+
+No Tushare credential is required by this implementation. Public sources replace the unavailable credentialed route without changing the SW2021 standard or the identification window. Raw price records and large security-level caches remain ignored; publish only research outputs with appropriate scope.
+
+Second and third stages remain planned_deferred. No 2026 price evaluation, trading signal, portfolio, borrowing or cost module is executed. Return to the [repository overview](../../README.md).

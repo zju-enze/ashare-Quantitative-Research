@@ -1,0 +1,17 @@
+{
+  "status": "passed",
+  "test_methods": 7,
+  "run_at": "2026-10-18T08:48:08.774177+00:00",
+  "command": ".venv/Scripts/python.exe -m unittest discover -s tests -v",
+  "coverage": [
+    "actual coint versus audited kernel including lag/nobs",
+    "nonfinite and collinear source outcomes",
+    "finite MacKinnon zero provenance",
+    "complete-family placeholders and primary identity",
+    "single/eight process equality",
+    "exact Decimal coordinate and seed/calendar cases",
+    "fixed simulation truth and normalization",
+    "full freeze/run/resume and negative-beta main discovery"
+  ],
+  "historical_15_checks_reexecuted": false
+}

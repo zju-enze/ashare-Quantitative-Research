@@ -1,0 +1,28 @@
+[
+  {
+    "code": "sh.601166",
+    "ex_date": "2024-07-09",
+    "cash_per_share": "1.04",
+    "capital_transfer_per_share": "0",
+    "previous_close": "17.2800",
+    "reported_ex_reference": "16.2400",
+    "expected_reference": "16.24",
+    "exact_reference_match": true,
+    "factor_event_present": true,
+    "official_source": "https://download.cib.com.cn/netbank/download/cn/announcements/20240703/20240703_2.pdf",
+    "scope": "targeted case; not exhaustive independent corporate-action verification"
+  },
+  {
+    "code": "sz.300750",
+    "ex_date": "2023-04-26",
+    "cash_per_share": "2.52",
+    "capital_transfer_per_share": "0.8",
+    "previous_close": "385.9000",
+    "reported_ex_reference": "212.9900",
+    "expected_reference": "212.99",
+    "exact_reference_match": true,
+    "factor_event_present": true,
+    "official_source": "https://static.cninfo.com.cn/finalpage/2023-04-18/1216457838.PDF",
+    "scope": "targeted case; not exhaustive independent corporate-action verification"
+  }
+]

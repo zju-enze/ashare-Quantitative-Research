@@ -1,0 +1,27 @@
+{
+  "snapshot_type": "reconstructed_from_current_official_history",
+  "history_rows": 12929,
+  "catalogue_levels": {
+    "L1": 31,
+    "L2": 134,
+    "L3": 346
+  },
+  "sources": [
+    {
+      "url": "https://www.swsresearch.com/swindex/pdf/SwClass2021/StockClassifyUse_stock.xls",
+      "local": ".local/sources/StockClassifyUse_stock_live.xls",
+      "download_completed_at": "2026-10-18T08:23:36.497947+00:00"
+    },
+    {
+      "url": "https://www.swsresearch.com/swindex/pdf/SwClass2021/SwClass.rar",
+      "local": ".local/sources/SwClass.rar",
+      "download_completed_at": "2026-10-18T08:21:21.892839+00:00"
+    }
+  ],
+  "price_window": [
+    "2021-01-01",
+    "2025-12-31"
+  ],
+  "uncovered_BJ_codes_observed_in_official_history": 292,
+  "BJ_count_scope": "observed historical codes, not verified live exchange universe"
+}
