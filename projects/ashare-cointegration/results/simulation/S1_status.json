@@ -1,0 +1,9 @@
+{
+  "stage": "S1",
+  "status": "running",
+  "completed": 3632,
+  "planned": 16000,
+  "repeats_per_scenario": 1000,
+  "workers": 8,
+  "updated_at": "2026-10-18T09:23:07.478847+00:00"
+}

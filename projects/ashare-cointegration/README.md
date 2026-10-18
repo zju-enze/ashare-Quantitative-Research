@@ -10,7 +10,11 @@
 
 The v1.2 plan and implementation clarifications now have an independent Python environment, a production statistical kernel, free-source acquisition and audits, frozen-family batch execution, reporting, and resumable S0/S1/S2 simulation.
 
-Market acquisition and S1 are currently running. S0 completed all 80 prescribed panels; its small-repetition diagnostic alarms are retained. Market candidates and empirical findings will be reported only after the full input audit and frozen-family execution finish. See [RESEARCH_STATUS.json](RESEARCH_STATUS.json), [acquisition status](results/acquisition_status.json), and [simulation status](results/simulation/S1_status.json).
+**Market statistical production is complete and independently accepted (2026-10-18 snapshot).** The corrected ordinary-share universe contains **2,984 stocks**, **67,678 pairs** (T=28,443; C=39,235), and **110 L2–Holm nominal discoveries** (57 T, 53 C; nine nonpositive betas retained). Read the [statistical report](results/STAGE1_REPORT.md) and [complete primary evidence CSV](results/main_evidence.csv).
+
+Calibration is separate: S0 completed 80/80 panels; S1 was running at 3632/16,000 panels when this snapshot was written; S2 is queued after S1. The completed N1 scenario has fixed-L2 Holm FWER **28.1%–32.0%**, triggering the predeclared warning. These are nominal discoveries, not empirically validated 5% error control. Live local status is in [RESEARCH_STATUS.json](RESEARCH_STATUS.json) and [simulation status files](results/simulation/).
+
+The first market run mistakenly included the 689009 depositary receipt. It is retained locally and explicitly invalidated; the corrected run is formation-2021-2025-v2. The [correction record](results/corrections.json) documents the eight affected pairs.
 
 Historical v1.2 configuration and rule-check artifacts were located in the local quant_lab workspace and copied to archive/. Their claimed 15 checks were not rerun here. Current production-path tests are separate; they exercise real coint, lag diagnostics, zero-value provenance, complete families, one/eight workers, exact decimal price coordinates, and the frozen pipeline's resume path.
 
@@ -78,7 +82,11 @@ python -m venv .venv
 .\.venv\Scripts\python.exe collect_market.py --workers 8
 .\.venv\Scripts\python.exe scripts/verify_action_cases.py
 .\.venv\Scripts\python.exe run_stage1.py --workers 8 --run-id formation-2021-2025-v2
+.\.venv\Scripts\python.exe scripts/validate_production.py
+.\.venv\Scripts\python.exe scripts/audit_float_coordinates.py
 ~~~
+
+After calibration finishes, refresh the supplemental diagnostics with .venv/Scripts/python.exe scripts/summarize_calibration.py and update the report from the final recorded results.
 
 The same acquisition/run commands resume completed security caches and statistical batches. An unresolved request or computation error prevents a complete status. Changing the statistical kernel/protocol or correcting frozen inputs requires a documented correction and a new run-id; do not delete prior evidence. Presentation can be regenerated from the same frozen results. [DATA_CONTRACT.md](DATA_CONTRACT.md) describes source schemas, SW2021 historical reconstruction, source coverage, and the C1 exact-record-coordinate comparison.
 
@@ -95,7 +103,7 @@ S0 → S1 → S2 completion dependencies concern engineering completeness, not f
 | Effective protocol and environment | experiment_protocol.json; results/environment.json |
 | Raw responses and per-security audit | .local/sources/; .local/market/ |
 | Complete frozen U/H, prices, stock exclusions, ADF and pair results | .local/production/{run-id}/ |
-| Full primary evidence table and statistical report | results/main_evidence.csv; results/STAGE1_REPORT.md (created after market execution) |
+| Full primary evidence table and statistical report | results/main_evidence.csv; results/STAGE1_REPORT.md  |
 | Full family accounting and cross-view comparison | results/families.csv; results/view_overlap.csv |
 | Simulated panels and per-repetition evidence | .local/simulation/ |
 | Calibration completion and family-level diagnostics | results/simulation/ |

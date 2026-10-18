@@ -1,0 +1,11 @@
+{
+  "status": "passed",
+  "run_id": "formation-2021-2025-v2",
+  "stocks": 2984,
+  "rows": 3616608,
+  "reference": "60-digit Decimal P*F/F_first from original response strings",
+  "relative_error_bound": "gamma_6 = 6u/(1-6u), u=2^-53; positive normal binary64 inputs",
+  "max_absolute_error": 3.98121923244371e-13,
+  "max_fraction_of_bound": 0.7047549551168273,
+  "scope": "Binary conversion and arithmetic only; does not relax zero-tolerance native Decimal identity or quantify latent supplier rounding"
+}

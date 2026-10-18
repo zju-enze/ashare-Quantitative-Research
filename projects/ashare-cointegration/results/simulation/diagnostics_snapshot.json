@@ -1,0 +1,19 @@
+{
+  "recorded_at": "2026-10-18T08:50:37.445045+00:00",
+  "coverage": {
+    "S0": {
+      "completed_panels": 80,
+      "planned_panels": 80
+    },
+    "S1": {
+      "completed_panels": 1333,
+      "planned_panels": 16000
+    },
+    "S2": {
+      "completed_panels": 0,
+      "planned_panels": 2000
+    }
+  },
+  "interpretation": "Gate-excluded true alternatives are not a measured counterfactual power loss. Conditional power uses surviving alternatives; primary power remains unconditional.",
+  "increments": "BF core; Holm minus BF; BH minus Holm; computed per fixed family and panel"
+}

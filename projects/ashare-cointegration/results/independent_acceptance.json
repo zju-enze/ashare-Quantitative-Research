@@ -1,0 +1,13 @@
+{
+  "status": "passed",
+  "run_id": "formation-2021-2025-v2",
+  "checked_at": "2026-10-18T09:08:22.585895+00:00",
+  "stocks": 2984,
+  "candidates": 67678,
+  "main_discoveries": 110,
+  "all_family_sizes_and_terminal_states": true,
+  "independent_three_domain_three_method_formulas": true,
+  "main_exactly_independent_L2_Holm": true,
+  "CSV_rows_match_full_table": true,
+  "CDR_excluded": true
+}

@@ -7,7 +7,7 @@ A repository for reproducible quantitative finance research. Each study has a de
 | Project | Research question | Current status | Start here |
 |---|---|---|---|
 | **A-share value-signal robustness** | How robust is value-signal evidence after correcting measurement and changing the inferential framework? | Executed notebook, aggregate results, figures, and a local execution record are available. | [Study overview](VALUE_SIGNAL_RESEARCH.md) |
-| **A-share industry cointegration** | Which predefined within-industry stock pairs show cointegration evidence under a fixed testing and multiple-correction protocol? | Stage 1 plan reviewed; implementation and empirical execution pending in this repository. | [Project overview](projects/ashare-cointegration/README.md) |
+| **A-share industry cointegration** | Which predefined within-industry stock pairs show cointegration evidence under a fixed testing and multiple-correction protocol? | Stage 1 nominal market results completed: 110 discoveries; calibration running with an observed stress warning. | [Project overview](projects/ashare-cointegration/README.md) |
 
 ## A-share value-signal robustness
 

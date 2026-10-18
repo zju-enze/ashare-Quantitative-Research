@@ -21,31 +21,85 @@
     "repository_inspection_base_commit": "8cf065e6a7127b97441d44009b962c7b366c4ed4"
   },
   "implementation_validation": {
-    "status": "current_statistical_and_pipeline_tests_passed",
+    "status": "passed_current_production_checks",
     "production_code_present": true,
     "historical_materials_located": true,
     "historical_checks_claimed_in_plan_independently_verified": false,
-    "current_tests": "tests/; real coint, zero origin, single/eight workers, Decimal coordinate, end-to-end freeze/resume"
+    "current_tests": "tests/; real coint, zero origin, single/eight workers, Decimal coordinate, end-to-end freeze/resume",
+    "test_methods": 8,
+    "independent_full_output_acceptance": "passed",
+    "float_coordinate_audit": "passed"
   },
   "stage1_production": {
-    "status": "correcting_instrument_scope",
-    "candidate_manifest_frozen": false,
-    "empirical_discoveries_produced": false,
-    "preliminary_stock_requests": 3952,
+    "status": "complete_nominal_findings_with_calibration_warning",
+    "run_id": "formation-2021-2025-v2",
+    "completed_at": "2026-10-18T09:06:34.285630+00:00",
+    "candidate_manifest_frozen": true,
+    "empirical_discoveries_produced": true,
+    "stocks": 2984,
+    "candidates": 67678,
+    "T": 28443,
+    "C": 39235,
+    "valid_EG": 42121,
+    "precheck_placeholders": 25557,
+    "numerical_placeholders": 0,
+    "tail_zeros": 0,
+    "main_discoveries": 110,
+    "main_T": 57,
+    "main_C": 53,
+    "main_nonpositive_beta": 9,
+    "coverage": "source-covered Shanghai/Shenzhen ordinary A shares; Beijing not covered",
+    "claim": "各二级行业分别按名义0.05校正后的发现汇总; not market-wide FWER 5%",
     "prior_run_invalidated": "formation-2021-2025-v1",
-    "replacement_run": "formation-2021-2025-v2"
+    "statistical_source_commit": "1f3ef9da4b411d5084f3d01319f8a638ac948b70"
   },
   "stage1_calibration": {
-    "status": "S0_complete_S1_running",
-    "S0": "complete_80_of_80",
-    "S1": "running",
-    "S2": "queued_after_S1",
-    "S0_main_alarm": "N1/G0 and N6/G0; B=5 each; diagnostic not precise calibration"
+    "status": "partial_running_with_observed_alarms",
+    "snapshot_at": "2026-10-18T09:23:07.478847+00:00",
+    "S0": {
+      "stage": "S0",
+      "status": "complete",
+      "completed": 80,
+      "planned": 80,
+      "repeats_per_scenario": 5,
+      "workers": 8,
+      "updated_at": "2026-10-18T08:25:55.930611+00:00"
+    },
+    "S1": {
+      "stage": "S1",
+      "status": "running",
+      "completed": 3632,
+      "planned": 16000,
+      "repeats_per_scenario": 1000,
+      "workers": 8,
+      "updated_at": "2026-10-18T09:23:07.478847+00:00"
+    },
+    "S2": {
+      "stage": "S2",
+      "status": "queued_after_S1",
+      "completed": 0,
+      "planned": 2000
+    },
+    "runtime_status_files": "results/simulation/*_status.json",
+    "N1_full_1000_L2_Holm_FWER": [
+      0.293,
+      0.281,
+      0.299,
+      0.32
+    ],
+    "N1_Wilson_lower_above_005": true,
+    "interpretation": "Finite-sample stress failure observed; not unconditional market error control",
+    "remaining": [
+      "complete remaining S1 scenarios",
+      "complete prescribed S2",
+      "refresh increment/gate diagnostics and final report after calibration using saved panels"
+    ]
   },
   "stage2": {
     "status": "planned_deferred"
   },
   "stage3": {
     "status": "planned_deferred"
-  }
+  },
+  "recorded_at": "2026-10-18T09:19:55.503067+00:00"
 }

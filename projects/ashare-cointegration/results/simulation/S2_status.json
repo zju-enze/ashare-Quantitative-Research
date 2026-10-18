@@ -1,0 +1,6 @@
+{
+  "stage": "S2",
+  "status": "queued_after_S1",
+  "completed": 0,
+  "planned": 2000
+}
