@@ -17,6 +17,10 @@ def main():
     parser.add_argument("--stage",choices=STAGES,required=True)
     parser.add_argument("--workers",type=int,default=8)
     args=parser.parse_args()
+    state_path=ROOT/"results"/"simulation"/(args.stage+"_status.json")
+    if state_path.exists() and json.loads(state_path.read_text())["status"]=="held_by_user":
+        print(f"{args.stage}: held by user; no simulation started. Explicit release is required.",flush=True)
+        return
     _,_,_,B,scenarios=STAGES[args.stage]
     local=ROOT/".local"/"simulation"
     output=ROOT/"results"/"simulation";output.mkdir(parents=True,exist_ok=True)

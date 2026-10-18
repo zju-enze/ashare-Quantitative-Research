@@ -54,8 +54,8 @@
     "statistical_source_commit": "1f3ef9da4b411d5084f3d01319f8a638ac948b70"
   },
   "stage1_calibration": {
-    "status": "partial_running_with_observed_alarms",
-    "snapshot_at": "2026-10-18T09:23:07.478847+00:00",
+    "status": "S1_running_S2_held_by_user",
+    "snapshot_at": "2026-10-18T11:12:47.288824+00:00",
     "S0": {
       "stage": "S0",
       "status": "complete",
@@ -68,17 +68,21 @@
     "S1": {
       "stage": "S1",
       "status": "running",
-      "completed": 3632,
+      "completed": 12560,
       "planned": 16000,
       "repeats_per_scenario": 1000,
       "workers": 8,
-      "updated_at": "2026-10-18T09:23:07.478847+00:00"
+      "updated_at": "2026-10-18T11:12:47.288824+00:00"
     },
     "S2": {
       "stage": "S2",
-      "status": "queued_after_S1",
+      "status": "held_by_user",
       "completed": 0,
-      "planned": 2000
+      "planned": 2000,
+      "automatic_start": false,
+      "hold_reason": "User requested S1 finish without automatically continuing to S2",
+      "held_at": "2026-10-18T19:10:26.983141+08:00",
+      "resume_requires_explicit_user_instruction": true
     },
     "runtime_status_files": "results/simulation/*_status.json",
     "N1_full_1000_L2_Holm_FWER": [
@@ -90,10 +94,11 @@
     "N1_Wilson_lower_above_005": true,
     "interpretation": "Finite-sample stress failure observed; not unconditional market error control",
     "remaining": [
-      "complete remaining S1 scenarios",
-      "complete prescribed S2",
-      "refresh increment/gate diagnostics and final report after calibration using saved panels"
-    ]
+      "finish S1 and preserve checkpoints",
+      "S2 held until explicit user instruction; do not auto-start",
+      "refresh calibration diagnostics/report after the authorized stages finish"
+    ],
+    "engineering_change_log": "ENGINEERING_CHANGES.md"
   },
   "stage2": {
     "status": "planned_deferred"
@@ -101,5 +106,5 @@
   "stage3": {
     "status": "planned_deferred"
   },
-  "recorded_at": "2026-10-18T09:19:55.503067+00:00"
+  "recorded_at": "2026-10-18T19:11:43.965505+08:00"
 }

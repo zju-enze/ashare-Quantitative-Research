@@ -12,7 +12,7 @@ The v1.2 plan and implementation clarifications now have an independent Python e
 
 **Market statistical production is complete and independently accepted (2026-10-18 snapshot).** The corrected ordinary-share universe contains **2,984 stocks**, **67,678 pairs** (T=28,443; C=39,235), and **110 L2–Holm nominal discoveries** (57 T, 53 C; nine nonpositive betas retained). Read the [statistical report](results/STAGE1_REPORT.md) and [complete primary evidence CSV](results/main_evidence.csv).
 
-Calibration is separate: S0 completed 80/80 panels; S1 was running at 3632/16,000 panels when this snapshot was written; S2 is queued after S1. The completed N1 scenario has fixed-L2 Holm FWER **28.1%–32.0%**, triggering the predeclared warning. These are nominal discoveries, not empirically validated 5% error control. Live local status is in [RESEARCH_STATUS.json](RESEARCH_STATUS.json) and [simulation status files](results/simulation/).
+Calibration is separate: S0 completed 80/80 panels; S1 was running at 12560/16,000 panels when this snapshot was written; S2 is held by user instruction and will not start automatically after S1. See [engineering changes](ENGINEERING_CHANGES.md). The completed N1 scenario has fixed-L2 Holm FWER **28.1%–32.0%**, triggering the predeclared warning. These are nominal discoveries, not empirically validated 5% error control. Live local status is in [RESEARCH_STATUS.json](RESEARCH_STATUS.json) and [simulation status files](results/simulation/).
 
 The first market run mistakenly included the 689009 depositary receipt. It is retained locally and explicitly invalidated; the corrected run is formation-2021-2025-v2. The [correction record](results/corrections.json) documents the eight affected pairs.
 
@@ -96,7 +96,7 @@ The same acquisition/run commands resume completed security caches and statistic
 .\.venv\Scripts\python.exe run_simulation.py --stage S2 --workers 8
 ~~~
 
-S0 → S1 → S2 completion dependencies concern engineering completeness, not favourable rejection rates. Each repetition has a local checkpoint; rerunning the same stage reuses completed repetitions. Nominal market discovery production does not wait for complete calibration.
+S0 → S1 → S2 describes engineering dependencies, not automatic execution authorization. S2 is currently held; its command exits without starting work until the user explicitly requests release. Completion dependencies concern engineering completeness, not favourable rejection rates. Each repetition has a local checkpoint; rerunning the same stage reuses completed repetitions. Nominal market discovery production does not wait for complete calibration.
 
 | Output | Location |
 |---|---|
