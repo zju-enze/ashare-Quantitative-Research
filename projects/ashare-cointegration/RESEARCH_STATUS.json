@@ -82,7 +82,9 @@
       "automatic_start": false,
       "hold_reason": "User requested S1 finish without automatically continuing to S2",
       "held_at": "2026-10-18T19:10:26.983141+08:00",
-      "resume_requires_explicit_user_instruction": true
+      "resume_requires_explicit_user_instruction": true,
+      "execution_target": "remote:qzwx2026",
+      "deployment_status": "planned_not_deployed"
     },
     "runtime_status_files": "results/simulation/*_status.json",
     "N1_full_1000_L2_Holm_FWER": [
@@ -94,9 +96,10 @@
     "N1_Wilson_lower_above_005": true,
     "interpretation": "Finite-sample stress failure observed; not unconditional market error control",
     "remaining": [
-      "finish S1 and preserve checkpoints",
-      "S2 held until explicit user instruction; do not auto-start",
-      "refresh calibration diagnostics/report after the authorized stages finish"
+      "finish current local S1 and preserve checkpoints",
+      "keep S2 held; prepare remote execution only when requested",
+      "run S2 on qzwx2026 only after explicit release and environment verification",
+      "refresh diagnostics/report after authorized stages finish"
     ],
     "engineering_change_log": "ENGINEERING_CHANGES.md"
   },
@@ -106,5 +109,25 @@
   "stage3": {
     "status": "planned_deferred"
   },
-  "recorded_at": "2026-10-18T19:11:43.965505+08:00"
+  "recorded_at": "2026-10-18T19:25:03.407756+08:00",
+  "remote_execution_plan": {
+    "status": "planned_not_deployed",
+    "host_alias": "qzwx2026",
+    "ssh_tunnel_command": "ssh -N -L 28867:127.0.0.1:18867 qzwx2026",
+    "local_forward_port": 28867,
+    "remote_forward_host": "127.0.0.1",
+    "remote_forward_port": 18867,
+    "service_on_remote_port": "not_verified",
+    "public_key_configuration": "user_confirmed",
+    "connection_verified_this_change": false,
+    "target_scope": [
+      "S2 calibration",
+      "subsequent long-running training/computation in this project"
+    ],
+    "remote_workdir": null,
+    "remote_environment_verified": false,
+    "automatic_start": false,
+    "engineering_change": "ENG-002",
+    "recorded_at": "2026-10-18T19:25:03.407756+08:00"
+  }
 }
