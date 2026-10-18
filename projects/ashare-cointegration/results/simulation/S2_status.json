@@ -8,6 +8,8 @@
   "held_at": "2026-10-18T19:10:26.983141+08:00",
   "resume_requires_explicit_user_instruction": true,
   "execution_target": "remote:qzwx2026",
-  "deployment_status": "planned_not_deployed",
-  "engineering_change": "ENG-002"
+  "deployment_status": "preflight_complete_not_deployed",
+  "engineering_change": "ENG-003",
+  "recommended_workers": 1,
+  "blas_threads_per_worker": 1
 }
