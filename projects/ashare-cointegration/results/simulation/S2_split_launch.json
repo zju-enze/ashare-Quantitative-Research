@@ -1,0 +1,16 @@
+{
+  "engineering_change": "ENG-007",
+  "remote_coordinator_pid": 1306610,
+  "previous_remote_group": 4118406,
+  "started_at": "2026-10-19T04:50:33.458333+00:00",
+  "initial_remote_checkpoints": 345,
+  "log": "/home/qzwx2026/experiments/ashare-cointegration/repo/projects/ashare-cointegration/.local/simulation/S2_remote_split.log",
+  "local_launcher_pid": 17400,
+  "local_coordinator_pid": 32256,
+  "local_shard_manager_pid": 7144,
+  "local_workers": 32,
+  "remote_workers": 2,
+  "local_started_at": "2026-10-19T12:50:51+08:00",
+  "local_cpu_observed_percent": 100,
+  "local_stop_at": "2026-10-19T17:45:00+08:00"
+}

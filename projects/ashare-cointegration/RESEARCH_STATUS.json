@@ -54,8 +54,8 @@
     "statistical_source_commit": "1f3ef9da4b411d5084f3d01319f8a638ac948b70"
   },
   "stage1_calibration": {
-    "status": "S1_complete_S2_running_remote",
-    "snapshot_at": "2026-10-18T12:21:46.914833+00:00",
+    "status": "S1_complete_S2_distributed_running",
+    "snapshot_at": "2026-10-19T04:53:41.311701+00:00",
     "S0": {
       "stage": "S0",
       "status": "complete",
@@ -79,16 +79,18 @@
     },
     "S2": {
       "stage": "S2",
-      "status": "running",
-      "completed": 0,
+      "status": "distributed_running",
+      "completed": 345,
       "planned": 2000,
-      "repeats_per_scenario": 500,
-      "workers": 2,
-      "updated_at": "2026-10-18T12:21:11.367378+00:00",
-      "snapshot_source": "remote:qzwx2026",
-      "snapshot_at": "2026-10-18T12:21:46.914833+00:00",
-      "checkpoint_completed": 6,
-      "engineering_change": "ENG-006"
+      "workers": 34,
+      "local_workers": 32,
+      "remote_workers": 2,
+      "engineering_change": "ENG-007",
+      "updated_at": "2026-10-19T04:50:33.448603+00:00",
+      "progress_sources": [
+        "S2_local_shard_status.json",
+        "S2_remote_shard_status.json"
+      ]
     },
     "runtime_status_files": "Remote results/simulation/*_status.json; local S2 file is a dated snapshot",
     "N1_full_1000_L2_Holm_FWER": [
@@ -100,11 +102,23 @@
     "N1_Wilson_lower_above_005": true,
     "interpretation": "Finite-sample stress failure observed; not unconditional market error control",
     "remaining": [
-      "Complete authorized S2 calibration on qzwx2026 with two workers and one BLAS thread per worker",
-      "Refresh diagnostics/report after S2 completes"
+      "Finish local shard before 17:45 or stop and upload completed checkpoints",
+      "Import local results on qzwx2026 and finish any missing S2 repetitions",
+      "Refresh final calibration diagnostics and scientific report"
     ],
     "engineering_change_log": "ENGINEERING_CHANGES.md",
-    "runtime_estimate": "results/simulation/S2_runtime_estimate.json"
+    "runtime_estimate": "results/simulation/S2_runtime_estimate.json",
+    "local_S2_shard": {
+      "stage": "S2",
+      "role": "local",
+      "status": "running",
+      "planned": 1616,
+      "workers": 32,
+      "stop_at": "2026-10-19T17:45:00+08:00",
+      "engineering_change": "ENG-007",
+      "completed": 32,
+      "updated_at": "2026-10-19T04:53:17.592178+00:00"
+    }
   },
   "stage2": {
     "status": "planned_deferred"
@@ -112,9 +126,9 @@
   "stage3": {
     "status": "planned_deferred"
   },
-  "recorded_at": "2026-10-18T12:21:46.914833+00:00",
+  "recorded_at": "2026-10-19T04:53:41.311701+00:00",
   "remote_execution_plan": {
-    "status": "S2_running_remote",
+    "status": "S2_distributed_running",
     "host_alias": "qzwx2026",
     "ssh_tunnel_command": "ssh -N -L 28867:127.0.0.1:18867 qzwx2026",
     "local_forward_port": 28867,
@@ -130,7 +144,7 @@
     "remote_workdir": "/home/qzwx2026/experiments/ashare-cointegration/repo/projects/ashare-cointegration",
     "remote_environment_verified": true,
     "automatic_start": false,
-    "engineering_change": "ENG-006",
+    "engineering_change": "ENG-007",
     "recorded_at": "2026-10-18T19:25:03.407756+08:00",
     "resource_preflight": "passed_with_2_vCPU_limit",
     "proposed_remote_workdir": "/home/qzwx2026/experiments/ashare-cointegration",
@@ -149,6 +163,12 @@
     "launch_evidence": "results/simulation/S2_launch.json",
     "parallel_started_at": "2026-10-18T12:17:09.371481+00:00",
     "runtime_estimate": "results/simulation/S2_runtime_estimate.json",
-    "estimated_total_compute_hours": 58.66551524441324
+    "estimated_total_compute_hours": 58.66551524441324,
+    "local_workers": 32,
+    "remote_workers": 2,
+    "local_stop_at": "2026-10-19T17:45:00+08:00",
+    "partition_manifest": "results/simulation/S2_split_20261019.json",
+    "completion_authority": "qzwx2026 results/simulation/S2_remote_coordination.json",
+    "prior_runtime_estimate_superseded": true
   }
 }

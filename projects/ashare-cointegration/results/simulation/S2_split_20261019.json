@@ -1,0 +1,49 @@
+{
+  "stage": "S2",
+  "engineering_change": "ENG-007",
+  "created_at": "2026-10-19T04:47:48.672052+00:00",
+  "local": {
+    "N1": [
+      380,
+      500
+    ],
+    "N5": [
+      2,
+      500
+    ],
+    "N6": [
+      1,
+      500
+    ],
+    "M1": [
+      1,
+      500
+    ]
+  },
+  "remote": {
+    "N1": [
+      0,
+      380
+    ]
+  },
+  "preserved": {
+    "N5": [
+      0,
+      2
+    ],
+    "N6": [
+      0,
+      1
+    ],
+    "M1": [
+      0,
+      1
+    ]
+  },
+  "local_workers": 32,
+  "remote_workers": 2,
+  "blas_threads_per_worker": 1,
+  "local_stop_at": "2026-10-19T17:45:00+08:00",
+  "local_compute_unavailable_at": "2026-10-19T17:50:00+08:00",
+  "transfer": "Local completed metrics and matching pair checkpoints are imported on remote; remote then resumes all missing repetitions and produces one global S2 summary."
+}

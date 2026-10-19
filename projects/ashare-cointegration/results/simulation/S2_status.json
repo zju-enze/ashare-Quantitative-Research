@@ -1,13 +1,15 @@
 {
   "stage": "S2",
-  "status": "running",
-  "completed": 0,
+  "status": "distributed_running",
+  "completed": 345,
   "planned": 2000,
-  "repeats_per_scenario": 500,
-  "workers": 2,
-  "updated_at": "2026-10-18T12:21:11.367378+00:00",
-  "snapshot_source": "remote:qzwx2026",
-  "snapshot_at": "2026-10-18T12:21:46.914833+00:00",
-  "checkpoint_completed": 6,
-  "engineering_change": "ENG-006"
+  "workers": 34,
+  "local_workers": 32,
+  "remote_workers": 2,
+  "engineering_change": "ENG-007",
+  "updated_at": "2026-10-19T04:50:33.448603+00:00",
+  "progress_sources": [
+    "S2_local_shard_status.json",
+    "S2_remote_shard_status.json"
+  ]
 }
