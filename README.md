@@ -7,7 +7,7 @@ A repository for reproducible quantitative finance research. Each study has a de
 | Project | Research question | Current status | Start here |
 |---|---|---|---|
 | **A-share value-signal robustness** | How robust is value-signal evidence after correcting measurement and changing the inferential framework? | Executed notebook, aggregate results, figures, and a local execution record are available. | [Study overview](VALUE_SIGNAL_RESEARCH.md) |
-| **A-share industry cointegration** | Which predefined within-industry stock pairs show cointegration evidence under a fixed testing and multiple-correction protocol? | Stage 1 nominal market results completed: 110 discoveries; calibration running with an observed stress warning. | [Project overview](projects/ashare-cointegration/README.md) |
+| **A-share industry cointegration** | Which predefined within-industry stock pairs show cointegration evidence under a fixed testing and multiple-correction protocol? | Stage 1 complete: 110 nominal discoveries and all 18,080 calibration panels; material stress-calibration failures disclosed. | [Project overview](projects/ashare-cointegration/README.md) |
 
 ## A-share value-signal robustness
 
@@ -44,7 +44,7 @@ The new project has three research stages:
 2. **Long–short construction and out-of-sample exploration:** investigate applications and subsequent behavior of identified relationships.
 3. **Execution and cost validation:** examine implementability and trading outcomes.
 
-**Stage 1 is the current scope.** Its output will be a complete record of which pairs show cointegration evidence, the supporting tests and corrections, and the limits of those statements.
+**Stage 1 is complete.** Its final report records all 110 nominal findings, testing and correction evidence, and the calibration failures that limit interpretation. Stages 2 and 3 remain deferred.
 
 Read the [project overview](projects/ashare-cointegration/README.md), [experiment plan](projects/ashare-cointegration/EXPERIMENT_PLAN.md), and [independent review](projects/ashare-cointegration/REVIEW_AND_IMPLEMENTATION.md). The [Codex Stage 1 prompt](projects/ashare-cointegration/CODEX_STAGE1_PROMPT.md) defines the implementation handoff.
 

@@ -10,11 +10,11 @@
 
 The v1.2 plan and implementation clarifications now have an independent Python environment, a production statistical kernel, free-source acquisition and audits, frozen-family batch execution, reporting, and resumable S0/S1/S2 simulation.
 
-**Market statistical production is complete and independently accepted (2026-10-18 snapshot).** The corrected ordinary-share universe contains **2,984 stocks**, **67,678 pairs** (T=28,443; C=39,235), and **110 L2–Holm nominal discoveries** (57 T, 53 C; nine nonpositive betas retained). Read the [statistical report](results/STAGE1_REPORT.md) and [complete primary evidence CSV](results/main_evidence.csv).
+**Market statistical production is complete; independent acceptance refreshed on 2026-10-19.** The corrected ordinary-share universe contains **2,984 stocks**, **67,678 pairs** (T=28,443; C=39,235), and **110 L2–Holm nominal discoveries** (57 T, 53 C; nine nonpositive betas retained). Read the [statistical report](results/STAGE1_REPORT.md) and [complete primary evidence CSV](results/main_evidence.csv).
 
-Calibration is separate: S0 completed 80/80 panels and S1 completed all 16,000. **S2 is now local-only (ENG-008, 2026-10-19).** Remote S2 computation and its coordinator have stopped; 349 complete remote checkpoints and matching pair tables were validated and imported locally. The existing 32 local workers continue their batch. The local finisher then reuses all completed results, computes the missing repetitions with 32 workers, and produces the final summary locally. It stops computing at **17:45 Asia/Shanghai** under the existing 17:50 availability limit; no automatic remote fallback or upload remains. The 13:24 snapshot contains 931/2,000 complete checkpoints and a partial local summary. See [local ownership manifest](results/simulation/S2_local_20261019.json), [import record](results/simulation/S2_remote_import_20261019.json), and [engineering changes ENG-008](ENGINEERING_CHANGES.md). Prior remote-based finish estimates are superseded. The existing S1 fixed-L2 N1 Holm FWER warning remains; engineering completion is not statistical calibration approval.
+**Stage 1 execution and delivery are complete (2026-10-19), with calibration warnings retained.** S0 completed 80/80, S1 16,000/16,000, and S2 2,000/2,000 panels. S2 finished locally at **14:25:30 Asia/Shanghai**. All 18,080 metric checkpoints and matching pair tables are complete; final diagnostics, figures, and the market evidence report have been refreshed. No further Stage 1 computation is queued. Remote computation remains stopped.
 
-ENG-008 local execution: running.
+The complete calibration exposes material nominal-control failures: S1 N1/N5/N6/N7 and S2 N1/N5/N6 trigger all four fixed-L2 Holm alarms. S2 FWER ranges are **52.0%–57.0%, 16.6%–22.0%, and 53.2%–57.6%**, respectively. The 110 market discoveries retain their original specification and numerical values; they are not a validated 5% actual or market-wide FWER claim. See the [final calibration report](results/CALIBRATION_REPORT.md), [completion record](results/STAGE1_COMPLETION.json), and [engineering closeout ENG-009](ENGINEERING_CHANGES.md).
 
 The first market run mistakenly included the 689009 depositary receipt. It is retained locally and explicitly invalidated; the corrected run is formation-2021-2025-v2. The [correction record](results/corrections.json) documents the eight affected pairs.
 
@@ -88,7 +88,7 @@ python -m venv .venv
 .\.venv\Scripts\python.exe scripts/audit_float_coordinates.py
 ~~~
 
-After calibration finishes, refresh the supplemental diagnostics with .venv/Scripts/python.exe scripts/summarize_calibration.py and update the report from the final recorded results.
+To reproduce the completed calibration summaries from saved evidence, run `.venv/Scripts/python.exe scripts/summarize_calibration.py` followed by `.venv/Scripts/python.exe scripts/finalize_calibration.py`. These do not rerun the Monte Carlo; the latter checks six recorded alarm cases with real coint. Binary-indicator MCSE now follows the predeclared formula; point estimates and rejection decisions are unchanged.
 
 The same acquisition/run commands resume completed security caches and statistical batches. An unresolved request or computation error prevents a complete status. Changing the statistical kernel/protocol or correcting frozen inputs requires a documented correction and a new run-id; do not delete prior evidence. Presentation can be regenerated from the same frozen results. [DATA_CONTRACT.md](DATA_CONTRACT.md) describes source schemas, SW2021 historical reconstruction, source coverage, and the C1 exact-record-coordinate comparison.
 
@@ -97,7 +97,7 @@ The same acquisition/run commands resume completed security caches and statistic
 .\.venv\Scripts\python.exe run_simulation.py --stage S1 --workers 8
 ~~~
 
-S2 now uses the local `finish_s2_local.py --wait-pid 7144` already running under ENG-008; do not start a duplicate. It waits for the existing local batch, then computes only missing checkpoints and summarizes all results. After the local cutoff, explicit renewed authorization and an updated deadline are required before running `finish_s2_local.py` without the old PID. Remote S2 remains held. Stage dependencies concern engineering completeness, not favourable rejection rates.
+S2 is complete. The ENG-008 local finisher has exited; do not reuse its old process ID. Remote execution remains held. All checkpoints and final outputs are retained locally; the engineering log preserves the migration and timing history.
 
 | Output | Location |
 |---|---|

@@ -1,0 +1,79 @@
+{
+  "status": "passed",
+  "checked_at": "2026-10-19T07:56:20.068057+00:00",
+  "stages": {
+    "S0": {
+      "completed": 80,
+      "planned": 80,
+      "repeats_per_scenario": 5,
+      "scenarios": [
+        "N0",
+        "N1",
+        "N2",
+        "N3",
+        "N4",
+        "N5",
+        "N6",
+        "N7",
+        "A0",
+        "A1",
+        "A2",
+        "A3",
+        "A4",
+        "A5",
+        "M0",
+        "M1"
+      ],
+      "metrics_and_pair_files_complete": true,
+      "unique_family_rows_per_panel": 21,
+      "point_estimates_and_alarm_decisions_unchanged": true
+    },
+    "S1": {
+      "completed": 16000,
+      "planned": 16000,
+      "repeats_per_scenario": 1000,
+      "scenarios": [
+        "N0",
+        "N1",
+        "N2",
+        "N3",
+        "N4",
+        "N5",
+        "N6",
+        "N7",
+        "A0",
+        "A1",
+        "A2",
+        "A3",
+        "A4",
+        "A5",
+        "M0",
+        "M1"
+      ],
+      "metrics_and_pair_files_complete": true,
+      "unique_family_rows_per_panel": 39,
+      "point_estimates_and_alarm_decisions_unchanged": true
+    },
+    "S2": {
+      "completed": 2000,
+      "planned": 2000,
+      "repeats_per_scenario": 500,
+      "scenarios": [
+        "N1",
+        "N5",
+        "N6",
+        "M1"
+      ],
+      "metrics_and_pair_files_complete": true,
+      "unique_family_rows_per_panel": 39,
+      "point_estimates_and_alarm_decisions_unchanged": true
+    }
+  },
+  "total_panels": 18080,
+  "diagnostics_complete": true,
+  "binary_MCSE": "sqrt(r*(1-r)/B); other MCSE uses repetition-level sample SD/sqrt(B)",
+  "recomputed_EG_for_completion": false,
+  "alarm_recheck_samples": 6,
+  "working_tree_base_commit": "72e4978c9db6b13d2f492242447fc960054a555b",
+  "finalizer_source_commit": "a7c3424c4757b19fe47c4fa8db4409fa27a94779"
+}

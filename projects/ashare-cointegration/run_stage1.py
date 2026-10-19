@@ -135,6 +135,7 @@ def report(run,full,main):
     main["L2_valid_EG"]=main.L2.map(counts)
     main["formation_start"]="2021-01-01";main["formation_end"]="2025-12-31"
     main["calibration_warning"]=alarm_note
+    main["calibration_note"]=calibration_note
     main.to_csv(output/"main_evidence.csv",index=False,encoding="utf-8-sig")
     families=[]
     for domain,level,key in [("L3","L3","L3_family"),("L2","L2","L2"),("GLOBAL",None,None)]:

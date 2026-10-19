@@ -1,11 +1,11 @@
 {
   "stage": "S2",
-  "status": "local_running",
-  "completed": 931,
+  "status": "complete",
+  "completed": 2000,
   "planned": 2000,
   "workers": 32,
   "execution_target": "local",
   "engineering_change": "ENG-008",
-  "updated_at": "2026-10-19T05:24:08.012127+00:00",
+  "updated_at": "2026-10-19T06:25:30.261274+00:00",
   "local_stop_at": "2026-10-19T17:45:00+08:00"
 }

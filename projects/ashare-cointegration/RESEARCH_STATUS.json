@@ -1,6 +1,6 @@
 {
   "project": "ashare-cointegration",
-  "recorded_date": "2026-10-18",
+  "recorded_date": "2026-10-19",
   "current_stage": 1,
   "protocol": {
     "supplied_version": "1.2",
@@ -25,10 +25,11 @@
     "production_code_present": true,
     "historical_materials_located": true,
     "historical_checks_claimed_in_plan_independently_verified": false,
-    "current_tests": "tests/; real coint, zero origin, single/eight workers, Decimal coordinate, end-to-end freeze/resume",
-    "test_methods": 8,
+    "current_tests": "16 local project tests passed; final report render and frozen-market CSV identity checked",
+    "test_methods": 16,
     "independent_full_output_acceptance": "passed",
-    "float_coordinate_audit": "passed"
+    "float_coordinate_audit": "passed",
+    "final_acceptance": "results/STAGE1_COMPLETION.json"
   },
   "stage1_production": {
     "status": "complete_nominal_findings_with_calibration_warning",
@@ -54,8 +55,8 @@
     "statistical_source_commit": "1f3ef9da4b411d5084f3d01319f8a638ac948b70"
   },
   "stage1_calibration": {
-    "status": "S1_complete_S2_local_running",
-    "snapshot_at": "2026-10-19T05:24:08.012127+00:00",
+    "status": "complete_with_predeclared_alarm_failures",
+    "snapshot_at": "2026-10-19T08:03:31.752132+00:00",
     "S0": {
       "stage": "S0",
       "status": "complete",
@@ -79,16 +80,16 @@
     },
     "S2": {
       "stage": "S2",
-      "status": "local_running",
-      "completed": 931,
+      "status": "complete",
+      "completed": 2000,
       "planned": 2000,
       "workers": 32,
       "execution_target": "local",
       "engineering_change": "ENG-008",
-      "updated_at": "2026-10-19T05:24:08.012127+00:00",
+      "updated_at": "2026-10-19T06:25:30.261274+00:00",
       "local_stop_at": "2026-10-19T17:45:00+08:00"
     },
-    "runtime_status_files": "Remote results/simulation/*_status.json; local S2 file is a dated snapshot",
+    "runtime_status_files": "Local results/simulation/S0_status.json, S1_status.json, S2_status.json; remote runtime hold is historical execution control",
     "N1_full_1000_L2_Holm_FWER": [
       0.293,
       0.281,
@@ -97,23 +98,19 @@
     ],
     "N1_Wilson_lower_above_005": true,
     "interpretation": "Finite-sample stress failure observed; not unconditional market error control",
-    "remaining": [
-      "Finish existing local batch without uploading",
-      "Compute remaining missing S2 repetitions locally before cutoff and produce one local summary",
-      "Refresh final calibration diagnostics and scientific report"
-    ],
+    "remaining": [],
     "engineering_change_log": "ENGINEERING_CHANGES.md",
-    "runtime_estimate": "Prior remote-based estimates superseded by ENG-008; local N1 completion not yet measured",
+    "runtime_estimate": "completed; estimates retained only as historical records",
     "local_S2_shard": {
       "stage": "S2",
       "role": "local",
-      "status": "running",
-      "planned": 1616,
+      "status": "complete",
+      "planned": 2000,
       "workers": 32,
       "stop_at": "2026-10-19T17:45:00+08:00",
-      "engineering_change": "ENG-007",
-      "completed": 392,
-      "updated_at": "2026-10-19T05:12:43.967535+00:00"
+      "engineering_change": "ENG-008",
+      "completed": 2000,
+      "updated_at": "2026-10-19T06:25:25.449711+00:00"
     },
     "remote_S2_shard": {
       "stage": "S2",
@@ -126,7 +123,25 @@
       "completed": 345,
       "updated_at": "2026-10-19T05:19:52.840563+00:00"
     },
-    "execution_target": "local"
+    "execution_target": "local",
+    "final_evidence": "results/simulation/final_acceptance.json",
+    "alarm_scenarios": {
+      "S0": [
+        "N1",
+        "N6"
+      ],
+      "S1": [
+        "N1",
+        "N5",
+        "N6",
+        "N7"
+      ],
+      "S2": [
+        "N1",
+        "N5",
+        "N6"
+      ]
+    }
   },
   "stage2": {
     "status": "planned_deferred"
@@ -134,9 +149,9 @@
   "stage3": {
     "status": "planned_deferred"
   },
-  "recorded_at": "2026-10-19T05:25:40.719417+00:00",
+  "recorded_at": "2026-10-19T08:03:31.752132+00:00",
   "remote_execution_plan": {
-    "status": "S2_stopped_by_user_migrated_local",
+    "status": "S2_stopped_by_user_global_research_complete",
     "host_alias": "qzwx2026",
     "ssh_tunnel_command": "ssh -N -L 28867:127.0.0.1:18867 qzwx2026",
     "local_forward_port": 28867,
@@ -175,10 +190,10 @@
     "remote_workers": 0,
     "local_stop_at": "2026-10-19T17:45:00+08:00",
     "partition_manifest": "results/simulation/S2_local_20261019.json",
-    "completion_authority": "local results/simulation/S2_local_takeover_status.json",
+    "completion_authority": "local results/STAGE1_COMPLETION.json",
     "prior_runtime_estimate_superseded": true,
     "previous_remote_only_total_hours": 58.66551524441324,
-    "active_progress_estimate": "Superseded; previous estimates assumed remote compute",
+    "active_progress_estimate": "completed; prior estimates historical only",
     "remote_stop_record": "results/simulation/S2_remote_import_20261019.json"
   },
   "local_execution_plan": {
@@ -189,6 +204,93 @@
     "manifest": "results/simulation/S2_local_20261019.json",
     "preserved_batch_pid": 7144,
     "finisher_launcher_pid": 42776,
-    "automatic_remote_fallback": false
+    "automatic_remote_fallback": false,
+    "status": "complete",
+    "active_workers": 0,
+    "completed_at": "2026-10-19T06:25:30.261274+00:00"
+  },
+  "stage1_completion": {
+    "status": "complete_with_calibration_warnings",
+    "execution_complete": true,
+    "completed_at": "2026-10-19T08:03:31.752132+00:00",
+    "stage": 1,
+    "market": {
+      "run_id": "formation-2021-2025-v2",
+      "stocks": 2984,
+      "candidates": 67678,
+      "discoveries": 110,
+      "T_discoveries": 57,
+      "C_discoveries": 53,
+      "nonpositive_beta_discoveries": 9,
+      "primary_rule": "fixed L2 Holm nominal 0.05"
+    },
+    "calibration": {
+      "status": "complete_with_predeclared_alarm_failures",
+      "panels": 18080,
+      "S0": 80,
+      "S1": 16000,
+      "S2": 2000,
+      "alarm_scenarios": {
+        "S0": [
+          "N1",
+          "N6"
+        ],
+        "S1": [
+          "N1",
+          "N5",
+          "N6",
+          "N7"
+        ],
+        "S2": [
+          "N1",
+          "N5",
+          "N6"
+        ]
+      },
+      "input_p_validity_or_unconditional_market_error_control_proven": false
+    },
+    "validation": {
+      "local_project_tests_passed": 16,
+      "additional_pipeline_test_passed": true,
+      "independent_market_acceptance": "passed",
+      "calibration_coverage": "passed",
+      "full_diagnostics": "complete",
+      "market_statistical_values_unchanged": true,
+      "calibration_point_estimates_and_alarm_decisions_unchanged": true,
+      "summary_only_correction": "Binary-indicator MCSE aligned to sqrt(r*(1-r)/B)"
+    },
+    "outputs": [
+      "experiment_protocol.json",
+      "requirements.lock.txt",
+      "DATA_CONTRACT.md",
+      "results/main_evidence.csv",
+      "results/STAGE1_REPORT.md",
+      "results/CALIBRATION_REPORT.md",
+      "results/families.csv",
+      "results/stock_flow.csv",
+      "results/view_overlap.csv",
+      "results/input_sources.json",
+      "results/independent_acceptance.json",
+      "results/float_coordinate_audit.json",
+      "results/simulation/final_acceptance.json",
+      "results/simulation/S0_summary.csv",
+      "results/simulation/S1_summary.csv",
+      "results/simulation/S2_summary.csv",
+      "results/simulation/increment_and_gate_diagnostics.csv",
+      "results/simulation/runtime_and_numerical_summary.csv",
+      "results/figures/calibration_fwer.png",
+      "results/figures/calibration_power.png"
+    ],
+    "private_complete_tables": ".local/production/formation-2021-2025-v2/",
+    "private_simulations": ".local/simulation/",
+    "remaining_stage1_execution_items": [],
+    "stage2": "planned_deferred",
+    "stage3": "planned_deferred",
+    "scientific_limitations": [
+      "Nominal discoveries only; no validated 5% actual or market-wide FWER guarantee",
+      "Current official history reconstruction is not an archived end-2025 industry snapshot",
+      "Source-covered surviving Shanghai/Shenzhen ordinary shares only; no Beijing coverage",
+      "No trading/profitability or real-2026 price evaluation"
+    ]
   }
 }
