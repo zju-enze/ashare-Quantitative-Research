@@ -1,9 +1,19 @@
 import unittest
 import numpy as np
-from src.simulation import panel,STAGES,SCENARIOS
+import pandas as pd
+from src.simulation import panel,STAGES,SCENARIOS,summarize
 
 
 class SimulationTests(unittest.TestCase):
+    def test_binary_mcse_matches_predeclared_formula(self):
+        frame=pd.DataFrame([dict(stage='S1',scenario='N0',domain='L2',family='G0',method='Holm',
+            false_any=x,FDP=x,power=np.nan,raw_null_rejection=.1,stock_I1_fraction=.9,
+            applicable_pair_fraction=.8,any_local_family_false=x) for x in [0,0,0,1]])
+        result=summarize(frame).iloc[0]
+        self.assertAlmostEqual(result.FWER_MCSE,np.sqrt(.25*.75/4))
+        self.assertAlmostEqual(result.any_local_family_FWER_MCSE,np.sqrt(.25*.75/4))
+        self.assertAlmostEqual(result.FDR_MCSE,frame.FDP.std(ddof=1)/2)
+
     def test_truth_and_deterministic_panels(self):
         for stage in STAGES:
             for scenario in SCENARIOS:

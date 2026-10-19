@@ -114,6 +114,11 @@ def report(run,full,main):
     audit.to_parquet(run/"stock_audit_report.parquet",index=False)
     catalogue=pd.read_parquet(run/"catalogue.parquet")
     alarms=[]
+    calibration_complete=all((output/"simulation"/(stage+"_status.json")).exists() and
+        json.loads((output/"simulation"/(stage+"_status.json")).read_text())["status"]=="complete"
+        for stage in ("S0","S1","S2"))
+    calibration_note=("名义校正发现；S0/S1/S2预定模拟均已完成，校准结果与警报见 simulation/。"
+        if calibration_complete else "名义校正发现，预定校准诊断尚未完成；实际模拟进度与警报见 simulation/。")
     for stage in ("S0","S1","S2"):
         path=output/"simulation"/(stage+"_summary.csv")
         if path.exists():
@@ -191,7 +196,7 @@ H中有效名义EG {int(full.compute_status.isin(VALID).sum())} 对；
 
 主结果是**各二级行业分别按名义0.05校正后的发现汇总**，不声明合并全市场FWER为5%。
 在既定样本、模型规格和多重校正规则下，主表各对拒绝无协整原假设，获得协整证据。
-名义校正发现，预定校准诊断尚未完成；实际模拟进度与警报见 simulation/。
+{calibration_note}
 **{alarm_note}**
 不能把清单解释为已经实证验证的5%错误控制；未完成机制不记为通过，
 也不按BH的FWER判定其FDR控制失效。已作的实现排查见simulation/中的独立记录。

@@ -116,7 +116,9 @@ def summarize(metrics):
                             ("any_local_family_false","any_local_family_FWER")]:
             x=g[field].dropna()
             row[label]=float(x.mean()) if len(x) else None
-            row[label+"_MCSE"]=float(x.std(ddof=1)/np.sqrt(len(x))) if len(x)>1 else None
+            row[label+"_MCSE"]=(float(np.sqrt(x.mean()*(1-x.mean())/len(x)))
+                if len(x) and field in ("false_any","any_local_family_false")
+                else float(x.std(ddof=1)/np.sqrt(len(x))) if len(x)>1 else None)
         lo,hi=proportion_confint(int(g.false_any.sum()),B,alpha=.05,method="wilson")
         row.update(FWER_Wilson_low=float(lo),FWER_Wilson_high=float(hi),
                    main_alarm=bool(keys[2]=="L2" and keys[4]=="Holm" and lo>.05))
