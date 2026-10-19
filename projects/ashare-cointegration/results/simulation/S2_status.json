@@ -1,21 +1,11 @@
 {
   "stage": "S2",
-  "status": "distributed_running",
-  "completed": 740,
+  "status": "local_running",
+  "completed": 931,
   "planned": 2000,
-  "workers": 34,
-  "local_workers": 32,
-  "remote_workers": 2,
-  "engineering_change": "ENG-007",
-  "updated_at": "2026-10-19T05:12:50.725533+00:00",
-  "progress_sources": [
-    "S2_local_shard_status.json",
-    "S2_remote_shard_status.json"
-  ],
-  "local_checkpoint_completed": 393,
-  "remote_checkpoint_completed": 347,
-  "local_snapshot_at": "2026-10-19T05:12:50.725533+00:00",
-  "remote_snapshot_at": "2026-10-19T05:11:44.082905+00:00",
-  "progress_estimate": "S2_progress_estimate_20261019.json",
-  "count_basis": "Union of non-overlapping completed metric checkpoints; remote count includes four preserved pilots"
+  "workers": 32,
+  "execution_target": "local",
+  "engineering_change": "ENG-008",
+  "updated_at": "2026-10-19T05:24:08.012127+00:00",
+  "local_stop_at": "2026-10-19T17:45:00+08:00"
 }

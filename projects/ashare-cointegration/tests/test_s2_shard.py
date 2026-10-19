@@ -8,6 +8,7 @@ from multiprocessing import TimeoutError
 import run_s2_shard as shard
 import pandas as pd
 from coordinate_s2_split import import_checkpoints
+from finish_s2_local import summarize_checkpoints
 
 
 def plan():
@@ -17,6 +18,26 @@ def plan():
 
 
 class ShardTests(unittest.TestCase):
+    def test_local_takeover_owns_every_repetition(self):
+        p=plan();p.update(local={s:[0,500] for s in ['N1','N5','N6','M1']},remote={},preserved={})
+        groups=shard.assignments(p)
+        self.assertEqual(len(groups['local']),2000)
+        self.assertFalse(groups['remote'] or groups['preserved'])
+
+    def test_partial_summary_does_not_claim_stage_complete(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root=Path(folder);source=root/'.local/simulation/S2/N1';source.mkdir(parents=True)
+            (root/'results/simulation').mkdir(parents=True)
+            frame=pd.DataFrame([dict(stage='S2',scenario='N1',repetition=0,domain='L2',family='G0',method='Holm',
+                false_any=0,FDP=0.,power=float('nan'),raw_null_rejection=.01,stock_I1_fraction=1.,
+                applicable_pair_fraction=1.,any_local_family_false=0)])
+            frame.to_parquet(source/'0000.parquet',index=False)
+            status=summarize_checkpoints(root,'held_by_user')
+            self.assertEqual((status['status'],status['completed']),('held_by_user',1))
+            self.assertTrue(pd.read_csv(root/'results/simulation/S2_summary.csv').B.eq(1).all())
+            frame['repetition']=1;frame.to_parquet(source/'0000.parquet',index=False)
+            with self.assertRaises(AssertionError):summarize_checkpoints(root,'held_by_user')
+
     def test_partition_is_complete_disjoint_and_rejects_overlap(self):
         p=plan(); groups=shard.assignments(p)
         self.assertEqual([len(groups[k]) for k in ('local','remote','preserved')], [1616,380,4])

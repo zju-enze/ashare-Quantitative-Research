@@ -39,7 +39,7 @@ def run_shard(root, manifest, role):
     existing = set(completed())
     tasks = [('S2', s, r, str(root / '.local/simulation')) for s, r in assigned if (s, r) not in existing]
     state = dict(stage='S2', role=role, status='running', planned=len(assigned), workers=workers,
-                 stop_at=deadline.isoformat() if deadline else None, engineering_change='ENG-007')
+                 stop_at=deadline.isoformat() if deadline else None, engineering_change=manifest.get('engineering_change','ENG-007'))
     def save(status):
         state.update(status=status, completed=len(completed()), updated_at=datetime.now(timezone.utc).isoformat())
         tmp = output.with_suffix('.tmp')

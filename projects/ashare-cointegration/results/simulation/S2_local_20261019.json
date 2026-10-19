@@ -1,0 +1,30 @@
+{
+  "stage": "S2",
+  "engineering_change": "ENG-008",
+  "created_at": "2026-10-19T05:23:19.891874+00:00",
+  "local": {
+    "N1": [
+      0,
+      500
+    ],
+    "N5": [
+      0,
+      500
+    ],
+    "N6": [
+      0,
+      500
+    ],
+    "M1": [
+      0,
+      500
+    ]
+  },
+  "remote": {},
+  "preserved": {},
+  "local_workers": 32,
+  "remote_workers": 0,
+  "local_stop_at": "2026-10-19T17:45:00+08:00",
+  "execution_target": "local",
+  "automatic_remote_start": false
+}
