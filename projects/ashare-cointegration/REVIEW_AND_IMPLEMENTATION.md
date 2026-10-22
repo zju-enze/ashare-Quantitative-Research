@@ -1,5 +1,7 @@
 # v1.2 独立审阅与第一阶段实施澄清
 
+> **2026-10-21现行修订入口：** [V1-R / V2-R联合实验修订计划](EXPERIMENT_REVISION_PLAN_V1_V2.md)。以下内容保留该版本已执行研究的历史设计及当时状态；新模拟按联合修订计划和ENG-020执行；单对补充已完成，市场重评尚未启动。
+
 审阅日期：2026-10-18。审阅对象：[EXPERIMENT_PLAN.md](EXPERIMENT_PLAN.md)，即用户提供的 v1.2 分阶段实验计划。原文件 SHA-256：`31262589ee82fff1472574f92462398c43ab1ff1fec13a0db466cd48ec95930d`。
 
 ## 结论与审阅范围
@@ -97,4 +99,4 @@ GLOBAL–Holm在完整H上独立计算并单列，不能作为主清单的新增
 
 原根README另存为 `VALUE_SIGNAL_RESEARCH.md`，保留相对链接和研究解释。此次只建立通用研究索引和新项目文档，不重跑旧研究，不声称已完成协整实证。
 
-执行任务见 [CODEX_STAGE1_PROMPT.md](CODEX_STAGE1_PROMPT.md)。方法原始来源见实验计划第17节；关于 `coint` 的方法说明可查 [statsmodels官方文档](https://www.statsmodels.org/stable/generated/statsmodels.tsa.stattools.coint.html)，具体实现必须以所冻结安装版本的源码为准。
+执行任务见 [CODEX_STAGE1_PROMPT.md](archive/v1_handoffs_20261019/CODEX_STAGE1_PROMPT.md)。方法原始来源见实验计划第17节；关于 `coint` 的方法说明可查 [statsmodels官方文档](https://www.statsmodels.org/stable/generated/statsmodels.tsa.stattools.coint.html)，具体实现必须以所冻结安装版本的源码为准。

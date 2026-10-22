@@ -1,0 +1,101 @@
+{
+  "status": "passed",
+  "checked_at": "2026-10-21T19:06:58.432296+08:00",
+  "full_estimate_rows": 12058,
+  "summary_groups": 6,
+  "likelihood_spot_checks": [
+    {
+      "kind": "stock",
+      "identifier": "000001.SZ",
+      "model": "constant_t",
+      "loglikelihood_difference": -2.2737367544323206e-13
+    },
+    {
+      "kind": "stock",
+      "identifier": "300723.SZ",
+      "model": "constant_t",
+      "loglikelihood_difference": 0.0
+    },
+    {
+      "kind": "stock",
+      "identifier": "688788.SH",
+      "model": "constant_t",
+      "loglikelihood_difference": -2.2737367544323206e-13
+    },
+    {
+      "kind": "stock",
+      "identifier": "000001.SZ",
+      "model": "garch_t",
+      "loglikelihood_difference": 0.0
+    },
+    {
+      "kind": "stock",
+      "identifier": "300723.SZ",
+      "model": "garch_t",
+      "loglikelihood_difference": 0.0
+    },
+    {
+      "kind": "stock",
+      "identifier": "688788.SH",
+      "model": "garch_t",
+      "loglikelihood_difference": 2.2737367544323206e-13
+    },
+    {
+      "kind": "stock",
+      "identifier": "000001.SZ",
+      "model": "gjr_t",
+      "loglikelihood_difference": 0.0
+    },
+    {
+      "kind": "stock",
+      "identifier": "300723.SZ",
+      "model": "gjr_t",
+      "loglikelihood_difference": 0.0
+    },
+    {
+      "kind": "stock",
+      "identifier": "688788.SH",
+      "model": "gjr_t",
+      "loglikelihood_difference": 2.2737367544323206e-13
+    },
+    {
+      "kind": "market_proxy",
+      "identifier": "U_EQUAL_WEIGHT",
+      "model": "garch_t",
+      "loglikelihood_difference": 2.2737367544323206e-13
+    },
+    {
+      "kind": "industry_proxy",
+      "identifier": "110100",
+      "model": "garch_t",
+      "loglikelihood_difference": 0.0
+    },
+    {
+      "kind": "specific_proxy",
+      "identifier": "000001.SZ",
+      "model": "garch_t",
+      "loglikelihood_difference": 0.0
+    },
+    {
+      "kind": "stock",
+      "identifier": "300033.SZ",
+      "model": "gjr_t",
+      "loglikelihood_difference": 0.0
+    },
+    {
+      "kind": "stock",
+      "identifier": "600600.SH",
+      "model": "gjr_t",
+      "loglikelihood_difference": 0.0
+    },
+    {
+      "kind": "specific_proxy",
+      "identifier": "300705.SZ",
+      "model": "garch_t",
+      "loglikelihood_difference": -2.2737367544323206e-13
+    }
+  ],
+  "optimizer_failures": 0,
+  "unit_variance_density_self_check": "passed in estimation runner",
+  "no_simulation_or_EG_DH_retest": true
+}

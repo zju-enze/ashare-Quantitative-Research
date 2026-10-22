@@ -1,0 +1,6 @@
+Windows fatal exception: access violation
+
+Current thread 0x00000ffc (most recent call first):
+  File "F:\Robustness of Value Signals and Asset-Pricing Models in China A-Shares\projects\ashare-cointegration\scripts\validate_dh_scale.py", line 92 in <listcomp>
+  File "F:\Robustness of Value Signals and Asset-Pricing Models in China A-Shares\projects\ashare-cointegration\scripts\validate_dh_scale.py", line 92 in main
+  File "F:\Robustness of Value Signals and Asset-Pricing Models in China A-Shares\projects\ashare-cointegration\scripts\validate_dh_scale.py", line 207 in <module>

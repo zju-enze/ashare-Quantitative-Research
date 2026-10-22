@@ -1,0 +1,57 @@
+{
+  "invocations": [
+    {
+      "started_at": "2026-10-19T22:24:39.787826+08:00",
+      "workers": 4,
+      "pid": 17012,
+      "reused_panels": 0,
+      "max_new": 15,
+      "summarize_only": false,
+      "elapsed_seconds": 6.99698269999999,
+      "status": "partial",
+      "newly_completed": 15,
+      "completed_at": "2026-10-19T22:24:46.792847+08:00"
+    },
+    {
+      "started_at": "2026-10-19T22:25:58.102804+08:00",
+      "workers": 4,
+      "pid": 38356,
+      "reused_panels": 15,
+      "max_new": null,
+      "summarize_only": false,
+      "elapsed_seconds": 362.91220610000005,
+      "status": "complete",
+      "newly_completed": 1485,
+      "completed_at": "2026-10-19T22:32:01.031618+08:00"
+    }
+  ],
+  "execution_snapshot_at": "2026-10-19T22:24:39.787826+08:00",
+  "stage": "D1",
+  "kind": "development_only",
+  "method_version": "2.1-DH",
+  "status": "complete",
+  "planned": 1500,
+  "repeats_per_scenario": 100,
+  "workers": 4,
+  "blas_threads": 1,
+  "environment": {
+    "python": "3.11.9",
+    "numpy": "2.4.6",
+    "pandas": "2.3.3",
+    "scipy": "1.17.1",
+    "statsmodels": "0.15.0",
+    "blas_threads": 1
+  },
+  "method_freeze_at": null,
+  "formal_acceptance": "not_assessed_development_only",
+  "formal_calibration": "not_run",
+  "full_market_test": "not_run",
+  "remote_used": false,
+  "local_checkpoints": ".local\\dh_v2\\simulation\\D1",
+  "protocol": "source/experiment_protocol_v2.json",
+  "completed": 1500,
+  "updated_at": "2026-10-19T22:32:01.031618+08:00",
+  "kernel_calls": 270000,
+  "execution_wall_seconds": 369.90918880000004,
+  "completed_at": "2026-10-19T22:32:01.031618+08:00"
+}

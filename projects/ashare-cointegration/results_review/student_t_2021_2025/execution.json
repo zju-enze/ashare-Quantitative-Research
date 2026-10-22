@@ -1,0 +1,13 @@
+{
+  "status": "complete",
+  "completed_at": "2026-10-21T18:58:04.669123+08:00",
+  "fits": 12058,
+  "planned_fits": 12058,
+  "execution_seconds": 110.98582419999957,
+  "converged": 12058,
+  "numerical_or_optimizer_failures": 0,
+  "targeted_optimizer_refits": 3,
+  "output": "F:\\Robustness of Value Signals and Asset-Pricing Models in China A-Shares\\projects\\ashare-cointegration\\.local\\review\\student_t_2021_2025\\estimates.csv",
+  "simulations_started": false,
+  "EG_DH_retests_started": false
+}

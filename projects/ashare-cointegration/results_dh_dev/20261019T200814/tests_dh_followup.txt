@@ -1,0 +1,12 @@
+test_budget_counts_stock_and_pair_work_and_timing_variation (test_engine_dh.DHTests.test_budget_counts_stock_and_pair_work_and_timing_variation) ... ok
+test_gate_and_complete_global_family (test_engine_dh.DHTests.test_gate_and_complete_global_family) ... ok
+test_literal_iv_matrix_reference_and_joint_covariance (test_engine_dh.DHTests.test_literal_iv_matrix_reference_and_joint_covariance) ... ok
+test_location_and_positive_scale_invariance (test_engine_dh.DHTests.test_location_and_positive_scale_invariance) ... ok
+test_recursive_prefix_and_no_future_information (test_engine_dh.DHTests.test_recursive_prefix_and_no_future_information) ... ok
+test_single_two_worker_identity (test_engine_dh.DHTests.test_single_two_worker_identity) ... ok
+test_unavailable_inputs_and_no_regularization (test_engine_dh.DHTests.test_unavailable_inputs_and_no_regularization) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 1.874s
+
+OK

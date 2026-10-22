@@ -1,0 +1,48 @@
+{
+  "status": "frozen",
+  "method_freeze_at": "2026-10-20T09:39:54.405334+08:00",
+  "version": "2.1-DH",
+  "protocol": "experiment_protocol_v2_frozen.json",
+  "execution_source": ".local\\dh_v2\\simulation\\C1\\source",
+  "unit_tests": {
+    "status": "passed",
+    "started_at": "2026-10-20T09:38:42.9835766+08:00",
+    "completed_at": "2026-10-20T09:38:57.0944663+08:00",
+    "tests": 36,
+    "elapsed_seconds": 11.793,
+    "exit_code": 0,
+    "log": "results_v2/F0_TESTS.txt",
+    "prior_harness_failure": "results_v2/F0_TESTS_stdin_failure.json"
+  },
+  "frozen_market_input": {
+    "input_run_id": "formation-2021-2025-v2",
+    "stocks": 2984,
+    "candidates": 67678,
+    "observations": 1212,
+    "first_session": "2021-01-04",
+    "last_session": "2025-12-31",
+    "T": 28443,
+    "C": 39235,
+    "registry_matches_original_rule": true,
+    "price_header_verified": true,
+    "price_values_read": false,
+    "market_test_run": false
+  },
+  "C1_panels": 15000,
+  "C1_kernel_calls": 2700000,
+  "C1_repetition_range": [
+    30000,
+    30999
+  ],
+  "lags": 7,
+  "nominal_alpha": 0.05,
+  "maximum_tolerated_FWER": 0.1,
+  "slow_reversion_power_limitation_accepted": true,
+  "D1_source_unchanged": true,
+  "D1_results_reused_for_formal_acceptance": false,
+  "C1_observations_before_freeze": 0,
+  "C2": "not_run",
+  "C3": "not_run",
+  "market": "not_run",
+  "remote_used": false
+}

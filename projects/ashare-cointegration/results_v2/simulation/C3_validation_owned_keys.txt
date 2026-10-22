@@ -1,0 +1,13 @@
+Verified 50/500 C3 panels
+Verified 100/500 C3 panels
+Verified 150/500 C3 panels
+Verified 200/500 C3 panels
+Verified 250/500 C3 panels
+Verified 300/500 C3 panels
+Verified 350/500 C3 panels
+Windows fatal exception: access violation
+
+Current thread 0x0000a818 (most recent call first):
+  File "F:\Robustness of Value Signals and Asset-Pricing Models in China A-Shares\projects\ashare-cointegration\scripts\validate_dh_scale.py", line 93 in <listcomp>
+  File "F:\Robustness of Value Signals and Asset-Pricing Models in China A-Shares\projects\ashare-cointegration\scripts\validate_dh_scale.py", line 93 in main
+  File "F:\Robustness of Value Signals and Asset-Pricing Models in China A-Shares\projects\ashare-cointegration\scripts\validate_dh_scale.py", line 208 in <module>

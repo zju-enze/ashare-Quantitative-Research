@@ -1,0 +1,51 @@
+load 0
+before comparison 0 object
+iterate before passed 0 64568
+comparison passed 0
+iterate after passed 0 64568
+load 1
+before comparison 1 object
+iterate before passed 1 61014
+comparison passed 1
+iterate after passed 1 61014
+load 2
+before comparison 2 object
+iterate before passed 2 65821
+comparison passed 2
+iterate after passed 2 65821
+load 3
+before comparison 3 object
+iterate before passed 3 63536
+comparison passed 3
+iterate after passed 3 63536
+load 4
+before comparison 4 object
+iterate before passed 4 57699
+comparison passed 4
+iterate after passed 4 57699
+load 5
+before comparison 5 object
+iterate before passed 5 60855
+comparison passed 5
+iterate after passed 5 60855
+load 6
+before comparison 6 object
+iterate before passed 6 62820
+comparison passed 6
+iterate after passed 6 62820
+load 7
+before comparison 7 object
+iterate before passed 7 65165
+comparison passed 7
+iterate after passed 7 65165
+load 8
+before comparison 8 object
+iterate before passed 8 64604
+comparison passed 8
+iterate after passed 8 64604
+load 9
+before comparison 9 object
+iterate before passed 9 66141
+comparison passed 9
+iterate after passed 9 66141
+all ten probes passed

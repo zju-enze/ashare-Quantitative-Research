@@ -1,0 +1,41 @@
+{
+  "status": "passed",
+  "phase": "engineering",
+  "checked_at": "2026-10-21T21:28:52.908401+08:00",
+  "paths": 20,
+  "test_rows": 80,
+  "summary_rows": 32,
+  "paired_rows": 16,
+  "all_expected_keys": true,
+  "all_legacy_artifacts_unchanged": true,
+  "numerical_unavailable": 0,
+  "zero_p_rows": 0,
+  "regenerated_paths_for_independent_check": [
+    {
+      "scenario": "PAIR_NULL",
+      "repetition": 0,
+      "methods": 4
+    },
+    {
+      "scenario": "PAIR_COINT",
+      "repetition": 0,
+      "methods": 4
+    },
+    {
+      "scenario": "HEAVY_NULL",
+      "repetition": 0,
+      "methods": 4
+    },
+    {
+      "scenario": "HEAVY_COINT",
+      "repetition": 0,
+      "methods": 4
+    }
+  ],
+  "independent_recomputed_test_cases": 16,
+  "full_retest": false,
+  "serial_equivalent_task_seconds": 0.7855568000004496,
+  "serial_equivalent_cpu_seconds": 0.75,
+  "formal_four_worker_cpu_seconds_projection": 187.5,
+  "projection_limit": "20-path timing extrapolation; not a guaranteed elapsed-time bound"
+}

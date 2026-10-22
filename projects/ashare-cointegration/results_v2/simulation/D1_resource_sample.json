@@ -1,0 +1,40 @@
+{
+  "sampled_at": "2026-10-19T22:26:58.3238576+08:00",
+  "completed_panels": 255,
+  "configured_workers": 4,
+  "processes": [
+    {
+      "pid": 38356,
+      "name": "python3.11",
+      "cpu_seconds": 2.59375,
+      "working_set_mib": 170.25
+    },
+    {
+      "pid": 39412,
+      "name": "python3.11",
+      "cpu_seconds": 58.390625,
+      "working_set_mib": 169.4
+    },
+    {
+      "pid": 35176,
+      "name": "python3.11",
+      "cpu_seconds": 58.5625,
+      "working_set_mib": 168.18
+    },
+    {
+      "pid": 40040,
+      "name": "python3.11",
+      "cpu_seconds": 58.21875,
+      "working_set_mib": 167.15
+    },
+    {
+      "pid": 34872,
+      "name": "python3.11",
+      "cpu_seconds": 58.46875,
+      "working_set_mib": 166.61
+    }
+  ],
+  "working_set_sum_mib": 841.59,
+  "available_memory_gib": 14.89,
+  "scope": "One sample; not peak memory or instantaneous CPU utilization"
+}

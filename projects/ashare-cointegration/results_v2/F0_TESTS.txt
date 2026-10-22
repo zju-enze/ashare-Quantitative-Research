@@ -1,0 +1,45 @@
+test_F0_freezes_once_without_executing_panels (test_calibration_dh.CalibrationTests.test_F0_freezes_once_without_executing_panels) ... ok
+test_aggregate_acceptance_requires_all_units_and_completion (test_calibration_dh.CalibrationTests.test_aggregate_acceptance_requires_all_units_and_completion) ... ok
+test_checkpoint_relabels_only_stage_and_preserves_D1 (test_calibration_dh.CalibrationTests.test_checkpoint_relabels_only_stage_and_preserves_D1) ... ok
+test_formal_summary_uses_1000_trials_and_excludes_D1 (test_calibration_dh.CalibrationTests.test_formal_summary_uses_1000_trials_and_excludes_D1) ... ok
+test_frozen_spec_seeds_and_allowed_stages (test_calibration_dh.CalibrationTests.test_frozen_spec_seeds_and_allowed_stages) ... ok
+test_incomplete_write_is_not_completed_and_no_development_seed (test_calibration_dh.CalibrationTests.test_incomplete_write_is_not_completed_and_no_development_seed) ... ok
+test_missing_F0_cannot_start_C1_pool (test_calibration_dh.CalibrationTests.test_missing_F0_cannot_start_C1_pool) ... ok
+test_coordinate_seed_and_decimal_identity (test_data.DataTests.test_coordinate_seed_and_decimal_identity) ... ok
+test_depositary_receipt_is_not_ordinary_share (test_data.DataTests.test_depositary_receipt_is_not_ordinary_share) ... ok
+test_collinear_and_nonfinite (test_engine.EngineTests.test_collinear_and_nonfinite) ... ok
+test_complete_families_and_main (test_engine.EngineTests.test_complete_families_and_main) ... ok
+test_real_coint_and_lag_audit (test_engine.EngineTests.test_real_coint_and_lag_audit) ... ok
+test_single_eight_process_agreement (test_engine.EngineTests.test_single_eight_process_agreement) ... ok
+test_budget_counts_stock_and_pair_work_and_timing_variation (test_engine_dh.DHTests.test_budget_counts_stock_and_pair_work_and_timing_variation) ... ok
+test_gate_and_complete_global_family (test_engine_dh.DHTests.test_gate_and_complete_global_family) ... ok
+test_literal_iv_matrix_reference_and_joint_covariance (test_engine_dh.DHTests.test_literal_iv_matrix_reference_and_joint_covariance) ... ok
+test_location_and_positive_scale_invariance (test_engine_dh.DHTests.test_location_and_positive_scale_invariance) ... ok
+test_recursive_prefix_and_no_future_information (test_engine_dh.DHTests.test_recursive_prefix_and_no_future_information) ... ok
+test_single_two_worker_identity (test_engine_dh.DHTests.test_single_two_worker_identity) ... ok
+test_unavailable_inputs_and_no_regularization (test_engine_dh.DHTests.test_unavailable_inputs_and_no_regularization) ... ok
+EG 6/6
+EG 6/6
+test_frozen_pipeline_resume_and_main_identity (test_pipeline.PipelineTests.test_frozen_pipeline_resume_and_main_identity) ... ok
+test_already_expired_never_starts_workers (test_s2_shard.ShardTests.test_already_expired_never_starts_workers) ... ok
+{"stage": "S2", "role": "local", "status": "deadline_reached", "planned": 1616, "workers": 32, "stop_at": "2026-10-19T17:45:00+08:00", "engineering_change": "ENG-007", "completed": 0, "updated_at": "2026-10-19T17:45:01+08:00"}
+test_deadline_terminates_queued_work (test_s2_shard.ShardTests.test_deadline_terminates_queued_work) ... ok
+test_import_preserves_unique_repetitions_and_rejects_wrong_owner (test_s2_shard.ShardTests.test_import_preserves_unique_repetitions_and_rejects_wrong_owner) ... ok
+test_local_takeover_owns_every_repetition (test_s2_shard.ShardTests.test_local_takeover_owns_every_repetition) ... ok
+test_partial_summary_does_not_claim_stage_complete (test_s2_shard.ShardTests.test_partial_summary_does_not_claim_stage_complete) ... ok
+test_partition_is_complete_disjoint_and_rejects_overlap (test_s2_shard.ShardTests.test_partition_is_complete_disjoint_and_rejects_overlap) ... ok
+test_binary_mcse_matches_predeclared_formula (test_simulation.SimulationTests.test_binary_mcse_matches_predeclared_formula) ... ok
+test_truth_and_deterministic_panels (test_simulation.SimulationTests.test_truth_and_deterministic_panels) ... ok
+S2: held by user; no simulation started. Explicit release is required.
+test_user_hold_prevents_pool_and_preserves_progress (test_simulation_control.SimulationControlTests.test_user_hold_prevents_pool_and_preserves_progress) ... ok
+test_checkpoint_commit_order_resume_and_missing_pairs (test_simulation_dh.DHSimulationTests.test_checkpoint_commit_order_resume_and_missing_pairs) ... ok
+test_exact_bounds_against_binomial_tail_and_zero_events (test_simulation_dh.DHSimulationTests.test_exact_bounds_against_binomial_tail_and_zero_events) ... ok
+test_fixed_protocol_tasks_and_independent_seed_ranges (test_simulation_dh.DHSimulationTests.test_fixed_protocol_tasks_and_independent_seed_ranges) ... ok
+test_partial_and_all_alternative_are_not_acceptance (test_simulation_dh.DHSimulationTests.test_partial_and_all_alternative_are_not_acceptance) ... ok
+test_snapshot_rejects_changed_source_without_overwriting (test_simulation_dh.DHSimulationTests.test_snapshot_rejects_changed_source_without_overwriting) ... ok
+test_whole_panel_metrics_and_unconditional_denominator (test_simulation_dh.DHSimulationTests.test_whole_panel_metrics_and_unconditional_denominator) ... ok
+
+----------------------------------------------------------------------
+Ran 36 tests in 11.793s
+
+OK

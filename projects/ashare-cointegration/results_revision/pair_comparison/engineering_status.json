@@ -1,0 +1,21 @@
+{
+  "invocations": [
+    {
+      "started_at": "2026-10-21T21:25:50.485232+08:00",
+      "workers": 4,
+      "reused_paths": 0,
+      "new_paths": 20,
+      "summarize_only": false,
+      "completed_at": "2026-10-21T21:25:53.365316+08:00",
+      "elapsed_seconds": 2.8797340000000986
+    }
+  ],
+  "phase": "engineering",
+  "status": "complete",
+  "planned_paths": 20,
+  "planned_test_calls": 80,
+  "completed_paths": 20,
+  "completed_test_calls": 80,
+  "elapsed_seconds": 2.6766756000001806,
+  "completed_at": "2026-10-21T21:25:53.365316+08:00"
+}

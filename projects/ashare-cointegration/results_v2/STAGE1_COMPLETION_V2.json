@@ -1,0 +1,131 @@
+{
+  "status": "complete_nominal_market_with_inconclusive_calibration",
+  "execution_complete": true,
+  "completed_at": "2026-10-20T14:48:07.480168+08:00",
+  "method_version": "2.1-DH",
+  "method_freeze_at": "2026-10-20T09:39:54.405334+08:00",
+  "market_implementation_revision": "used_recursive_prefix_guard",
+  "calibration": {
+    "status": "complete_inconclusive",
+    "panels": 18000,
+    "kernel_calls": 40889000,
+    "required_units": 19,
+    "strict_pass": 13,
+    "tolerated_pass": 5,
+    "inconclusive": 1,
+    "fail": 0,
+    "report": "results_v2/CALIBRATION_REPORT_V2.md"
+  },
+  "market": {
+    "status": "complete_verified_nominal",
+    "run_id": "formation-2021-2025-v2__dh-v2.1__used-prefix",
+    "candidates": 67678,
+    "valid_DH": 42121,
+    "precheck_placeholders": 25557,
+    "numerical_placeholders": 0,
+    "discoveries": 0,
+    "calibration_acceptance": "inconclusive",
+    "evidence_scope": "nominal_calibration_inconclusive",
+    "report": "results_v2/STAGE1_REPORT_V2.md",
+    "validation": "results_v2/market_validation.json"
+  },
+  "prefix_correction": {
+    "pairs": 23,
+    "unaffected_audits_unchanged": 67655,
+    "independent_reference_max_Q_relative_error": 5.9292608761357265e-15,
+    "evidence": "results_v2/market_prefix_validation.json"
+  },
+  "tests": {
+    "unchanged_implementation_tests": 44,
+    "market_tests": 7,
+    "market_evidence": "results_v2/MARKET_FINAL_TESTS.json"
+  },
+  "completion_audit": {
+    "status": "passed",
+    "frozen_source_comparisons": 31,
+    "market_source_files": 12,
+    "frozen_input_files_identical": 5,
+    "runtime_unchanged": true,
+    "stages": {
+      "C1": {
+        "panels": 15000,
+        "kernel_calls": 2700000,
+        "acceptance": "tolerated_pass"
+      },
+      "C2": {
+        "panels": 2500,
+        "kernel_calls": 4350000,
+        "acceptance": "tolerated_pass"
+      },
+      "C3": {
+        "panels": 500,
+        "kernel_calls": 33839000,
+        "acceptance": "inconclusive"
+      }
+    },
+    "market_candidates": 67678,
+    "market_discoveries": 0,
+    "required_output_columns": 28,
+    "outputs": [
+      "STAGE1_REPORT_V2.md",
+      "CALIBRATION_REPORT_V2.md",
+      "main_evidence.csv",
+      "v1_dh_comparison.csv",
+      "market_status.json",
+      "market_validation.json",
+      "market_prefix_validation.json",
+      "market_diagnostics.json",
+      "F0_FREEZE.json",
+      "F0_FREEZE.md",
+      "figures/calibration_fwer.png",
+      "figures/power_by_geometry.png",
+      "simulation/C1_REPORT.md",
+      "simulation/C2_REPORT.md",
+      "simulation/C3_REPORT.md",
+      "simulation/C1_summary.csv",
+      "simulation/C2_summary.csv",
+      "simulation/C3_summary.csv",
+      "simulation/C1_validation.json",
+      "simulation/C2_validation.json",
+      "simulation/C3_validation.json",
+      "history/market_initial_prefix_guard/archive_record.json"
+    ],
+    "remote_used": false,
+    "stage2": "planned_deferred",
+    "stage3": "planned_deferred"
+  },
+  "preservation": {
+    "V1_fields": 14,
+    "changed": [],
+    "D1": true,
+    "C1": true
+  },
+  "outputs": [
+    "results_v2/STAGE1_REPORT_V2.md",
+    "results_v2/CALIBRATION_REPORT_V2.md",
+    "results_v2/main_evidence.csv",
+    "results_v2/v1_dh_comparison.csv",
+    "results_v2/market_status.json",
+    "results_v2/market_validation.json",
+    "results_v2/market_prefix_validation.json",
+    "results_v2/market_diagnostics.json",
+    "results_v2/F0_FREEZE.json",
+    "results_v2/F0_FREEZE.md",
+    "results_v2/figures/calibration_fwer.png",
+    "results_v2/figures/power_by_geometry.png",
+    "results_v2/simulation/C1_REPORT.md",
+    "results_v2/simulation/C2_REPORT.md",
+    "results_v2/simulation/C3_REPORT.md",
+    "results_v2/simulation/C1_summary.csv",
+    "results_v2/simulation/C2_summary.csv",
+    "results_v2/simulation/C3_summary.csv",
+    "results_v2/simulation/C1_validation.json",
+    "results_v2/simulation/C2_validation.json",
+    "results_v2/simulation/C3_validation.json",
+    "results_v2/history/market_initial_prefix_guard/archive_record.json"
+  ],
+  "remote_used": false,
+  "stage2": "planned_deferred",
+  "stage3": "planned_deferred",
+  "claim": "Complete execution and verified nominal results; calibration remains inconclusive, with weak power and no market-wide error-control or trading guarantee"
+}

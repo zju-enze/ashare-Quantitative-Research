@@ -1,0 +1,10 @@
+{
+  "status": "passed",
+  "started_at": "2026-10-20T10:44:14.6856081+08:00",
+  "completed_at": "2026-10-20T10:44:33.7201766+08:00",
+  "tests": 44,
+  "elapsed_seconds": 19.0025778,
+  "exit_code": 0,
+  "log": "results_v2/SCALE_TESTS.txt",
+  "scope": "F0-preserving C2/C3 implementation plus existing tests"
+}

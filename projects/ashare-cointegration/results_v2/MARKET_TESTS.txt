@@ -1,0 +1,10 @@
+test_existing_batch_must_match_candidate_rows (test_market_dh.MarketDHTests.test_existing_batch_must_match_candidate_rows) ... ok
+test_global_primary_auxiliary_four_cells_and_zero_discoveries (test_market_dh.MarketDHTests.test_global_primary_auxiliary_four_cells_and_zero_discoveries) ... ok
+test_market_pool_requires_all_three_checked_passing_stages (test_market_dh.MarketDHTests.test_market_pool_requires_all_three_checked_passing_stages) ... ok
+test_market_snapshot_keeps_input_bytes_and_reuses_precheck (test_market_dh.MarketDHTests.test_market_snapshot_keeps_input_bytes_and_reuses_precheck) ... ok
+test_worker_uses_mapped_prices_and_DH_not_legacy_EG (test_market_dh.MarketDHTests.test_worker_uses_mapped_prices_and_DH_not_legacy_EG) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.514s
+
+OK

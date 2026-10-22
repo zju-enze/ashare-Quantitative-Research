@@ -1,0 +1,8 @@
+{
+  "checked_at": "2026-10-19T22:37:36.936502+08:00",
+  "status": "passed",
+  "reused_pilot_checkpoints": 15,
+  "last_write_time_and_size_unchanged": true,
+  "record": "D1_pilot_checkpoint_evidence.json",
+  "interpretation": "Pilot completion markers were reused without rewriting; no new hashes"
+}

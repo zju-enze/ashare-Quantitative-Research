@@ -1,0 +1,167 @@
+{
+  "status": "complete",
+  "kind": "engineering_only",
+  "started_at": "2026-10-19T20:08:14.682864+08:00",
+  "method": "DH2018-bivariate-development",
+  "lags": 7,
+  "nominal_alpha": 0.05,
+  "maximum_tolerated_FWER": 0.1,
+  "tolerance_used_as_test_alpha": false,
+  "formal_calibration": "not_run",
+  "full_market_test": "not_run",
+  "remote_used": false,
+  "benchmark_workers": 1,
+  "blas_threads": 1,
+  "seed_policy": "v1 panel formula; repetitions 10000-10004 consumed for development only",
+  "source_doi": "10.1111/obes.12214",
+  "source_pages": "accepted manuscript pp7-9, Appendix S1 pp29-37",
+  "scope": "75 S0 engineering panels, 9 larger timings and 6 separately recorded same-input timing evaluations; not statistical acceptance",
+  "python": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+  "packages": {
+    "numpy": "2.4.6",
+    "pandas": "2.3.3",
+    "scipy": "1.17.1",
+    "statsmodels": "0.15.0"
+  },
+  "unit_tests": {
+    "run": 22,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "completed_panels": 84,
+  "unit_tests_passed": true,
+  "kernel_calls": 7200,
+  "numerical_count": 0,
+  "budget": {
+    "rates": {
+      "pair_seconds": {
+        "low": 0.0002794429310346584,
+        "median": 0.0003131844827586828,
+        "high": 0.0003399438505745831
+      },
+      "precheck_stock_seconds": {
+        "low": 0.016773399166663698,
+        "median": 0.01772345666667358,
+        "high": 0.01940700666666544
+      },
+      "dgp_stock_seconds": {
+        "low": 0.00012644166667238665,
+        "median": 0.00013449333333331499,
+        "high": 0.00014303916666449332
+      },
+      "holm_pair_seconds": {
+        "low": 1.4727816091933677e-05,
+        "median": 1.8282298850309193e-05,
+        "high": 3.775155172421029e-05
+      }
+    },
+    "estimates": [
+      {
+        "plan": "development_15x100_40stocks",
+        "panels": 1500,
+        "stocks": 40,
+        "pairs_per_panel": 180,
+        "pair_system_tests": 270000,
+        "serial_hours_low": 0.3037268199234291,
+        "serial_hours_median": 0.32249250862078926,
+        "serial_hours_high": 0.354161252394575,
+        "serial_hours_slow_repeat_scenario": 2.1627290637426984
+      },
+      {
+        "plan": "formal_S1_15x1000",
+        "panels": 15000,
+        "stocks": 40,
+        "pairs_per_panel": 180,
+        "pair_system_tests": 2700000,
+        "serial_hours_low": 3.037268199234291,
+        "serial_hours_median": 3.2249250862078926,
+        "serial_hours_high": 3.54161252394575,
+        "serial_hours_slow_repeat_scenario": 21.627290637426984
+      },
+      {
+        "plan": "formal_S2_5x500",
+        "panels": 2500,
+        "stocks": 120,
+        "pairs_per_panel": 1740,
+        "pair_system_tests": 4350000,
+        "serial_hours_low": 1.7637763888893059,
+        "serial_hours_median": 1.88868486111144,
+        "serial_hours_high": 2.085552430555203,
+        "serial_hours_slow_repeat_scenario": 12.666072954208259
+      },
+      {
+        "plan": "market_once",
+        "panels": 1,
+        "stocks": 2984,
+        "pairs_per_panel": 67678,
+        "pair_system_tests": 67678,
+        "serial_hours_low": 0.019538336908530105,
+        "serial_hours_median": 0.021033647679376093,
+        "serial_hours_high": 0.02330527950095396,
+        "serial_hours_slow_repeat_scenario": 0.1410577918453339
+      },
+      {
+        "plan": "market_geometry_5x100",
+        "panels": 500,
+        "stocks": 2984,
+        "pairs_per_panel": 67678,
+        "pair_system_tests": 33839000,
+        "serial_hours_low": 9.769168454265053,
+        "serial_hours_median": 10.516823839688044,
+        "serial_hours_high": 11.65263975047698,
+        "serial_hours_slow_repeat_scenario": 70.52889592266693
+      },
+      {
+        "plan": "market_geometry_5x300",
+        "panels": 1500,
+        "stocks": 2984,
+        "pairs_per_panel": 67678,
+        "pair_system_tests": 101517000,
+        "serial_hours_low": 29.30750536279516,
+        "serial_hours_median": 31.55047151906414,
+        "serial_hours_high": 34.95791925143094,
+        "serial_hours_slow_repeat_scenario": 211.58668776800084
+      }
+    ],
+    "observed_same_input_wall_slowdown": 6.7062924127822034,
+    "basis": "Three 120-stock / 1740-pair synthetic panels, one worker, BLAS=1; all pairs evaluated.",
+    "limitations": [
+      "Ranges reflect three measured mechanisms, not confidence or prediction intervals.",
+      "Slow-repeat column multiplies the median by observed same-input wall-time variation; it is not a guaranteed upper bound.",
+      "Full-market input/output, larger-memory effects and parallel speedup have not been measured.",
+      "Holm sorting is extrapolated linearly; full-scale overhead may differ.",
+      "No market prices or full-scale synthetic panel were evaluated."
+    ]
+  },
+  "elapsed_seconds": 78.91133790000004,
+  "completed_at": "2026-10-19T20:09:33.596601+08:00",
+  "statistical_acceptance": "not_assessed; five smoke repeats per mechanism are insufficient",
+  "timing_repeat_evaluations": 6,
+  "timing_repeat_kernel_calls": 1080,
+  "timing_repeat_seconds": 10.416235699998651,
+  "total_development_panel_kernel_calls": 8280,
+  "post_verification": {
+    "dh_suite_current": {
+      "run": 7,
+      "failures": 0,
+      "errors": 0,
+      "log": "tests_dh_followup.txt"
+    },
+    "v1_tests_unchanged_passed": 16,
+    "saved_pair_rows_verified": 7200,
+    "independent_global_holm_families_verified": 84,
+    "N7_false_discovery_literal_matrix_Q": 14.11512999257753,
+    "N7_saved_Q": 14.115129992577522,
+    "timing_followup_reason": "Same-input wall-time variation; no change to p=7 or test alpha and no new statistical acceptance sample."
+  },
+  "resource_observation": {
+    "cpu": "Intel Core i9-14900HX",
+    "logical_processors": 32,
+    "total_memory_GiB": 31.71,
+    "free_memory_GiB_before_run": 13.2,
+    "sampled_process_peak_working_set_MiB_at_39_panels": 233.1,
+    "full_run_or_full_market_peak_measured": false
+  },
+  "post_verification_completed_at": "2026-10-19T20:19:15.699495+08:00"
+}

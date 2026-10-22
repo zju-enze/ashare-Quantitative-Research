@@ -1,0 +1,68 @@
+{
+  "invocations": [
+    {
+      "started_at": "2026-10-20T13:52:13.880875+08:00",
+      "pid": 39696,
+      "workers": 8,
+      "reused_pairs": 0,
+      "nominal_if_inconclusive": true,
+      "status": "complete",
+      "completed_at": "2026-10-20T13:52:26.639373+08:00",
+      "elapsed_seconds": 12.757480000000214
+    }
+  ],
+  "status": "complete",
+  "run_id": "formation-2021-2025-v2__dh-v2.1",
+  "method_freeze_at": "2026-10-20T09:39:54.405334+08:00",
+  "input_run_id": "formation-2021-2025-v2",
+  "planned": 67678,
+  "completed": 67678,
+  "workers": 8,
+  "blas_threads": 1,
+  "remote_used": false,
+  "precheck_reused": true,
+  "calibration": {
+    "C1": {
+      "completed": 15000,
+      "acceptance": "tolerated_pass",
+      "checked_at": "2026-10-20T10:27:17.815934+08:00"
+    },
+    "C2": {
+      "completed": 2500,
+      "acceptance": "tolerated_pass",
+      "checked_at": "2026-10-20T11:10:22.015280+08:00"
+    },
+    "C3": {
+      "completed": 500,
+      "acceptance": "inconclusive",
+      "checked_at": "2026-10-20T13:37:41.992494+08:00"
+    }
+  },
+  "calibration_acceptance": "inconclusive",
+  "evidence_scope": "nominal_calibration_inconclusive",
+  "engineering_change": "ENG-014",
+  "updated_at": "2026-10-20T13:52:23.065687+08:00",
+  "completed_at": "2026-10-20T13:52:26.639373+08:00",
+  "discoveries": 0,
+  "DH_executed": 42098,
+  "valid_DH": 42098,
+  "precheck_placeholders": 25557,
+  "numerical_placeholders": 23,
+  "underflow": 0,
+  "method_counts": {
+    "V1_EG_L2_Holm": 110,
+    "V1_EG_GLOBAL_Holm": 7,
+    "V2_DH_L2_Holm": 0,
+    "V2_DH_GLOBAL_Holm": 0
+  },
+  "primary_overlap": {
+    "intersection": 0,
+    "V1_only": 110,
+    "DH_only": 0,
+    "union": 110,
+    "Jaccard": 0.0
+  },
+  "market_validation": "passed",
+  "execution_wall_seconds": 12.757480000000214,
+  "verified_at": "2026-10-20T14:02:12.266402+08:00"
+}

@@ -1,0 +1,27 @@
+test_coordinate_seed_and_decimal_identity (test_data.DataTests.test_coordinate_seed_and_decimal_identity) ... ok
+test_depositary_receipt_is_not_ordinary_share (test_data.DataTests.test_depositary_receipt_is_not_ordinary_share) ... ok
+test_collinear_and_nonfinite (test_engine.EngineTests.test_collinear_and_nonfinite) ... ok
+test_complete_families_and_main (test_engine.EngineTests.test_complete_families_and_main) ... ok
+test_real_coint_and_lag_audit (test_engine.EngineTests.test_real_coint_and_lag_audit) ... ok
+test_single_eight_process_agreement (test_engine.EngineTests.test_single_eight_process_agreement) ... ok
+test_gate_and_complete_global_family (test_engine_dh.DHTests.test_gate_and_complete_global_family) ... ok
+test_literal_iv_matrix_reference_and_joint_covariance (test_engine_dh.DHTests.test_literal_iv_matrix_reference_and_joint_covariance) ... ok
+test_location_and_positive_scale_invariance (test_engine_dh.DHTests.test_location_and_positive_scale_invariance) ... ok
+test_recursive_prefix_and_no_future_information (test_engine_dh.DHTests.test_recursive_prefix_and_no_future_information) ... ok
+test_single_two_worker_identity (test_engine_dh.DHTests.test_single_two_worker_identity) ... ok
+test_unavailable_inputs_and_no_regularization (test_engine_dh.DHTests.test_unavailable_inputs_and_no_regularization) ... ok
+test_frozen_pipeline_resume_and_main_identity (test_pipeline.PipelineTests.test_frozen_pipeline_resume_and_main_identity) ... ok
+test_already_expired_never_starts_workers (test_s2_shard.ShardTests.test_already_expired_never_starts_workers) ... ok
+test_deadline_terminates_queued_work (test_s2_shard.ShardTests.test_deadline_terminates_queued_work) ... ok
+test_import_preserves_unique_repetitions_and_rejects_wrong_owner (test_s2_shard.ShardTests.test_import_preserves_unique_repetitions_and_rejects_wrong_owner) ... ok
+test_local_takeover_owns_every_repetition (test_s2_shard.ShardTests.test_local_takeover_owns_every_repetition) ... ok
+test_partial_summary_does_not_claim_stage_complete (test_s2_shard.ShardTests.test_partial_summary_does_not_claim_stage_complete) ... ok
+test_partition_is_complete_disjoint_and_rejects_overlap (test_s2_shard.ShardTests.test_partition_is_complete_disjoint_and_rejects_overlap) ... ok
+test_binary_mcse_matches_predeclared_formula (test_simulation.SimulationTests.test_binary_mcse_matches_predeclared_formula) ... ok
+test_truth_and_deterministic_panels (test_simulation.SimulationTests.test_truth_and_deterministic_panels) ... ok
+test_user_hold_prevents_pool_and_preserves_progress (test_simulation_control.SimulationControlTests.test_user_hold_prevents_pool_and_preserves_progress) ... ok
+
+----------------------------------------------------------------------
+Ran 22 tests in 17.538s
+
+OK

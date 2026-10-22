@@ -1,0 +1,141 @@
+{
+  "before": {
+    "sampled_at": "2026-10-20T12:45:59.7280630+08:00",
+    "processes": [
+      {
+        "pid": 21416,
+        "cpu_seconds": 5308.21875,
+        "working_set_mib": 330.36
+      },
+      {
+        "pid": 23272,
+        "cpu_seconds": 5304.96875,
+        "working_set_mib": 352.25
+      },
+      {
+        "pid": 24184,
+        "cpu_seconds": 5309.984375,
+        "working_set_mib": 348.32
+      },
+      {
+        "pid": 39728,
+        "cpu_seconds": 11.4375,
+        "working_set_mib": 168.56
+      },
+      {
+        "pid": 40464,
+        "cpu_seconds": 5306.828125,
+        "working_set_mib": 329.45
+      },
+      {
+        "pid": 40624,
+        "cpu_seconds": 5308.9375,
+        "working_set_mib": 393.56
+      },
+      {
+        "pid": 40864,
+        "cpu_seconds": 5304.359375,
+        "working_set_mib": 332.2
+      },
+      {
+        "pid": 43004,
+        "cpu_seconds": 5306.984375,
+        "working_set_mib": 383.09
+      },
+      {
+        "pid": 49088,
+        "cpu_seconds": 5307.46875,
+        "working_set_mib": 444.59
+      }
+    ],
+    "working_set_sum_mib": 3082.38,
+    "available_memory_gib": 14.63
+  },
+  "after": {
+    "sampled_at": "2026-10-20T12:47:02.6338496+08:00",
+    "processes": [
+      {
+        "pid": 21416,
+        "cpu_seconds": 5370.8125,
+        "working_set_mib": 410.67
+      },
+      {
+        "pid": 23272,
+        "cpu_seconds": 5367.671875,
+        "working_set_mib": 477.16
+      },
+      {
+        "pid": 24184,
+        "cpu_seconds": 5372.71875,
+        "working_set_mib": 472.63
+      },
+      {
+        "pid": 39728,
+        "cpu_seconds": 11.546875,
+        "working_set_mib": 168.57
+      },
+      {
+        "pid": 40464,
+        "cpu_seconds": 5369.234375,
+        "working_set_mib": 453.43
+      },
+      {
+        "pid": 40624,
+        "cpu_seconds": 5371.453125,
+        "working_set_mib": 517.06
+      },
+      {
+        "pid": 40864,
+        "cpu_seconds": 5367.28125,
+        "working_set_mib": 401.46
+      },
+      {
+        "pid": 43004,
+        "cpu_seconds": 5369.5625,
+        "working_set_mib": 507.79
+      },
+      {
+        "pid": 49088,
+        "cpu_seconds": 5370.125,
+        "working_set_mib": 337.51
+      }
+    ]
+  },
+  "elapsed_seconds": 62.905,
+  "worker_deltas": [
+    {
+      "pid": 21416,
+      "cpu_seconds_added": 62.59375
+    },
+    {
+      "pid": 23272,
+      "cpu_seconds_added": 62.703125
+    },
+    {
+      "pid": 24184,
+      "cpu_seconds_added": 62.734375
+    },
+    {
+      "pid": 40464,
+      "cpu_seconds_added": 62.40625
+    },
+    {
+      "pid": 40624,
+      "cpu_seconds_added": 62.515625
+    },
+    {
+      "pid": 40864,
+      "cpu_seconds_added": 62.921875
+    },
+    {
+      "pid": 43004,
+      "cpu_seconds_added": 62.578125
+    },
+    {
+      "pid": 49088,
+      "cpu_seconds_added": 62.65625
+    }
+  ],
+  "completed_after_observation": 387,
+  "interpretation": "All eight workers continued consuming CPU and another panel completed; no restart. Cause of slower throughput was not determined."
+}

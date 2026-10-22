@@ -1,0 +1,10 @@
+{
+  "status": "passed",
+  "started_at": "2026-10-20T10:59:59.1111151+08:00",
+  "completed_at": "2026-10-20T11:00:02.3858777+08:00",
+  "tests": 5,
+  "elapsed_seconds": 3.2206081,
+  "exit_code": 0,
+  "log": "results_v2/MARKET_TESTS.txt",
+  "scope": "New market entry only; prior 44 tests remain applicable to unchanged sources"
+}

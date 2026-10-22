@@ -1,0 +1,20 @@
+{
+  "started_at": "2026-10-21T19:51:03.973184+08:00",
+  "status": "complete",
+  "tasks": 3106,
+  "workers": 4,
+  "model_observations": 1210,
+  "fixed_nu": {
+    "market_proxy": 6.0,
+    "industry_proxy": 7.0,
+    "specific_proxy": 4.5
+  },
+  "finite_moment_order": 4.1,
+  "finite_moment_limit": 0.999999,
+  "simulations": false,
+  "EG_DH_retests": false,
+  "completed": 3106,
+  "elapsed_seconds": 30.033056399999623,
+  "failed_series": 0,
+  "completed_at": "2026-10-21T19:51:34.005639+08:00"
+}

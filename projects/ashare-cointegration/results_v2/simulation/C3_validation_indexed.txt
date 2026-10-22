@@ -1,0 +1,24 @@
+Verified 50/500 C3 panels
+Verified 100/500 C3 panels
+Traceback (most recent call last):
+  File "F:\Robustness of Value Signals and Asset-Pricing Models in China A-Shares\projects\ashare-cointegration\scripts\validate_dh_scale.py", line 213, in <module>
+    main()
+  File "F:\Robustness of Value Signals and Asset-Pricing Models in China A-Shares\projects\ashare-cointegration\scripts\validate_dh_scale.py", line 89, in main
+    pd.testing.assert_frame_equal(table[registry.columns], registry, check_dtype=False)
+  File "F:\Robustness of Value Signals and Asset-Pricing Models in China A-Shares\projects\ashare-cointegration\.venv\Lib\site-packages\pandas\_testing\asserters.py", line 1303, in assert_frame_equal
+    assert_series_equal(
+  File "F:\Robustness of Value Signals and Asset-Pricing Models in China A-Shares\projects\ashare-cointegration\.venv\Lib\site-packages\pandas\_testing\asserters.py", line 1091, in assert_series_equal
+    _testing.assert_almost_equal(
+  File "pandas/_libs/testing.pyx", line 55, in pandas._libs.testing.assert_almost_equal
+  File "pandas/_libs/testing.pyx", line 141, in pandas._libs.testing.assert_almost_equal
+  File "F:\Robustness of Value Signals and Asset-Pricing Models in China A-Shares\projects\ashare-cointegration\.venv\Lib\site-packages\pandas\core\dtypes\missing.py", line 531, in array_equivalent
+    return _array_equivalent_object(left, right, strict_nan)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\Robustness of Value Signals and Asset-Pricing Models in China A-Shares\projects\ashare-cointegration\.venv\Lib\site-packages\pandas\core\dtypes\missing.py", line 598, in _array_equivalent_object
+    with warnings.catch_warnings():
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\Lib\warnings.py", line 494, in __exit__
+    self._module._showwarnmsg_impl = self._showwarnmsg_impl
+                                     ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\Lib\warnings.py", line 469, in __enter__
+    raise RuntimeError("Cannot enter %r twice" % self)
+RuntimeError: Cannot enter catch_warnings() twice

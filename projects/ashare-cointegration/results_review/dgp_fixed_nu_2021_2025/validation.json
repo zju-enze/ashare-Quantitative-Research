@@ -1,0 +1,88 @@
+{
+  "completed_at": "2026-10-21T20:32:19.183935+08:00",
+  "status": "passed_parameter_and_structure_checks",
+  "logical_models": 6212,
+  "proxy_series": 3106,
+  "independent_likelihood_cases": 22,
+  "independent_likelihood_max_abs_error": 4.547473508864641e-13,
+  "independent_fractional_moment_cases": 22,
+  "independent_fractional_moment_max_abs_error": 2.831068712794149e-13,
+  "fixed_nu_optimizer_attempts": 11935,
+  "unsuccessful_start_attempts": 0,
+  "free_nu_reference_repairs": 3,
+  "finite_moment_max": 0.9999990000000012,
+  "price_and_saved_return_inputs_match": true,
+  "matrices": {
+    "null": {
+      "adjustment": [
+        [
+          -0.0,
+          0.0
+        ],
+        [
+          0.0,
+          -0.0
+        ]
+      ],
+      "short_run": [
+        [
+          0.030371485236974884,
+          0.0
+        ],
+        [
+          0.0,
+          0.030371485236974884
+        ]
+      ],
+      "companion_roots": [
+        0.030371485236974884,
+        0.030371485236974884,
+        1.0,
+        1.0
+      ]
+    },
+    "alternative": {
+      "adjustment": [
+        [
+          -0.003433897516262571,
+          0.003433897516262571
+        ],
+        [
+          0.003433897516262571,
+          -0.003433897516262571
+        ]
+      ],
+      "short_run": [
+        [
+          0.03026392593345549,
+          0.00010755930351939204
+        ],
+        [
+          0.00010755930351939204,
+          0.03026392593345549
+        ]
+      ],
+      "companion_roots": [
+        0.03037148523697486,
+        0.0303714852369749,
+        0.9929170863604366,
+        1.0000000000000004
+      ]
+    }
+  },
+  "innovation_covariance": [
+    [
+      0.9990775728845002,
+      0.38203072125786686
+    ],
+    [
+      0.38203072125786686,
+      0.9990775728845002
+    ]
+  ],
+  "deterministic_recursion_test": "two-period fixed-shock fixture; no random draw",
+  "random_simulations": false,
+  "EG_DH_retests": false,
+  "finite_sample_error_control": "not_evaluated",
+  "out_of_sample_fit": "not_evaluated"
+}

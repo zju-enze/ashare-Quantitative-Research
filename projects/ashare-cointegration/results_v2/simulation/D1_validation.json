@@ -1,0 +1,16 @@
+{
+  "status": "passed_engineering_and_summary_reconciliation",
+  "checked_at": "2026-10-19T22:32:18.452001+08:00",
+  "panels": 1500,
+  "pair_rows": 270000,
+  "stock_audits": 60000,
+  "underflow": 0,
+  "ungated_numerically_ineligible": 0,
+  "unit_tests_passed": 29,
+  "verification": "all pair identities, known truth, ADF gates, independent Holm, metrics, CP binomial tails and summaries",
+  "DH_or_ADF_recomputed": false,
+  "formal_calibration": "not_run",
+  "market_test": "not_run",
+  "remote_used": false,
+  "statistical_acceptance": "not_assessed_development_only"
+}

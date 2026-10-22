@@ -1,0 +1,9 @@
+{
+  "status": "passed",
+  "started_at": "2026-10-20T13:47:41.5711702+08:00",
+  "completed_at": "2026-10-20T13:47:44.2125793+08:00",
+  "tests": 5,
+  "exit_code": 0,
+  "log": "results_v2/MARKET_NOMINAL_TESTS.txt",
+  "scope": "Explicit inconclusive C3 nominal mode, default gate and complete-family outputs"
+}

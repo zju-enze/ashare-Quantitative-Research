@@ -1,0 +1,24 @@
+{
+  "numerical_pairs": 23,
+  "reasons": {
+    "recursive_regression_rank_deficient": 23
+  },
+  "prefix_audit": [
+    {
+      "B": "600611.SH",
+      "affected_pairs": 16,
+      "first_changed_index": 3,
+      "prefix3_flat": true,
+      "required_prefix_denominator": 0.003912098781179134,
+      "used_prefixes_all_identified": true
+    },
+    {
+      "B": "601998.SH",
+      "affected_pairs": 7,
+      "first_changed_index": 4,
+      "prefix3_flat": true,
+      "required_prefix_denominator": 0.0005808686224490058,
+      "used_prefixes_all_identified": true
+    }
+  ]
+}

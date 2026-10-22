@@ -1,0 +1,20 @@
+{
+  "status": "passed_engineering_and_summary_reconciliation",
+  "checked_at": "2026-10-20T11:10:22.015280+08:00",
+  "panels": 2500,
+  "pair_rows": 4350000,
+  "stock_audits": 300000,
+  "underflow": 0,
+  "ungated_numerically_ineligible": 0,
+  "unit_tests_passed": 44,
+  "mixed_alternative_pairs_per_panel": 528,
+  "verification": "all pair identities, known truth, ADF gates, independent Holm, metrics, CP binomial tails and summaries",
+  "DH_or_ADF_recomputed": false,
+  "formal_calibration": "C1_C2_complete_C3_not_run",
+  "market_test": "not_run",
+  "pilot_checkpoints_unchanged": 20,
+  "method_freeze_precedes_all_stage_invocations": true,
+  "remote_used": false,
+  "statistical_acceptance": "tolerated_pass",
+  "overall_protocol_acceptance": "incomplete_C3_not_run"
+}
