@@ -8,6 +8,7 @@ A repository for reproducible quantitative finance research. Each study has a de
 |---|---|---|---|
 | **A-share value-signal robustness** | How robust is value-signal evidence after correcting measurement and changing the inferential framework? | Executed notebook, aggregate results, figures, and a local execution record are available. | [Study overview](VALUE_SIGNAL_RESEARCH.md) |
 | **A-share industry cointegration** | Which predefined within-industry A-share pairs have cointegration evidence, under which tests and multiple-testing corrections? | The common-DGP method-validation experiment is complete. Reports now connect false positives and missed relationships to the stock-pair identification objective; a market evidence list under the revised design has not yet been produced. Earlier experiments are archived; V3 remains paused. | [Project overview](projects/ashare-cointegration/README.md) |
+| **单因子测试报告** | How does a selected factor relate to subsequent returns, and how stable is that evidence across samples and test specifications? | Initialized; factor definition, sample, and test specifications are pending. No tests have been executed. | [Project overview](projects/单因子测试报告/README.md) |
 
 ## A-share value-signal robustness
 
