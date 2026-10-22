@@ -1,6 +1,19 @@
 # 历史材料归档
 
-当前结论以[综合最终结果](../results_final/README.md)、[V1最终报告](../results_final/V1_FINAL_REPORT.md)和[V2最终报告](../results_final/V2_FINAL_REPORT.md)为准。现行设计依据是[V1/V2联合修订计划](../EXPERIMENT_REVISION_PLAN_V1_V2.md)，V3继续暂停。归档中的执行提示词不构成新的运行授权。
+当前结论以[共同DGP正式结果](../results_final/README.md)、[V1最终报告](../results_final/V1_FINAL_REPORT.md)和[V2最终报告](../results_final/V2_FINAL_REPORT.md)为准。现行设计依据是[V1/V2联合修订计划](../EXPERIMENT_REVISION_PLAN_V1_V2.md)，V3继续暂停。归档中的执行提示词不构成新的运行授权。
+
+## 原设计实验：独立归档，不纳入正式报告
+
+正式报告仅采用共同DGP、对数价格、固定1阶主比较的设计。以下材料完整保留历史结论，作为已归档实验的复现工作副本；其原位路径不表示仍属于正式报告。
+
+|历史材料|计划与结果入口|
+|---|---|
+|原V1价格水平、逐股预检与L2校正设计|[原计划](../EXPERIMENT_PLAN.md)、[原市场报告](../results/STAGE1_REPORT.md)、[原校准报告](../results/CALIBRATION_REPORT.md)、[原完成记录](../results/STAGE1_COMPLETION.json)|
+|原V2价格水平、7阶与全局校正设计|[原计划](../EXPERIMENT_PLAN_V2.md)、[原市场报告](../results_v2/STAGE1_REPORT_V2.md)、[原校准报告](../results_v2/CALIBRATION_REPORT_V2.md)、[原完成记录](../results_v2/STAGE1_COMPLETION_V2.json)|
+|DH开发实验|[开发记录](../DH_DEVELOPMENT.md)、[开发结果](../results_dh_dev/20261019T200814/DH_DEVELOPMENT_REPORT.md)|
+|已被替代的混合版综合报告|[4文件原文ZIP](combined_reports_superseded_20261022.zip)，对应Git提交23aae47中的results_final/|
+
+原设计的完整公开实验输出已在下方159文件日期归档中保存。混合版报告的4文件ZIP在重新改写前创建，逐文件内容比较一致；不再作为当前报告使用。
 
 ## 2026-10-22：旧结果与报告完整快照
 

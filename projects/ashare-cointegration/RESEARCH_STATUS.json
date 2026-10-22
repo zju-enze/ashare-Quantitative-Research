@@ -646,9 +646,9 @@
   },
   "research_direction": {
     "recorded_date": "2026-10-21",
-    "engineering_change": "ENG-020",
-    "status": "V1R_V2R_pair_supplement_complete",
-    "focus": "V1_EG_and_V2_DH_results_and_workflow_review",
+    "engineering_change": "ENG-022",
+    "status": "V1_V2_revised_pair_design_formal_reports_complete",
+    "focus": "V1_EG_and_V2_DH_common_DGP_formal_experiment",
     "objective": "识别具有可靠对数价格协整证据的股票对",
     "agreed_direction": {
       "price_input": "log_adjusted_prices_for_both_methods",
@@ -856,7 +856,8 @@
           "DH-fixed-7": 0.0706
         }
       }
-    }
+    },
+    "current_report_design": "empirical-pair-dgp-1; log prices; no stock ADF gate; fixed 1 lag primary; AIC/7 lag sensitivity"
   },
   "v3": {
     "version": "3.1-draft",
@@ -878,8 +879,8 @@
   },
   "final_delivery": {
     "date": "2026-10-22",
-    "engineering_change": "ENG-021",
-    "status": "reports_complete_and_historical_outputs_archived",
+    "engineering_change": "ENG-022",
+    "status": "revised_design_only_formal_reports_complete",
     "overview": "results_final/README.md",
     "V1_report": "results_final/V1_FINAL_REPORT.md",
     "V2_report": "results_final/V2_FINAL_REPORT.md",
@@ -894,12 +895,19 @@
     "publication_target": "origin/research/cointegration-stage1",
     "server_sync_requested": false,
     "validation": {
-      "machine_summary_rows_matched": 32,
+      "status": "passed",
+      "summary_rows_matched": 32,
       "paired_rows_matched": 16,
       "method_report_cells_matched": 16,
-      "historical_output_files_preserved": 147,
-      "local_links_resolved": 259,
+      "DGP_parameter_table_matched": true,
+      "local_links_resolved": 111,
+      "legacy_results_excluded_from_formal_reports": true,
+      "statistical_code_and_output_files_changed": false,
       "new_statistical_runs": 0
-    }
+    },
+    "formal_report_scope": "shared_pair_DGP_experiment_only",
+    "legacy_design_in_formal_reports": false,
+    "superseded_combined_reports": "archive/combined_reports_superseded_20261022.zip",
+    "historical_experiment_index": "archive/README.md"
   }
 }
