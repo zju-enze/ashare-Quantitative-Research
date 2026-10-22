@@ -6,7 +6,8 @@
   "reports": {
     "overview": "README.md",
     "V1": "V1_FINAL_REPORT.md",
-    "V2": "V2_FINAL_REPORT.md"
+    "V2": "V2_FINAL_REPORT.md",
+    "methods_and_glossary": "METHODS_AND_GLOSSARY.md"
   },
   "design": {
     "dgp": "empirical-pair-dgp-1",
@@ -840,5 +841,26 @@
     "No real-market pair discovery results under this design",
     "No holdout or trading evaluation"
   ],
-  "archive_index": "archive/README.md"
+  "archive_index": "archive/README.md",
+  "research_question": "在预先限定的A股同业股票对中，哪些配对具有协整证据；检验、多重校正、适用范围和限制是什么？",
+  "experiment_role": "验证用于股票对识别的EG/DH检验的误报与检出能力；方法比较服务于协整证据识别",
+  "research_progress": {
+    "data_and_candidates_available": true,
+    "formation_period": "2021-2025",
+    "target_stock_count": 2984,
+    "target_candidate_pairs": 67678,
+    "target_counts_are_current_method_market_test_counts": false,
+    "data_contract": "DATA_CONTRACT.md",
+    "pair_method_simulation": "complete",
+    "revised_full_family_calibration": "not_completed",
+    "revised_market_pair_identification": "not_executed",
+    "revised_stock_pair_evidence_list": "not_generated",
+    "main_research_question_fully_answered": false,
+    "trading_evaluation": "not_executed"
+  },
+  "presentation_terms": {
+    "type_I_error": "误报率（第一类错误率）",
+    "power": "检出率（功效）",
+    "mcse": "模拟标准误"
+  }
 }

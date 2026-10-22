@@ -7,7 +7,7 @@ A repository for reproducible quantitative finance research. Each study has a de
 | Project | Research question | Current status | Start here |
 |---|---|---|---|
 | **A-share value-signal robustness** | How robust is value-signal evidence after correcting measurement and changing the inferential framework? | Executed notebook, aggregate results, figures, and a local execution record are available. | [Study overview](VALUE_SIGNAL_RESEARCH.md) |
-| **A-share industry cointegration** | How do EG and DH compare on size and slow-reversion power under a common market-calibrated log-price DGP? | Formal V1/V2 reports use the completed 20,000-path / 80,000-test common-DGP design only. Earlier designs and experiments are archived; V3 remains paused. | [Project overview](projects/ashare-cointegration/README.md) |
+| **A-share industry cointegration** | Which predefined within-industry A-share pairs have cointegration evidence, under which tests and multiple-testing corrections? | The common-DGP method-validation experiment is complete. Reports now connect false positives and missed relationships to the stock-pair identification objective; a market evidence list under the revised design has not yet been produced. Earlier experiments are archived; V3 remains paused. | [Project overview](projects/ashare-cointegration/README.md) |
 
 ## A-share value-signal robustness
 
@@ -38,13 +38,15 @@ The root-level `requirements.txt`, `run_research.py`, `src/`, `tests/`, `noteboo
 
 ## A-share industry cointegration
 
-The formal V1/V2 study uses a common, empirically calibrated two-stock log-price DGP. V1 is Engle–Granger and V2 is the DH joint bivariate test, both with one fixed lag in the primary comparison. The methods receive the same paths without a stock-level ADF entry gate; EG retains its residual ADF. EG-AIC and DH with seven lags are lag-sensitivity specifications.
+The research question is which predefined within-industry stock pairs have cointegration evidence, how that evidence is obtained and corrected for multiple testing, and where it applies. The intended output is a traceable stock-pair evidence list. Portfolio construction, out-of-sample trading and costs belong to later stages.
 
-Four predeclared scenarios have 5,000 independent paths each, for 20,000 paths and 80,000 tests. Under the main DGP, fixed-one-lag EG/DH type-I error rates are 5.54%/5.06% and slow-reversion power is 16.28%/8.56%. Under the specific-innovation nu=3.5 comparison, their type-I error rates are 6.78%/4.62%. These are conditional pairwise results, with pointwise uncertainty and paired differences reported.
+The present V1/EG and V2/DH experiments validate tools for that identification task. A common two-stock log-price DGP supplies known cointegration truth, so false-positive rates and detection power can be measured. Both primary specifications use one fixed lag; EG-AIC and DH-7 are lag-sensitivity checks.
 
-Read the [formal results](projects/ashare-cointegration/results_final/README.md), [V1 report](projects/ashare-cointegration/results_final/V1_FINAL_REPORT.md), [V2 report](projects/ashare-cointegration/results_final/V2_FINAL_REPORT.md), and [machine-readable results](projects/ashare-cointegration/results_final/FINAL_RESULTS.json). Supporting evidence includes the [DGP estimation](projects/ashare-cointegration/results_review/dgp_fixed_nu_2021_2025/REPORT.md), [executed design](projects/ashare-cointegration/EXPERIMENT_REVISION_PLAN_V1_V2.md), and [recorded validation](projects/ashare-cointegration/results_revision/pair_comparison/formal_validation.json).
+The completed experiment has 20,000 shared paths and 80,000 tests. Under the main DGP, EG/DH false-positive rates are 5.54%/5.06% and slow-reversion detection rates are 16.28%/8.56%. The heavy-tail comparison exposes additional false-positive risk for EG. These findings inform how a future stock-pair list should be constructed and interpreted; they do not themselves identify actual market pairs.
 
-Earlier designs, market experiments and calibration results are retained in the [historical archive](projects/ashare-cointegration/archive/README.md), outside the formal reports. Their stable paths remain as reproduction working copies. The current design has not been extended to a full overlapping-stock family calibration, real-market pair identification, holdout evaluation or trading work. V3 remains paused.
+The [research report](projects/ashare-cointegration/results_final/README.md), [V1 report](projects/ashare-cointegration/results_final/V1_FINAL_REPORT.md) and [V2 report](projects/ashare-cointegration/results_final/V2_FINAL_REPORT.md) now lead with the identification question, explain terminology at first use, and interpret results in terms of false discoveries and missed relationships. The [methods and glossary appendix](projects/ashare-cointegration/results_final/METHODS_AND_GLOSSARY.md) preserves formulas, parameters and complete sensitivity evidence.
+
+The revised design still needs a coherent overlapping-stock family calibration, a specified correction domain and real-market testing before a new evidence list can be produced. [Machine-readable status](projects/ashare-cointegration/results_final/FINAL_RESULTS.json) makes this distinction explicit. Earlier designs remain in the [historical archive](projects/ashare-cointegration/archive/README.md); V3 remains paused.
 
 ## Repository organization
 
