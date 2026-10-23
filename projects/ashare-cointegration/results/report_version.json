@@ -1,0 +1,10 @@
+{
+  "statistical_source_commit": "1f3ef9da4b411d5084f3d01319f8a638ac948b70",
+  "report_source_commit": "a7c3424c4757b19fe47c4fa8db4409fa27a94779",
+  "report_generated_at": "2026-10-19T08:03:31.752132+00:00",
+  "statistics_changed": false,
+  "excluded_nonordinary_industry_display": "UNKNOWN",
+  "report_source_working_tree_change": "One calibration_note assignment in run_stage1.py, included with final delivery commit",
+  "calibration_status": "complete_with_predeclared_alarm_failures",
+  "calibration_summary_mcse_corrected": true
+}

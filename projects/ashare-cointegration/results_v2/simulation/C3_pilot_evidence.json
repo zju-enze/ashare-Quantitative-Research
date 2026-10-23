@@ -1,0 +1,63 @@
+{
+  "stage": "C3",
+  "panels": 10,
+  "workers": 8,
+  "elapsed_seconds": 183.23356649999914,
+  "mean_panel_seconds": 100.50697661000012,
+  "cpu_seconds": 987.046875,
+  "numerical_count": 0,
+  "underflow_count": 0,
+  "checks_scope": "engineering and timing only; retained in formal C3",
+  "checkpoints": [
+    {
+      "path": ".local\\dh_v2\\simulation\\C3\\N0\\50000.json",
+      "mtime_ns": 1792466033823492600,
+      "bytes": 841
+    },
+    {
+      "path": ".local\\dh_v2\\simulation\\C3\\N5\\50000.json",
+      "mtime_ns": 1792466035532471300,
+      "bytes": 838
+    },
+    {
+      "path": ".local\\dh_v2\\simulation\\C3\\N6\\50000.json",
+      "mtime_ns": 1792466037452502000,
+      "bytes": 841
+    },
+    {
+      "path": ".local\\dh_v2\\simulation\\C3\\N7\\50000.json",
+      "mtime_ns": 1792466035418138700,
+      "bytes": 840
+    },
+    {
+      "path": ".local\\dh_v2\\simulation\\C3\\M1\\50000.json",
+      "mtime_ns": 1792466036083707500,
+      "bytes": 874
+    },
+    {
+      "path": ".local\\dh_v2\\simulation\\C3\\N0\\50001.json",
+      "mtime_ns": 1792466034474751700,
+      "bytes": 839
+    },
+    {
+      "path": ".local\\dh_v2\\simulation\\C3\\N5\\50001.json",
+      "mtime_ns": 1792466036262958600,
+      "bytes": 840
+    },
+    {
+      "path": ".local\\dh_v2\\simulation\\C3\\N6\\50001.json",
+      "mtime_ns": 1792466037455502400,
+      "bytes": 842
+    },
+    {
+      "path": ".local\\dh_v2\\simulation\\C3\\N7\\50001.json",
+      "mtime_ns": 1792466109044064300,
+      "bytes": 839
+    },
+    {
+      "path": ".local\\dh_v2\\simulation\\C3\\M1\\50001.json",
+      "mtime_ns": 1792466109186936400,
+      "bytes": 875
+    }
+  ]
+}

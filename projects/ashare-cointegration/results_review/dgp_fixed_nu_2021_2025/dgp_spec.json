@@ -1,0 +1,67 @@
+{
+  "version": "empirical-pair-dgp-1",
+  "calibrated_at": "2026-10-21T20:00:17.991568+08:00",
+  "data_period": "2021-2025",
+  "estimation_observations": 1210,
+  "price_observations": 1212,
+  "scope": "known-rank two-stock system",
+  "price_input": "log_adjusted_price",
+  "deterministic_drift": 0.0,
+  "rho": 0.030371485236974884,
+  "phi_alternative": 0.9929170863604361,
+  "return_scale": 0.02849551587244442,
+  "innovation_variance_shares": {
+    "market": 0.2536799981177547,
+    "industry": 0.1287034439956357,
+    "specific": 0.6176165578866096
+  },
+  "drivers": {
+    "market": {
+      "kind": "market_proxy",
+      "nu": 6.0,
+      "alpha": 0.17764920848221846,
+      "beta": 0.7300390378895723,
+      "omega": 0.09231175362820931,
+      "moment_4_1": 0.9963339776941854,
+      "series": 1,
+      "average_negative_loglikelihood": 1.265281164270422,
+      "iterations": 9
+    },
+    "industry": {
+      "kind": "industry_proxy",
+      "nu": 7.0,
+      "alpha": 0.09296684784306086,
+      "beta": 0.8663012605539833,
+      "omega": 0.04073189160295587,
+      "moment_4_1": 0.9561427503020327,
+      "series": 121,
+      "average_negative_loglikelihood": 1.3463585377961902,
+      "iterations": 9
+    },
+    "specific": {
+      "kind": "specific_proxy",
+      "nu": 4.5,
+      "alpha": 0.07118486437768626,
+      "beta": 0.8841063249126537,
+      "omega": 0.04470881070966004,
+      "moment_4_1": 0.9999990000000002,
+      "series": 2984,
+      "average_negative_loglikelihood": 1.2101788168748722,
+      "iterations": 10
+    }
+  },
+  "heavy_tail_specific_nu": 3.5,
+  "initialization_burn_in": 2000,
+  "finite_moment_order": 4.1,
+  "finite_moment_limit": 0.999999,
+  "simulations_run": false,
+  "assumptions": [
+    "Common short-run AR coefficient estimated from standardized stock returns gives a closed two-equation system.",
+    "Variance components match average within- and cross-industry innovation covariances; homogeneous loadings are a modeling restriction.",
+    "Alternative phi is the unfiltered median persistence of standardized within-industry log-price spreads; it does not identify real cointegration.",
+    "Pooled volatility shape is a composite-likelihood reference, not a claim of independent cross-sectional observations.",
+    "Zero drift and the known cointegration rank are imposed research-design restrictions.",
+    "The heavy-tail comparison keeps all parameters except specific nu unchanged and does not satisfy the DH moment assumption.",
+    "This pair DGP does not replicate the full overlapping-stock candidate graph."
+  ]
+}

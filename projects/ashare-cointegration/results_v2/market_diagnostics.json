@@ -1,0 +1,16 @@
+{
+  "min_raw_p": 9.155244566220757e-05,
+  "min_GLOBAL_Holm_p": 1,
+  "min_L2_Holm_p": 0.0678834693925211,
+  "raw_p_below_005": 1141,
+  "max_Q": 18.597197146499273,
+  "T": 28443,
+  "C": 39235,
+  "valid_T": 16701,
+  "valid_C": 25420,
+  "run_id": "formation-2021-2025-v2__dh-v2.1__used-prefix",
+  "generated_at": "2026-10-20T14:30:41.742378+08:00",
+  "stocks_I1_compatible": 2335,
+  "global_first_threshold": 7.387925175093827e-07,
+  "evidence_scope": "nominal_calibration_inconclusive"
+}

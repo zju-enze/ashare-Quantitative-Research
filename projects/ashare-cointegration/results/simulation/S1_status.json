@@ -1,0 +1,12 @@
+{
+  "stage": "S1",
+  "status": "complete",
+  "completed": 16000,
+  "planned": 16000,
+  "repeats_per_scenario": 1000,
+  "workers": 8,
+  "updated_at": "2026-10-18T12:07:54.361337+00:00",
+  "recovered_from_checkpoints": true,
+  "engineering_change": "ENG-005",
+  "recovery_note": "All 16000 metric and pair checkpoints exist; metric family/repetition coverage verified; summary regenerated once without recomputation."
+}

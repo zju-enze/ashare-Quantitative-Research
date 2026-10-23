@@ -1,0 +1,64 @@
+{
+  "sampled_at": "2026-10-20T11:13:29.8067711+08:00",
+  "completed_panels": 0,
+  "configured_workers": 8,
+  "processes": [
+    {
+      "pid": 2404,
+      "name": "python3.11",
+      "cpu_seconds": 80.859375,
+      "working_set_mib": 331.35
+    },
+    {
+      "pid": 8744,
+      "name": "python3.11",
+      "cpu_seconds": 81.59375,
+      "working_set_mib": 344.07
+    },
+    {
+      "pid": 12104,
+      "name": "python3.11",
+      "cpu_seconds": 2.140625,
+      "working_set_mib": 224.79
+    },
+    {
+      "pid": 16460,
+      "name": "python3.11",
+      "cpu_seconds": 81.140625,
+      "working_set_mib": 318.73
+    },
+    {
+      "pid": 18756,
+      "name": "python3.11",
+      "cpu_seconds": 81.140625,
+      "working_set_mib": 335.6
+    },
+    {
+      "pid": 33212,
+      "name": "python3.11",
+      "cpu_seconds": 81.09375,
+      "working_set_mib": 344.04
+    },
+    {
+      "pid": 40520,
+      "name": "python3.11",
+      "cpu_seconds": 81.03125,
+      "working_set_mib": 330.11
+    },
+    {
+      "pid": 44056,
+      "name": "python3.11",
+      "cpu_seconds": 81.109375,
+      "working_set_mib": 327.46
+    },
+    {
+      "pid": 47300,
+      "name": "python3.11",
+      "cpu_seconds": 81.3125,
+      "working_set_mib": 319.43
+    }
+  ],
+  "working_set_sum_mib": 2875.58,
+  "available_memory_gib": 14.48,
+  "scope": "One sample during the C3 pilot; not peak memory or instantaneous CPU utilization"
+}

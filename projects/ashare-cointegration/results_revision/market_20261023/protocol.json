@@ -1,0 +1,55 @@
+{
+  "version": "V1-V2-log-market-20261023-1",
+  "input_run_id": "formation-2021-2025-v2",
+  "formation": [
+    "2021-01-01",
+    "2025-12-31"
+  ],
+  "price_observations": 1212,
+  "stocks": 2984,
+  "candidates": 67678,
+  "price_input": "natural_log_of_frozen_adjusted_prices",
+  "direction": "frozen_A_on_B",
+  "methods": [
+    "EG-fixed-1",
+    "DH-fixed-1",
+    "EG-AIC",
+    "DH-fixed-7"
+  ],
+  "primary_methods": [
+    "EG-fixed-1",
+    "DH-fixed-1"
+  ],
+  "sensitivity_methods": [
+    "EG-AIC",
+    "DH-fixed-7"
+  ],
+  "stock_ADF_entry_gate": false,
+  "applicability_diagnostics": "ADF on each log price and its difference, diagnostic only",
+  "correction": {
+    "method": "Holm",
+    "alpha": 0.05,
+    "domains": [
+      "L2",
+      "GLOBAL"
+    ],
+    "same_domains_for_every_method": true,
+    "selected_primary_domain": null,
+    "unavailable_p": 1,
+    "full_families_retained": true
+  },
+  "evidence_scope": "nominal_discoveries_full_family_calibration_not_completed",
+  "calibration_completed": false,
+  "no_beta_half_life_or_future_return_filter": true,
+  "batch_pairs": 1000,
+  "independent_reference_candidate_positions": [
+    0,
+    9668,
+    19336,
+    29004,
+    38672,
+    48340,
+    58008,
+    67677
+  ]
+}

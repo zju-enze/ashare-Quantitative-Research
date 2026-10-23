@@ -1,0 +1,10 @@
+{
+  "status": "failed",
+  "started_at": "2026-10-20T09:38:12.090028+08:00",
+  "completed_at": "2026-10-20T09:38:17.856965+08:00",
+  "tests": 36,
+  "failures": 0,
+  "errors": 3,
+  "skipped": 0,
+  "log": "results_v2/F0_TESTS.txt"
+}

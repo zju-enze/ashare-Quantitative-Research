@@ -1,0 +1,49 @@
+{
+  "version": "V1R-V2R-pair-supplement-1",
+  "master_seed": 20261021,
+  "n_obs": 1212,
+  "dgp_version": "empirical-pair-dgp-1",
+  "stock_ADF_precheck": false,
+  "methods": [
+    "EG-fixed-1",
+    "DH-fixed-1",
+    "EG-AIC",
+    "DH-fixed-7"
+  ],
+  "scenarios": {
+    "PAIR_NULL": {
+      "cointegrated": false,
+      "heavy_tail": false
+    },
+    "PAIR_COINT": {
+      "cointegrated": true,
+      "heavy_tail": false
+    },
+    "HEAVY_NULL": {
+      "cointegrated": false,
+      "heavy_tail": true
+    },
+    "HEAVY_COINT": {
+      "cointegrated": true,
+      "heavy_tail": true
+    }
+  },
+  "phases": {
+    "engineering": {
+      "repetitions_per_scenario": 5,
+      "batch_size": 5,
+      "seed_stream": 20
+    },
+    "formal": {
+      "repetitions_per_scenario": 5000,
+      "batch_size": 100,
+      "seed_stream": 21
+    }
+  },
+  "primary_alpha": 0.05,
+  "auxiliary_alpha": 0.01,
+  "intervals": "pointwise two-sided 95% Clopper-Pearson",
+  "paired_mcse": "sample SD of paired rejection-indicator differences / sqrt(B)",
+  "formal_reuses_engineering_statistics": false,
+  "legacy_rows_in_new_denominators": 0
+}

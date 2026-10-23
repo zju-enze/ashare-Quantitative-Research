@@ -1,0 +1,13 @@
+{
+  "status": "passed",
+  "checked_at": "2026-10-19T07:58:08.918260+00:00",
+  "run": ".local\\production\\formation-2021-2025-v2",
+  "stocks": 2984,
+  "candidates": 67678,
+  "discoveries": 110,
+  "full_H_covered": true,
+  "all_L2_accounted": true,
+  "main_exactly_L2_Holm": true,
+  "stage2": "planned_deferred",
+  "stage3": "planned_deferred"
+}

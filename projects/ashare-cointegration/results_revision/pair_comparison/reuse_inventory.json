@@ -1,0 +1,72 @@
+{
+  "recorded_at": "2026-10-21T21:25:48.457255+08:00",
+  "artifacts": [
+    {
+      "label": "V1 completed evidence",
+      "path": "results/STAGE1_COMPLETION.json",
+      "action": "reuse_without_recalculation",
+      "bytes": 2769
+    },
+    {
+      "label": "V1 nominal market discoveries",
+      "path": "results/main_evidence.csv",
+      "action": "reuse_without_recalculation",
+      "bytes": 129014
+    },
+    {
+      "label": "V2 completed evidence",
+      "path": "results_v2/STAGE1_COMPLETION_V2.json",
+      "action": "reuse_without_recalculation",
+      "bytes": 4425
+    },
+    {
+      "label": "V2 nominal market discoveries",
+      "path": "results_v2/main_evidence.csv",
+      "action": "reuse_without_recalculation",
+      "bytes": 598
+    },
+    {
+      "label": "V1 S1 summary",
+      "path": "results/simulation/S1_summary.csv",
+      "action": "reuse_without_recalculation",
+      "bytes": 149726
+    },
+    {
+      "label": "V2 C1 summary",
+      "path": "results_v2/simulation/C1_summary.csv",
+      "action": "reuse_without_recalculation",
+      "bytes": 6557
+    },
+    {
+      "label": "V2 C2 summary",
+      "path": "results_v2/simulation/C2_summary.csv",
+      "action": "reuse_without_recalculation",
+      "bytes": 2684
+    },
+    {
+      "label": "V2 C3 summary",
+      "path": "results_v2/simulation/C3_summary.csv",
+      "action": "reuse_without_recalculation",
+      "bytes": 2599
+    },
+    {
+      "label": "calibrated DGP parameters",
+      "path": "results_review/dgp_fixed_nu_2021_2025/dgp_spec.json",
+      "action": "reuse_without_recalculation",
+      "bytes": 2629
+    }
+  ],
+  "reused_kernels": [
+    "src/engine.py:eg_audit (AIC)",
+    "src/engine_dh_market.py:_audit_used_prefix (lags 1 and 7)"
+  ],
+  "new_work": [
+    "EG fixed-lag adapter",
+    "four-scenario paired supplementary simulation",
+    "summary and paired Monte Carlo comparison"
+  ],
+  "legacy_simulation_rows_eligible_for_new_scenarios": 0,
+  "reason": "Changed DGP, log-price input, stock-ADF gate and/or lag specification; retain historical evidence but do not mix incompatible repetitions.",
+  "DGP_refits_this_run": 0,
+  "market_retests_this_run": 0
+}

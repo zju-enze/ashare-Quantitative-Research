@@ -1,0 +1,8 @@
+{
+  "status": "passed",
+  "started_at": "2026-10-20T14:08:56.7143381+08:00",
+  "completed_at": "2026-10-20T14:08:59.3714996+08:00",
+  "tests": 7,
+  "exit_code": 0,
+  "log": "results_v2/MARKET_PREFIX_TESTS.txt"
+}

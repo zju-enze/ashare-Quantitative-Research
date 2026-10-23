@@ -1,0 +1,109 @@
+{
+  "status": "deployed_and_consistency_verified_S2_held",
+  "completed_at": "2026-10-18T20:01:55.620101+08:00",
+  "host_alias": "qzwx2026",
+  "workspace": "/home/qzwx2026/experiments/ashare-cointegration",
+  "project_directory": "/home/qzwx2026/experiments/ashare-cointegration/repo/projects/ashare-cointegration",
+  "python_executable": "/home/qzwx2026/experiments/ashare-cointegration/repo/projects/ashare-cointegration/.venv/bin/python",
+  "python_version": "3.11.9",
+  "runtime_prefix": "/home/qzwx2026/experiments/ashare-cointegration/python/cpython-3.11.9-linux-x86_64-gnu",
+  "venv_prefix": "/home/qzwx2026/experiments/ashare-cointegration/repo/projects/ashare-cointegration/.venv",
+  "validated_code_commit": "0bc14b310c106a6ec9f6a2da00b4c0636e63a323",
+  "source_delivery": "Git bundle over SSH; sparse checkout; origin retains original GitHub URL",
+  "dependency_delivery": "Pinned Linux wheels downloaded on Windows, transferred over SSH, installed offline in dedicated venv",
+  "locked_package_count": 25,
+  "locked_packages": {
+    "baostock": "0.9.4",
+    "contourpy": "1.3.3",
+    "cycler": "0.12.1",
+    "fonttools": "4.67.0",
+    "formulaic": "1.2.2",
+    "interface_meta": "2.0.1",
+    "kiwisolver": "1.5.1",
+    "matplotlib": "3.10.8",
+    "narwhals": "2.27.1",
+    "numpy": "2.4.6",
+    "packaging": "26.3",
+    "pandas": "2.3.3",
+    "patsy": "1.0.3",
+    "pillow": "13.0.0",
+    "pyarrow": "25.0.1",
+    "pyparsing": "3.3.3",
+    "python-dateutil": "2.9.0.post0",
+    "pytz": "2026.5",
+    "scipy": "1.17.1",
+    "six": "1.17.0",
+    "statsmodels": "0.15.0",
+    "typing_extensions": "4.16.0",
+    "tzdata": "2026.5",
+    "wrapt": "2.5.1",
+    "xlrd": "2.0.2"
+  },
+  "pip_check": "No broken requirements found",
+  "worker_count_verified": 1,
+  "blas": [
+    {
+      "package": "numpy",
+      "library": "libscipy_openblas64_-32a4b2a6.so",
+      "threads": 1
+    },
+    {
+      "package": "scipy",
+      "library": "libscipy_openblas-6cdc3b4a.so",
+      "threads": 1
+    }
+  ],
+  "build_configuration": "{\n  \"Compilers\": {\n    \"c\": {\n      \"name\": \"gcc\",\n      \"linker\": \"ld.bfd\",\n      \"version\": \"14.2.1\",\n      \"commands\": \"cc\"\n    },\n    \"cython\": {\n      \"name\": \"cython\",\n      \"linker\": \"cython\",\n      \"version\": \"3.2.4\",\n      \"commands\": \"cython\"\n    },\n    \"c++\": {\n      \"name\": \"gcc\",\n      \"linker\": \"ld.bfd\",\n      \"version\": \"14.2.1\",\n      \"commands\": \"c++\"\n    }\n  },\n  \"Machine Information\": {\n    \"host\": {\n      \"cpu\": \"x86_64\",\n      \"family\": \"x86_64\",\n      \"endian\": \"little\",\n      \"system\": \"linux\"\n    },\n    \"build\": {\n      \"cpu\": \"x86_64\",\n      \"family\": \"x86_64\",\n      \"endian\": \"little\",\n      \"system\": \"linux\"\n    }\n  },\n  \"Build Dependencies\": {\n    \"blas\": {\n      \"name\": \"scipy-openblas\",\n      \"found\": true,\n      \"version\": \"0.3.31.188.0\",\n      \"detection method\": \"pkgconfig\",\n      \"include directory\": \"/opt/_internal/cpython-3.11.14/lib/python3.11/site-packages/scipy_openblas64/include\",\n      \"lib directory\": \"/opt/_internal/cpython-3.11.14/lib/python3.11/site-packages/scipy_openblas64/lib\",\n      \"openblas configuration\": \"OpenBLAS 0.3.31.188.0  USE64BITINT DYNAMIC_ARCH NO_AFFINITY Haswell MAX_THREADS=64\",\n      \"pc file directory\": \"/project/.openblas\"\n    },\n    \"lapack\": {\n      \"name\": \"scipy-openblas\",\n      \"found\": true,\n      \"version\": \"0.3.31.188.0\",\n      \"detection method\": \"pkgconfig\",\n      \"include directory\": \"/opt/_internal/cpython-3.11.14/lib/python3.11/site-packages/scipy_openblas64/include\",\n      \"lib directory\": \"/opt/_internal/cpython-3.11.14/lib/python3.11/site-packages/scipy_openblas64/lib\",\n      \"openblas configuration\": \"OpenBLAS 0.3.31.188.0  USE64BITINT DYNAMIC_ARCH NO_AFFINITY Haswell MAX_THREADS=64\",\n      \"pc file directory\": \"/project/.openblas\"\n    }\n  },\n  \"Python Information\": {\n    \"path\": \"/tmp/build-env-gjolnpt6/bin/python\",\n    \"version\": \"3.11\"\n  },\n  \"SIMD Extensions\": {\n    \"baseline\": [\n      \"X86_V2\"\n    ],\n    \"found\": [\n      \"X86_V3\",\n      \"X86_V4\"\n    ],\n    \"not found\": [\n      \"AVX512_ICL\",\n      \"AVX512_SPR\"\n    ]\n  }\n}\n{\n  \"Compilers\": {\n    \"c\": {\n      \"name\": \"gcc\",\n      \"linker\": \"ld.bfd\",\n      \"version\": \"14.2.1\",\n      \"commands\": \"cc\"\n    },\n    \"cython\": {\n      \"name\": \"cython\",\n      \"linker\": \"cython\",\n      \"version\": \"3.2.4\",\n      \"commands\": \"cython\"\n    },\n    \"c++\": {\n      \"name\": \"gcc\",\n      \"linker\": \"ld.bfd\",\n      \"version\": \"14.2.1\",\n      \"commands\": \"c++\"\n    },\n    \"fortran\": {\n      \"name\": \"gcc\",\n      \"linker\": \"ld.bfd\",\n      \"version\": \"14.2.1\",\n      \"commands\": \"gfortran\"\n    },\n    \"pythran\": {\n      \"version\": \"0.18.1\",\n      \"include directory\": \"../../tmp/build-env-vm5wde73/lib/python3.11/site-packages/pythran\"\n    }\n  },\n  \"Machine Information\": {\n    \"host\": {\n      \"cpu\": \"x86_64\",\n      \"family\": \"x86_64\",\n      \"endian\": \"little\",\n      \"system\": \"linux\"\n    },\n    \"build\": {\n      \"cpu\": \"x86_64\",\n      \"family\": \"x86_64\",\n      \"endian\": \"little\",\n      \"system\": \"linux\"\n    },\n    \"cross-compiled\": false\n  },\n  \"Build Dependencies\": {\n    \"blas\": {\n      \"name\": \"scipy-openblas\",\n      \"found\": true,\n      \"version\": \"0.3.30\",\n      \"detection method\": \"pkgconfig\",\n      \"include directory\": \"/opt/_internal/cpython-3.11.13/lib/python3.11/site-packages/scipy_openblas32/include\",\n      \"lib directory\": \"/opt/_internal/cpython-3.11.13/lib/python3.11/site-packages/scipy_openblas32/lib\",\n      \"openblas configuration\": \"OpenBLAS 0.3.30 DYNAMIC_ARCH NO_AFFINITY Haswell MAX_THREADS=64\",\n      \"pc file directory\": \"/project/\",\n      \"has ilp64\": false\n    },\n    \"lapack\": {\n      \"name\": \"scipy-openblas\",\n      \"found\": true,\n      \"version\": \"0.3.30\",\n      \"detection method\": \"pkgconfig\",\n      \"include directory\": \"/opt/_internal/cpython-3.11.13/lib/python3.11/site-packages/scipy_openblas32/include\",\n      \"lib directory\": \"/opt/_internal/cpython-3.11.13/lib/python3.11/site-packages/scipy_openblas32/lib\",\n      \"openblas configuration\": \"OpenBLAS 0.3.30 DYNAMIC_ARCH NO_AFFINITY Haswell MAX_THREADS=64\",\n      \"pc file directory\": \"/project/\",\n      \"has ilp64\": false\n    },\n    \"pybind11\": {\n      \"name\": \"pybind11\",\n      \"version\": \"3.0.2\",\n      \"detection method\": \"config-tool\",\n      \"include directory\": \"unknown\"\n    }\n  },\n  \"Python Information\": {\n    \"path\": \"/tmp/build-env-vm5wde73/bin/python\",\n    \"version\": \"3.11\"\n  }\n}\n",
+  "cross_platform": {
+    "status": "passed",
+    "same_exact_synthetic_input_file": true,
+    "EG_max_absolute_difference": 1.7763568394002505e-15,
+    "p_max_absolute_difference": 6.661338147750939e-16,
+    "synthetic_discovery_ids_equal": true,
+    "checks": [
+      "actual coint versus production audit",
+      "ADF applicability and lag diagnostics",
+      "finite-tail and forced-zero provenance",
+      "single-worker versus serial results",
+      "complete family corrections and nonpositive beta retention",
+      "Parquet roundtrip"
+    ],
+    "formal_S2_panels_executed": 0
+  },
+  "additional_remote_tests": {
+    "passed": 6,
+    "scope": "selected engine/data/hold tests; no eight-worker or S2-DGP tests"
+  },
+  "QZWX_services": {
+    "unchanged_process_ids": [
+      1539,
+      70255,
+      3432056
+    ],
+    "start_times_unchanged": true,
+    "port_18867_still_listening": true,
+    "shared_environments_modified": false,
+    "global_shell_configuration_modified": false,
+    "new_python_shortcut_location": "/home/qzwx2026/experiments/ashare-cointegration/bin/python3.11"
+  },
+  "S2": {
+    "status": "held_by_user",
+    "completed": 0,
+    "planned": 2000,
+    "automatic_start": false,
+    "prepared_workers": 1,
+    "BLAS_threads_per_worker": 1,
+    "start_requirements": [
+      "explicit user release",
+      "sync final completed S1 status and summary from local execution"
+    ],
+    "future_command": "cd /home/qzwx2026/experiments/ashare-cointegration/repo/projects/ashare-cointegration && nice -n 10 .venv/bin/python run_simulation.py --stage S2 --workers 1"
+  },
+  "notes": [
+    "No market raw-price files uploaded",
+    "No S1/S2 formal calibration executed on remote during preparation",
+    "Remote S1 state shipped with the repository is an imported local snapshot, not a remote running job",
+    "Long-duration S2 performance has not been measured"
+  ],
+  "engineering_change": "ENG-004"
+}

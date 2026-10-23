@@ -1,0 +1,9 @@
+{
+  "completed_at": "2026-10-21T20:00:17.992081+08:00",
+  "seconds": 9.23257619999913,
+  "reference_refits": 3,
+  "pair_persistence_fits": 67678,
+  "pooled_component_fits": 3,
+  "simulations": false,
+  "EG_DH_retests": false
+}

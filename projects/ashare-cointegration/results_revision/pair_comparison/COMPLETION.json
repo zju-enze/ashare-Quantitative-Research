@@ -1,0 +1,53 @@
+{
+  "status": "complete_supplementary_pair_comparison",
+  "recorded_at": "2026-10-21T21:43:34.027285+08:00",
+  "formal_execution_completed_at": "2026-10-21T21:33:26.006445+08:00",
+  "formal_paths": 20000,
+  "formal_test_calls": 80000,
+  "engineering_paths": 20,
+  "engineering_test_calls": 80,
+  "formal_wall_seconds": 184.04893370000036,
+  "validation": "passed",
+  "numerical_unavailable": 0,
+  "zero_p_rows": 0,
+  "legacy_evidence_preserved": true,
+  "legacy_simulation_rows_mixed_into_new_statistics": 0,
+  "old_market_retests": 0,
+  "DGP_parameter_refits": 0,
+  "new_unit_tests_passed": 5,
+  "independently_checked_formal_paths": 4,
+  "primary_nominal_alpha": 0.05,
+  "rates_at_05": {
+    "PAIR_NULL": {
+      "EG-fixed-1": 0.0554,
+      "DH-fixed-1": 0.0506,
+      "EG-AIC": 0.0524,
+      "DH-fixed-7": 0.0466
+    },
+    "PAIR_COINT": {
+      "EG-fixed-1": 0.1628,
+      "DH-fixed-1": 0.0856,
+      "EG-AIC": 0.1614,
+      "DH-fixed-7": 0.0804
+    },
+    "HEAVY_NULL": {
+      "EG-fixed-1": 0.0678,
+      "DH-fixed-1": 0.0462,
+      "EG-AIC": 0.0662,
+      "DH-fixed-7": 0.0436
+    },
+    "HEAVY_COINT": {
+      "EG-fixed-1": 0.1648,
+      "DH-fixed-1": 0.0812,
+      "EG-AIC": 0.1538,
+      "DH-fixed-7": 0.0706
+    }
+  },
+  "statistical_acceptance": "No binary gate was predeclared; report size, power, uncertainty and scope.",
+  "remaining": [
+    "full overlapping-stock family calibration",
+    "market log-price reevaluation",
+    "2026 holdout or trading work"
+  ],
+  "report": "REPORT.md"
+}

@@ -1,0 +1,79 @@
+{
+  "captured_at": "2026-10-19T05:12:50.725533+00:00",
+  "local_count": 393,
+  "remote_count": 347,
+  "total_completed": 740,
+  "total_planned": 2000,
+  "local_status": {
+    "stage": "S2",
+    "role": "local",
+    "status": "running",
+    "planned": 1616,
+    "workers": 32,
+    "stop_at": "2026-10-19T17:45:00+08:00",
+    "engineering_change": "ENG-007",
+    "completed": 392,
+    "updated_at": "2026-10-19T05:12:43.967535+00:00"
+  },
+  "local_recent_per_minute": {
+    "5": 17.6,
+    "10": 17.0,
+    "15": 18.266666666666666
+  },
+  "local_per_scenario": {
+    "M1": {
+      "completed": 131,
+      "timed_panels": 30,
+      "mean_seconds": 135.600779,
+      "median_seconds": 139.93581805000008
+    },
+    "N5": {
+      "completed": 130,
+      "timed_panels": 30,
+      "mean_seconds": 133.6121187933333,
+      "median_seconds": 138.65374844999997
+    },
+    "N6": {
+      "completed": 132,
+      "timed_panels": 30,
+      "mean_seconds": 93.78227471999999,
+      "median_seconds": 94.5230037
+    }
+  },
+  "local_simple_eta_utc": "2026-10-19T06:24:47.196121+00:00",
+  "remote_status": {
+    "stage": "S2",
+    "role": "remote",
+    "status": "running",
+    "planned": 380,
+    "workers": 2,
+    "stop_at": null,
+    "engineering_change": "ENG-007",
+    "completed": 343,
+    "updated_at": "2026-10-19T05:11:40.832296+00:00"
+  },
+  "remote_snapshot_at": "2026-10-19T05:11:44.082905+00:00",
+  "remote_recent_panel_mean_seconds": 665.9057088297559,
+  "remote_throughput_per_hour": 10.812341604118515,
+  "remote_inflight_age_seconds": 1185.51402,
+  "remote_estimated_remaining_hours": 3.2573607231529125,
+  "remote_eta_utc": "2026-10-19T08:27:10.581508+00:00",
+  "method": "Local recent 5/10/15-minute checkpoint throughput. Remote last four panel durations, two workers, less inferred time already spent on the two in-flight panels.",
+  "limitations": [
+    "Local N1 has not yet been timed at 32 workers; scenario mix changes later.",
+    "Remote in-flight start times inferred from prior completion; not directly instrumented.",
+    "No exact runtime guarantee; transfer and combined summary are additional."
+  ],
+  "local_planning_finish_window_beijing": [
+    "2026-10-19T14:30:00+08:00",
+    "2026-10-19T15:00:00+08:00"
+  ],
+  "remote_compute_point_estimate_beijing": "2026-10-19T16:27:00+08:00",
+  "final_summary_planning_window_beijing": [
+    "2026-10-19T16:30:00+08:00",
+    "2026-10-19T17:00:00+08:00"
+  ],
+  "window_interpretation": "Planning allowance for scenario mix, workload variation, upload and final summary; not a statistical confidence interval.",
+  "execution_plan_unchanged": true,
+  "engineering_change": "ENG-007"
+}

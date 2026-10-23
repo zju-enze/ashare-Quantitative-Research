@@ -1,67 +1,53 @@
-# A-share Industry Cointegration
+# A 股同业协整研究
 
-**Current scope: Stage 1 — identification of cointegration evidence.**
+**主研究问题：在预先限定的A股同业股票对中，哪些配对具有协整证据？这些证据来自什么检验、经过什么多重校正，适用范围和限制是什么？**
 
-> Among predefined within-industry A-share stock pairs, which pairs show cointegration evidence under a fixed sample, model specification, and multiple-testing procedure?
+**2026-10-23第一阶段研究与交付已完成。** [最终实验报告](results_final/STAGE1_FINAL_REPORT.md)明确股票对、证据可信范围和六对后续探索建议。已完成67,678个候选、四规格合计270,712次检验及独立核对。 V1/EG固定1阶得到行业内Holm284对、全局Holm21对名义发现；V2/DH固定1阶分别11对和0对。两种口径事前并列固定，整体错误控制校准仍未完成。V3继续暂停。
 
-本项目当前回答“哪些预先限定的同业股票对具有协整证据、证据是什么、统计声明的范围是什么”。多空组合构建、样本外探索与交易验证属于后续阶段。
+[本次市场汇总与全部清单](results_revision/market_20261023/REPORT.md) · [EG行业内284对](results_revision/market_20261023/EG-fixed-1_L2_Holm.csv) · [EG全局21对](results_revision/market_20261023/EG-fixed-1_GLOBAL_Holm.csv) · [DH行业内11对](results_revision/market_20261023/DH-fixed-1_L2_Holm.csv)。
 
-## Current status
+## 正式交付
 
-The supplied v1.2 plan has passed independent design review with the execution clarifications recorded below. This directory currently contains the plan and implementation handoff. Production code, validated market-data inputs, completed Monte Carlo diagnostics, and empirical discoveries have not yet been added.
-
-Checks and local artifacts mentioned in the supplied plan retain their original provenance; those statements have not been independently reproduced in this repository. See [RESEARCH_STATUS.json](RESEARCH_STATUS.json).
-
-## Reading and implementation order
-
-| Document | Purpose |
+|入口|内容|
 |---|---|
-| [EXPERIMENT_PLAN.md](EXPERIMENT_PLAN.md) | Supplied v1.2 plan, preserved byte for byte. |
-| [REVIEW_AND_IMPLEMENTATION.md](REVIEW_AND_IMPLEMENTATION.md) | Independent review and binding clarifications for implementation. |
-| [CODEX_STAGE1_PROMPT.md](CODEX_STAGE1_PROMPT.md) | Handoff for implementing and executing Stage 1. |
-| [RESEARCH_STATUS.json](RESEARCH_STATUS.json) | Separate implementation, empirical-production, calibration, and later-stage states. |
+|[第一阶段最终实验报告](results_final/STAGE1_FINAL_REPORT.md)|阶段收尾、股票对发现、证据可信范围与六对后续研究建议|
+|[正式交付索引](results_final/README.md)|292对主发现证据总表、六对研究候选及方法分报告|
+|[V1 / EG 正式报告](results_final/V1_FINAL_REPORT.md)|EG如何寻找协整证据，误报与漏检怎样影响名单|
+|[V2 / DH 正式报告](results_final/V2_FINAL_REPORT.md)|DH为何用于识别，如何解释较少的检出|
+|[术语与方法附录](results_final/METHODS_AND_GLOSSARY.md)|术语解释、复现公式、参数与完整选阶对照|
+|[机器可读正式结果](results_final/FINAL_RESULTS.json)|本设计的模拟与市场统计、名义发现及未完成的全图校准标记|
+|[共同设计与执行记录](EXPERIMENT_REVISION_PLAN_V1_V2.md)|已经执行的方案、参数、随机设计、指标与运行范围|
+|[工程安排](ENGINEERING_CHANGES.md)|ENG-024全市场运行、结果和研究范围|
+|[研究状态](RESEARCH_STATUS.json)|当前正式报告状态和独立保留的历史执行记录|
 
-Read the plan and review together. Where the review explicitly clarifies the plan, use the clarified definition and record it in the executable protocol before production.
+## 当前方法验证与识别任务的关系
 
-## Stage 1 specification
+共同 DGP 为 empirical-pair-dgp-1：市场/行业/个股自由度 6/7/4.5，ρ≈0.03037，协整备择 φ≈0.99292。每条路径 1,212 个对数价格观测，预热 2,000 期。四情景分别为主 DGP 无协整/慢回复协整，以及只把个股 ν 改为 3.5 的两种厚尾对照。
 
-The identification period is **2021–2025**. Candidate pairs come from the documented eligible stock universe and SW2021 industry membership at the end of 2025.
+每情景 5,000 条独立路径，四情景共 20,000 条；每条路径同时用于 EG-1、DH-1、EG-AIC、DH-7，共 80,000 次检验。工程样本不进入正式统计。
 
-- Price-level Engle–Granger testing with a constant.
-- One fixed regression direction determined by stock-code order.
-- Specified I(1) applicability checks and AIC lag selection.
-- Complete candidate families fixed before applicability and pair testing.
-- **Holm correction within each L2 family at nominal 5%** as the primary discovery rule.
-- L3/L2/GLOBAL and BF/Holm/BH results as the specified comparison views.
+|5% 名义水平|V1 / EG 固定 1 阶|V2 / DH 固定 1 阶|
+|---|---:|---:|
+|主 DGP 误报率|5.54%|5.06%|
+|主 DGP 慢回复检出率|16.28%|8.56%|
+|个股 ν=3.5 误报率|6.78%|4.62%|
+|个股 ν=3.5 慢回复检出率|16.48%|8.12%|
 
-Beta's sign is an estimated property of the relationship, not a Stage 1 eligibility filter. The merged primary table is a summary of separately corrected L2 families; it does not inherit a single market-wide 5% FWER guarantee.
+误报率指没有协整却被判为有证据的比例；检出率（功效）指确有协整时被找出的比例。区间和同路径差异见正式报告。低误报与低检出可以并存，因此后续发现少不能直接解释为市场没有协整关系。
 
-## Required outputs
+真实候选已完成名义检验与清单交付。行业内主清单中EG有148对、DH有4对存在至少一股I(1)诊断警示；DH一阶另有43个数值占位，均保留完整家族。全图错误控制校准仍未完成，2026评价和交易验证未开展。
 
-1. Stock eligibility audit, industry mapping, and frozen complete candidate registry.
-2. Every candidate's test or explained terminal status, with applicability and numerical diagnostics.
-3. Complete multiple-testing results under the original family definitions.
-4. The full primary cointegration-evidence table, estimated equations, supporting statistics, and family labels.
-5. Statistical report, execution provenance, and separately labeled simulation diagnostics.
+## 参数、运行与来源
 
-Nonrejections, inapplicable correction domains, numerical exclusions, empty families, and zero discoveries remain visible in the record. Discoveries produced before the planned calibration finishes must disclose that status.
+- [自由度诊断](results_review/student_t_2021_2025/REPORT.md)：形成期数据上的参数依据。
+- [固定自由度、有限 4.1 阶矩 DGP](results_review/dgp_fixed_nu_2021_2025/REPORT.md)与[完整精度规格](results_review/dgp_fixed_nu_2021_2025/dgp_spec.json)。
+- [冻结运行协议](results_revision/pair_comparison/experiment_protocol.json)、[正式汇总](results_revision/pair_comparison/formal_summary.csv)、[同路径比较](results_revision/pair_comparison/formal_paired.csv)。
+- [运行入口](run_pair_comparison.py)、[完成记录](results_revision/pair_comparison/COMPLETION.json)及[独立核对](results_revision/pair_comparison/formal_validation.json)。
 
-## Interpretation and later stages
+本次新增市场计算，直接复用此前模拟与DGP参数；全部四规格共同调用约4分49秒，未重估参数或重跑模拟。原始数据及逐次检查点保持在受忽略的本地目录中。
 
-A discovery means rejection of the no-cointegration null under the specified sample, model, and correction rule, subject to the validity of the underlying p-values. It does not establish permanent equilibrium, future convergence, or profitability.
+## 历史实验归档
 
-| Stage | Research question | Status |
-|---|---|---|
-| 1 | Which predefined same-industry pairs have cointegration evidence? | Current implementation scope |
-| 2 | How can frozen relationships inform long–short construction and subsequent spread behavior? | Planned / deferred |
-| 3 | What remains after execution, borrowing, accounting, and trading costs? | Planned / deferred |
+原设计的计划、市场实验、校准结果与报告，以及已被替代的综合报告，统一从[历史归档索引](archive/README.md)访问，不纳入当前正式报告。旧结果的原路径作为复现工作副本保留，独立日期归档保存原文。
 
-Later-stage work is not required to deliver the Stage 1 statistical report. Stage 1 empirical production and its planned simulation calibration also have separate completion states.
-
-## Implementation and relationship to the existing study
-
-Keep this project's configuration, dependencies, source, tests, runtime entry points, and outputs in this directory. Document local input locations and schemas; keep licensed raw records and caches local.
-
-The [existing value-signal study](../../VALUE_SIGNAL_RESEARCH.md) uses a monthly analysis pipeline and a 2005–2024 sample boundary. Its presence does not establish validated 2021–2025 daily prices, adjustment factors, or historical industry membership for this project. Reuse requires a documented compatibility check.
-
-Production commands will be documented when implemented. Every run must identify the effective protocol, data versions, environment, and actual completion status. Return to the [repository overview](../../README.md).
+本轮沿用只同步 GitHub 的交付范围；计算服务器不受影响。V3 仍需用户明确要求恢复。

@@ -1,0 +1,7 @@
+{
+  "started_at": "2026-10-20T13:36:48.2690163+08:00",
+  "completed_at": "2026-10-20T13:37:42.1151610+08:00",
+  "exit_code": 0,
+  "log": "results_v2/simulation/C3_validation_exact.txt",
+  "change": "Exact frozen metadata comparison; original floating-point tolerance retained"
+}

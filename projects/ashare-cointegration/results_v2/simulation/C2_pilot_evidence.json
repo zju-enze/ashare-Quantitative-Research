@@ -1,0 +1,113 @@
+{
+  "stage": "C2",
+  "panels": 20,
+  "workers": 8,
+  "elapsed_seconds": 12.63119799999913,
+  "mean_panel_seconds": 3.373672519999991,
+  "cpu_seconds": 66.1875,
+  "numerical_count": 0,
+  "underflow_count": 0,
+  "checks_scope": "engineering and timing only; retained in formal C2",
+  "checkpoints": [
+    {
+      "path": ".local\\dh_v2\\simulation\\C2\\N0\\40000.json",
+      "mtime_ns": 1792464422551688800,
+      "bytes": 831
+    },
+    {
+      "path": ".local\\dh_v2\\simulation\\C2\\N5\\40000.json",
+      "mtime_ns": 1792464422949341000,
+      "bytes": 835
+    },
+    {
+      "path": ".local\\dh_v2\\simulation\\C2\\N6\\40000.json",
+      "mtime_ns": 1792464422920832600,
+      "bytes": 833
+    },
+    {
+      "path": ".local\\dh_v2\\simulation\\C2\\N7\\40000.json",
+      "mtime_ns": 1792464422974341700,
+      "bytes": 834
+    },
+    {
+      "path": ".local\\dh_v2\\simulation\\C2\\M1\\40000.json",
+      "mtime_ns": 1792464423153333100,
+      "bytes": 855
+    },
+    {
+      "path": ".local\\dh_v2\\simulation\\C2\\N0\\40001.json",
+      "mtime_ns": 1792464422985339200,
+      "bytes": 833
+    },
+    {
+      "path": ".local\\dh_v2\\simulation\\C2\\N5\\40001.json",
+      "mtime_ns": 1792464423179845300,
+      "bytes": 822
+    },
+    {
+      "path": ".local\\dh_v2\\simulation\\C2\\N6\\40001.json",
+      "mtime_ns": 1792464423150333300,
+      "bytes": 833
+    },
+    {
+      "path": ".local\\dh_v2\\simulation\\C2\\N7\\40001.json",
+      "mtime_ns": 1792464426189542200,
+      "bytes": 835
+    },
+    {
+      "path": ".local\\dh_v2\\simulation\\C2\\M1\\40001.json",
+      "mtime_ns": 1792464426487633400,
+      "bytes": 859
+    },
+    {
+      "path": ".local\\dh_v2\\simulation\\C2\\N0\\40002.json",
+      "mtime_ns": 1792464426601147600,
+      "bytes": 822
+    },
+    {
+      "path": ".local\\dh_v2\\simulation\\C2\\N5\\40002.json",
+      "mtime_ns": 1792464426583149700,
+      "bytes": 818
+    },
+    {
+      "path": ".local\\dh_v2\\simulation\\C2\\N6\\40002.json",
+      "mtime_ns": 1792464426602147500,
+      "bytes": 821
+    },
+    {
+      "path": ".local\\dh_v2\\simulation\\C2\\N7\\40002.json",
+      "mtime_ns": 1792464426657664700,
+      "bytes": 831
+    },
+    {
+      "path": ".local\\dh_v2\\simulation\\C2\\M1\\40002.json",
+      "mtime_ns": 1792464426777917200,
+      "bytes": 856
+    },
+    {
+      "path": ".local\\dh_v2\\simulation\\C2\\N0\\40003.json",
+      "mtime_ns": 1792464426786589000,
+      "bytes": 829
+    },
+    {
+      "path": ".local\\dh_v2\\simulation\\C2\\N5\\40003.json",
+      "mtime_ns": 1792464429041017300,
+      "bytes": 833
+    },
+    {
+      "path": ".local\\dh_v2\\simulation\\C2\\N6\\40003.json",
+      "mtime_ns": 1792464429323344500,
+      "bytes": 833
+    },
+    {
+      "path": ".local\\dh_v2\\simulation\\C2\\N7\\40003.json",
+      "mtime_ns": 1792464429388898500,
+      "bytes": 834
+    },
+    {
+      "path": ".local\\dh_v2\\simulation\\C2\\M1\\40003.json",
+      "mtime_ns": 1792464429364779800,
+      "bytes": 869
+    }
+  ]
+}

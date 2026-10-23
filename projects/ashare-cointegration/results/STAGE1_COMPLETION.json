@@ -1,0 +1,84 @@
+{
+  "status": "complete_with_calibration_warnings",
+  "execution_complete": true,
+  "completed_at": "2026-10-19T08:03:31.752132+00:00",
+  "stage": 1,
+  "market": {
+    "run_id": "formation-2021-2025-v2",
+    "stocks": 2984,
+    "candidates": 67678,
+    "discoveries": 110,
+    "T_discoveries": 57,
+    "C_discoveries": 53,
+    "nonpositive_beta_discoveries": 9,
+    "primary_rule": "fixed L2 Holm nominal 0.05"
+  },
+  "calibration": {
+    "status": "complete_with_predeclared_alarm_failures",
+    "panels": 18080,
+    "S0": 80,
+    "S1": 16000,
+    "S2": 2000,
+    "alarm_scenarios": {
+      "S0": [
+        "N1",
+        "N6"
+      ],
+      "S1": [
+        "N1",
+        "N5",
+        "N6",
+        "N7"
+      ],
+      "S2": [
+        "N1",
+        "N5",
+        "N6"
+      ]
+    },
+    "input_p_validity_or_unconditional_market_error_control_proven": false
+  },
+  "validation": {
+    "local_project_tests_passed": 16,
+    "additional_pipeline_test_passed": true,
+    "independent_market_acceptance": "passed",
+    "calibration_coverage": "passed",
+    "full_diagnostics": "complete",
+    "market_statistical_values_unchanged": true,
+    "calibration_point_estimates_and_alarm_decisions_unchanged": true,
+    "summary_only_correction": "Binary-indicator MCSE aligned to sqrt(r*(1-r)/B)"
+  },
+  "outputs": [
+    "experiment_protocol.json",
+    "requirements.lock.txt",
+    "DATA_CONTRACT.md",
+    "results/main_evidence.csv",
+    "results/STAGE1_REPORT.md",
+    "results/CALIBRATION_REPORT.md",
+    "results/families.csv",
+    "results/stock_flow.csv",
+    "results/view_overlap.csv",
+    "results/input_sources.json",
+    "results/independent_acceptance.json",
+    "results/float_coordinate_audit.json",
+    "results/simulation/final_acceptance.json",
+    "results/simulation/S0_summary.csv",
+    "results/simulation/S1_summary.csv",
+    "results/simulation/S2_summary.csv",
+    "results/simulation/increment_and_gate_diagnostics.csv",
+    "results/simulation/runtime_and_numerical_summary.csv",
+    "results/figures/calibration_fwer.png",
+    "results/figures/calibration_power.png"
+  ],
+  "private_complete_tables": ".local/production/formation-2021-2025-v2/",
+  "private_simulations": ".local/simulation/",
+  "remaining_stage1_execution_items": [],
+  "stage2": "planned_deferred",
+  "stage3": "planned_deferred",
+  "scientific_limitations": [
+    "Nominal discoveries only; no validated 5% actual or market-wide FWER guarantee",
+    "Current official history reconstruction is not an archived end-2025 industry snapshot",
+    "Source-covered surviving Shanghai/Shenzhen ordinary shares only; no Beijing coverage",
+    "No trading/profitability or real-2026 price evaluation"
+  ]
+}

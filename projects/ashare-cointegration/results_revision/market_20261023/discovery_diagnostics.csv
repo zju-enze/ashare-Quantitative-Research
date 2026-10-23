@@ -1,0 +1,9 @@
+method,domain,discoveries,both_I1_compatible,applicability_warning,nonpositive_OLS_beta,zero_p
+EG-fixed-1,GLOBAL,21,10,11,0,0
+EG-fixed-1,L2,284,136,148,10,0
+DH-fixed-1,GLOBAL,0,0,0,0,0
+DH-fixed-1,L2,11,7,4,1,0
+EG-AIC,GLOBAL,10,4,6,0,0
+EG-AIC,L2,162,64,98,7,0
+DH-fixed-7,GLOBAL,0,0,0,0,0
+DH-fixed-7,L2,7,5,2,1,0

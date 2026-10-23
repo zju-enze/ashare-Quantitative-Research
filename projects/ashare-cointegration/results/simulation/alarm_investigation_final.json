@@ -1,0 +1,67 @@
+{
+  "status": "sampled_rejections_match_real_coint",
+  "cases": [
+    {
+      "stage": "S1",
+      "scenario": "N5",
+      "repetition": 2,
+      "candidate_id": "S00000__S00002",
+      "saved_stat": -4.590201723832243,
+      "library_stat": -4.590201723832243,
+      "saved_p": 0.0008671801928989465,
+      "library_p": 0.0008671801928989465
+    },
+    {
+      "stage": "S1",
+      "scenario": "N6",
+      "repetition": 1,
+      "candidate_id": "S02005__S02006",
+      "saved_stat": -6.2316717940493405,
+      "library_stat": -6.2316717940493405,
+      "saved_p": 5.053120733293865e-07,
+      "library_p": 5.053120733293865e-07
+    },
+    {
+      "stage": "S1",
+      "scenario": "N7",
+      "repetition": 3,
+      "candidate_id": "S00002__S00009",
+      "saved_stat": -5.584897287951123,
+      "library_stat": -5.584897287951123,
+      "saved_p": 1.2066026543980512e-05,
+      "library_p": 1.2066026543980512e-05
+    },
+    {
+      "stage": "S2",
+      "scenario": "N1",
+      "repetition": 0,
+      "candidate_id": "S00000__S00013",
+      "saved_stat": -5.457618944780515,
+      "library_stat": -5.457618945325699,
+      "saved_p": 2.1790157467636942e-05,
+      "library_p": 2.179015741302449e-05
+    },
+    {
+      "stage": "S2",
+      "scenario": "N5",
+      "repetition": 2,
+      "candidate_id": "S02005__S02016",
+      "saved_stat": -5.138024004498423,
+      "library_stat": -5.138024004498423,
+      "saved_p": 9.105740325207173e-05,
+      "library_p": 9.105740325207173e-05
+    },
+    {
+      "stage": "S2",
+      "scenario": "N6",
+      "repetition": 0,
+      "candidate_id": "S00003__S00005",
+      "saved_stat": -5.403425975140757,
+      "library_stat": -5.403425975039987,
+      "saved_p": 2.7924186649799365e-05,
+      "library_p": 2.7924186662620923e-05
+    }
+  ],
+  "scope": "First saved valid false Holm rejection in each newly alarming stage/scenario; not an exhaustive proof.",
+  "conclusion": "No mismatch in sampled EG results. Retain all finite-sample calibration warnings; do not tune the market specification."
+}

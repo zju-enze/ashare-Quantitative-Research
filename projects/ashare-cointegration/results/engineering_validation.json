@@ -1,0 +1,26 @@
+{
+  "status": "passed",
+  "test_methods": 16,
+  "run_at": "2026-10-19T08:03:31.752132+00:00",
+  "command": ".venv/Scripts/python.exe -m unittest discover -s tests -v",
+  "coverage": [
+    "actual coint versus audited kernel including lag/nobs",
+    "nonfinite and collinear source outcomes",
+    "finite MacKinnon zero provenance",
+    "complete-family placeholders and primary identity",
+    "single/eight process equality",
+    "exact Decimal coordinate and seed/calendar cases",
+    "fixed simulation truth and normalization",
+    "full freeze/run/resume and negative-beta main discovery",
+    "ordinary A-share scope excludes actual 689009 depositary receipt"
+  ],
+  "historical_15_checks_reexecuted": false,
+  "additional_targeted_pipeline_check": "passed after adding per-row input/library/source versions",
+  "final_additional_checks": [
+    "updated report pipeline test passed",
+    "16,000 S1 and 2,000 S2 checkpoint coverage verified",
+    "18,080 saved pair tables read for final increment/gate diagnostics",
+    "six additional alarm cases matched actual coint",
+    "market main CSV unchanged except calibration metadata"
+  ]
+}

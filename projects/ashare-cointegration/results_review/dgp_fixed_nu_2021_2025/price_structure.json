@@ -1,0 +1,25 @@
+{
+  "rho": 0.030371485236974884,
+  "phi_alternative": 0.9929170863604361,
+  "stock_return_sd_median": 0.02849551587244442,
+  "innovation_variance_shares": {
+    "market": 0.2536799981177547,
+    "industry": 0.1287034439956357,
+    "specific": 0.6176165578866096
+  },
+  "within_pairs": 67678,
+  "cross_industry_pairs": 4382958,
+  "within_residual_correlation": 0.3823834421133904,
+  "cross_industry_residual_correlation": 0.2536799981177547,
+  "phi_quantiles": {
+    "0.1": 0.9825202550317701,
+    "0.25": 0.9883593549210741,
+    "0.5": 0.9929170863604361,
+    "0.75": 0.9959917251031782,
+    "0.9": 0.997848516608437
+  },
+  "phi_outside_stationary_interval": 891,
+  "price_error_note": "All predefined pairs; no EG/DH screen. Median persistence is a descriptive calibration target, not evidence that the real pairs cointegrate.",
+  "pair_normalization": "Each log price divided by its own sample log-return standard deviation; fixed hedge vector (1,-1) in these coordinates.",
+  "correlation_definition": "Average covariance divided by mean residual variance; a homogeneous pair correlation target, not the mean pairwise Pearson correlation."
+}

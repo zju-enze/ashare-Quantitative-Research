@@ -1,0 +1,7 @@
+{
+  "started_at": "2026-10-20T13:20:59.5013720+08:00",
+  "completed_at": "2026-10-20T13:21:20.5677128+08:00",
+  "exit_code": -1073741819,
+  "log": "results_v2/simulation/C3_validation_serial.txt",
+  "reader": "serial ParquetFile read and serial to_pandas"
+}

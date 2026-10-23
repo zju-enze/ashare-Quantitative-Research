@@ -1,0 +1,11 @@
+Pure Python masks 50/500
+Pure Python masks 100/500
+Pure Python masks 150/500
+Pure Python masks 200/500
+Pure Python masks 250/500
+Pure Python masks 300/500
+Pure Python masks 350/500
+Pure Python masks 400/500
+Pure Python masks 450/500
+Pure Python masks 500/500
+All 500 precheck masks reconcile in isolated standard-library Python.

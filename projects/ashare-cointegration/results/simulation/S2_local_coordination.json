@@ -1,0 +1,7 @@
+{
+  "role": "local",
+  "engineering_change": "ENG-008",
+  "status": "stopped_upload_coordinator_preserved_compute_batch",
+  "updated_at": "2026-10-19T05:20:01.600922+00:00",
+  "preserved_batch_pid": 7144
+}

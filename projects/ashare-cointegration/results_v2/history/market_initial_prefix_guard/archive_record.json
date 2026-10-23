@@ -1,0 +1,16 @@
+{
+  "archived_at": "2026-10-20T14:16:22.054625+08:00",
+  "original_raw_run": ".local/dh_v2/production/formation-2021-2025-v2__dh-v2.1",
+  "original_raw_run_preserved_in_place": true,
+  "files": [
+    "market_status.json",
+    "main_evidence.csv",
+    "v1_dh_comparison.csv",
+    "market_validation.json",
+    "market_validation_log.txt",
+    "market_validation_run.json",
+    "market_validation_typed_log.txt",
+    "market_validation_typed_run.json"
+  ],
+  "reason": "Preserve the initial nominal run before correcting the unused recursive-prefix guard"
+}

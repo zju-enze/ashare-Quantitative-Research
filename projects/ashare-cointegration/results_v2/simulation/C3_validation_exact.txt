@@ -1,0 +1,11 @@
+Verified 50/500 C3 panels
+Verified 100/500 C3 panels
+Verified 150/500 C3 panels
+Verified 200/500 C3 panels
+Verified 250/500 C3 panels
+Verified 300/500 C3 panels
+Verified 350/500 C3 panels
+Verified 400/500 C3 panels
+Verified 450/500 C3 panels
+Verified 500/500 C3 panels
+{"status": "passed_engineering_and_summary_reconciliation", "checked_at": "2026-10-20T13:37:41.992494+08:00", "panels": 500, "pair_rows": 33839000, "stock_audits": 1492000, "underflow": 0, "ungated_numerically_ineligible": 0, "unit_tests_passed": 44, "mixed_alternative_pairs_per_panel": 21469, "verification": "all pair identities, known truth, ADF gates, independent Holm, metrics, CP binomial tails and summaries", "DH_or_ADF_recomputed": false, "formal_calibration": "C1_C2_C3_complete", "market_test": "not_run", "pilot_checkpoints_unchanged": 10, "method_freeze_precedes_all_stage_invocations": true, "remote_used": false, "statistical_acceptance": "inconclusive", "overall_protocol_acceptance": "inconclusive"}

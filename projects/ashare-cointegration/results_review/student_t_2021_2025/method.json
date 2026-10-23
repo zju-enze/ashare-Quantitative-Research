@@ -1,0 +1,54 @@
+{
+  "created_at": "2026-10-21T18:52:29.399329+08:00",
+  "input_run": "formation-2021-2025-v2",
+  "price_dates": [
+    "2021-01-04",
+    "2025-12-31"
+  ],
+  "return_dates": [
+    "2021-01-05",
+    "2025-12-31"
+  ],
+  "model_dates": [
+    "2021-01-06",
+    "2025-12-31"
+  ],
+  "prices": 1212,
+  "returns": 1211,
+  "model_observations": 1210,
+  "stocks": 2984,
+  "planned_series": 6090,
+  "series_counts": {
+    "stock": 2984,
+    "specific_proxy": 2984,
+    "industry_proxy": 121,
+    "market_proxy": 1
+  },
+  "planned_fits": 12058,
+  "workers": 4,
+  "blas_threads": 1,
+  "mean_model": "AR(1) with constant",
+  "primary": "GARCH(1,1) with standardized symmetric Student-t",
+  "comparator": "AR(1) with constant variance and Student-t",
+  "sensitivity": "AR(1)-GJR-GARCH(1,1)-t for all stocks",
+  "distribution_parameter_bounds": [
+    2.05,
+    500.0
+  ],
+  "stock_ADF_filter": false,
+  "trimming_or_winsorization": false,
+  "simulations": false,
+  "EG_DH_retests": false,
+  "uncertainty": "Per-series approximate robust Wald intervals; withheld for nu or volatility constraint boundaries; no simultaneous coverage or independent-stock assumption",
+  "proxy_limit": "Proxy residuals are not identified structural permanent/transitory innovations; their intervals do not include factor-estimation uncertainty",
+  "program": "scripts/diagnose_student_t.py",
+  "python": "3.11.9",
+  "libraries": {
+    "arch": "8.0.0",
+    "numpy": "2.4.6",
+    "scipy": "1.17.1",
+    "pandas": "2.3.3",
+    "statsmodels": "0.15.0"
+  },
+  "solver_policy": "One targeted refit for initial optimizer failure or a GJR likelihood below its nested GARCH fit; initial estimates retained"
+}

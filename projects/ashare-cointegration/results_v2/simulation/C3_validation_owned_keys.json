@@ -1,0 +1,7 @@
+{
+  "started_at": "2026-10-20T13:25:36.6106950+08:00",
+  "completed_at": "2026-10-20T13:27:24.7252516+08:00",
+  "exit_code": -1073741819,
+  "log": "results_v2/simulation/C3_validation_owned_keys.txt",
+  "change": "ADF masks use Python-owned keys from the identical frozen registry"
+}

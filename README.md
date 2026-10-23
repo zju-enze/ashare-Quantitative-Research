@@ -7,7 +7,8 @@ A repository for reproducible quantitative finance research. Each study has a de
 | Project | Research question | Current status | Start here |
 |---|---|---|---|
 | **A-share value-signal robustness** | How robust is value-signal evidence after correcting measurement and changing the inferential framework? | Executed notebook, aggregate results, figures, and a local execution record are available. | [Study overview](VALUE_SIGNAL_RESEARCH.md) |
-| **A-share industry cointegration** | Which predefined within-industry stock pairs show cointegration evidence under a fixed testing and multiple-correction protocol? | Stage 1 plan reviewed; implementation and empirical execution pending in this repository. | [Project overview](projects/ashare-cointegration/README.md) |
+| **A-share industry cointegration** | Which predefined within-industry A-share pairs have cointegration evidence, under which tests and multiple-testing corrections? | Stage 1 research and reporting completed: 67,678 candidates, nominal pair evidence, and six proposed pairs for subsequent exploration. Full-family calibration remains incomplete; stages 2 and 3 have not started. | [Stage 1 final report](projects/ashare-cointegration/results_final/STAGE1_FINAL_REPORT.md) |
+| **单因子测试报告** | How does a selected factor relate to subsequent returns, and how stable is that evidence across samples and test specifications? | Initialized; factor definition, sample, and test specifications are pending. No tests have been executed. | [Project overview](projects/单因子测试报告/README.md) |
 
 ## A-share value-signal robustness
 
@@ -38,15 +39,17 @@ The root-level `requirements.txt`, `run_research.py`, `src/`, `tests/`, `noteboo
 
 ## A-share industry cointegration
 
-The new project has three research stages:
+The research asks which predefined within-industry stock pairs have cointegration evidence, how the evidence is tested and corrected, and where it applies. Portfolio construction and trading remain later stages.
 
-1. **Cointegration evidence identification:** identify statistical discoveries among predefined within-industry pairs.
-2. **Long–short construction and out-of-sample exploration:** investigate applications and subsequent behavior of identified relationships.
-3. **Execution and cost validation:** examine implementability and trading outcomes.
+On 2026-10-23 the revised log-price market experiment completed all 67,678 candidates under four specifications, totaling 270,712 tests. Both primary methods use one fixed lag without a stock-level ADF entry gate. Within-L2 and GLOBAL Holm views were specified before seeing the market p-values, with a nominal 5% level and identical domains across methods.
 
-**Stage 1 is the current scope.** Its output will be a complete record of which pairs show cointegration evidence, the supporting tests and corrections, and the limits of those statements.
+Primary EG discoveries number 284 within L2 and 21 globally; primary DH discoveries number 11 and 0. EG-AIC yields 162/10 and DH-7 yields 7/0. The within-L2 primary intersection has three pairs, reported descriptively rather than treated as a newly calibrated selection rule.
 
-Read the [project overview](projects/ashare-cointegration/README.md), [experiment plan](projects/ashare-cointegration/EXPERIMENT_PLAN.md), and [independent review](projects/ashare-cointegration/REVIEW_AND_IMPLEMENTATION.md). The [Codex Stage 1 prompt](projects/ashare-cointegration/CODEX_STAGE1_PROMPT.md) defines the implementation handoff.
+These are nominal evidence lists. Stock-level applicability warnings affect 148 of the 284 within-L2 EG discoveries and four of the 11 DH discoveries. DH-1 has 43 early-prefix numerical placeholders, retained at p=1 in the full families. Complete shared-stock family calibration remains unfinished.
+
+The [market report and evidence lists](projects/ashare-cointegration/results_revision/market_20261023/REPORT.md), [research overview](projects/ashare-cointegration/results_final/README.md), [V1 report](projects/ashare-cointegration/results_final/V1_FINAL_REPORT.md), [V2 report](projects/ashare-cointegration/results_final/V2_FINAL_REPORT.md), and [methods/glossary](projects/ashare-cointegration/results_final/METHODS_AND_GLOSSARY.md) present the findings and limits. All output rows and Holm views were reconciled, with 32 predeclared independent reference evaluations.
+
+The prior 20,000-path common-DGP study remains the method-validation evidence and was not rerun. Earlier designs remain [archived](projects/ashare-cointegration/archive/README.md). V3 remains paused, and real-2026 evaluation and trading work have not been started.
 
 ## Repository organization
 

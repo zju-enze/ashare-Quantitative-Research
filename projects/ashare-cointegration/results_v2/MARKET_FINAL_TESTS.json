@@ -1,0 +1,9 @@
+{
+  "status": "passed",
+  "started_at": "2026-10-20T14:30:37.5576599+08:00",
+  "completed_at": "2026-10-20T14:30:40.3753786+08:00",
+  "tests": 7,
+  "exit_code": 0,
+  "log": "results_v2/MARKET_FINAL_TESTS.txt",
+  "scope": "Final market source including unique corrected run label and prefix boundary"
+}

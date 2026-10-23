@@ -1,0 +1,39 @@
+{
+  "status": "passed",
+  "phase": "formal",
+  "checked_at": "2026-10-21T21:36:47.099844+08:00",
+  "paths": 20000,
+  "test_rows": 80000,
+  "summary_rows": 32,
+  "paired_rows": 16,
+  "all_expected_keys": true,
+  "all_legacy_artifacts_unchanged": true,
+  "numerical_unavailable": 0,
+  "zero_p_rows": 0,
+  "regenerated_paths_for_independent_check": [
+    {
+      "scenario": "PAIR_NULL",
+      "repetition": 4999,
+      "methods": 4
+    },
+    {
+      "scenario": "PAIR_COINT",
+      "repetition": 4999,
+      "methods": 4
+    },
+    {
+      "scenario": "HEAVY_NULL",
+      "repetition": 4999,
+      "methods": 4
+    },
+    {
+      "scenario": "HEAVY_COINT",
+      "repetition": 4999,
+      "methods": 4
+    }
+  ],
+  "independent_recomputed_test_cases": 16,
+  "full_retest": false,
+  "serial_equivalent_task_seconds": 718.4962748000758,
+  "serial_equivalent_cpu_seconds": 713.140625
+}

@@ -1,0 +1,33 @@
+{
+  "sampled_at": "2026-10-21T21:32:39.7262525+08:00",
+  "processes": [
+    {
+      "Id": 36376,
+      "ProcessName": "python"
+    },
+    {
+      "Id": 13000,
+      "ProcessName": "python3.11"
+    },
+    {
+      "Id": 14300,
+      "ProcessName": "python3.11"
+    },
+    {
+      "Id": 32096,
+      "ProcessName": "python3.11"
+    },
+    {
+      "Id": 38756,
+      "ProcessName": "python3.11"
+    },
+    {
+      "Id": 41660,
+      "ProcessName": "python3.11"
+    }
+  ],
+  "process_count": 6,
+  "working_set_mib": 835.76,
+  "free_memory_mib": 16635.61,
+  "note": "One live process-tree sample including launchers and workers; not a peak measurement"
+}

@@ -1,0 +1,71 @@
+{
+  "all_inputs_synthetic": true,
+  "market_files_read": [],
+  "EG_market_scan_executed": false,
+  "Monte_Carlo_executed": false,
+  "real_2026_evaluation_executed": false,
+  "checks": {
+    "candidate_enumeration_T_C": true,
+    "gate_placeholder_preserves_family": true,
+    "cross_L3_is_NA_not_one_or_rejected": true,
+    "same_family_method_nesting": true,
+    "zero_p_and_numerical_status_distinguished": true,
+    "nonfinite_has_explicit_placeholder": true,
+    "nonpositive_beta_not_application_filtered": true,
+    "evidence_list_matches_main_correction_exactly": true,
+    "zero_discovery_family_and_nonrejections_retained": true,
+    "unresolved_computation_not_called_complete": true,
+    "production_calibration_application_states_independent": true,
+    "S0_mixed_truth_counts": true,
+    "early_volatility_drop_and_preserved_N7_in_S1": true,
+    "fixed_simulation_normalization": true,
+    "Wilson_per_fixed_family_not_pooled": true
+  },
+  "check_count": 15,
+  "all_passed": true,
+  "synthetic_candidate_count": 11,
+  "synthetic_main_discovery_ids": [
+    "AB",
+    "AC",
+    "BC",
+    "CE"
+  ],
+  "synthetic_main_discovery_beta": [
+    -0.7,
+    0,
+    1.0,
+    1.0
+  ],
+  "synthetic_S0_truth": {
+    "T": {
+      "alternative": 2,
+      "null": 0
+    },
+    "C": {
+      "alternative": 0,
+      "null": 4
+    }
+  },
+  "synthetic_Wilson_examples": [
+    {
+      "fixed_family": 0,
+      "independent_panel_trials": 5,
+      "FWER_events": 1,
+      "interval": [
+        0.036224108632430196,
+        0.6244653702374748
+      ]
+    },
+    {
+      "fixed_family": 1,
+      "independent_panel_trials": 5,
+      "FWER_events": 0,
+      "interval": [
+        0.0,
+        0.43448246478317487
+      ]
+    }
+  ],
+  "synthetic_batch_with_unresolved_error_complete": false,
+  "scope": "Specification bookkeeping checks, not a production screening implementation"
+}

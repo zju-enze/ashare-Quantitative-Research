@@ -1,0 +1,655 @@
+{
+  "recorded_at": "2026-10-22T19:11:23.589351+08:00",
+  "scope": "Complete public V1, V2 and DH-development outputs plus pre-consolidation context documents",
+  "archive": "legacy_public_results.zip",
+  "source_paths_retained_for_reproduction": true,
+  "private_data_or_checkpoints_included": false,
+  "file_count": 159,
+  "source_bytes": 25694238,
+  "archive_bytes": 3996598,
+  "counts": {
+    "context_documents": 12,
+    "results": 52,
+    "results_dh_dev": 9,
+    "results_v2": 86
+  },
+  "verification": "Every archive member directly compared byte-for-byte with its source before adding historical-report navigation banners.",
+  "files": [
+    {
+      "path": "DATA_CONTRACT.md",
+      "bytes": 5962
+    },
+    {
+      "path": "DH_DEVELOPMENT.md",
+      "bytes": 7497
+    },
+    {
+      "path": "ENGINEERING_CHANGES.md",
+      "bytes": 71701
+    },
+    {
+      "path": "EXPERIMENT_PLAN.md",
+      "bytes": 45095
+    },
+    {
+      "path": "EXPERIMENT_PLAN_V2.md",
+      "bytes": 23333
+    },
+    {
+      "path": "experiment_protocol.json",
+      "bytes": 29870
+    },
+    {
+      "path": "experiment_protocol_v2.json",
+      "bytes": 6850
+    },
+    {
+      "path": "experiment_protocol_v2_frozen.json",
+      "bytes": 7307
+    },
+    {
+      "path": "README.md",
+      "bytes": 11531
+    },
+    {
+      "path": "requirements.lock.txt",
+      "bytes": 442
+    },
+    {
+      "path": "RESEARCH_STATUS.json",
+      "bytes": 32849
+    },
+    {
+      "path": "results/acquisition_status.json",
+      "bytes": 197
+    },
+    {
+      "path": "results/CALIBRATION_REPORT.md",
+      "bytes": 7191
+    },
+    {
+      "path": "results/corporate_action_cases.json",
+      "bytes": 1029
+    },
+    {
+      "path": "results/correction_counts.csv",
+      "bytes": 114
+    },
+    {
+      "path": "results/corrections.json",
+      "bytes": 827
+    },
+    {
+      "path": "results/engineering_validation.json",
+      "bytes": 1166
+    },
+    {
+      "path": "results/environment.json",
+      "bytes": 3831
+    },
+    {
+      "path": "results/families.csv",
+      "bytes": 50749
+    },
+    {
+      "path": "results/figures/calibration_fwer.png",
+      "bytes": 83584
+    },
+    {
+      "path": "results/figures/calibration_power.png",
+      "bytes": 37859
+    },
+    {
+      "path": "results/figures/correction_counts.png",
+      "bytes": 33020
+    },
+    {
+      "path": "results/figures/relation_1.png",
+      "bytes": 147748
+    },
+    {
+      "path": "results/figures/relation_2.png",
+      "bytes": 118824
+    },
+    {
+      "path": "results/figures/relation_3.png",
+      "bytes": 130719
+    },
+    {
+      "path": "results/float_coordinate_audit.json",
+      "bytes": 515
+    },
+    {
+      "path": "results/independent_acceptance.json",
+      "bytes": 405
+    },
+    {
+      "path": "results/input_sources.json",
+      "bytes": 857
+    },
+    {
+      "path": "results/main_evidence.csv",
+      "bytes": 129014
+    },
+    {
+      "path": "results/production_acceptance.json",
+      "bytes": 356
+    },
+    {
+      "path": "results/production_status.json",
+      "bytes": 298
+    },
+    {
+      "path": "results/remote_deployment.json",
+      "bytes": 8969
+    },
+    {
+      "path": "results/remote_preflight.json",
+      "bytes": 2989
+    },
+    {
+      "path": "results/report_version.json",
+      "bytes": 544
+    },
+    {
+      "path": "results/simulation/alarm_investigation_final.json",
+      "bytes": 2103
+    },
+    {
+      "path": "results/simulation/diagnostics_snapshot.json",
+      "bytes": 610
+    },
+    {
+      "path": "results/simulation/final_acceptance.json",
+      "bytes": 1876
+    },
+    {
+      "path": "results/simulation/fixed_L2_Holm_final.csv",
+      "bytes": 25255
+    },
+    {
+      "path": "results/simulation/increment_and_gate_diagnostics.csv",
+      "bytes": 97448
+    },
+    {
+      "path": "results/simulation/main_alarm_families.csv",
+      "bytes": 8143
+    },
+    {
+      "path": "results/simulation/N1_alarm_investigation.json",
+      "bytes": 1408
+    },
+    {
+      "path": "results/simulation/runtime_and_numerical_summary.csv",
+      "bytes": 2632
+    },
+    {
+      "path": "results/simulation/S0_status.json",
+      "bytes": 184
+    },
+    {
+      "path": "results/simulation/S0_summary.csv",
+      "bytes": 44976
+    },
+    {
+      "path": "results/simulation/S1_status.json",
+      "bytes": 428
+    },
+    {
+      "path": "results/simulation/S1_summary.csv",
+      "bytes": 149726
+    },
+    {
+      "path": "results/simulation/S2_launch.json",
+      "bytes": 837
+    },
+    {
+      "path": "results/simulation/S2_local_20261019.json",
+      "bytes": 501
+    },
+    {
+      "path": "results/simulation/S2_local_coordination.json",
+      "bytes": 211
+    },
+    {
+      "path": "results/simulation/S2_local_shard_status.json",
+      "bytes": 258
+    },
+    {
+      "path": "results/simulation/S2_local_takeover_status.json",
+      "bytes": 159
+    },
+    {
+      "path": "results/simulation/S2_progress_estimate_20261019.json",
+      "bytes": 2720
+    },
+    {
+      "path": "results/simulation/S2_remote_import_20261019.json",
+      "bytes": 14002
+    },
+    {
+      "path": "results/simulation/S2_runtime_estimate.json",
+      "bytes": 1827
+    },
+    {
+      "path": "results/simulation/S2_split_20261019.json",
+      "bytes": 876
+    },
+    {
+      "path": "results/simulation/S2_split_launch.json",
+      "bytes": 631
+    },
+    {
+      "path": "results/simulation/S2_status.json",
+      "bytes": 276
+    },
+    {
+      "path": "results/simulation/S2_summary.csv",
+      "bytes": 44137
+    },
+    {
+      "path": "results/STAGE1_COMPLETION.json",
+      "bytes": 2769
+    },
+    {
+      "path": "results/STAGE1_REPORT.md",
+      "bytes": 5575
+    },
+    {
+      "path": "results/stock_flow.csv",
+      "bytes": 167597
+    },
+    {
+      "path": "results/uncovered_markets.csv",
+      "bytes": 182
+    },
+    {
+      "path": "results/view_overlap.csv",
+      "bytes": 3210
+    },
+    {
+      "path": "results_dh_dev/20261019T200814/budget.csv",
+      "bytes": 847
+    },
+    {
+      "path": "results_dh_dev/20261019T200814/development.json",
+      "bytes": 6207
+    },
+    {
+      "path": "results_dh_dev/20261019T200814/DH_DEVELOPMENT_REPORT.md",
+      "bytes": 5591
+    },
+    {
+      "path": "results_dh_dev/20261019T200814/pairs.csv",
+      "bytes": 3197711
+    },
+    {
+      "path": "results_dh_dev/20261019T200814/panels.csv",
+      "bytes": 13772
+    },
+    {
+      "path": "results_dh_dev/20261019T200814/smoke_summary.csv",
+      "bytes": 824
+    },
+    {
+      "path": "results_dh_dev/20261019T200814/tests.txt",
+      "bytes": 2784
+    },
+    {
+      "path": "results_dh_dev/20261019T200814/tests_dh_followup.txt",
+      "bytes": 976
+    },
+    {
+      "path": "results_dh_dev/20261019T200814/timing_followup.csv",
+      "bytes": 1353
+    },
+    {
+      "path": "results_v2/CALIBRATION_REPORT_V2.md",
+      "bytes": 7185
+    },
+    {
+      "path": "results_v2/F0_FREEZE.json",
+      "bytes": 1428
+    },
+    {
+      "path": "results_v2/F0_FREEZE.md",
+      "bytes": 2708
+    },
+    {
+      "path": "results_v2/F0_TESTS.json",
+      "bytes": 310
+    },
+    {
+      "path": "results_v2/F0_TESTS.txt",
+      "bytes": 5228
+    },
+    {
+      "path": "results_v2/F0_TESTS_stdin_failure.json",
+      "bytes": 240
+    },
+    {
+      "path": "results_v2/F0_TESTS_stdin_failure.txt",
+      "bytes": 12355
+    },
+    {
+      "path": "results_v2/figures/calibration_fwer.png",
+      "bytes": 159390
+    },
+    {
+      "path": "results_v2/figures/power_by_geometry.png",
+      "bytes": 67876
+    },
+    {
+      "path": "results_v2/history/market_initial_prefix_guard/archive_record.json",
+      "bytes": 572
+    },
+    {
+      "path": "results_v2/history/market_initial_prefix_guard/main_evidence.csv",
+      "bytes": 551
+    },
+    {
+      "path": "results_v2/history/market_initial_prefix_guard/market_status.json",
+      "bytes": 1913
+    },
+    {
+      "path": "results_v2/history/market_initial_prefix_guard/market_validation.json",
+      "bytes": 2848
+    },
+    {
+      "path": "results_v2/history/market_initial_prefix_guard/market_validation_log.txt",
+      "bytes": 3869
+    },
+    {
+      "path": "results_v2/history/market_initial_prefix_guard/market_validation_run.json",
+      "bytes": 184
+    },
+    {
+      "path": "results_v2/history/market_initial_prefix_guard/market_validation_typed_log.txt",
+      "bytes": 2098
+    },
+    {
+      "path": "results_v2/history/market_initial_prefix_guard/market_validation_typed_run.json",
+      "bytes": 190
+    },
+    {
+      "path": "results_v2/history/market_initial_prefix_guard/README.md",
+      "bytes": 358
+    },
+    {
+      "path": "results_v2/history/market_initial_prefix_guard/v1_dh_comparison.csv",
+      "bytes": 8189053
+    },
+    {
+      "path": "results_v2/main_evidence.csv",
+      "bytes": 598
+    },
+    {
+      "path": "results_v2/market_diagnostics.json",
+      "bytes": 501
+    },
+    {
+      "path": "results_v2/MARKET_FINAL_TESTS.json",
+      "bytes": 311
+    },
+    {
+      "path": "results_v2/MARKET_FINAL_TESTS.txt",
+      "bytes": 1178
+    },
+    {
+      "path": "results_v2/MARKET_NOMINAL_TESTS.json",
+      "bytes": 316
+    },
+    {
+      "path": "results_v2/MARKET_NOMINAL_TESTS.txt",
+      "bytes": 854
+    },
+    {
+      "path": "results_v2/market_prefix_audit.json",
+      "bytes": 596
+    },
+    {
+      "path": "results_v2/MARKET_PREFIX_TESTS.json",
+      "bytes": 220
+    },
+    {
+      "path": "results_v2/MARKET_PREFIX_TESTS.txt",
+      "bytes": 1178
+    },
+    {
+      "path": "results_v2/market_prefix_validation.json",
+      "bytes": 8907
+    },
+    {
+      "path": "results_v2/market_prefix_validation_log.txt",
+      "bytes": 645
+    },
+    {
+      "path": "results_v2/market_status.json",
+      "bytes": 2017
+    },
+    {
+      "path": "results_v2/MARKET_TESTS.json",
+      "bytes": 338
+    },
+    {
+      "path": "results_v2/MARKET_TESTS.txt",
+      "bytes": 854
+    },
+    {
+      "path": "results_v2/market_validation.json",
+      "bytes": 2954
+    },
+    {
+      "path": "results_v2/market_validation_final_log.txt",
+      "bytes": 2198
+    },
+    {
+      "path": "results_v2/market_validation_log.txt",
+      "bytes": 3869
+    },
+    {
+      "path": "results_v2/market_validation_run.json",
+      "bytes": 184
+    },
+    {
+      "path": "results_v2/market_validation_typed_log.txt",
+      "bytes": 2098
+    },
+    {
+      "path": "results_v2/market_validation_typed_run.json",
+      "bytes": 190
+    },
+    {
+      "path": "results_v2/SCALE_TESTS.json",
+      "bytes": 317
+    },
+    {
+      "path": "results_v2/SCALE_TESTS.txt",
+      "bytes": 6572
+    },
+    {
+      "path": "results_v2/simulation/C1_panels.csv",
+      "bytes": 3102322
+    },
+    {
+      "path": "results_v2/simulation/C1_pilot_evidence.json",
+      "bytes": 8659
+    },
+    {
+      "path": "results_v2/simulation/C1_REPORT.md",
+      "bytes": 9071
+    },
+    {
+      "path": "results_v2/simulation/C1_resource_sample.json",
+      "bytes": 1461
+    },
+    {
+      "path": "results_v2/simulation/C1_status.json",
+      "bytes": 1636
+    },
+    {
+      "path": "results_v2/simulation/C1_summary.csv",
+      "bytes": 6557
+    },
+    {
+      "path": "results_v2/simulation/C1_validation.json",
+      "bytes": 748
+    },
+    {
+      "path": "results_v2/simulation/C2_panels.csv",
+      "bytes": 559255
+    },
+    {
+      "path": "results_v2/simulation/C2_pilot_evidence.json",
+      "bytes": 3097
+    },
+    {
+      "path": "results_v2/simulation/C2_REPORT.md",
+      "bytes": 3063
+    },
+    {
+      "path": "results_v2/simulation/C2_resource_sample.json",
+      "bytes": 1457
+    },
+    {
+      "path": "results_v2/simulation/C2_status.json",
+      "bytes": 1601
+    },
+    {
+      "path": "results_v2/simulation/C2_summary.csv",
+      "bytes": 2684
+    },
+    {
+      "path": "results_v2/simulation/C2_validation.json",
+      "bytes": 792
+    },
+    {
+      "path": "results_v2/simulation/C3_panels.csv",
+      "bytes": 118444
+    },
+    {
+      "path": "results_v2/simulation/C3_pilot_evidence.json",
+      "bytes": 1712
+    },
+    {
+      "path": "results_v2/simulation/C3_python_mask_probe.txt",
+      "bytes": 340
+    },
+    {
+      "path": "results_v2/simulation/C3_reader_probe.txt",
+      "bytes": 1203
+    },
+    {
+      "path": "results_v2/simulation/C3_REPORT.md",
+      "bytes": 3864
+    },
+    {
+      "path": "results_v2/simulation/C3_resource_sample.json",
+      "bytes": 1471
+    },
+    {
+      "path": "results_v2/simulation/C3_runtime_observation.json",
+      "bytes": 3013
+    },
+    {
+      "path": "results_v2/simulation/C3_status.json",
+      "bytes": 1582
+    },
+    {
+      "path": "results_v2/simulation/C3_summary.csv",
+      "bytes": 2599
+    },
+    {
+      "path": "results_v2/simulation/C3_validation.json",
+      "bytes": 776
+    },
+    {
+      "path": "results_v2/simulation/C3_validation_exact.json",
+      "bytes": 286
+    },
+    {
+      "path": "results_v2/simulation/C3_validation_exact.txt",
+      "bytes": 998
+    },
+    {
+      "path": "results_v2/simulation/C3_validation_indexed.json",
+      "bytes": 280
+    },
+    {
+      "path": "results_v2/simulation/C3_validation_indexed.txt",
+      "bytes": 2251
+    },
+    {
+      "path": "results_v2/simulation/C3_validation_owned_keys.json",
+      "bytes": 291
+    },
+    {
+      "path": "results_v2/simulation/C3_validation_owned_keys.txt",
+      "bytes": 784
+    },
+    {
+      "path": "results_v2/simulation/C3_validation_run.json",
+      "bytes": 201
+    },
+    {
+      "path": "results_v2/simulation/C3_validation_run.txt",
+      "bytes": 589
+    },
+    {
+      "path": "results_v2/simulation/C3_validation_serial.json",
+      "bytes": 265
+    },
+    {
+      "path": "results_v2/simulation/C3_validation_serial.txt",
+      "bytes": 589
+    },
+    {
+      "path": "results_v2/simulation/D1_panels.csv",
+      "bytes": 311332
+    },
+    {
+      "path": "results_v2/simulation/D1_pilot_checkpoint_evidence.json",
+      "bytes": 1591
+    },
+    {
+      "path": "results_v2/simulation/D1_REPORT.md",
+      "bytes": 7640
+    },
+    {
+      "path": "results_v2/simulation/D1_resource_sample.json",
+      "bytes": 930
+    },
+    {
+      "path": "results_v2/simulation/D1_resume_check.json",
+      "bytes": 307
+    },
+    {
+      "path": "results_v2/simulation/D1_status.json",
+      "bytes": 1680
+    },
+    {
+      "path": "results_v2/simulation/D1_summary.csv",
+      "bytes": 6392
+    },
+    {
+      "path": "results_v2/simulation/D1_validation.json",
+      "bytes": 588
+    },
+    {
+      "path": "results_v2/STAGE1_COMPLETION_V2.json",
+      "bytes": 4425
+    },
+    {
+      "path": "results_v2/STAGE1_REPORT_V2.md",
+      "bytes": 7697
+    },
+    {
+      "path": "results_v2/v1_dh_comparison.csv",
+      "bytes": 8189053
+    },
+    {
+      "path": "REVIEW_AND_IMPLEMENTATION.md",
+      "bytes": 9547
+    }
+  ]
+}

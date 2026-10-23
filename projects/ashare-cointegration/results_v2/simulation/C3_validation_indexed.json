@@ -1,0 +1,7 @@
+{
+  "started_at": "2026-10-20T13:33:23.1656829+08:00",
+  "completed_at": "2026-10-20T13:33:54.1501943+08:00",
+  "exit_code": 1,
+  "log": "results_v2/simulation/C3_validation_indexed.txt",
+  "change": "Vectorized masks from frozen stock indices; all comparisons retained"
+}

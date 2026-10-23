@@ -1,0 +1,98 @@
+{
+  "checked_at": "2026-10-18T19:33:48.452645+08:00",
+  "host_alias": "qzwx2026",
+  "ssh_authentication": "BatchMode public-key connection verified",
+  "inspection_scope": "read-only resources, existing Python environments, package metadata and public source reachability",
+  "os": "Ubuntu 24.04.4 LTS x86_64",
+  "kernel": "6.8.0-117-generic",
+  "glibc": "2.39",
+  "cpu": {
+    "logical_cpus": 2,
+    "affinity": [
+      0,
+      1
+    ],
+    "model": "Intel Xeon Platinum (KVM virtual machine)"
+  },
+  "memory_snapshot": {
+    "total_GiB": 7.1,
+    "available_GiB": 4.2,
+    "used_GiB": 2.9,
+    "swap_GiB": 0
+  },
+  "disk_snapshot": {
+    "filesystem_size_GiB": 197,
+    "available_GiB": 149,
+    "used_percent": 22
+  },
+  "load_average_snapshot": [
+    0.05,
+    0.83,
+    2.61
+  ],
+  "gpu": {
+    "nvidia_smi_found": false,
+    "nvidia_device_nodes_found": false,
+    "nvidia_pci_device_found": false,
+    "conclusion": "No usable NVIDIA compute GPU discovered; existing torch is CPU build"
+  },
+  "tools": {
+    "git": true,
+    "rsync": true,
+    "tmux": true,
+    "screen": true,
+    "uv": "0.12.6 at /home/qzwx2026/.local/bin/uv",
+    "micromamba": "2.8.1 at /home/qzwx2026/.local/bin/micromamba"
+  },
+  "environments": {
+    "system": {
+      "python": "3.12.3",
+      "numpy": null,
+      "scipy": null,
+      "pandas": null,
+      "statsmodels": null,
+      "pyarrow": null
+    },
+    "existing_qzwx_phase7_service": {
+      "python": "3.11.15",
+      "numpy": null,
+      "scipy": null,
+      "pandas": null,
+      "statsmodels": null,
+      "pyarrow": null,
+      "reuse_policy": "Do not modify existing service environment"
+    },
+    "existing_paper_task_benchmark": {
+      "python": "3.12.3",
+      "numpy": "2.5.2",
+      "scipy": "1.18.1",
+      "pandas": "2.3.3",
+      "statsmodels": null,
+      "pyarrow": "24.0.0",
+      "torch": "2.6.0+cpu",
+      "reuse_policy": "Do not reuse or alter shared benchmark environment for S2"
+    }
+  },
+  "core_linux_cp311_wheels_verified": {
+    "numpy": "2.4.6",
+    "scipy": "1.17.1",
+    "pandas": "2.3.3",
+    "statsmodels": "0.15.0",
+    "pyarrow": "25.0.1"
+  },
+  "full_lock_installation": "not_run",
+  "statistical_equivalence_check": "not_run",
+  "github_branch_reachable": true,
+  "observed_remote_branch_commit": "5292f507894401364423b5f436cde671f7f82124",
+  "proposed_workdir": "/home/qzwx2026/experiments/ashare-cointegration",
+  "parent_writable": true,
+  "target_directory_exists": false,
+  "forwarded_port_18867": "listening on remote loopback; owning Python process cwd is existing QZWX paper-task-benchmark project; unchanged",
+  "recommended_S2_workers": 1,
+  "recommended_BLAS_threads": 1,
+  "readiness": "resources_and_access_verified; isolated_environment_and_code_not_deployed",
+  "S2_started": false,
+  "remote_files_uploaded": false,
+  "remote_dependencies_installed": false,
+  "engineering_change": "ENG-003"
+}

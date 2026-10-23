@@ -1,0 +1,59 @@
+{
+  "stage": "S2",
+  "host": "qzwx2026",
+  "workers": 2,
+  "blas_threads_per_worker": 1,
+  "pilot_started_at": "2026-10-18T12:08:45.568831+00:00",
+  "pilot_finished_at": "2026-10-18T12:17:08.551897+00:00",
+  "timed_panels": [
+    {
+      "scenario": "N1",
+      "repetition": 0,
+      "wall_seconds": 144.00790539896116,
+      "panel_seconds": 143.9495010790415
+    },
+    {
+      "scenario": "N5",
+      "repetition": 0,
+      "wall_seconds": 138.82737950095907,
+      "panel_seconds": 138.78924811794423
+    },
+    {
+      "scenario": "N6",
+      "repetition": 0,
+      "wall_seconds": 98.39645556197502,
+      "panel_seconds": 98.36389739695005
+    },
+    {
+      "scenario": "M1",
+      "repetition": 0,
+      "wall_seconds": 121.74584587709978,
+      "panel_seconds": 121.71181273506954
+    }
+  ],
+  "planned_panels": 2000,
+  "pilot_panels": 6,
+  "estimated_total_compute_hours": 58.66551524441324,
+  "estimated_remaining_compute_hours": 58.48951869868,
+  "projected_finish_utc": "2026-10-20T22:50:31.399210+00:00",
+  "method": "Four scenario-specific serial baselines, scaled by observed two-worker N1/N5 batch throughput.",
+  "limitation": "Preliminary: one serial repetition per scenario and one parallel batch; load, repetition variability, and periodic summary overhead are not quantified.",
+  "checkpoints_reused": true,
+  "engineering_change": "ENG-006",
+  "single_worker_estimated_total_compute_hours": 69.85799810263819,
+  "parallel_pilot_finished_at": "2026-10-18T12:21:09.131895+00:00",
+  "parallel_pilot": {
+    "scenarios": [
+      "N1",
+      "N5"
+    ],
+    "repetition": 1,
+    "wall_seconds": 237.52008601184934,
+    "baseline_serial_seconds": 282.8352848999202,
+    "throughput_speedup": 1.1907847022496034,
+    "individual_panel_seconds": [
+      229.46315468498506,
+      237.40989877283573
+    ]
+  }
+}
