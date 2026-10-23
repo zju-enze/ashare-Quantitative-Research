@@ -1,0 +1,1 @@
+﻿candidate_id,A,B,name_A,name_B,L2,L2_name,L3_A,L3_B,layer,method,statistic,p_raw,p,log_p,status,used_lag,n_effective,p_L2_Holm,p_GLOBAL_Holm,reject_L2_Holm,reject_GLOBAL_Holm,M_L2,M_GLOBAL,log_ols_intercept,log_ols_beta,I1_A_diagnostic,I1_B_diagnostic,both_I1_compatible_diagnostic,p_zero_origin,evidence_scope

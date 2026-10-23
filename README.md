@@ -7,7 +7,7 @@ A repository for reproducible quantitative finance research. Each study has a de
 | Project | Research question | Current status | Start here |
 |---|---|---|---|
 | **A-share value-signal robustness** | How robust is value-signal evidence after correcting measurement and changing the inferential framework? | Executed notebook, aggregate results, figures, and a local execution record are available. | [Study overview](VALUE_SIGNAL_RESEARCH.md) |
-| **A-share industry cointegration** | Which predefined within-industry A-share pairs have cointegration evidence, under which tests and multiple-testing corrections? | The common-DGP method-validation experiment is complete. Reports now connect false positives and missed relationships to the stock-pair identification objective; a market evidence list under the revised design has not yet been produced. Earlier experiments are archived; V3 remains paused. | [Project overview](projects/ashare-cointegration/README.md) |
+| **A-share industry cointegration** | Which predefined within-industry A-share pairs have cointegration evidence, under which tests and multiple-testing corrections? | Revised log-price market run completed: 67,678 candidates and 270,712 tests. Primary EG/DH discoveries are 284/11 under within-L2 Holm and 21/0 under GLOBAL-Holm, all nominal with full-family calibration still incomplete. | [Project overview](projects/ashare-cointegration/README.md) |
 | **单因子测试报告** | How does a selected factor relate to subsequent returns, and how stable is that evidence across samples and test specifications? | Initialized; factor definition, sample, and test specifications are pending. No tests have been executed. | [Project overview](projects/单因子测试报告/README.md) |
 
 ## A-share value-signal robustness
@@ -39,15 +39,17 @@ The root-level `requirements.txt`, `run_research.py`, `src/`, `tests/`, `noteboo
 
 ## A-share industry cointegration
 
-The research question is which predefined within-industry stock pairs have cointegration evidence, how that evidence is obtained and corrected for multiple testing, and where it applies. The intended output is a traceable stock-pair evidence list. Portfolio construction, out-of-sample trading and costs belong to later stages.
+The research asks which predefined within-industry stock pairs have cointegration evidence, how the evidence is tested and corrected, and where it applies. Portfolio construction and trading remain later stages.
 
-The present V1/EG and V2/DH experiments validate tools for that identification task. A common two-stock log-price DGP supplies known cointegration truth, so false-positive rates and detection power can be measured. Both primary specifications use one fixed lag; EG-AIC and DH-7 are lag-sensitivity checks.
+On 2026-10-23 the revised log-price market experiment completed all 67,678 candidates under four specifications, totaling 270,712 tests. Both primary methods use one fixed lag without a stock-level ADF entry gate. Within-L2 and GLOBAL Holm views were specified before seeing the market p-values, with a nominal 5% level and identical domains across methods.
 
-The completed experiment has 20,000 shared paths and 80,000 tests. Under the main DGP, EG/DH false-positive rates are 5.54%/5.06% and slow-reversion detection rates are 16.28%/8.56%. The heavy-tail comparison exposes additional false-positive risk for EG. These findings inform how a future stock-pair list should be constructed and interpreted; they do not themselves identify actual market pairs.
+Primary EG discoveries number 284 within L2 and 21 globally; primary DH discoveries number 11 and 0. EG-AIC yields 162/10 and DH-7 yields 7/0. The within-L2 primary intersection has three pairs, reported descriptively rather than treated as a newly calibrated selection rule.
 
-The [research report](projects/ashare-cointegration/results_final/README.md), [V1 report](projects/ashare-cointegration/results_final/V1_FINAL_REPORT.md) and [V2 report](projects/ashare-cointegration/results_final/V2_FINAL_REPORT.md) now lead with the identification question, explain terminology at first use, and interpret results in terms of false discoveries and missed relationships. The [methods and glossary appendix](projects/ashare-cointegration/results_final/METHODS_AND_GLOSSARY.md) preserves formulas, parameters and complete sensitivity evidence.
+These are nominal evidence lists. Stock-level applicability warnings affect 148 of the 284 within-L2 EG discoveries and four of the 11 DH discoveries. DH-1 has 43 early-prefix numerical placeholders, retained at p=1 in the full families. Complete shared-stock family calibration remains unfinished.
 
-The revised design still needs a coherent overlapping-stock family calibration, a specified correction domain and real-market testing before a new evidence list can be produced. [Machine-readable status](projects/ashare-cointegration/results_final/FINAL_RESULTS.json) makes this distinction explicit. Earlier designs remain in the [historical archive](projects/ashare-cointegration/archive/README.md); V3 remains paused.
+The [market report and evidence lists](projects/ashare-cointegration/results_revision/market_20261023/REPORT.md), [research overview](projects/ashare-cointegration/results_final/README.md), [V1 report](projects/ashare-cointegration/results_final/V1_FINAL_REPORT.md), [V2 report](projects/ashare-cointegration/results_final/V2_FINAL_REPORT.md), and [methods/glossary](projects/ashare-cointegration/results_final/METHODS_AND_GLOSSARY.md) present the findings and limits. All output rows and Holm views were reconciled, with 32 predeclared independent reference evaluations.
+
+The prior 20,000-path common-DGP study remains the method-validation evidence and was not rerun. Earlier designs remain [archived](projects/ashare-cointegration/archive/README.md). V3 remains paused, and real-2026 evaluation and trading work have not been started.
 
 ## Repository organization
 

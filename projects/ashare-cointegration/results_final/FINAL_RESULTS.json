@@ -1,8 +1,8 @@
 {
-  "release": "V1-V2-revised-design-final-20261022",
-  "report_date": "2026-10-22",
-  "status": "complete_revised_pair_design",
-  "scope": "Common empirical pair DGP, log-price inputs, no stock-level ADF entry gate; conditional pairwise size and power only.",
+  "release": "V1-V2-log-market-final-20261023",
+  "report_date": "2026-10-23",
+  "status": "complete_verified_nominal_market_and_pair_simulation",
+  "scope": "Revised log-price market identification and completed common-pair-DGP validation; full-family statistical calibration remains incomplete.",
   "reports": {
     "overview": "README.md",
     "V1": "V1_FINAL_REPORT.md",
@@ -48,7 +48,8 @@
     "engineering_in_formal_statistics": false,
     "family_correction": null,
     "intervals": "Pointwise two-sided 95% Clopper-Pearson",
-    "paired_mcse": "sample SD of paired rejection-indicator differences / sqrt(B)"
+    "paired_mcse": "sample SD of paired rejection-indicator differences / sqrt(B)",
+    "scope": "common_pair_simulation"
   },
   "V1": {
     "method": "Engle-Granger",
@@ -330,7 +331,49 @@
         "lag_max": 23.0,
         "method_seconds": 63.39834490000021
       }
-    ]
+    ],
+    "market": {
+      "candidates_per_method": 67678,
+      "summary": [
+        {
+          "method": "EG-fixed-1",
+          "candidates": 67678,
+          "effective": 67678,
+          "numerical_unavailable": 0,
+          "zero_p": 0,
+          "raw_p_below_005": 15729,
+          "L2_Holm": 284,
+          "GLOBAL_Holm": 21,
+          "min_raw_p": 1.3471175597262643e-09,
+          "kernel_wall_seconds": 90.15613510000458,
+          "kernel_cpu_seconds": 87.484375
+        },
+        {
+          "method": "EG-AIC",
+          "candidates": 67678,
+          "effective": 67678,
+          "numerical_unavailable": 0,
+          "zero_p": 0,
+          "raw_p_below_005": 11941,
+          "L2_Holm": 162,
+          "GLOBAL_Holm": 10,
+          "min_raw_p": 2.0346502281572585e-08,
+          "kernel_wall_seconds": 1802.489854800024,
+          "kernel_cpu_seconds": 1775.421875
+        }
+      ],
+      "evidence_files": {
+        "EG-fixed-1": {
+          "L2": "results_revision/market_20261023/EG-fixed-1_L2_Holm.csv",
+          "GLOBAL": "results_revision/market_20261023/EG-fixed-1_GLOBAL_Holm.csv"
+        },
+        "EG-AIC": {
+          "L2": "results_revision/market_20261023/EG-AIC_L2_Holm.csv",
+          "GLOBAL": "results_revision/market_20261023/EG-AIC_GLOBAL_Holm.csv"
+        }
+      }
+    },
+    "summary_scope": "common_pair_simulation"
   },
   "V2": {
     "method": "DH joint bivariate",
@@ -612,7 +655,49 @@
         "lag_max": 7.0,
         "method_seconds": 2.0722771999953693
       }
-    ]
+    ],
+    "market": {
+      "candidates_per_method": 67678,
+      "summary": [
+        {
+          "method": "DH-fixed-1",
+          "candidates": 67678,
+          "effective": 67635,
+          "numerical_unavailable": 43,
+          "zero_p": 0,
+          "raw_p_below_005": 4330,
+          "L2_Holm": 11,
+          "GLOBAL_Holm": 0,
+          "min_raw_p": 3.102999773870374e-05,
+          "kernel_wall_seconds": 36.24107099998287,
+          "kernel_cpu_seconds": 36.15625
+        },
+        {
+          "method": "DH-fixed-7",
+          "candidates": 67678,
+          "effective": 67678,
+          "numerical_unavailable": 0,
+          "zero_p": 0,
+          "raw_p_below_005": 2660,
+          "L2_Holm": 7,
+          "GLOBAL_Holm": 0,
+          "min_raw_p": 2.835537867272208e-05,
+          "kernel_wall_seconds": 56.876999100018566,
+          "kernel_cpu_seconds": 56.984375
+        }
+      ],
+      "evidence_files": {
+        "DH-fixed-1": {
+          "L2": "results_revision/market_20261023/DH-fixed-1_L2_Holm.csv",
+          "GLOBAL": "results_revision/market_20261023/DH-fixed-1_GLOBAL_Holm.csv"
+        },
+        "DH-fixed-7": {
+          "L2": "results_revision/market_20261023/DH-fixed-7_L2_Holm.csv",
+          "GLOBAL": "results_revision/market_20261023/DH-fixed-7_GLOBAL_Holm.csv"
+        }
+      }
+    },
+    "summary_scope": "common_pair_simulation"
   },
   "paired_summary": [
     {
@@ -838,29 +923,221 @@
     "Single predeclared slow-reversion parameter point, not a full power curve",
     "Specific-innovation nu=3.5 lies outside the DH moment assumption",
     "No complete overlapping-stock family calibration",
-    "No real-market pair discovery results under this design",
-    "No holdout or trading evaluation"
+    "No holdout or trading evaluation",
+    "Real-market discoveries are nominal and carry stock-level applicability diagnostics",
+    "L2-wise union is not a market-wide 5% FWER statement",
+    "DH-fixed-1 has 43 numerical placeholders under the frozen recursive-prefix rule"
   ],
   "archive_index": "archive/README.md",
   "research_question": "在预先限定的A股同业股票对中，哪些配对具有协整证据；检验、多重校正、适用范围和限制是什么？",
-  "experiment_role": "验证用于股票对识别的EG/DH检验的误报与检出能力；方法比较服务于协整证据识别",
+  "experiment_role": "对真实同业候选给出明示校正口径下的名义协整证据，并用既有模拟解释误报/漏检风险",
   "research_progress": {
     "data_and_candidates_available": true,
     "formation_period": "2021-2025",
     "target_stock_count": 2984,
     "target_candidate_pairs": 67678,
-    "target_counts_are_current_method_market_test_counts": false,
+    "target_counts_are_current_method_market_test_counts": true,
     "data_contract": "DATA_CONTRACT.md",
     "pair_method_simulation": "complete",
     "revised_full_family_calibration": "not_completed",
-    "revised_market_pair_identification": "not_executed",
-    "revised_stock_pair_evidence_list": "not_generated",
+    "revised_market_pair_identification": "complete_verified_nominal",
+    "revised_stock_pair_evidence_list": "generated_nominal",
     "main_research_question_fully_answered": false,
-    "trading_evaluation": "not_executed"
+    "trading_evaluation": "not_executed",
+    "market_candidate_positions_per_method": 67678,
+    "market_test_rows": 270712,
+    "conditional_market_answer_available": true
   },
   "presentation_terms": {
     "type_I_error": "误报率（第一类错误率）",
     "power": "检出率（功效）",
     "mcse": "模拟标准误"
-  }
+  },
+  "market_experiment": {
+    "source": "results_revision/market_20261023/COMPLETION.json",
+    "protocol": "results_revision/market_20261023/protocol.json",
+    "report": "results_revision/market_20261023/REPORT.md",
+    "validation": "results_revision/market_20261023/validation.json",
+    "execution_complete": true,
+    "validation_status": "passed",
+    "candidates": 67678,
+    "test_calls": 270712,
+    "stock_ADF_entry_gate": false,
+    "nominal_alpha": 0.05,
+    "correction": "Holm",
+    "reported_domains": [
+      "L2",
+      "GLOBAL"
+    ],
+    "selected_primary_domain": null,
+    "family_error_control_calibration_completed": false,
+    "evidence_scope": "nominal_discoveries_full_family_calibration_not_completed",
+    "summary": [
+      {
+        "method": "EG-fixed-1",
+        "candidates": 67678,
+        "effective": 67678,
+        "numerical_unavailable": 0,
+        "zero_p": 0,
+        "raw_p_below_005": 15729,
+        "L2_Holm": 284,
+        "GLOBAL_Holm": 21,
+        "min_raw_p": 1.3471175597262643e-09,
+        "kernel_wall_seconds": 90.15613510000458,
+        "kernel_cpu_seconds": 87.484375
+      },
+      {
+        "method": "DH-fixed-1",
+        "candidates": 67678,
+        "effective": 67635,
+        "numerical_unavailable": 43,
+        "zero_p": 0,
+        "raw_p_below_005": 4330,
+        "L2_Holm": 11,
+        "GLOBAL_Holm": 0,
+        "min_raw_p": 3.102999773870374e-05,
+        "kernel_wall_seconds": 36.24107099998287,
+        "kernel_cpu_seconds": 36.15625
+      },
+      {
+        "method": "EG-AIC",
+        "candidates": 67678,
+        "effective": 67678,
+        "numerical_unavailable": 0,
+        "zero_p": 0,
+        "raw_p_below_005": 11941,
+        "L2_Holm": 162,
+        "GLOBAL_Holm": 10,
+        "min_raw_p": 2.0346502281572585e-08,
+        "kernel_wall_seconds": 1802.489854800024,
+        "kernel_cpu_seconds": 1775.421875
+      },
+      {
+        "method": "DH-fixed-7",
+        "candidates": 67678,
+        "effective": 67678,
+        "numerical_unavailable": 0,
+        "zero_p": 0,
+        "raw_p_below_005": 2660,
+        "L2_Holm": 7,
+        "GLOBAL_Holm": 0,
+        "min_raw_p": 2.835537867272208e-05,
+        "kernel_wall_seconds": 56.876999100018566,
+        "kernel_cpu_seconds": 56.984375
+      }
+    ],
+    "discovery_diagnostics": [
+      {
+        "method": "EG-fixed-1",
+        "domain": "GLOBAL",
+        "discoveries": 21,
+        "both_I1_compatible": 10,
+        "applicability_warning": 11,
+        "nonpositive_OLS_beta": 0,
+        "zero_p": 0
+      },
+      {
+        "method": "EG-fixed-1",
+        "domain": "L2",
+        "discoveries": 284,
+        "both_I1_compatible": 136,
+        "applicability_warning": 148,
+        "nonpositive_OLS_beta": 10,
+        "zero_p": 0
+      },
+      {
+        "method": "DH-fixed-1",
+        "domain": "GLOBAL",
+        "discoveries": 0,
+        "both_I1_compatible": 0,
+        "applicability_warning": 0,
+        "nonpositive_OLS_beta": 0,
+        "zero_p": 0
+      },
+      {
+        "method": "DH-fixed-1",
+        "domain": "L2",
+        "discoveries": 11,
+        "both_I1_compatible": 7,
+        "applicability_warning": 4,
+        "nonpositive_OLS_beta": 1,
+        "zero_p": 0
+      },
+      {
+        "method": "EG-AIC",
+        "domain": "GLOBAL",
+        "discoveries": 10,
+        "both_I1_compatible": 4,
+        "applicability_warning": 6,
+        "nonpositive_OLS_beta": 0,
+        "zero_p": 0
+      },
+      {
+        "method": "EG-AIC",
+        "domain": "L2",
+        "discoveries": 162,
+        "both_I1_compatible": 64,
+        "applicability_warning": 98,
+        "nonpositive_OLS_beta": 7,
+        "zero_p": 0
+      },
+      {
+        "method": "DH-fixed-7",
+        "domain": "GLOBAL",
+        "discoveries": 0,
+        "both_I1_compatible": 0,
+        "applicability_warning": 0,
+        "nonpositive_OLS_beta": 0,
+        "zero_p": 0
+      },
+      {
+        "method": "DH-fixed-7",
+        "domain": "L2",
+        "discoveries": 7,
+        "both_I1_compatible": 5,
+        "applicability_warning": 2,
+        "nonpositive_OLS_beta": 1,
+        "zero_p": 0
+      }
+    ],
+    "primary_overlap": [
+      {
+        "domain": "L2",
+        "EG": 284,
+        "DH": 11,
+        "intersection": 3,
+        "EG_only": 281,
+        "DH_only": 8,
+        "union": 292
+      },
+      {
+        "domain": "GLOBAL",
+        "EG": 21,
+        "DH": 0,
+        "intersection": 0,
+        "EG_only": 21,
+        "DH_only": 0,
+        "union": 21
+      }
+    ],
+    "applicability": {
+      "stocks": 2984,
+      "compatible": 2437,
+      "role": "diagnostic_only_not_a_filter",
+      "candidate_pairs_both_compatible": 44573
+    },
+    "elapsed_seconds": 289.26342999999997,
+    "pair_stage_seconds": 259.4351518000001,
+    "diagnostic_seconds": 14.93238220000012,
+    "numerical_unavailable_reason": {
+      "DH-fixed-1": {
+        "recursive_regression_rank_deficient": 43
+      }
+    },
+    "numerical_case_note": "All 43 cases have flat B prices in the first three observations; three distinct B stocks; retained p=1 under the fixed used-prefix rule.",
+    "primary_common_L2_pairs": "results_revision/market_20261023/common_L2_primary.csv"
+  },
+  "execution_scope": "common_pair_simulation_2026-10-21",
+  "validation_scope": "common_pair_simulation",
+  "sources_scope": "common_pair_simulation"
 }

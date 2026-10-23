@@ -1,0 +1,239 @@
+{
+  "status": "passed",
+  "checked_at": "2026-10-23T18:49:52.932570+08:00",
+  "test_rows": 270712,
+  "candidates": 67678,
+  "stock_diagnostics": 2984,
+  "method_domain_families_checked": 516,
+  "independent_reference_cases": [
+    {
+      "position": 0,
+      "candidate_id": "000998.SZ__002041.SZ",
+      "method": "EG-fixed-1",
+      "status": "matched",
+      "statistic_absolute_error": 0.0
+    },
+    {
+      "position": 0,
+      "candidate_id": "000998.SZ__002041.SZ",
+      "method": "DH-fixed-1",
+      "status": "matched",
+      "statistic_absolute_error": 1.687538997430238e-14
+    },
+    {
+      "position": 0,
+      "candidate_id": "000998.SZ__002041.SZ",
+      "method": "EG-AIC",
+      "status": "matched",
+      "statistic_absolute_error": 0.0
+    },
+    {
+      "position": 0,
+      "candidate_id": "000998.SZ__002041.SZ",
+      "method": "DH-fixed-7",
+      "status": "matched",
+      "statistic_absolute_error": 5.329070518200751e-15
+    },
+    {
+      "position": 9668,
+      "candidate_id": "002449.SZ__300296.SZ",
+      "method": "EG-fixed-1",
+      "status": "matched",
+      "statistic_absolute_error": 0.0
+    },
+    {
+      "position": 9668,
+      "candidate_id": "002449.SZ__300296.SZ",
+      "method": "DH-fixed-1",
+      "status": "matched",
+      "statistic_absolute_error": 4.440892098500626e-16
+    },
+    {
+      "position": 9668,
+      "candidate_id": "002449.SZ__300296.SZ",
+      "method": "EG-AIC",
+      "status": "matched",
+      "statistic_absolute_error": 0.0
+    },
+    {
+      "position": 9668,
+      "candidate_id": "002449.SZ__300296.SZ",
+      "method": "DH-fixed-7",
+      "status": "matched",
+      "statistic_absolute_error": 5.329070518200751e-15
+    },
+    {
+      "position": 19336,
+      "candidate_id": "603768.SH__603786.SH",
+      "method": "EG-fixed-1",
+      "status": "matched",
+      "statistic_absolute_error": 0.0
+    },
+    {
+      "position": 19336,
+      "candidate_id": "603768.SH__603786.SH",
+      "method": "DH-fixed-1",
+      "status": "matched",
+      "statistic_absolute_error": 5.773159728050814e-15
+    },
+    {
+      "position": 19336,
+      "candidate_id": "603768.SH__603786.SH",
+      "method": "EG-AIC",
+      "status": "matched",
+      "statistic_absolute_error": 0.0
+    },
+    {
+      "position": 19336,
+      "candidate_id": "603768.SH__603786.SH",
+      "method": "DH-fixed-7",
+      "status": "matched",
+      "statistic_absolute_error": 8.43769498715119e-15
+    },
+    {
+      "position": 29004,
+      "candidate_id": "002432.SZ__300642.SZ",
+      "method": "EG-fixed-1",
+      "status": "matched",
+      "statistic_absolute_error": 0.0
+    },
+    {
+      "position": 29004,
+      "candidate_id": "002432.SZ__300642.SZ",
+      "method": "DH-fixed-1",
+      "status": "matched",
+      "statistic_absolute_error": 5.329070518200751e-15
+    },
+    {
+      "position": 29004,
+      "candidate_id": "002432.SZ__300642.SZ",
+      "method": "EG-AIC",
+      "status": "matched",
+      "statistic_absolute_error": 0.0
+    },
+    {
+      "position": 29004,
+      "candidate_id": "002432.SZ__300642.SZ",
+      "method": "DH-fixed-7",
+      "status": "matched",
+      "statistic_absolute_error": 1.7763568394002505e-15
+    },
+    {
+      "position": 38672,
+      "candidate_id": "000786.SZ__002641.SZ",
+      "method": "EG-fixed-1",
+      "status": "matched",
+      "statistic_absolute_error": 0.0
+    },
+    {
+      "position": 38672,
+      "candidate_id": "000786.SZ__002641.SZ",
+      "method": "DH-fixed-1",
+      "status": "matched",
+      "statistic_absolute_error": 2.4424906541753444e-15
+    },
+    {
+      "position": 38672,
+      "candidate_id": "000786.SZ__002641.SZ",
+      "method": "EG-AIC",
+      "status": "matched",
+      "statistic_absolute_error": 0.0
+    },
+    {
+      "position": 38672,
+      "candidate_id": "000786.SZ__002641.SZ",
+      "method": "DH-fixed-7",
+      "status": "matched",
+      "statistic_absolute_error": 1.1102230246251565e-15
+    },
+    {
+      "position": 48340,
+      "candidate_id": "300354.SZ__300503.SZ",
+      "method": "EG-fixed-1",
+      "status": "matched",
+      "statistic_absolute_error": 0.0
+    },
+    {
+      "position": 48340,
+      "candidate_id": "300354.SZ__300503.SZ",
+      "method": "DH-fixed-1",
+      "status": "matched",
+      "statistic_absolute_error": 8.881784197001252e-16
+    },
+    {
+      "position": 48340,
+      "candidate_id": "300354.SZ__300503.SZ",
+      "method": "EG-AIC",
+      "status": "matched",
+      "statistic_absolute_error": 0.0
+    },
+    {
+      "position": 48340,
+      "candidate_id": "300354.SZ__300503.SZ",
+      "method": "DH-fixed-7",
+      "status": "matched",
+      "statistic_absolute_error": 3.9968028886505635e-15
+    },
+    {
+      "position": 58008,
+      "candidate_id": "300333.SZ__300845.SZ",
+      "method": "EG-fixed-1",
+      "status": "matched",
+      "statistic_absolute_error": 0.0
+    },
+    {
+      "position": 58008,
+      "candidate_id": "300333.SZ__300845.SZ",
+      "method": "DH-fixed-1",
+      "status": "matched",
+      "statistic_absolute_error": 2.7755575615628914e-16
+    },
+    {
+      "position": 58008,
+      "candidate_id": "300333.SZ__300845.SZ",
+      "method": "EG-AIC",
+      "status": "matched",
+      "statistic_absolute_error": 0.0
+    },
+    {
+      "position": 58008,
+      "candidate_id": "300333.SZ__300845.SZ",
+      "method": "DH-fixed-7",
+      "status": "matched",
+      "statistic_absolute_error": 2.7755575615628914e-17
+    },
+    {
+      "position": 67677,
+      "candidate_id": "300896.SZ__688363.SH",
+      "method": "EG-fixed-1",
+      "status": "matched",
+      "statistic_absolute_error": 0.0
+    },
+    {
+      "position": 67677,
+      "candidate_id": "300896.SZ__688363.SH",
+      "method": "DH-fixed-1",
+      "status": "matched",
+      "statistic_absolute_error": 1.3322676295501878e-15
+    },
+    {
+      "position": 67677,
+      "candidate_id": "300896.SZ__688363.SH",
+      "method": "EG-AIC",
+      "status": "matched",
+      "statistic_absolute_error": 0.0
+    },
+    {
+      "position": 67677,
+      "candidate_id": "300896.SZ__688363.SH",
+      "method": "DH-fixed-7",
+      "status": "matched",
+      "statistic_absolute_error": 4.440892098500626e-16
+    }
+  ],
+  "independent_numeric_reference_calls": 32,
+  "full_retest": false,
+  "frozen_inputs_and_statistical_sources_unchanged": true,
+  "diagnostic_gate_applied": false,
+  "calibration_validation": false
+}

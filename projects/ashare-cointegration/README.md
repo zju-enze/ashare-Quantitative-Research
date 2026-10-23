@@ -2,7 +2,9 @@
 
 **主研究问题：在预先限定的A股同业股票对中，哪些配对具有协整证据？这些证据来自什么检验、经过什么多重校正，适用范围和限制是什么？**
 
-当前已完成用于这项识别任务的两股票模拟验证，尚未按修订方案生成真实股票对证据清单。V1/EG和V2/DH在共同对数价格模拟中比较误报率与检出率；这一方法比较是识别流程的前置环节。V3继续暂停。
+**2026-10-23已完成修订设计的全市场检验与独立核对：67,678个候选、四规格合计270,712次检验。** V1/EG固定1阶得到行业内Holm284对、全局Holm21对名义发现；V2/DH固定1阶分别11对和0对。两种口径事前并列固定，整体错误控制校准仍未完成。V3继续暂停。
+
+[本次市场汇总与全部清单](results_revision/market_20261023/REPORT.md) · [EG行业内284对](results_revision/market_20261023/EG-fixed-1_L2_Holm.csv) · [EG全局21对](results_revision/market_20261023/EG-fixed-1_GLOBAL_Holm.csv) · [DH行业内11对](results_revision/market_20261023/DH-fixed-1_L2_Holm.csv)。
 
 ## 正式交付
 
@@ -12,9 +14,9 @@
 |[V1 / EG 正式报告](results_final/V1_FINAL_REPORT.md)|EG如何寻找协整证据，误报与漏检怎样影响名单|
 |[V2 / DH 正式报告](results_final/V2_FINAL_REPORT.md)|DH为何用于识别，如何解释较少的检出|
 |[术语与方法附录](results_final/METHODS_AND_GLOSSARY.md)|术语解释、复现公式、参数与完整选阶对照|
-|[机器可读正式结果](results_final/FINAL_RESULTS.json)|本设计的统计，以及“模拟完成、真实识别未完成”的范围标记|
+|[机器可读正式结果](results_final/FINAL_RESULTS.json)|本设计的模拟与市场统计、名义发现及未完成的全图校准标记|
 |[共同设计与执行记录](EXPERIMENT_REVISION_PLAN_V1_V2.md)|已经执行的方案、参数、随机设计、指标与运行范围|
-|[工程安排](ENGINEERING_CHANGES.md)|ENG-023恢复研究主线与术语解释的修订记录|
+|[工程安排](ENGINEERING_CHANGES.md)|ENG-024全市场运行、结果和研究范围|
 |[研究状态](RESEARCH_STATUS.json)|当前正式报告状态和独立保留的历史执行记录|
 
 ## 当前方法验证与识别任务的关系
@@ -32,7 +34,7 @@
 
 误报率指没有协整却被判为有证据的比例；检出率（功效）指确有协整时被找出的比例。区间和同路径差异见正式报告。低误报与低检出可以并存，因此后续发现少不能直接解释为市场没有协整关系。
 
-本研究仍需确定并验证多对同时检验的校正范围，再按修订方案遍历真实候选、保存逐对证据。该设计下尚未完成真实股票对识别，也未开展2026评价或交易验证。
+真实候选已完成名义检验与清单交付。行业内主清单中EG有148对、DH有4对存在至少一股I(1)诊断警示；DH一阶另有43个数值占位，均保留完整家族。全图错误控制校准仍未完成，2026评价和交易验证未开展。
 
 ## 参数、运行与来源
 
@@ -41,7 +43,7 @@
 - [冻结运行协议](results_revision/pair_comparison/experiment_protocol.json)、[正式汇总](results_revision/pair_comparison/formal_summary.csv)、[同路径比较](results_revision/pair_comparison/formal_paired.csv)。
 - [运行入口](run_pair_comparison.py)、[完成记录](results_revision/pair_comparison/COMPLETION.json)及[独立核对](results_revision/pair_comparison/formal_validation.json)。
 
-本次只调整正式报告与材料组织，使用已经完成的结果，没有新模拟或参数重估。原始数据及逐次检查点保持在受忽略的本地目录中。
+本次新增市场计算，直接复用此前模拟与DGP参数；全部四规格共同调用约4分49秒，未重估参数或重跑模拟。原始数据及逐次检查点保持在受忽略的本地目录中。
 
 ## 历史实验归档
 
