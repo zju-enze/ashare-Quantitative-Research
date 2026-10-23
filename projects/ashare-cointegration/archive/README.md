@@ -1,10 +1,10 @@
 # 历史材料归档
 
-当前结论以[共同DGP正式结果](../results_final/README.md)、[V1最终报告](../results_final/V1_FINAL_REPORT.md)和[V2最终报告](../results_final/V2_FINAL_REPORT.md)为准。现行设计依据是[V1/V2联合修订计划](../EXPERIMENT_REVISION_PLAN_V1_V2.md)，V3继续暂停。归档中的执行提示词不构成新的运行授权。
+当前结论以[第一阶段最终报告](../results_final/STAGE1_FINAL_REPORT.md)、[正式交付索引](../results_final/README.md)、[V1最终报告](../results_final/V1_FINAL_REPORT.md)和[V2最终报告](../results_final/V2_FINAL_REPORT.md)为准。现行设计依据是[V1/V2联合修订计划](../EXPERIMENT_REVISION_PLAN_V1_V2.md)，V3继续暂停。归档中的执行提示词不构成新的运行授权。
 
 ## 原设计实验：独立归档，不纳入正式报告
 
-正式报告仅采用共同DGP、对数价格、固定1阶主比较的设计。以下材料完整保留历史结论，作为已归档实验的复现工作副本；其原位路径不表示仍属于正式报告。
+正式报告采用修订后的对数价格检验、固定1阶主比较及共同DGP模拟。以下材料完整保留历史结论，作为已归档实验的复现工作副本；其原位路径不表示仍属于正式报告。
 
 |历史材料|计划与结果入口|
 |---|---|

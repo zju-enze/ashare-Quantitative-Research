@@ -898,7 +898,7 @@
     "new_statistical_runs": 1,
     "market_results_revised": true,
     "historical_statistical_verdicts_unchanged": true,
-    "publication_target": "origin/research/cointegration-stage1",
+    "publication_target": "origin/main",
     "server_sync_requested": false,
     "validation": {
       "status": "passed",

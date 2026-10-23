@@ -55,6 +55,17 @@ The prior 20,000-path common-DGP study remains the method-validation evidence an
 
 New studies live in self-contained directories under `projects/`, with their own configuration, data contract, dependencies, execution commands, and outputs. The original value-signal study retains its existing root-level layout.
 
+| Location | Purpose |
+|---|---|
+| Root-level `src/`, `tests/`, `notebooks/`, `docs/`, `results/`, `figures/` | Code and evidence for the original [value-signal study](VALUE_SIGNAL_RESEARCH.md) |
+| `projects/ashare-cointegration/results_final/` | [Current Stage 1 report and delivery index](projects/ashare-cointegration/results_final/README.md) |
+| `projects/ashare-cointegration/results_revision/` | [Revised market evidence](projects/ashare-cointegration/results_revision/market_20261023/REPORT.md) and [common-DGP comparison](projects/ashare-cointegration/results_revision/pair_comparison/REPORT.md) |
+| `projects/ashare-cointegration/results_review/` | Supporting parameter-estimation and diagnostic evidence |
+| `projects/ashare-cointegration/archive/` | [Earlier designs, reports and reproducible historical output references](projects/ashare-cointegration/archive/README.md) |
+| `projects/单因子测试报告/` | [Single-factor study scaffold](projects/单因子测试报告/README.md); no empirical execution yet |
+
+`main` is the published repository entry point. Use topic branches for active changes, merge completed work through a pull request, and retire merged branches. Research history remains available through commits and the archive index. Existing executable paths stay in place so earlier runs remain reproducible.
+
 Project-specific code becomes shared infrastructure only after its assumptions and interfaces have been shown to fit more than one study. Adding a study should preserve the reproducibility of existing work.
 
 ## Data and reproducibility
