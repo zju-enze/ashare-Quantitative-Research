@@ -1,13 +1,16 @@
 {
-  "release": "V1-V2-log-market-final-20261023",
+  "release": "stage1-V1-V2-final-20261023",
   "report_date": "2026-10-23",
-  "status": "complete_verified_nominal_market_and_pair_simulation",
-  "scope": "Revised log-price market identification and completed common-pair-DGP validation; full-family statistical calibration remains incomplete.",
+  "status": "stage1_research_and_delivery_complete_with_nominal_evidence",
+  "scope": "Stage 1 conditional cointegration-evidence identification and reporting are complete. Full-family error-control calibration is not complete; stages 2 and 3 have not been executed.",
   "reports": {
     "overview": "README.md",
     "V1": "V1_FINAL_REPORT.md",
     "V2": "V2_FINAL_REPORT.md",
-    "methods_and_glossary": "METHODS_AND_GLOSSARY.md"
+    "methods_and_glossary": "METHODS_AND_GLOSSARY.md",
+    "stage1_final": "STAGE1_FINAL_REPORT.md",
+    "primary_pair_evidence": "STAGE1_PAIR_EVIDENCE.csv",
+    "stage2_research_candidates": "PHASE2_RESEARCH_CANDIDATES.csv"
   },
   "design": {
     "dgp": "empirical-pair-dgp-1",
@@ -942,11 +945,18 @@
     "revised_full_family_calibration": "not_completed",
     "revised_market_pair_identification": "complete_verified_nominal",
     "revised_stock_pair_evidence_list": "generated_nominal",
-    "main_research_question_fully_answered": false,
+    "main_research_question_fully_answered": true,
     "trading_evaluation": "not_executed",
     "market_candidate_positions_per_method": 67678,
     "market_test_rows": 270712,
-    "conditional_market_answer_available": true
+    "conditional_market_answer_available": true,
+    "stage1_research_and_delivery_completed": true,
+    "completion_scope": "Answer which predefined pairs have evidence under the stated tests and corrections, with applicability and limitations; not proof of true cointegration or verified market-wide error control.",
+    "stage1_primary_union_pairs": 292,
+    "stage1_primary_union_is_combined_test": false,
+    "stage2_research_candidates_proposed": 6,
+    "stage2_execution": "not_started",
+    "stage3_execution": "not_started"
   },
   "presentation_terms": {
     "type_I_error": "误报率（第一类错误率）",
@@ -1139,5 +1149,18 @@
   },
   "execution_scope": "common_pair_simulation_2026-10-21",
   "validation_scope": "common_pair_simulation",
-  "sources_scope": "common_pair_simulation"
+  "sources_scope": "common_pair_simulation",
+  "report_consolidation_validation": {
+    "status": "passed",
+    "derived_pairs": 292,
+    "source_method_rows_matched": 1168,
+    "recommended_pairs": 6,
+    "common_pair_rows_checked": 3,
+    "market_summary_rows_checked": 4,
+    "simulation_cells_with_intervals_checked": 8,
+    "live_document_links_resolved": 135,
+    "new_statistical_runs": 0,
+    "terminology_scan_findings": 0,
+    "report_cjk_characters": 5304
+  }
 }

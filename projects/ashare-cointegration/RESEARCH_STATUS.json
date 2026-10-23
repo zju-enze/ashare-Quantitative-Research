@@ -144,7 +144,9 @@
     }
   },
   "stage2": {
-    "status": "planned_deferred"
+    "status": "planned_deferred",
+    "recommended_research_candidates": "results_final/PHASE2_RESEARCH_CANDIDATES.csv",
+    "candidate_status": "proposed_for_exploration_not_yet_evaluated"
   },
   "stage3": {
     "status": "planned_deferred"
@@ -291,7 +293,8 @@
       "Current official history reconstruction is not an archived end-2025 industry snapshot",
       "Source-covered surviving Shanghai/Shenzhen ordinary shares only; no Beijing coverage",
       "No trading/profitability or real-2026 price evaluation"
-    ]
+    ],
+    "record_scope": "Historical price-level design closeout on 2026-10-19; current revised Stage 1 delivery is recorded under final_delivery."
   },
   "v2": {
     "version": "2.1-DH",
@@ -645,9 +648,9 @@
     "completion_record": "results_v2/STAGE1_COMPLETION_V2.json"
   },
   "research_direction": {
-    "recorded_date": "2026-10-21",
-    "engineering_change": "ENG-024",
-    "status": "V1_V2_nominal_market_and_pair_validation_complete",
+    "recorded_date": "2026-10-23",
+    "engineering_change": "ENG-025",
+    "status": "stage1_research_and_delivery_complete_with_nominal_evidence",
     "focus": "identify_within_industry_stock_pairs_with_cointegration_evidence",
     "objective": "在预先限定的同业股票对中识别哪些具有协整证据，并说明检验、多重校正、适用范围和限制",
     "agreed_direction": {
@@ -666,14 +669,14 @@
       "legacy_M1_volatility_break": "not_carried_forward"
     },
     "pending_design_decisions": [
-      "full_candidate_graph_DGP_extension_and_calibration_protocol",
-      "correction_family_and_error_control_target",
-      "next_application_scope_after_pair_supplement"
+      "full_candidate_graph_DGP_extension_and_calibration_protocol_if_validated_error_control_is_required",
+      "future_scientific_error_control_target",
+      "stage2_protocol_and_evaluation_rules_before_execution"
     ],
     "new_experiments_started": true,
-    "authorized_computation_scope": "Completed the authorized engineering and formal pair supplement; existing V1/V2 results and DGP estimates reused; no full-graph or market reruns",
+    "authorized_computation_scope": "Authorized common-pair simulation and 2026-10-23 full-market revision have completed. ENG-025 only consolidates existing evidence and recommends later research; it starts no new experiment.",
     "simulation_experiments_authorized": true,
-    "EG_DH_market_retests_authorized": false,
+    "EG_DH_market_retests_authorized": true,
     "student_t_diagnostic": {
       "status": "complete",
       "engineering_change": "ENG-017",
@@ -858,8 +861,9 @@
       }
     },
     "current_report_design": "empirical-pair-dgp-1; log prices; no stock ADF gate; fixed 1 lag primary; AIC/7 lag sensitivity",
-    "current_experiment_role": "已生成真实候选的名义协整证据清单，配套单对模拟已完成；全图错误控制校准未完成",
-    "revised_market_identification_status": "complete_verified_nominal"
+    "current_experiment_role": "第一阶段已完成名义协整证据识别、方法比较和限制解释；提出后续探索对象，完整共享股票图的错误控制尚未验证。",
+    "revised_market_identification_status": "complete_verified_nominal",
+    "market_authorization_scope": "The user-authorized 2026-10-23 run is complete; this record is not an instruction to rerun it."
   },
   "v3": {
     "version": "3.1-draft",
@@ -881,8 +885,8 @@
   },
   "final_delivery": {
     "date": "2026-10-23",
-    "engineering_change": "ENG-024",
-    "status": "market_results_and_reports_complete",
+    "engineering_change": "ENG-025",
+    "status": "stage1_research_and_delivery_complete_with_nominal_evidence",
     "overview": "results_final/README.md",
     "V1_report": "results_final/V1_FINAL_REPORT.md",
     "V2_report": "results_final/V2_FINAL_REPORT.md",
@@ -910,10 +914,21 @@
     "superseded_combined_reports": "archive/combined_reports_superseded_20261022.zip",
     "historical_experiment_index": "archive/README.md",
     "methods_and_glossary": "results_final/METHODS_AND_GLOSSARY.md",
-    "research_goal_completed": false,
+    "research_goal_completed": true,
     "method_simulation_completed": true,
     "market_evidence_report": "results_revision/market_20261023/REPORT.md",
-    "nominal_market_identification_completed": true
+    "nominal_market_identification_completed": true,
+    "research_goal_scope": "Stage 1 conditional evidence identification and interpretation; no claim of confirmed pair truth, calibrated market-wide FWER, or profitability.",
+    "stage1_final_report": "results_final/STAGE1_FINAL_REPORT.md",
+    "primary_pair_evidence": "results_final/STAGE1_PAIR_EVIDENCE.csv",
+    "primary_union_pairs": 292,
+    "stage2_research_candidates": "results_final/PHASE2_RESEARCH_CANDIDATES.csv",
+    "stage2_research_candidates_count": 6,
+    "candidate_recommendation_scope": "Post-hoc research prioritization from saved formation-period results; not a new rejection rule and no stage2 execution.",
+    "stage1_research_and_delivery_completed": true,
+    "full_family_error_control_validated": false,
+    "report_consolidation_new_statistical_runs": 0,
+    "report_consolidation_validation": "passed; results_final/FINAL_RESULTS.json:report_consolidation_validation"
   },
   "market_revision": {
     "status": "complete_verified_nominal_market",

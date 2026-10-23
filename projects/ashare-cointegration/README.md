@@ -2,7 +2,7 @@
 
 **主研究问题：在预先限定的A股同业股票对中，哪些配对具有协整证据？这些证据来自什么检验、经过什么多重校正，适用范围和限制是什么？**
 
-**2026-10-23已完成修订设计的全市场检验与独立核对：67,678个候选、四规格合计270,712次检验。** V1/EG固定1阶得到行业内Holm284对、全局Holm21对名义发现；V2/DH固定1阶分别11对和0对。两种口径事前并列固定，整体错误控制校准仍未完成。V3继续暂停。
+**2026-10-23第一阶段研究与交付已完成。** [最终实验报告](results_final/STAGE1_FINAL_REPORT.md)明确股票对、证据可信范围和六对后续探索建议。已完成67,678个候选、四规格合计270,712次检验及独立核对。 V1/EG固定1阶得到行业内Holm284对、全局Holm21对名义发现；V2/DH固定1阶分别11对和0对。两种口径事前并列固定，整体错误控制校准仍未完成。V3继续暂停。
 
 [本次市场汇总与全部清单](results_revision/market_20261023/REPORT.md) · [EG行业内284对](results_revision/market_20261023/EG-fixed-1_L2_Holm.csv) · [EG全局21对](results_revision/market_20261023/EG-fixed-1_GLOBAL_Holm.csv) · [DH行业内11对](results_revision/market_20261023/DH-fixed-1_L2_Holm.csv)。
 
@@ -10,7 +10,8 @@
 
 |入口|内容|
 |---|---|
-|[研究总报告](results_final/README.md)|股票对识别主问题、完整流程、当前证据与尚未回答的问题|
+|[第一阶段最终实验报告](results_final/STAGE1_FINAL_REPORT.md)|阶段收尾、股票对发现、证据可信范围与六对后续研究建议|
+|[正式交付索引](results_final/README.md)|292对主发现证据总表、六对研究候选及方法分报告|
 |[V1 / EG 正式报告](results_final/V1_FINAL_REPORT.md)|EG如何寻找协整证据，误报与漏检怎样影响名单|
 |[V2 / DH 正式报告](results_final/V2_FINAL_REPORT.md)|DH为何用于识别，如何解释较少的检出|
 |[术语与方法附录](results_final/METHODS_AND_GLOSSARY.md)|术语解释、复现公式、参数与完整选阶对照|

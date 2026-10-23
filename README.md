@@ -7,7 +7,7 @@ A repository for reproducible quantitative finance research. Each study has a de
 | Project | Research question | Current status | Start here |
 |---|---|---|---|
 | **A-share value-signal robustness** | How robust is value-signal evidence after correcting measurement and changing the inferential framework? | Executed notebook, aggregate results, figures, and a local execution record are available. | [Study overview](VALUE_SIGNAL_RESEARCH.md) |
-| **A-share industry cointegration** | Which predefined within-industry A-share pairs have cointegration evidence, under which tests and multiple-testing corrections? | Revised log-price market run completed: 67,678 candidates and 270,712 tests. Primary EG/DH discoveries are 284/11 under within-L2 Holm and 21/0 under GLOBAL-Holm, all nominal with full-family calibration still incomplete. | [Project overview](projects/ashare-cointegration/README.md) |
+| **A-share industry cointegration** | Which predefined within-industry A-share pairs have cointegration evidence, under which tests and multiple-testing corrections? | Stage 1 research and reporting completed: 67,678 candidates, nominal pair evidence, and six proposed pairs for subsequent exploration. Full-family calibration remains incomplete; stages 2 and 3 have not started. | [Stage 1 final report](projects/ashare-cointegration/results_final/STAGE1_FINAL_REPORT.md) |
 | **单因子测试报告** | How does a selected factor relate to subsequent returns, and how stable is that evidence across samples and test specifications? | Initialized; factor definition, sample, and test specifications are pending. No tests have been executed. | [Project overview](projects/单因子测试报告/README.md) |
 
 ## A-share value-signal robustness
