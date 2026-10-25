@@ -8,7 +8,7 @@ A repository for reproducible quantitative finance research. Each study has a de
 |---|---|---|---|
 | **A-share value-signal robustness** | How robust is value-signal evidence after correcting measurement and changing the inferential framework? | Executed notebook, aggregate results, figures, and a local execution record are available. | [Study overview](VALUE_SIGNAL_RESEARCH.md) |
 | **A-share industry cointegration** | Which predefined within-industry A-share pairs have cointegration evidence, under which tests and multiple-testing corrections? | Stage 1 research and reporting completed: 67,678 candidates, nominal pair evidence, and six proposed pairs for subsequent exploration. Full-family calibration remains incomplete; stages 2 and 3 have not started. | [Stage 1 final report](projects/ashare-cointegration/results_final/STAGE1_FINAL_REPORT.md) |
-| **单因子测试报告** | How does a selected factor relate to subsequent returns, and how stable is that evidence across samples and test specifications? | Initialized; factor definition, sample, and test specifications are pending. No tests have been executed. | [Project overview](projects/单因子测试报告/README.md) |
+| **BP 单因子测试报告** | Does book-to-market predict subsequent returns after industry and size controls, and where does that association hold? | P0 environment/source checks passed. P1 produced dated input audits; historical membership, industry and endpoint gaps prevent freezing the formal sample. No factor tests have run. | [Project status](projects/单因子测试报告/docs/PROJECT_STATUS.md) |
 
 ## A-share value-signal robustness
 
@@ -62,7 +62,7 @@ New studies live in self-contained directories under `projects/`, with their own
 | `projects/ashare-cointegration/results_revision/` | [Revised market evidence](projects/ashare-cointegration/results_revision/market_20261023/REPORT.md) and [common-DGP comparison](projects/ashare-cointegration/results_revision/pair_comparison/REPORT.md) |
 | `projects/ashare-cointegration/results_review/` | Supporting parameter-estimation and diagnostic evidence |
 | `projects/ashare-cointegration/archive/` | [Earlier designs, reports and reproducible historical output references](projects/ashare-cointegration/archive/README.md) |
-| `projects/单因子测试报告/` | [Single-factor study scaffold](projects/单因子测试报告/README.md); no empirical execution yet |
+| `projects/单因子测试报告/` | [BP study and P0/P1 input audit](projects/单因子测试报告/README.md); no factor-performance execution yet |
 
 `main` is the published repository entry point. Use topic branches for active changes, merge completed work through a pull request, and retire merged branches. Research history remains available through commits and the archive index. Existing executable paths stay in place so earlier runs remain reproducible.
 

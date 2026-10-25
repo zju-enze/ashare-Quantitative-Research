@@ -1,0 +1,10 @@
+﻿module,available,path,version,phase,read_status,source,used_this_round
+nature-writing,True,C:\Users\30819\.codex\skills\nature-writing\SKILL.md,1.5.0,P6,entry/frontmatter and manifest metadata inspected; workflow not invoked,local installed folder; upstream commit/install provenance not available,False
+nature-figure,True,C:\Users\30819\.codex\skills\nature-figure\SKILL.md,2.8.0,P3-P5,entry/frontmatter and manifest metadata inspected; workflow not invoked,local installed folder; upstream commit/install provenance not available,False
+nature-reviewer,True,C:\Users\30819\.codex\skills\nature-reviewer\SKILL.md,1.5.0,P7,entry/frontmatter and manifest metadata inspected; workflow not invoked,local installed folder; upstream commit/install provenance not available,False
+nature-statistics,True,C:\Users\30819\.codex\skills\nature-statistics\SKILL.md,1.3.0,P2/P6/P7,entry/frontmatter and manifest metadata inspected; workflow not invoked,local installed folder; upstream commit/install provenance not available,False
+nature-academic-search,True,C:\Users\30819\.codex\skills\nature-academic-search\SKILL.md,2.0.0,literature only if needed,entry/frontmatter and manifest metadata inspected; workflow not invoked,local installed folder; upstream commit/install provenance not available,False
+nature-shared,True,C:\Users\30819\.codex\skills\nature-shared\SKILL.md,1.6.0,dependency only,entry/frontmatter and manifest metadata inspected; workflow not invoked,local installed folder; upstream commit/install provenance not available,False
+scientific-critical-thinking,False,,unavailable,P1/P2,not present in catalog or checked roots,local installed folder; upstream commit/install provenance not available,False
+scientific-writing,False,,unavailable,P6,not present in catalog or checked roots,local installed folder; upstream commit/install provenance not available,False
+peer-review,False,,unavailable,P7,not present in catalog or checked roots,local installed folder; upstream commit/install provenance not available,False

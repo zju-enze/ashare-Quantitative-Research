@@ -1,0 +1,39 @@
+{
+  "industry_labels_absent": [
+    "食品饮料",
+    "纺织服饰",
+    "煤炭"
+  ],
+  "industry_absence_reference": "https://tushare.pro/document/2?doc_id=181",
+  "legacy_codes_absent_from_stock_basic": [
+    "000022.SZ",
+    "000043.SZ",
+    "300114.SZ"
+  ],
+  "legacy_basic_probes_available": true,
+  "index_unknown_990018_SH_scope": "only 2005; outside proposed 2007+ window",
+  "hs300_missing_snapshot_months": [
+    "2019-01",
+    "2019-02",
+    "2019-03",
+    "2019-04",
+    "2019-05",
+    "2019-06",
+    "2023-01",
+    "2023-02",
+    "2023-03",
+    "2023-04",
+    "2023-05",
+    "2023-06",
+    "2024-07",
+    "2024-08",
+    "2024-09",
+    "2024-10",
+    "2024-11",
+    "2024-12"
+  ],
+  "industry_end_date_S_observations": 178,
+  "circ_mv_unit_exceptions": 4,
+  "bse_code_mismatch_example_count": 3,
+  "bse_examples_private_file": ".local/preflight/bse_code_mismatch_examples.csv"
+}

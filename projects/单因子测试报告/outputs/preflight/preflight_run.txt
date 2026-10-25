@@ -1,0 +1,54 @@
+Reading only monthly signals and entry/exit endpoint columns
+{
+  "output": "F:\\Robustness of Value Signals and Asset-Pricing Models in China A-Shares\\projects\\单因子测试报告\\outputs\\preflight",
+  "last_complete": {
+    "signal_month": "2025-12",
+    "signal_date": "20251231",
+    "entry_date": "20260105",
+    "next_signal_date": "20260130",
+    "exit_date": "20260202",
+    "holding_month": "2026-01",
+    "signal_complete": true,
+    "holding_complete": true,
+    "missing_endpoint_reason": "",
+    "calendar_source": "local SSE index; SZ cross-check; BaoStock calendar 2023-2025; two-stock dates after index cutoff",
+    "000300.SH_endpoints_present": true,
+    "000905.SH_endpoints_present": true,
+    "market_dates_complete": true
+  },
+  "flow": {
+    "000300.SH": {
+      "months": 229,
+      "min_bp_coverage": 0.9,
+      "max_bp_coverage": 1.0,
+      "signal_stock_observations_U": 68282,
+      "signal_stock_observations_F": 66974,
+      "signal_stock_observations_S": 60966,
+      "complete_periods_with_all_S_endpoints": 63
+    },
+    "000905.SH": {
+      "months": 229,
+      "min_bp_coverage": 0.844,
+      "max_bp_coverage": 1.0,
+      "signal_stock_observations_U": 113538,
+      "signal_stock_observations_F": 111006,
+      "signal_stock_observations_S": 99622,
+      "complete_periods_with_all_S_endpoints": 48
+    },
+    "ALL_A": {
+      "months": 229,
+      "min_bp_coverage": 0.8220183486238533,
+      "max_bp_coverage": 0.9992172211350293,
+      "signal_stock_observations_U": 708686,
+      "signal_stock_observations_F": 693103,
+      "signal_stock_observations_S": 633750,
+      "complete_periods_with_all_S_endpoints": 2
+    }
+  },
+  "endpoint_issues": {
+    "exit_price_unexplained": 4924,
+    "exit_price_recorded_suspension": 2138,
+    "entry_price_unavailable": 1288,
+    "exit_price_delisted": 72
+  }
+}

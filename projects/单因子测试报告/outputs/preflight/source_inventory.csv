@@ -1,0 +1,7 @@
+﻿file,path,bytes,snapshot_match,compared_sha256
+single_test.py,F:\quant_lab\量化投资课程资料包\qfbook\factor\single_test.py,21618,True,c64ee6c438ebd3b321184a0edc6f6cfcc3cac5995c078af1608165627ac5eb5e
+main_student.pdf,F:\quant_lab\resources\main_student.pdf,2396504,True,c2d2d643e9f5fc6a06931847b5fef61468a651105dbcb2f39cc723c48268f236
+course_README.md,F:\quant_lab\README.md,2839,True,ba45d958bc844348ef88c93d97c58a36493194e3d19e01a10b1bee44b0371d2e
+check_env.py,F:\quant_lab\check_env.py,1693,,
+loader.py,F:\quant_lab\量化投资课程资料包\qfbook\data\loader.py,13801,,
+config.py,F:\quant_lab\量化投资课程资料包\qfbook\config.py,2697,,

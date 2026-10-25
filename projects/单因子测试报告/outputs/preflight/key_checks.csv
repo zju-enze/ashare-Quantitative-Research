@@ -1,0 +1,10 @@
+﻿dataset,scope,rows_checked,duplicate_or_null_key_rows
+index_daily,all_rows,29472,0
+daily_basic,all complete candidate signal dates,718994,0
+daily,candidate signal and endpoint dates,1448004,0
+adj_factor,candidate entry and exit dates,759814,0
+stock_basic,all_rows,5866,0
+namechange,all_rows,13012,0
+industry_sw_member,all interval versions,7438,0
+index_weight,all_rows,330098,0
+suspend_d,all_rows,143454,0
