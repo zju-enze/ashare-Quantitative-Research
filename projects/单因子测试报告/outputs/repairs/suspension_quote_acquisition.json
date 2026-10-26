@@ -1,0 +1,9 @@
+{
+  "completed": true,
+  "endpoints": 166,
+  "matching_last_traded_quotes": 166,
+  "endpoint_status_counts": {
+    "0": 166
+  },
+  "limitation": "Suspended reference quotes are valuations, not executable prices; corporate-action reconciliation remains separate"
+}

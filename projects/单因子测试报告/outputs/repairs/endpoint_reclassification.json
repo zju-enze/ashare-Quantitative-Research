@@ -1,0 +1,22 @@
+{
+  "checked_at": "2026-10-26T13:09:53.389297+08:00",
+  "scope": "Original P1 flagged stock-periods only; not a rebuilt universe or factor result",
+  "stock_periods": 8422,
+  "unique_endpoint_keys": 15592,
+  "endpoint_classifications": {
+    "quote_present": 8158,
+    "confirmed_suspension": 7358,
+    "terminal_event_unresolved": 76
+  },
+  "period_dispositions": {
+    "exit_valuation_unresolved": 7134,
+    "entry_ineligible_confirmed_suspension": 1286,
+    "entry_ineligible_after_delisting": 2
+  },
+  "missing_adjustment_keys": 71,
+  "limitations": [
+    "Confirmed suspension does not supply an exit valuation.",
+    "No terminal-event policy has been applied.",
+    "New industry coverage and close-entry eligibility require a later full P1 rerun."
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "completed": true,
+  "requested_dates": 145,
+  "request_keys": 5238,
+  "matched_keys": 5166,
+  "daily_status_counts": {
+    "0": 5166,
+    "NaN": 72
+  },
+  "limitation": "Daily trading status does not identify every intraday halt or a missing terminal value"
+}

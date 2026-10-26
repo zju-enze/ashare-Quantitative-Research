@@ -1,0 +1,15 @@
+{
+  "source": "https://www.csindex.com.cn/zh-CN/indices/index-detail/000300#/about/newsCenter",
+  "reviewed_on": "2026-10-26",
+  "target_dates": [
+    "20230131",
+    "20230228"
+  ],
+  "baseline_date": "20221230",
+  "members_per_date": 300,
+  "official_notices_reviewed": 86,
+  "adjustment_attachments_checked": 6,
+  "baseline_equals_march_snapshot": true,
+  "limitations": "Current public archive, not an immutable historical publication archive. Notice 14599 currently links to a March-revised attachment. The same 300 members in the March BaoStock snapshot are corroboration, not the sole basis for continuation.",
+  "status": "Two month membership gaps reconstructed; other P1 gates remain open"
+}

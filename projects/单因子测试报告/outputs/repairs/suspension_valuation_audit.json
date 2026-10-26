@@ -1,0 +1,14 @@
+{
+  "checked_at": "2026-10-26T13:15:10.977653+08:00",
+  "endpoints": 7358,
+  "assessments": {
+    "constant_adjustment_candidate": 7192,
+    "corporate_action_review": 166
+  },
+  "rule": "Last positive-volume quote, strictly before endpoint, and one raw-ticker factor series throughout",
+  "limitations": [
+    "Candidate audit only: no price imputation or returns computed.",
+    "Unchanged vendor factors support absence of recorded adjustment events, not an independent corporate-action audit.",
+    "Changed factors require event-specific valuation evidence before any carry-forward."
+  ]
+}
