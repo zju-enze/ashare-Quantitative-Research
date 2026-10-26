@@ -1,7 +1,7 @@
 {
   "completed": true,
-  "endpoints": 166,
-  "fetched_requests": 334,
-  "endpoints_with_factor_events": 142,
+  "endpoints": 175,
+  "fetched_requests": 39,
+  "endpoints_with_factor_events": 151,
   "scope": "Bounded to suspended endpoints with changes in original cumulative factors; no return calculation"
 }

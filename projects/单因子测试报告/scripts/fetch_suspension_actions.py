@@ -49,6 +49,9 @@ def main(client):
                 files.append(str(path.relative_to(private)))
             path = factor_dir / f"{key.ts_code}_{key.trade_date}.csv"
             existing = None
+            quote_source = Path(key.source_file)
+            if quote_source.is_absolute() and quote_source.with_name("factors.csv").exists():
+                existing = quote_source.with_name("factors.csv")
             if (key.ts_code, key.trade_date) in local.index:
                 candidate = Path(local.loc[(key.ts_code, key.trade_date), "source_file"]).with_name("factors.csv")
                 if candidate.exists():

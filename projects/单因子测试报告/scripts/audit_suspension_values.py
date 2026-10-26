@@ -1,4 +1,4 @@
-"""Find last traded quotes and adjustment events for confirmed suspension endpoints."""
+"""Find last traded quotes and event evidence needed for unresolved exit valuations."""
 
 import argparse
 import json
@@ -8,15 +8,20 @@ import numpy as np
 import pandas as pd
 import pyarrow.parquet as pq
 
+from prepare_local_repairs import canonical_codes
+
 
 def main(course):
     root = Path(__file__).resolve().parents[1]
     private = root / ".local/data_repairs"
-    keys = pd.read_csv(private / "endpoint_reclassification.csv", dtype={"ts_code": str, "trade_date": str})
-    keys = keys[keys.classification.eq("confirmed_suspension")]
+    issues = pd.read_csv(root / ".local/preflight_repaired/raw_endpoint_issues.csv", dtype=str)
+    terminal = issues[issues.exit_classification.eq("terminal_event_unresolved")]
+    keys = issues[issues.exit_classification.eq("confirmed_suspension")][["ts_code", "entry_date", "exit_date"]]
+    keys = keys.rename(columns={"exit_date": "trade_date"}).drop_duplicates()
     aliases = pd.read_csv(private / "security_aliases.csv", dtype=str)
     old_by_new = dict(zip(aliases.new_code, aliases.old_code))
-    codes = set(keys.ts_code) | set(aliases.loc[aliases.new_code.isin(keys.ts_code), "old_code"])
+    identities = set(keys.ts_code) | set(terminal.ts_code)
+    codes = identities | set(aliases.loc[aliases.new_code.isin(identities), "old_code"])
     data = course / "data/offline"
     prices = pq.read_table(data / "daily.parquet", columns=["ts_code", "trade_date", "close", "vol"],
                            filters=[("ts_code", "in", sorted(codes))]).to_pandas()
@@ -49,15 +54,33 @@ def main(course):
         interval = adjustment.loc[quote.trade_date:key.trade_date]
         valid = np.isfinite(interval).all() and interval.gt(0).all()
         row.update(last_adj=float(interval.iloc[0]), endpoint_adj=float(interval.iloc[-1]),
-                   interval_factor_values=int(interval.nunique()), interval_factor_rows=len(interval))
+                   interval_factor_values=int(interval.nunique()), interval_factor_rows=len(interval),
+                   factor_3dp_unique=int(interval.round(3).nunique()))
         if valid:
             row["assessment"] = "constant_adjustment_candidate" if interval.nunique() == 1 else "corporate_action_review"
-        assert quote.trade_date < key.trade_date
+        assert key.entry_date <= quote.trade_date < key.trade_date
         rows.append(row)
     result = pd.DataFrame(rows)
     assert len(result) == len(keys) and not result.duplicated(["ts_code", "trade_date"]).any()
     result.to_csv(private / "suspension_valuation_audit.csv", index=False, encoding="utf-8-sig")
+    names = pd.read_parquet(data / "namechange.parquet")
+    names.ts_code = canonical_codes(names.ts_code, aliases)
+    names["end"] = names.end_date.fillna("99991231")
+    terminal_rows = []
+    for key in terminal.itertuples(index=False):
+        raw = key.ts_code if key.ts_code in prices else old_by_new.get(key.ts_code)
+        quote = prices[raw].iloc[-1]
+        assert key.entry_date <= quote.trade_date < key.exit_date, "Terminal lifecycle contradicts observed trading history"
+        signal_names = names[names.ts_code.eq(key.ts_code) & names.start_date.le(key.signal_date) & names.end.ge(key.signal_date)]
+        terminal_rows.append(dict(ts_code=key.ts_code, signal_date=key.signal_date, entry_date=key.entry_date,
+                                  exit_date=key.exit_date, delist_date=key.end, last_trade_date=quote.trade_date,
+                                  last_close=float(quote.close), last_adj_factor=float(factors[raw].get(quote.trade_date, np.nan)),
+                                  signal_names="|".join(sorted(signal_names.name.dropna().unique())),
+                                  in_hs300=key.in_000300, in_zz500=key.in_000905))
+    pd.DataFrame(terminal_rows).to_csv(private / "terminal_event_candidates.csv", index=False, encoding="utf-8-sig")
     summary = dict(checked_at=pd.Timestamp.now(tz="Asia/Shanghai").isoformat(), endpoints=len(result),
+                   scope="Only held exit endpoints in the rebuilt P1 sample; excludes entry-ineligible periods",
+                   terminal_event_candidates=len(terminal_rows),
                    assessments=result.assessment.value_counts().to_dict(),
                    rule="Last positive-volume quote, strictly before endpoint, and one raw-ticker factor series throughout",
                    limitations=["Candidate audit only: no price imputation or returns computed.",

@@ -16,12 +16,12 @@ class RepairInputsTests(unittest.TestCase):
         got = canonical_codes(pd.Series(["837023.BJ", "920123.BJ", "830123.BJ"]), aliases)
         self.assertEqual(got.tolist(), ["920123.BJ", "920123.BJ", "830123.BJ"])
 
-    def test_industry_event_does_not_leak_into_earlier_close(self):
+    def test_industry_effective_day_is_available_for_next_session_signal(self):
         history = pd.DataFrame({"ts_code": ["x", "x"],
                                 "effective_from": pd.to_datetime(["2020-01-01", "2021-07-30 16:00"], format="mixed"),
                                 "l1_code": ["old", "new"]})
-        self.assertEqual(industry_asof(history, ["x"], "2021-07-30 15:00").loc["x", "l1_code"], "old")
-        self.assertEqual(industry_asof(history, ["x"], "2021-08-02 15:00").loc["x", "l1_code"], "new")
+        self.assertEqual(industry_asof(history, ["x"], "2021-07-29").loc["x", "l1_code"], "old")
+        self.assertEqual(industry_asof(history, ["x"], "2021-07-30").loc["x", "l1_code"], "new")
 
     def test_only_equivalent_alias_observations_collapse(self):
         same = pd.DataFrame({"code": ["x", "x"], "date": ["d", "d"], "pb": [2.0, 2.0]})

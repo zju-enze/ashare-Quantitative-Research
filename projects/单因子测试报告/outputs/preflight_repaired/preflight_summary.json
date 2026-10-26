@@ -1,0 +1,81 @@
+{
+  "kind": "repaired_candidate_preflight_not_factor_results",
+  "method_version": "0.5",
+  "input_checks_passed": true,
+  "checked_at": "2026-10-26T16:20:23.993420+08:00",
+  "bse_listing_dates_clamped_to_launch": 71,
+  "circ_mv_rows_corrected": 5,
+  "bse_launch_source": "https://www.bse.cn/company/introduce.html",
+  "candidate_stock_periods": 743286,
+  "endpoint_issue_stock_periods": 0,
+  "raw_endpoint_issue_stock_periods": 8011,
+  "endpoint_issue_classes": {},
+  "raw_endpoint_issue_classes": {
+    "confirmed_suspension": 7936,
+    "terminal_event_unresolved": 75
+  },
+  "complete_holding_periods": 228,
+  "first_signal_date": "20070131",
+  "last_signal_date": "20251231",
+  "first_entry_date": "20070201",
+  "last_exit_date": "20260202",
+  "applied_exit_value_kinds": {
+    "actual_endpoint_close": 678269,
+    "last_trade_carry_no_factor_change": 7761,
+    "distribution_adjusted_reference": 161,
+    "announced_final_day_exit_then_cash": 58,
+    "precision_only_keep_last_adjusted_value": 11,
+    "swap_to_target_actual_close": 10,
+    "swap_to_supported_target_suspension_value": 5,
+    "approved_unlisted_share_right_carry": 2,
+    "share_transfer_without_ex_reference": 1,
+    "special_cash_dividend": 1,
+    "rights_issue": 1
+  },
+  "unresolved_index_months": 0,
+  "outside_lifecycle_index_observations": 1,
+  "flow": {
+    "000300.SH": {
+      "U": 67170,
+      "F": 66770,
+      "S": 66769,
+      "entry_state_unknown": 0,
+      "entry_state_conflict": 0,
+      "secondary_status_conflict": 1,
+      "unknown_name_in_U": 0,
+      "unknown_risk_state_in_U": 0,
+      "name_risk_conflict": 0,
+      "industry_missing_in_F": 1
+    },
+    "000905.SH": {
+      "U": 111348,
+      "F": 110632,
+      "S": 110626,
+      "entry_state_unknown": 0,
+      "entry_state_conflict": 0,
+      "secondary_status_conflict": 0,
+      "unknown_name_in_U": 217,
+      "unknown_risk_state_in_U": 0,
+      "name_risk_conflict": 0,
+      "industry_missing_in_F": 6
+    },
+    "ALL_A": {
+      "U": 695242,
+      "F": 691640,
+      "S": 691553,
+      "entry_state_unknown": 0,
+      "entry_state_conflict": 0,
+      "secondary_status_conflict": 1,
+      "unknown_name_in_U": 311,
+      "unknown_risk_state_in_U": 0,
+      "name_risk_conflict": 0,
+      "industry_missing_in_F": 87
+    }
+  },
+  "raw_input_size_mtime_unchanged": true,
+  "limitations": [
+    "Missing historical names are supplemented with date-specific isST; unresolved risk/status counts are reported separately.",
+    "Supported suspension and terminal-event valuations are labelled academic estimates, not guaranteed executable exits.",
+    "Universe retains the course stock_basic scope, including its STAR-market depositary receipt; market-scope disclosure required."
+  ]
+}

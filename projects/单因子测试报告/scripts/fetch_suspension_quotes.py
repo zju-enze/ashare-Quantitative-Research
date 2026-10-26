@@ -46,6 +46,17 @@ def main(client):
                 frame = frame[frame.date.between(start, end)]
                 fetched = False
             else:
+                existing = root.parent / "ashare-cointegration/.local/market" / code / "raw.csv"
+                if existing.exists():
+                    candidate = pd.read_csv(existing, dtype=str)
+                    if {start, end} <= set(candidate.date):
+                        existing_source = str(existing)
+                        frame = candidate[candidate.date.between(start, end)]
+                if existing_source:
+                    fetched = False
+                else:
+                    frame = None
+            if not path.exists() and not existing_source:
                 rs = bs.query_history_k_data_plus(code, "date,code,close,preclose,volume,tradestatus,isST,adjustflag",
                                                  start_date=start, end_date=end, frequency="d", adjustflag="3")
                 rows = []

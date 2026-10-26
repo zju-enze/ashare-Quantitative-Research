@@ -1,9 +1,11 @@
 {
-  "checked_at": "2026-10-26T13:15:10.977653+08:00",
-  "endpoints": 7358,
+  "checked_at": "2026-10-26T14:43:06.758172+08:00",
+  "endpoints": 7936,
+  "scope": "Only held exit endpoints in the rebuilt P1 sample; excludes entry-ineligible periods",
+  "terminal_event_candidates": 75,
   "assessments": {
-    "constant_adjustment_candidate": 7192,
-    "corporate_action_review": 166
+    "constant_adjustment_candidate": 7761,
+    "corporate_action_review": 175
   },
   "rule": "Last positive-volume quote, strictly before endpoint, and one raw-ticker factor series throughout",
   "limitations": [

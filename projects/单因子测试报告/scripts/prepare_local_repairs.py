@@ -23,7 +23,8 @@ def collapse_equal_alias_rows(frame, keys, value_columns):
 
 
 def industry_asof(history, codes, cutoff):
-    available = history[history.effective_from.le(pd.Timestamp(cutoff))]
+    # Signals are formed after the month-end close for next-session execution; match effective calendar dates.
+    available = history[history.effective_from.dt.normalize().le(pd.Timestamp(cutoff).normalize())]
     available = available.sort_values("effective_from").groupby("ts_code").tail(1)
     return available.set_index("ts_code").reindex(codes)
 
@@ -83,7 +84,7 @@ def main(course, industry_source):
     rows = []
     for date, group in db.groupby("trade_date"):
         valid = group[np.isfinite(group.pb) & group.pb.gt(0)]
-        cutoff = pd.Timestamp(date) + pd.Timedelta(hours=15)
+        cutoff = pd.Timestamp(date)
         matched = industry_asof(history, valid.ts_code, cutoff)
         counts = matched.l1_label.value_counts()
         rows.append(dict(signal_date=date, positive_pb_rows=len(valid), industry_matched=int(matched.l1_code.notna().sum()),

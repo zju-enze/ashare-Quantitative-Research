@@ -46,6 +46,11 @@ def main(course, client):
     known = pd.concat([local[["ts_code", "trade_date"]], known_susp]).drop_duplicates()
     remaining = keys.merge(known.assign(known=True), on=["ts_code", "trade_date"], how="left")
     remaining = remaining[remaining.known.isna() & remaining.ts_code.str.endswith((".SH", ".SZ"))]
+    repaired_issues = root / ".local/preflight_repaired/state_issues.csv"
+    if repaired_issues.exists():
+        extra = pd.read_csv(repaired_issues, dtype=str)
+        extra = extra[extra.entry_state.eq("unknown")][["ts_code", "entry_date"]].rename(columns={"entry_date": "trade_date"})
+        remaining = pd.concat([remaining[["ts_code", "trade_date"]], extra], ignore_index=True).drop_duplicates()
     dates = sorted(remaining.trade_date.unique())
     remaining.to_csv(private / "status_request_keys.csv", index=False, encoding="utf-8-sig")
     sys.path.insert(0, str(client))
@@ -94,6 +99,7 @@ def main(course, client):
     summary = dict(completed=True, requested_dates=len(dates), request_keys=len(remaining),
                    matched_keys=int(result.tradeStatus.notna().sum()),
                    daily_status_counts=result.tradeStatus.value_counts(dropna=False).to_dict(),
+                   scope="Original endpoint gaps plus unknown entry states from repaired preflight when available",
                    limitation="Daily trading status does not identify every intraday halt or a missing terminal value")
     (public / "endpoint_status_acquisition.json").write_text(json.dumps(summary, ensure_ascii=False, indent=2), encoding="utf-8")
     print(json.dumps(summary, ensure_ascii=False), flush=True)
