@@ -159,3 +159,11 @@ scientific-critical-thinking、scientific-writing和peer-review在当前catalog�
 
 机器清单为`outputs/preflight/skills_inventory.csv`，区分已安装、检查范围和实际启用。本轮数据工作沿用已经读取的数据质量检查指导；不宣称执行了Nature写作或审稿流程。
 
+
+## 11. P3–P7实际使用记录（2026-10-26）
+
+- nature-figure 2.8.0：读取SKILL、manifest、core/contract、core/stance、Python backend及QA contract；沿用课程Python工作流。12图实际导出PNG/PDF/SVG并逐张查看，源检查无失败，12张PDF字号通过。自动碰撞工具缺PyMuPDF，依项目实际视觉验收继续，未冒称自动通过。
+- nature-writing 1.5.0与nature-shared 1.6.0：读取入口/manifest及always_load，采用manuscript、research、generic和摘要/引言/方法/结果/讨论/结论片段，另读main-text-discipline与discussion-argument-language。按本项目明确要求保留中文，未使用zh-to-en翻译路线；按附录保留全部必交结果，摘要最后生成。术语定义集中在报告第1、2、4节，18条主张有证据映射。
+- nature-reviewer 1.5.0：读取入口/manifest、source-basis、editorial criteria、technical taxonomy、forensic consistency与QA要求，按本项目第3节规定只做一份中文课程证据审阅，不声称独立互盲。真实结果对应、算术与图形检查见final_review.md。
+
+各入口为本地.codex/skills中的实际同名文件；来源安装commit仍未知。未安装或升级技能，没有新增外部服务。报告路径为report/bp_single_factor_report.md。

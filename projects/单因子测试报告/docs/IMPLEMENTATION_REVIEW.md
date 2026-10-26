@@ -88,3 +88,9 @@ long_short_net先求毛多空差，再减去两条腿各自成本，写法正确
 
 9个预选财务对照点只支持有限字段核验，不授权在本轮重构PB数据库。原始数据、共享课程代码、正确的WLS权重变换、教材只数换手和`long_short_net`均未修改。证券级缺口明细只在`.local/preflight/`，正式窗口尚未冻结。
 
+
+## 8. P2实际完成记录（2026-10-26）
+
+IMP-01/02/03/05/06/07由已通过P1的修复面板、真实日历和U/F/S分离解决；正式入口不再调用课程旧面板的代理/静态回退分支。IMP-04/09/10由项目src/bp_core.py解决，IMP-08由run_research.py的共同指数端点解决。保留课程MAD、zscore、neutralize、设计矩阵及long_short_net；只在本项目复制WLS拟合代数以使用冻结的暴露，不改共享库。
+
+5项新小样本检查通过，三池及分域真实运行完成，针对性算术验收通过。证据为outputs/validation/implementation_notes.md、outputs/runs/bp-v05-20261026-main/acceptance_results.json及outputs/validation/final_review.md。前文“待P2”属于当时审阅记录，不是当前未完成事项。
