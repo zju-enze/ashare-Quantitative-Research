@@ -357,3 +357,7 @@
 最终验收结论：**既定课程范围通过（2026-10-26）。** C1–C4、D1–D10及额外诊断、逐项解读齐备。综合行业的12/54有效期明确列为不足，不给出共同窗口绩效；此限制不能被误写为31个行业都通过。可选敏感性仍未执行。详细证据见outputs/validation/final_review.md与正式运行acceptance_results.json。
 
 本清单的[x]表示对应研究、披露或交付要求已落实，不表示数据具有未修订PIT保证、全部月份/行业均有效，或具备真实可交易性。自动PDF碰撞检查因缺依赖未成功运行；实际逐图查看与PDF字号检查已经完成，未隐瞒工具限制。
+
+## 10. LaTeX交付复核（2026-10-26）
+
+用户追加要求已完成。开始前重新阅读教材原始页；最终报告为`latex-report/bp_single_factor_report.pdf`，16页，独立工程入口`latex-report/main.tex`。教材逐项页码见`latex-report/reviews/course_requirements.md`，三份隔离审阅及小修关闭见`latex-report/reviews/synthesis.md`，机器核对见`delivery_audit.json`。原Markdown交付与原始研究运行继续保留；没有以排版工作替代或更改实证结论。

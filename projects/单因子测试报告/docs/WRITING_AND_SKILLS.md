@@ -167,3 +167,11 @@ scientific-critical-thinking、scientific-writing和peer-review在当前catalog�
 - nature-reviewer 1.5.0：读取入口/manifest、source-basis、editorial criteria、technical taxonomy、forensic consistency与QA要求，按本项目第3节规定只做一份中文课程证据审阅，不声称独立互盲。真实结果对应、算术与图形检查见final_review.md。
 
 各入口为本地.codex/skills中的实际同名文件；来源安装commit仍未知。未安装或升级技能，没有新增外部服务。报告路径为report/bp_single_factor_report.md。
+
+## 12. 用户指定LaTeX后的技能使用（2026-10-26）
+
+本轮明确采用中文research/generic报告写作与润色，读取nature-polishing 6.6.0入口、manifest、核心stance/failure-modes/output-format、research/generic及摘要/引言/方法/结果/讨论/结论片段和latex-layout。共享证据纪律复用已读取的nature-writing/nature-shared资源，未转成英文投稿稿。
+
+本轮用户重新指定nature-reviewer及其三份隔离报告流程，因此本轮采用三份新上下文审阅加汇总，替代第3节针对前次Markdown交付的单份结构。审阅设置预先固定，相同冻结输入，不共享问题清单；报告完成后才编辑核对与汇总，不回写原评审。实际产物见latex-report/reviews/。
+
+缩写释义、规范股票池名称、C1/C2/C4分表和图文分页均有实际修改；最终两遍XeLaTeX与逐页渲染通过。该“通过”指课程范围和PDF交付，不代表Nature投稿适合性、教师评分或严格PIT认证。

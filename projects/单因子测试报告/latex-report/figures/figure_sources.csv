@@ -1,0 +1,13 @@
+﻿figure,source,note,archetype
+industry_median,industry_median_20260130.csv,2026-01-30；正有限PB的F样本；31个一级行业；不含本期未来收益。,quantitative single panel
+size_correlation,size_correlation.csv,229个完整信号月；原始BP与ln(总市值)；相关系数不是中性化后的结果。,quantitative single panel
+D1,D1_sample_flow.csv,U：历史合格池；F：正有限PB；S：再满足行业/市值控制；229信号月。,quantitative single panel
+D2,ALL_A_monthly.csv,全部 A 股；228期；逐期相加，不是投资财富净值。,quantitative single panel
+D3,ALL_A_monthly.csv,全部 A 股；228期；逐期相加，不是投资财富净值。,quantitative single panel
+D4,ALL_A_layers_net.csv;ALL_A_monthly.csv;index_returns.csv,统一2007-02-01至2026-02-02端点；个股为复权收益，外部指数不含分红。,quantitative single panel
+D5,ALL_A_layers_net.csv;ALL_A_monthly.csv,全部 A 股；228期；分层扣教材成本，内部等权基准不扣成本。,quantitative single panel
+D6,D6_rolling_excess.csv,全部 A 股；前11个月为空；217个重叠窗口，不能视为217个独立样本。,quantitative single panel
+D7,ALL_A_monthly.csv,Q5毛收益−Q1毛收益−两腿成本；教材复利约定，不代表实盘资本占用。,quantitative single panel
+D8,ALL_A_layer_stats.csv,全部 A 股；228期；分层扣教材成本，内部等权基准不扣成本。RF=0；时间序列标准差ddof=1。,quantitative single panel
+D9,D9_layer_stats.csv,全部 A 股；228期；分层扣教材成本，内部等权基准不扣成本。RF=0；时间序列标准差ddof=1。,quantitative single panel
+D10,D10_size1_layer_stats.csv;D10_size2_layer_stats.csv;D10_size3_layer_stats.csv,每月先按流通市值三等分，再按同一全部 A 股残差十等分；域内等权毛基准。,quantitative single panel

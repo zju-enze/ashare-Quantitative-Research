@@ -1,8 +1,11 @@
 # BP 单因子测试报告
 
-方法版本0.5；2026-10-26完成P0–P7。按课程附录优秀标准交付C1–C4、D1–D10、行业中位数和市值相关诊断。三池共同228个完整持有期，行业比较采用事先冻结的54期。
+方法版本0.5；2026-10-26完成P0–P7，并按用户追加要求交付独立LaTeX工程和16页PDF。按课程附录优秀标准交付C1–C4、D1–D10、行业中位数和市值相关诊断。三池共同228个完整持有期，行业比较采用事先冻结的54期。
 
-- [中文完整报告](report/bp_single_factor_report.md)
+- [LaTeX编译的PDF报告](latex-report/bp_single_factor_report.pdf)
+- [独立LaTeX工程与编译说明](latex-report/README.md)
+- [三份隔离审阅及汇总](latex-report/reviews/synthesis.md)
+- [原Markdown报告](report/bp_single_factor_report.md)
 - [正式运行结果索引](outputs/runs/bp-v05-20261026-main/README.md)
 - [最终证据审阅](outputs/validation/final_review.md)
 - [验收清单](docs/ACCEPTANCE_CHECKLIST.md)
