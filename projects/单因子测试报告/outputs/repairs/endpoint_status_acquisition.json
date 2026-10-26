@@ -1,0 +1,12 @@
+{
+  "completed": true,
+  "requested_dates": 173,
+  "request_keys": 5290,
+  "matched_keys": 5218,
+  "daily_status_counts": {
+    "0": 5218,
+    "NaN": 72
+  },
+  "scope": "Original endpoint gaps plus unknown entry states from repaired preflight when available",
+  "limitation": "Daily trading status does not identify every intraday halt or a missing terminal value"
+}

@@ -1,0 +1,180 @@
+{
+  "kind": "P0_P1_preflight_not_factor_results",
+  "checked_at": "2026-10-25T20:17:05.264435+08:00",
+  "course_root": "F:\\quant_lab\\量化投资课程资料包",
+  "data_root": "F:\\quant_lab\\量化投资课程资料包\\data\\offline",
+  "python": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+  "executable": "F:\\quant_lab\\.venv\\Scripts\\python.exe",
+  "single_test_source": "F:\\quant_lab\\量化投资课程资料包\\qfbook\\factor\\single_test.py",
+  "source_is_git_checkout": false,
+  "versions": {
+    "numpy": "2.4.6",
+    "pandas": "2.3.3",
+    "pyarrow": "25.0.1",
+    "scipy": "1.17.1",
+    "statsmodels": "0.15.0",
+    "matplotlib": "3.11.2"
+  },
+  "calendar_validation": {
+    "sse_sz_symmetric_difference": 0,
+    "baostock_2023_2025_mismatches": 0,
+    "primary_end": "20260213",
+    "observed_calendar_end": "20261016",
+    "tail_source": "intersection of local BaoStock 600036/601166 tradestatus=1 dates; calendar evidence only",
+    "independent_full_window_calendar": false
+  },
+  "calendar": {
+    "signal_months": 229,
+    "complete_holding_periods": 228,
+    "last_signal": "20260130",
+    "last_complete": {
+      "signal_month": "2025-12",
+      "signal_date": "20251231",
+      "entry_date": "20260105",
+      "next_signal_date": "20260130",
+      "exit_date": "20260202",
+      "holding_month": "2026-01",
+      "signal_complete": true,
+      "holding_complete": true,
+      "missing_endpoint_reason": "",
+      "calendar_source": "local SSE index; SZ cross-check; BaoStock calendar 2023-2025; two-stock dates after index cutoff",
+      "000300.SH_endpoints_present": true,
+      "000905.SH_endpoints_present": true,
+      "market_dates_complete": true
+    }
+  },
+  "industry_same_start_interval_variant_rows": 104,
+  "lifecycle": {
+    "rows": 5866,
+    "status": {
+      "L": 5528,
+      "D": 338
+    },
+    "exchanges": {
+      "SZ": 3079,
+      "SH": 2455,
+      "BJ": 332
+    },
+    "price_codes_absent_from_basic": 3,
+    "valuation_codes_absent_from_basic": 3
+  },
+  "suspension": {
+    "first_date": "20150105",
+    "last_date": "20260720",
+    "intraday_rows": 1285,
+    "rule": "exclude every recorded entry-date S, including intraday; absent records before coverage are unknown"
+  },
+  "industry": {
+    "l1_labels": [
+      "交通运输",
+      "传媒",
+      "公用事业",
+      "农林牧渔",
+      "医药生物",
+      "商贸零售",
+      "国防军工",
+      "基础化工",
+      "家用电器",
+      "建筑材料",
+      "建筑装饰",
+      "房地产",
+      "有色金属",
+      "机械设备",
+      "汽车",
+      "环保",
+      "电力设备",
+      "电子",
+      "石油石化",
+      "社会服务",
+      "综合",
+      "美容护理",
+      "计算机",
+      "轻工制造",
+      "通信",
+      "钢铁",
+      "银行",
+      "非银金融"
+    ],
+    "labels": 28,
+    "is_new": {
+      "Y": 5651,
+      "N": 1787
+    },
+    "source_classification_version": "not recorded in offline metadata"
+  },
+  "industry_boundary": {
+    "transitions_checked": 1650,
+    "next_trade_day_matches": 1588,
+    "same_date_new_interval": 0,
+    "local_interval_convention": "in_date <= signal_date <= out_date; open intervals have no end",
+    "caveat": "The interval audit does not establish historically unrevised classification vintages"
+  },
+  "market_cap_unit_check": {
+    "total_mv": {
+      "comparable": 718994,
+      "max_relative_gap": 4.546562980143089e-09,
+      "median_relative_gap": 6.413127461735153e-12,
+      "above_0_1_percent": 0
+    },
+    "circ_mv": {
+      "comparable": 718994,
+      "max_relative_gap": 0.03750842254997385,
+      "median_relative_gap": 2.1822996198757174e-11,
+      "above_0_1_percent": 4
+    }
+  },
+  "pb_financial_samples": {
+    "preselected_codes": [
+      "000001.SZ",
+      "000651.SZ",
+      "600036.SH"
+    ],
+    "preselected_years": [
+      2007,
+      2015,
+      2025
+    ],
+    "observations": 9,
+    "unambiguous_bps_observations": 6,
+    "abs_relative_difference_min": 2.7436316885065537e-06,
+    "abs_relative_difference_max": 0.010274516332085537,
+    "limitation": "PB excludes other equity instruments per current vendor definition; historical revision policy unverified"
+  },
+  "endpoint_issues": {
+    "exit_price_unexplained": 4924,
+    "exit_price_recorded_suspension": 2138,
+    "entry_price_unavailable": 1288,
+    "exit_price_delisted": 72
+  },
+  "flow": {
+    "000300.SH": {
+      "months": 229,
+      "min_bp_coverage": 0.9,
+      "max_bp_coverage": 1.0,
+      "signal_stock_observations_U": 68282,
+      "signal_stock_observations_F": 66974,
+      "signal_stock_observations_S": 60966,
+      "complete_periods_with_all_S_endpoints": 63
+    },
+    "000905.SH": {
+      "months": 229,
+      "min_bp_coverage": 0.844,
+      "max_bp_coverage": 1.0,
+      "signal_stock_observations_U": 113538,
+      "signal_stock_observations_F": 111006,
+      "signal_stock_observations_S": 99622,
+      "complete_periods_with_all_S_endpoints": 48
+    },
+    "ALL_A": {
+      "months": 229,
+      "min_bp_coverage": 0.8220183486238533,
+      "max_bp_coverage": 0.9992172211350293,
+      "signal_stock_observations_U": 708686,
+      "signal_stock_observations_F": 693103,
+      "signal_stock_observations_S": 633750,
+      "complete_periods_with_all_S_endpoints": 2
+    }
+  },
+  "raw_input_size_mtime_unchanged": true,
+  "no_factor_or_portfolio_results_computed": true
+}

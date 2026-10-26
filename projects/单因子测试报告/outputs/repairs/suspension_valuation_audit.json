@@ -1,0 +1,16 @@
+{
+  "checked_at": "2026-10-26T14:43:06.758172+08:00",
+  "endpoints": 7936,
+  "scope": "Only held exit endpoints in the rebuilt P1 sample; excludes entry-ineligible periods",
+  "terminal_event_candidates": 75,
+  "assessments": {
+    "constant_adjustment_candidate": 7761,
+    "corporate_action_review": 175
+  },
+  "rule": "Last positive-volume quote, strictly before endpoint, and one raw-ticker factor series throughout",
+  "limitations": [
+    "Candidate audit only: no price imputation or returns computed.",
+    "Unchanged vendor factors support absence of recorded adjustment events, not an independent corporate-action audit.",
+    "Changed factors require event-specific valuation evidence before any carry-forward."
+  ]
+}

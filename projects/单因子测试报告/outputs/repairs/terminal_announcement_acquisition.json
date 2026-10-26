@@ -1,0 +1,8 @@
+{
+  "completed": true,
+  "terminal_securities": 75,
+  "announcements": 1839,
+  "securities_with_no_announcements": 0,
+  "source": "CNINFO official hisAnnouncement/query, public stock directory IDs",
+  "scope": "From 45 days before last trade: ordinary delistings through last trade, mergers through planned valuation date; metadata only"
+}

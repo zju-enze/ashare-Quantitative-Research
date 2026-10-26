@@ -1,0 +1,20 @@
+{
+  "checked_at": "2026-10-26T14:43:08.360238+08:00",
+  "endpoints": 7936,
+  "resolved": 7936,
+  "unresolved": 0,
+  "kinds": {
+    "last_trade_carry_no_factor_change": 7761,
+    "distribution_adjusted_reference": 161,
+    "precision_only_keep_last_adjusted_value": 11,
+    "share_transfer_without_ex_reference": 1,
+    "special_cash_dividend": 1,
+    "rights_issue": 1
+  },
+  "scope": "Held suspension exits only; original data and frozen signal samples unchanged",
+  "limitations": [
+    "Academic endpoint valuations, not executable exit prices.",
+    "Pre-tax distribution/reference-price convention follows adjusted-price research; no investor-specific tax, subscription funding or trading model.",
+    "Entry-to-endpoint returns have not been calculated by this script; no whole holding-period return is set to zero."
+  ]
+}

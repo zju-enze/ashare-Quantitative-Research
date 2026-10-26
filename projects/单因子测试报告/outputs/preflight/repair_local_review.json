@@ -1,0 +1,48 @@
+{
+  "stock_info_rows": 5300,
+  "stock_info_simulated_name_rows": 5141,
+  "index_weights_000300": {
+    "rows": 300,
+    "unique_dates": [
+      "2025-01-01"
+    ]
+  },
+  "index_weights_000905": {
+    "rows": 500,
+    "unique_dates": [
+      "2025-01-01"
+    ]
+  },
+  "affected_stock_periods": 8422,
+  "affected_stocks": 2547,
+  "unique_missing_price_keys": 7434,
+  "missing_price_keys_before_2019": 6795,
+  "missing_price_keys_2019_onward": 639,
+  "unique_missing_adj_keys": 71,
+  "daily_sh.600036.csv": {
+    "matched_missing_price_keys": 2,
+    "valid_trading_rows": 0,
+    "nontrading_rows": 2
+  },
+  "daily_sh.601166.csv": {
+    "matched_missing_price_keys": 2,
+    "valid_trading_rows": 0,
+    "nontrading_rows": 2
+  },
+  "daily_sh.600519_2023_2025.csv": {
+    "matched_missing_price_keys": 0,
+    "valid_trading_rows": 0,
+    "nontrading_rows": 0
+  },
+  "daily_sz.000858_2023_2025.csv": {
+    "matched_missing_price_keys": 0,
+    "valid_trading_rows": 0,
+    "nontrading_rows": 0
+  },
+  "search_scope": [
+    "F:/quant_lab including offline, external, derived, resources and ignored files",
+    "parent repository .local derived cache"
+  ],
+  "network_data_requests_this_turn": 0,
+  "scope": "repair planning only; no data patches applied; not independent confirmation of previous full audits"
+}

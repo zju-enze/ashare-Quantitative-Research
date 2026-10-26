@@ -1,0 +1,12 @@
+{
+  "checked_at": "2026-10-26T16:12:52.913583+08:00",
+  "resolved_stock_periods": 17,
+  "kinds": {
+    "swap_to_target_actual_close": 10,
+    "swap_to_supported_target_suspension_value": 5,
+    "approved_unlisted_share_right_carry": 2
+  },
+  "method_version": "0.5",
+  "scope": "Reviewed stock consideration only; no cash-option eligibility assumed, no later quote used",
+  "limitations": "Two user-approved unlisted-right estimates and five supported suspended-target estimates are not executable cash exits."
+}

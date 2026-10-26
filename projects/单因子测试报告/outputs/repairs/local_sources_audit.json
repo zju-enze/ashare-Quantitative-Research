@@ -1,0 +1,60 @@
+{
+  "checked_at": "2026-10-26T13:50:45.550624+08:00",
+  "course_root": "F:\\quant_lab\\量化投资课程资料包",
+  "industry_source": "F:\\Robustness of Value Signals and Asset-Pricing Models in China A-Shares\\projects\\ashare-cointegration\\.local\\sources",
+  "historical_source": "StockClassifyUse_stock_live.xls (existing local official-source download)",
+  "source_event_rows": 12929,
+  "normalized_event_rows": 12928,
+  "events_for_known_identities": 12863,
+  "unmatched_event_rows": 65,
+  "catalogue_l1_count": 31,
+  "legacy_l1_codes": [
+    "210000",
+    "250000",
+    "260000",
+    "310000",
+    "320000",
+    "440000",
+    "470000"
+  ],
+  "identity_aliases": 252,
+  "valuation_rows_reidentified": 443,
+  "equivalent_valuation_alias_keys_collapsed": 443,
+  "valuation_key_conflicts": 0,
+  "latest_industry_coverage": {
+    "signal_date": "20260130",
+    "positive_pb_rows": 5420,
+    "industry_matched": 5420,
+    "legacy_l1_rows": 0,
+    "l1_groups": 31,
+    "food_beverage": 128,
+    "textiles": 106,
+    "coal": 37
+  },
+  "hs300_candidate_months": 16,
+  "matching_local_anchor_dates": [
+    "20181228",
+    "20190731",
+    "20230731",
+    "20240628",
+    "20250127"
+  ],
+  "rejected_membership_months": [
+    {
+      "signal_date": "20230131",
+      "source_update": "2022-08-01",
+      "reason": "stale_source_membership"
+    },
+    {
+      "signal_date": "20230228",
+      "source_update": "2022-08-01",
+      "reason": "stale_source_membership"
+    }
+  ],
+  "no_factor_results": true,
+  "limitations": [
+    "Historical source updated_at is not publication time; current reconstructed history may be revised.",
+    "Legacy L1 groups must retain their historical identity; 2021 catalogue does not define their names.",
+    "Membership candidates and industry event inputs are not a passed full research sample."
+  ]
+}

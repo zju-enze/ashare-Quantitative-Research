@@ -1,0 +1,57 @@
+{
+  "run_id": "bp-v05-20261026-main",
+  "status": "passed",
+  "checks": [
+    {
+      "check": "monthly_to_C1_C2_and_costs",
+      "pool": "ALL_A",
+      "status": "passed",
+      "n": 228
+    },
+    {
+      "check": "monthly_to_C1_C2_and_costs",
+      "pool": "HS300",
+      "status": "passed",
+      "n": 228
+    },
+    {
+      "check": "monthly_to_C1_C2_and_costs",
+      "pool": "ZZ500",
+      "status": "passed",
+      "n": 228
+    },
+    {
+      "check": "stock_values_to_frozen_layers",
+      "signal_month": "2007-01",
+      "n": 1210,
+      "status": "passed"
+    },
+    {
+      "check": "stock_values_to_frozen_layers",
+      "signal_month": "2020-01",
+      "n": 3615,
+      "status": "passed"
+    },
+    {
+      "check": "stock_values_to_frozen_layers",
+      "signal_month": "2025-12",
+      "n": 5265,
+      "status": "passed"
+    },
+    {
+      "check": "domain_coverage_and_continuous_rolling_arithmetic",
+      "status": "passed"
+    },
+    {
+      "check": "12_figure_links_and_18_claim_sources",
+      "status": "passed"
+    }
+  ],
+  "scope": "Targeted result arithmetic and artifact correspondence, not a fresh source/PIT audit",
+  "not_performed": [
+    "HAC time-series inference",
+    "industry multiple-testing correction",
+    "live execution simulation"
+  ],
+  "numerical_tolerance": "NumPy allclose default rtol with arithmetic atol=1e-13 where specified"
+}

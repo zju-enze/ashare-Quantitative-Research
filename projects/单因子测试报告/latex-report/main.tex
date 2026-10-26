@@ -1,0 +1,45 @@
+\documentclass[UTF8,a4paper,11pt,fontset=windows]{ctexart}
+\usepackage[margin=22mm,headheight=14pt]{geometry}
+\usepackage{graphicx,booktabs,longtable,array,makecell,caption,needspace,tabularx,float}
+\usepackage{amsmath,amssymb}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{pdftitle={BP单因子测试报告},pdfsubject={三类股票池的回归、Rank IC、分层及适用域分析},pdfauthor={}}
+\ctexset{section={format=\large\bfseries,beforeskip=16pt,afterskip=8pt},subsection={format=\normalsize\bfseries,beforeskip=12pt,afterskip=6pt}}
+\linespread{1.18}
+\setlength{\parskip}{3pt plus 1pt minus 1pt}
+\setlength{\intextsep}{9pt plus 2pt minus 2pt}
+\setlength{\textfloatsep}{12pt}
+\setlength{\LTpre}{8pt}
+\setlength{\LTpost}{5pt}
+\setlength{\emergencystretch}{2em}
+\captionsetup{font=small,skip=5pt,justification=raggedright,singlelinecheck=false}
+\renewcommand{\arraystretch}{1.16}
+\renewcommand{\topfraction}{0.95}
+\renewcommand{\textfraction}{0.05}
+\renewcommand{\floatpagefraction}{0.8}
+\makeatletter
+\setlength{\@fptop}{0pt}
+\setlength{\@fpsep}{12pt}
+\setlength{\@fpbot}{0pt plus 1fil}
+\makeatother
+\raggedbottom
+\widowpenalty=10000
+\clubpenalty=10000
+\begin{document}
+\pagestyle{plain}
+\begin{center}
+{\LARGE\bfseries BP单因子测试报告}\par
+\vspace{6pt}
+{\large 三类股票池的收益区分能力与适用边界}\par
+\vspace{5pt}
+{\small 方法版本0.5\quad 2026年10月26日}
+\end{center}
+\input{sections/abstract}
+\input{sections/01_intro}
+\input{sections/02_diagnostics}
+\input{sections/03_methods}
+\input{sections/04_results}
+\input{sections/05_annual}
+\input{sections/06_conclusion}
+\input{sections/appendix}
+\end{document}

@@ -1,0 +1,8 @@
+{
+  "requested": 311,
+  "matched": 311,
+  "risk_status_counts": {
+    "0": 311
+  },
+  "scope": "Only signal dates with missing historical name records; vendor historical isST, not current-name inference"
+}

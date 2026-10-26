@@ -1,0 +1,8 @@
+{
+  "checked_at": "2026-10-26T14:53:51.822566+08:00",
+  "resolved_stock_periods": 58,
+  "all_notices_precede_event_exit": true,
+  "all_announced_final_dates_match_real_quotes": true,
+  "policy": "RESEARCH_SPEC v0.4 section15, approved by user; RF0 cash to original planned endpoint",
+  "limitations": "Academic final-close execution and textbook cost approximation; no real-world fill guarantee. Signal memberships and holding calendar unchanged."
+}

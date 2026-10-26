@@ -1,0 +1,10 @@
+test_holiday_entry_and_truncated_last_month (test_preflight.PreflightTests.test_holiday_entry_and_truncated_last_month) ... ok
+test_interval_versions_agree_before_change_and_conflict_after (test_preflight.PreflightTests.test_interval_versions_agree_before_change_and_conflict_after) ... ok
+test_last_observed_date_is_not_automatically_month_end (test_preflight.PreflightTests.test_last_observed_date_is_not_automatically_month_end) ... ok
+test_old_industry_covers_its_last_trading_day (test_preflight.PreflightTests.test_old_industry_covers_its_last_trading_day) ... ok
+test_pb_reasons_are_disjoint (test_preflight.PreflightTests.test_pb_reasons_are_disjoint) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.009s
+
+OK

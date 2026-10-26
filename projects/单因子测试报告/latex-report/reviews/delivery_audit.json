@@ -1,0 +1,73 @@
+{
+  "status": "passed",
+  "pages": 16,
+  "abstract_pages": [
+    1
+  ],
+  "figure_count": 12,
+  "course_item_pages": {
+    "图A": [
+      2
+    ],
+    "图B": [
+      3
+    ],
+    "图D1": [
+      3
+    ],
+    "图D2": [
+      7
+    ],
+    "图D3": [
+      7
+    ],
+    "图D4": [
+      8
+    ],
+    "图D5": [
+      8
+    ],
+    "图D6": [
+      9
+    ],
+    "图D7": [
+      10
+    ],
+    "图D8": [
+      11
+    ],
+    "图D9": [
+      11
+    ],
+    "图D10": [
+      12
+    ],
+    "表C1(a)": [
+      5
+    ],
+    "表C1(b)": [
+      6
+    ],
+    "表C2(a)": [
+      6
+    ],
+    "表C2(b)": [
+      6
+    ],
+    "表C3": [
+      15
+    ],
+    "表C4(a)": [
+      13
+    ],
+    "表C4(b)": [
+      14
+    ]
+  },
+  "source_tables_unchanged": 19,
+  "minimum_rendered_text_pt": 6.171,
+  "out_of_page_text": [],
+  "compile_log_layout_errors": [],
+  "reviewer_minor_fixes": "definitions and D5/D8/D10 placement verified",
+  "scope": "Typeset transfer, required displays, page layout and fixed reviewer concerns; no raw-data/PIT re-audit"
+}
