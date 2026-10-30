@@ -1,0 +1,42 @@
+{
+  "status": "passed",
+  "checks": [
+    {
+      "scheme": "mad-k5",
+      "status": "passed",
+      "months": 228,
+      "stock_periods": 686280,
+      "formation_issues": 0,
+      "evaluation_issues": 0,
+      "same_S": true,
+      "same_benchmark": true,
+      "formation_and_holdings_recomputed": true,
+      "double_leg_cost_identity": true
+    },
+    {
+      "scheme": "mad-k3",
+      "status": "passed",
+      "months": 228,
+      "stock_periods": 686280,
+      "formation_issues": 0,
+      "evaluation_issues": 0,
+      "same_S": true,
+      "same_benchmark": true,
+      "formation_and_holdings_recomputed": true,
+      "double_leg_cost_identity": true
+    },
+    {
+      "scheme": "quantile-p01-p99-linear",
+      "status": "passed",
+      "months": 228,
+      "stock_periods": 686280,
+      "formation_issues": 0,
+      "evaluation_issues": 0,
+      "same_S": true,
+      "same_benchmark": true,
+      "formation_and_holdings_recomputed": true,
+      "double_leg_cost_identity": true
+    }
+  ],
+  "scope": "Same frozen ALL_A inputs, 228 months, separate preprocessing and holdings; no new inference."
+}

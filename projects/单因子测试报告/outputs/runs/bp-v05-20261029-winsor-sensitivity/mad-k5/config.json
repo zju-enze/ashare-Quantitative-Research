@@ -1,0 +1,9 @@
+{
+  "id": "mad-k5",
+  "method": "mad5",
+  "label": "MAD5",
+  "k": 5,
+  "scale": 1,
+  "run_id": "bp-v05-20261029-winsor-sensitivity",
+  "pool": "ALL_A"
+}

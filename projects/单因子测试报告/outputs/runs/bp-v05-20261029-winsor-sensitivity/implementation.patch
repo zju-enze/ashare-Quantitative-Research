@@ -1,0 +1,517 @@
+--- a/src/bp_core.py
++++ b/src/bp_core.py
+@@ -9,7 +9,7 @@
+ from qfbook.factor import single_test as course
+ 
+ 
+-def form_cross_section(g):
++def form_cross_section(g, winsor="mad5"):
+     # Select only formation-time fields: future columns cannot enter transforms.
+     g = g[["ts_code", "pb", "total_mv", "circ_mv", "industry_code"]].copy()
+     g = g.sort_values("ts_code").reset_index(drop=True)
+@@ -22,22 +22,30 @@
+     mad = (g.bp - g.bp.median()).abs().median()
+     if mad <= 0:
+         return g, "zero_mad"
+-    g["bp_w"] = course.mad_winsorize(g.bp)
++    if winsor in ("mad5", "mad3"):
++        g["bp_w"] = course.mad_winsorize(g.bp, k=5 if winsor == "mad5" else 3)
++    elif winsor == "quantile_01_99":
++        lower, upper = g.bp.quantile([.01, .99], interpolation="linear")
++        g["bp_w"] = g.bp.clip(lower, upper)
++    else:
++        raise ValueError(f"Unknown winsorization: {winsor}")
+     if g.bp_w.std(ddof=0) <= 0:
+         return g, "zero_std"
+     g["bp_z"] = course.zscore(g.bp_w)
+     x = course._design(g, ["ln_mv"])
+     if len(g) <= x.shape[1] or np.linalg.matrix_rank(x) < x.shape[1]:
+         return g, "neutralization_rank_or_df"
+-    g["f_neu"] = course.neutralize(g, "bp")
++    # Course neutralize hardcodes MAD5; use its OLS algebra on this scheme's BP.
++    y = g.bp_w.to_numpy()
++    g["f_neu"] = y - x @ np.linalg.lstsq(x, y, rcond=None)[0]
+     return g, "ok"
+ 
+ 
+-def form_pool(panel, calendar):
++def form_pool(panel, calendar, winsor="mad5"):
+     groups = dict(tuple(panel.groupby("signal_month")))
+     formed, status = {}, {}
+     for month in calendar.signal_month:
+-        formed[month], status[month] = form_cross_section(groups.get(month, panel.iloc[:0]))
++        formed[month], status[month] = form_cross_section(groups.get(month, panel.iloc[:0]), winsor=winsor)
+     return formed, status
+ 
+ 
+--- a/tests/test_bp_core.py
++++ b/tests/test_bp_core.py
+@@ -81,6 +81,36 @@
+         _, reason = bp.form_cross_section(self.panel.assign(pb=1).iloc[:80])
+         self.assertEqual(reason, 'insufficient_sample_or_distinct_bp')
+ 
++    def test_winsor_schemes_refit_from_raw_bp_without_changing_sample(self):
++        raw = self.panel[self.panel.signal_month.eq('2020-01')].copy()
++        raw.loc[0, 'pb'] = .0001
++        formed = {}
++        for scheme in ['mad5', 'mad3', 'quantile_01_99']:
++            g, reason = bp.form_cross_section(raw, winsor=scheme)
++            self.assertEqual(reason, 'ok')
++            np.testing.assert_array_equal(g.ts_code, raw.ts_code)
++            bp_raw = 1 / raw.pb
++            if scheme == 'quantile_01_99':
++                bounds = bp_raw.quantile([.01, .99], interpolation='linear')
++            else:
++                k = 5 if scheme == 'mad5' else 3
++                med = bp_raw.median()
++                mad = (bp_raw - med).abs().median()
++                bounds = [med - k * mad, med + k * mad]
++            expected = bp_raw.clip(*bounds)
++            np.testing.assert_array_equal(g.bp_w, expected)
++            np.testing.assert_allclose(g.bp_z, (expected - expected.mean()) / expected.std(ddof=0))
++            model = sm.OLS(expected, bp.course._design(g, ['ln_mv'])).fit()
++            np.testing.assert_allclose(g.f_neu, model.resid, rtol=1e-10, atol=1e-13)
++            self.assertTrue(g.f_neu.lt(0).any())
++            shuffled, _ = bp.form_cross_section(raw.sample(frac=1, random_state=1), winsor=scheme)
++            pd.testing.assert_frame_equal(g, shuffled)
++            formed[scheme] = g
++        np.testing.assert_array_equal(formed['mad5'].f_neu, bp.course.neutralize(formed['mad5'], 'bp'))
++        self.assertFalse(formed['mad3'].f_neu.equals(formed['mad5'].f_neu))
++        self.assertFalse(formed['quantile_01_99'].f_neu.equals(formed['mad5'].f_neu))
++        self.assertGreater(formed['quantile_01_99'].bp_w.max(), formed['mad5'].bp_w.max())
++
+ 
+ if __name__ == '__main__':
+     unittest.main()
+--- /dev/null
++++ b/scripts/run_winsor_sensitivity.py
+@@ -0,0 +1,222 @@
++"""ALL_A only: reproduce MAD5, then vary winsorization on the same frozen S."""
++from pathlib import Path
++from datetime import datetime
++from zoneinfo import ZoneInfo
++import argparse
++import json
++import subprocess
++import sys
++
++import numpy as np
++import pandas as pd
++from scipy.stats import spearmanr
++
++ROOT = Path(__file__).resolve().parents[1]
++BASELINE = 'bp-v05-20261026-main'
++SCHEMES = [
++    dict(id='mad-k5', method='mad5', label='MAD5', k=5, scale=1),
++    dict(id='mad-k3', method='mad3', label='MAD3', k=3, scale=1),
++    dict(id='quantile-p01-p99-linear', method='quantile_01_99',
++         label='1%/99%分位数缩尾', lower=.01, upper=.99, interpolation='linear'),
++]
++FORMATION = ['signal_month', 'ts_code', 'pb', 'total_mv', 'circ_mv', 'industry_code']
++MONTHLY = ['factor_ret', 't', 'ic', 'benchmark', 'long_short', 'n_formed', 'n_response']
++RTOL, ATOL = 1e-7, 1e-13
++
++
++def now():
++    return datetime.now(ZoneInfo('Asia/Shanghai')).isoformat()
++
++
++def compare_frames(actual, expected, name, exact=False):
++    """Keys/counts are exact; floating results use the existing arithmetic tolerance."""
++    actual, expected = actual.reset_index(drop=True), expected.reset_index(drop=True)
++    pd.testing.assert_frame_equal(actual, expected, check_dtype=False,
++                                  check_exact=exact, rtol=RTOL, atol=ATOL)
++    numeric = expected.select_dtypes(include=np.number).columns
++    delta = (actual[numeric] - expected[numeric]).abs().to_numpy()
++    finite = delta[np.isfinite(delta)]
++    return dict(check=name, status='passed', rows=len(actual), exact=exact,
++                max_abs_difference=float(finite.max()) if finite.size else 0.)
++
++
++def main():
++    parser = argparse.ArgumentParser()
++    parser.add_argument('--run-id', required=True)
++    parser.add_argument('--course-root', type=Path)
++    args = parser.parse_args()
++    course_root = args.course_root or Path(json.loads(
++        (ROOT / '.local/paths.json').read_text(encoding='utf-8-sig'))['course_root'])
++    sys.path[:0] = [str(ROOT / 'src'), str(course_root)]
++    import bp_core as bp
++
++    out, private = ROOT / 'outputs/runs' / args.run_id, ROOT / '.local/runs' / args.run_id
++    out.mkdir(parents=True, exist_ok=False)
++    private.mkdir(parents=True, exist_ok=False)
++    base, base_private = ROOT / 'outputs/runs' / BASELINE, ROOT / '.local/runs' / BASELINE
++    panel_path = ROOT / '.local/preflight_repaired/candidate_panel.parquet'
++    old_manifest = json.loads((base / 'run_manifest.json').read_text(encoding='utf-8'))
++    source_version = subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip()
++    manifest = dict(run_id=args.run_id, baseline_run=BASELINE, method_version='0.5 + winsor sensitivity',
++                    started_at=now(), status='running', source_version=source_version,
++                    source_changes=['src/bp_core.py', 'scripts/run_winsor_sensitivity.py'],
++                    pool='ALL_A', active_change='winsorization only', schemes=SCHEMES,
++                    cost_rt=.004, main_layers=5, min_stocks=50, min_distinct_bp=20,
++                    zscore_ddof=0, wls_objective_weight='sqrt(circ_mv)', rf=0, time_std_ddof=1,
++                    ic_ir_annualized=False, numerical_tolerance=dict(rtol=RTOL, atol=ATOL),
++                    inputs=[dict(path=str(p.relative_to(ROOT)), bytes=p.stat().st_size,
++                                 mtime_ns=p.stat().st_mtime_ns)
++                            for p in [panel_path, base / 'calendar.csv',
++                                      base_private / 'ALL_A_formations.parquet',
++                                      base_private / 'ALL_A_holdings.parquet']],
++                    qfbook_source=str(bp.course.__file__), python=sys.executable)
++
++    def write_json(path, data):
++        path.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding='utf-8')
++
++    def csv(frame, path, index=False):
++        frame.to_csv(path, index=index, encoding='utf-8-sig')
++
++    def read_csv(path):
++        return pd.read_csv(path, float_precision='round_trip')
++
++    write_json(out / 'run_manifest.json', manifest)
++    try:
++        prior_panel = next(x for x in old_manifest['inputs'] if x['name'] == 'accepted_panel')
++        assert (panel_path.stat().st_size, panel_path.stat().st_mtime_ns) == (
++            prior_panel['bytes'], prior_panel['mtime_ns']), 'Accepted panel version differs from baseline'
++        panel = pd.read_parquet(panel_path)
++        cal = pd.read_csv(base / 'calendar.csv', dtype={'signal_date': str, 'entry_date': str, 'exit_date': str})
++        assert len(cal) == 228 and cal.signal_month.tolist() == pd.period_range('2007-01', '2025-12', freq='M').astype(str).tolist()
++        assert cal.holding_month.tolist() == pd.period_range('2007-02', '2026-01', freq='M').astype(str).tolist()
++        csv(cal, out / 'calendar.csv')
++        s = panel.loc[panel.S & panel.holding_complete].copy()
++        inputs = s[FORMATION].copy()
++        assert not inputs.duplicated(['signal_month', 'ts_code']).any()
++        assert inputs.pb.gt(0).all() and np.isfinite(inputs[['pb', 'total_mv', 'circ_mv']]).all().all()
++        assert inputs.total_mv.gt(0).all() and inputs.circ_mv.gt(0).all() and inputs.industry_code.notna().all()
++        old_formed = pd.read_parquet(base_private / 'ALL_A_formations.parquet')
++        keys = ['signal_month', 'ts_code']
++        baseline_checks = [compare_frames(inputs.sort_values(keys), old_formed[FORMATION].sort_values(keys),
++                                           'pre_winsor_stock_periods_and_controls', exact=True)]
++        date_columns = ['signal_date', 'entry_date', 'exit_date', 'holding_month']
++        dates = s[['signal_month'] + date_columns].drop_duplicates().sort_values('signal_month')
++        baseline_checks.append(compare_frames(dates, cal[['signal_month'] + date_columns], 'original_dates', exact=True))
++        summaries, accepted = [], []
++        baseline_monthly = baseline_diagnostics = None
++        for scheme in SCHEMES:
++            scheme_id = scheme['id']
++            print(f"Forming {scheme_id}: {len(inputs):,} stock-periods", flush=True)
++            target, detail = out / scheme_id, private / scheme_id
++            target.mkdir()
++            detail.mkdir()
++            write_json(target / 'config.json', dict(**scheme, run_id=args.run_id, pool='ALL_A'))
++            formed, status = bp.form_pool(inputs, cal, winsor=scheme['method'])
++            failures = [dict(signal_month=m, scheme=scheme_id, reason=v) for m, v in status.items() if v != 'ok']
++            csv(pd.DataFrame(failures, columns=['signal_month', 'scheme', 'reason']), target / 'formation_issues.csv')
++            assert not failures, failures
++            formations = pd.concat([g.assign(signal_month=m) for m, g in formed.items()], ignore_index=True)
++            compare_frames(formations[FORMATION].sort_values(keys), inputs.sort_values(keys), 'same_S', exact=True)
++            if scheme['method'] == 'mad5':
++                baseline_checks.append(compare_frames(formations[old_formed.columns], old_formed, 'all_formation_values'))
++            formations['residual_rank'] = formations.groupby('signal_month').f_neu.rank(method='first')
++            formations.to_parquet(detail / 'formations.parquet', index=False)
++            diagnostics = []
++            for month, g in formed.items():
++                med = g.bp.median()
++                mad = (g.bp - med).abs().median()
++                lower, upper = (g.bp.quantile([.01, .99], interpolation='linear') if scheme['method'] == 'quantile_01_99'
++                                else (med - scheme['k'] * mad, med + scheme['k'] * mad))
++                changed = g.bp_w.ne(g.bp)
++                diagnostics.append(dict(signal_month=month, n=len(g), median=med, mad=mad, lower=lower, upper=upper,
++                                        n_below=int(g.bp.lt(lower).sum()), n_above=int(g.bp.gt(upper).sum()),
++                                        n_changed=int(changed.sum()), changed_fraction=changed.mean(),
++                                        winsor_distinct=g.bp_w.nunique(), residual_distinct=g.f_neu.nunique(),
++                                        negative_residuals=int(g.f_neu.lt(0).sum())))
++            diagnostics = pd.DataFrame(diagnostics)
++            csv(diagnostics, target / 'winsor_diagnostics.csv')
++
++            # evaluate_layers freezes each month's ranks/holdings before joining these responses.
++            responses = s[['signal_month', 'ts_code']].assign(
++                ret_fwd=s.exit_adjusted_value / s.entry_adjusted_value - 1)
++            assert np.isfinite(responses.ret_fwd).all()
++            if scheme['method'] == 'mad5':
++                response_detail = s[keys + date_columns + ['entry_adjusted_value', 'exit_adjusted_value', 'exit_value_kind']].copy()
++                response_detail['ret_fwd'] = responses.ret_fwd
++                response_detail.to_parquet(private / 'responses.parquet', index=False)
++            res = bp.evaluate_layers(formed, status, responses, cal)
++            csv(res['reasons'], target / 'issues.csv')
++            assert res['reasons'].empty, res['reasons'].to_dict('records')
++            assert res['n_formed'].equals(res['n_response']) and np.isfinite(res['layers_net']).all().all()
++            assert res['ic'].notna().sum() == res['factor_ret'].notna().sum() == len(cal)
++            monthly = pd.DataFrame({k: res[k] for k in MONTHLY})
++            cost = .004 * res['turnover']
++            monthly['long_short_gross'] = res['layers_gross'][5] - res['layers_gross'][1]
++            monthly['long_short_cost'] = cost[5] + cost[1]
++            monthly['q5_excess'] = res['layers_net'][5] - res['benchmark']
++            np.testing.assert_allclose(res['long_short'], monthly.long_short_gross - monthly.long_short_cost, rtol=RTOL, atol=ATOL)
++            csv(monthly, target / 'monthly.csv', True)
++            for key in ['layers_gross', 'layers_net', 'turnover', 'counts', 'known_weight']:
++                csv(res[key], target / (key + '.csv'), True)
++            csv(cost, target / 'costs.csv', True)
++            holdings = res['holdings'].copy()
++            holdings['weight'] = 1 / holdings.groupby(['signal_month', 'layer']).ts_code.transform('size')
++            holdings.to_parquet(detail / 'holdings.parquet', index=False)
++            c1, layer, ls = bp.c1_row(res), bp.layer_statistics(res), bp.performance(res['long_short'])
++            csv(layer, target / 'layer_stats.csv', True)
++            c2 = dict(**{f'Q{q}_ann': layer.loc[q, 'ann'] for q in layer.index}, long_short_ann=ls['ann'],
++                      long_short_sharpe=ls['sharpe'], long_short_max_dd=ls['max_dd'],
++                      long_short_win_rate=ls['win_rate'], long_short_positive=int(res['long_short'].gt(0).sum()),
++                      n_months=len(cal), q5_ann_exc=layer.loc[5, 'ann_exc'],
++                      adjacent_order=int((np.diff(layer.ann) > 0).sum()), layer_rank_rho=spearmanr(layer.index, layer.ann).statistic)
++            summary = dict(scheme=scheme_id, label=scheme['label'], **c1, **c2,
++                           n_stock_periods=len(inputs), mean_modified_fraction=diagnostics.changed_fraction.mean(),
++                           n_modified=int(diagnostics.n_changed.sum()),
++                           q1_mean_turnover=res['turnover'][1].mean(), q5_mean_turnover=res['turnover'][5].mean(),
++                           ls_gross_arithmetic_ann=12 * monthly.long_short_gross.mean(),
++                           ls_cost_arithmetic_ann=12 * monthly.long_short_cost.mean(),
++                           ls_net_arithmetic_ann=12 * res['long_short'].mean())
++            csv(pd.DataFrame([summary]), target / 'summary.csv')
++            if scheme['method'] == 'mad5':
++                baseline_checks.append(compare_frames(res['holdings'], pd.read_parquet(base_private / 'ALL_A_holdings.parquet'), 'all_holdings', exact=True))
++                for key in ['monthly', 'layers_gross', 'layers_net', 'turnover', 'counts', 'known_weight', 'layer_stats', 'issues']:
++                    expected = read_csv(base / ('ALL_A_' + key + '.csv'))
++                    actual = read_csv(target / (key + '.csv'))[expected.columns]
++                    baseline_checks.append(compare_frames(actual, expected, key, exact=key in ['counts', 'known_weight', 'issues']))
++                for name, row in [('C1', c1), ('C2', c2)]:
++                    expected = read_csv(base / (name + '.csv')).query("pool == 'ALL_A'").drop(columns='pool')
++                    baseline_checks.append(compare_frames(pd.DataFrame([row])[expected.columns], expected, name))
++                write_json(out / 'mad5_baseline_check.json', dict(status='passed', baseline_run=BASELINE,
++                           tolerance=dict(rtol=RTOL, atol=ATOL), checks=baseline_checks))
++                print('MAD5 baseline passed: original dates, inputs, all holdings, monthly series and summaries.', flush=True)
++                baseline_monthly, baseline_diagnostics = monthly.copy(), diagnostics.copy()
++            else:
++                np.testing.assert_array_equal(monthly.index, baseline_monthly.index)
++                np.testing.assert_array_equal(monthly.n_formed, baseline_monthly.n_formed)
++                np.testing.assert_array_equal(monthly.benchmark, baseline_monthly.benchmark)
++            csv(monthly - baseline_monthly, target / 'monthly_difference_vs_mad5.csv', True)
++            csv(diagnostics.select_dtypes(include=np.number).sub(baseline_diagnostics.select_dtypes(include=np.number)).assign(
++                signal_month=diagnostics.signal_month), target / 'winsor_difference_vs_mad5.csv')
++            summaries.append(summary)
++            accepted.append(dict(scheme=scheme_id, status='passed', months=len(cal), stock_periods=len(inputs),
++                                 formation_issues=0, evaluation_issues=0, same_S=True, same_benchmark=True,
++                                 formation_and_holdings_recomputed=True, double_leg_cost_identity=True))
++            print(f"Completed {scheme_id}", flush=True)
++        summary = pd.DataFrame(summaries)
++        csv(summary, out / 'summary.csv')
++        numeric = summary.select_dtypes(include=np.number).columns
++        csv(summary[numeric].sub(summary.loc[0, numeric], axis='columns').assign(scheme=summary.scheme), out / 'difference_vs_mad5.csv')
++        write_json(out / 'acceptance_results.json', dict(status='passed', checks=accepted,
++                   scope='Same frozen ALL_A inputs, 228 months, separate preprocessing and holdings; no new inference.'))
++        manifest.update(status='complete', finished_at=now(), n_months=len(cal), n_stock_periods=len(inputs),
++                        first_signal=cal.signal_date.iloc[0], last_signal=cal.signal_date.iloc[-1],
++                        first_entry=cal.entry_date.iloc[0], last_exit=cal.exit_date.iloc[-1])
++    except Exception as exc:
++        manifest.update(status='failed', finished_at=now(), failure=f'{type(exc).__name__}: {exc}')
++        raise
++    finally:
++        write_json(out / 'run_manifest.json', manifest)
++
++
++if __name__ == '__main__':
++    main()
+--- /dev/null
++++ b/scripts/validate_winsor_sensitivity.py
+@@ -0,0 +1,100 @@
++"""Check saved sensitivity holdings/returns and independently refit three real months."""
++from pathlib import Path
++import argparse
++import json
++import numpy as np
++import pandas as pd
++import statsmodels.api as sm
++from scipy.stats import rankdata, spearmanr
++
++ROOT = Path(__file__).resolve().parents[1]
++
++
++def main():
++    parser = argparse.ArgumentParser()
++    parser.add_argument('--run-id', required=True)
++    args = parser.parse_args()
++    out, private = ROOT / 'outputs/runs' / args.run_id, ROOT / '.local/runs' / args.run_id
++    manifest = json.loads((out / 'run_manifest.json').read_text(encoding='utf-8'))
++    assert manifest['status'] == 'complete'
++    responses = pd.read_parquet(private / 'responses.parquet')
++    calendar = pd.read_csv(out / 'calendar.csv').set_index('signal_month')
++    sampled = ['2007-01', '2020-01', '2025-12']
++    baseline = None
++    records, changes = [], []
++
++    def close(actual, expected):
++        np.testing.assert_allclose(actual, expected, rtol=1e-7, atol=1e-13)
++
++    for scheme in manifest['schemes']:
++        name = scheme['id']
++        target = out / name
++        formed = pd.read_parquet(private / name / 'formations.parquet')
++        holdings = pd.read_parquet(private / name / 'holdings.parquet')
++        keys = ['signal_month', 'ts_code']
++        inputs = formed[keys + ['pb', 'total_mv', 'circ_mv', 'industry_code']]
++        if baseline is None:
++            baseline = inputs.copy()
++            baseline_holdings = holdings.set_index(keys).layer
++        pd.testing.assert_frame_equal(inputs, baseline, check_exact=True)
++        pd.testing.assert_frame_equal(holdings[keys], formed[keys], check_exact=True)
++        monthly = pd.read_csv(target / 'monthly.csv', index_col=0)
++        turnover = pd.read_csv(target / 'turnover.csv', index_col=0)
++        gross = pd.read_csv(target / 'layers_gross.csv', index_col=0)
++        net = pd.read_csv(target / 'layers_net.csv', index_col=0)
++        costs = pd.read_csv(target / 'costs.csv', index_col=0)
++        diag = pd.read_csv(target / 'winsor_diagnostics.csv', index_col=0)
++        data = formed.merge(holdings, on=keys, validate='one_to_one').merge(responses[keys + ['ret_fwd']], on=keys, validate='one_to_one')
++        previous = {q: set() for q in range(1, 6)}
++        for month, g in data.groupby('signal_month', sort=True):
++            period = calendar.loc[month, 'holding_month']
++            raw = 1 / g.pb
++            if scheme['method'] == 'quantile_01_99':
++                lo, hi = raw.quantile([.01, .99], interpolation='linear')
++            else:
++                median = raw.median()
++                mad = (raw - median).abs().median()
++                lo, hi = median - scheme['k'] * mad, median + scheme['k'] * mad
++            expected = raw.clip(lo, hi)
++            close(g.bp_w, expected)
++            close([diag.loc[month, 'lower'], diag.loc[month, 'upper']], [lo, hi])
++            assert diag.loc[month, 'n_changed'] == raw.ne(expected).sum()
++            close(diag.loc[month, 'changed_fraction'], raw.ne(expected).mean())
++            close(g.bp_z, (expected - expected.mean()) / expected.std(ddof=0))
++            ranks = rankdata(g.f_neu, method='ordinal')
++            np.testing.assert_array_equal(g.residual_rank, ranks)
++            layers = np.searchsorted(1 + (len(g) - 1) * np.arange(1, 5) / 5, ranks, side='left') + 1
++            np.testing.assert_array_equal(g.layer, layers)
++            for q, group in g.groupby('layer'):
++                members = set(group.ts_code)
++                to = 1 - len(previous[q] & members) / len(members)
++                close(turnover.loc[period, str(q)], to)
++                close(group.weight, 1 / len(members))
++                close(gross.loc[period, str(q)], group.ret_fwd.mean())
++                close(costs.loc[period, str(q)], .004 * to)
++                close(net.loc[period, str(q)], group.ret_fwd.mean() - .004 * to)
++                previous[q] = members
++            close(monthly.loc[period, 'benchmark'], g.ret_fwd.mean())
++            close(monthly.loc[period, 'ic'], spearmanr(g.f_neu, g.ret_fwd).statistic)
++            close(monthly.loc[period, 'long_short'], gross.loc[period, '5'] - gross.loc[period, '1'] - costs.loc[period, ['5', '1']].sum())
++            if month in sampled:
++                dummies = pd.get_dummies(g.industry_code, drop_first=True).astype(float).to_numpy()
++                x = np.column_stack([np.ones(len(g)), np.log(g.total_mv), dummies])
++                close(g.f_neu, sm.OLS(expected.to_numpy(), x).fit().resid)
++                xw = np.column_stack([np.ones(len(g)), g.bp_z, np.log(g.total_mv), dummies])
++                fit = sm.WLS(g.ret_fwd.to_numpy(), xw, weights=np.sqrt(g.circ_mv)).fit()
++                close(monthly.loc[period, ['factor_ret', 't']].to_numpy(dtype=float), [fit.params[1], fit.tvalues[1]])
++        changed = holdings.set_index(keys).layer.ne(baseline_holdings)
++        changes.append(changed.groupby(level=0).agg(['sum', 'mean']).rename(
++            columns={'sum': 'changed_layer_count', 'mean': 'changed_layer_fraction'}).assign(scheme=name).reset_index())
++        records.append(dict(scheme=name, status='passed', checked_stock_periods=len(data), months=len(calendar),
++                            independent_ols_wls_months=sampled, changed_layer_count=int(changed.sum())))
++    pd.concat(changes).to_csv(out / 'holding_change_vs_mad5.csv', index=False, encoding='utf-8-sig')
++    audit = dict(status='passed', checks=records,
++                 scope='All raw inputs, clipping bounds/counts, z-scores, ranks, layers, returns, turnover and costs; OLS/WLS via statsmodels for three predefined months per scheme.')
++    (out / 'numerical_audit.json').write_text(json.dumps(audit, ensure_ascii=False, indent=2), encoding='utf-8')
++    print(json.dumps(audit, ensure_ascii=False, indent=2))
++
++
++if __name__ == '__main__':
++    main()
+--- /dev/null
++++ b/latex-report/scripts/build_winsor_supplement.py
+@@ -0,0 +1,73 @@
++"""Generate only S1 and the scoped paragraph from the completed sensitivity run."""
++from pathlib import Path
++import argparse
++import json
++import shutil
++import pandas as pd
++
++ROOT = Path(__file__).resolve().parents[2]
++
++
++def main():
++    parser = argparse.ArgumentParser()
++    parser.add_argument('--run-id', required=True)
++    args = parser.parse_args()
++    out, latex = ROOT / 'outputs/runs' / args.run_id, ROOT / 'latex-report'
++    for name in ['mad5_baseline_check.json', 'numerical_audit.json']:
++        assert json.loads((out / name).read_text(encoding='utf-8'))['status'] == 'passed'
++    s = pd.read_csv(out / 'summary.csv', float_precision='round_trip').set_index('scheme')
++    order = ['mad-k5', 'mad-k3', 'quantile-p01-p99-linear']
++    assert s.index.tolist() == order
++    assert s.n_months.eq(228).all() and s.rank_ic_mean.gt(0).all() and s.factor_ret_mean.gt(0).all()
++    assert s.adjacent_order.eq(4).all()
++    numeric = s.select_dtypes(include='number')
++    d = numeric.sub(numeric.loc[order[0]])
++    assert d.loc['mad-k3', 'ls_gross_arithmetic_ann'] < 0 < d.loc['mad-k3', 'ls_cost_arithmetic_ann']
++    assert -d.loc['mad-k3', 'ls_gross_arithmetic_ann'] > d.loc['mad-k3', 'ls_cost_arithmetic_ann']
++    signed = lambda value: f'{100 * value:+.2f}'.replace('-', '−')
++    p = (
++        '本次补充完成前述后续工作中的去极值敏感性分析，比较MAD5、MAD3与1%/99%分位数缩尾；IC衰减与样本外检验仍留待后续。'
++        f'表S1中，三种方案的平均回归因子收益均为正（{s.factor_ret_mean.min()*100:.2f}%至{s.factor_ret_mean.max()*100:.2f}%/月），'
++        f'平均Rank IC为{s.rank_ic_mean.min():.4f}至{s.rank_ic_mean.max():.4f}，方向一致；ICIR为{s.ic_ir.min():.3f}至{s.ic_ir.max():.3f}。'
++        f'相对MAD5，MAD3与分位数方案的多空年化净收益分别变化{signed(d.loc[order[1], "long_short_ann"])}、{signed(d.loc[order[2], "long_short_ann"])}个百分点，'
++        f'Q5算术年化超额分别变化{signed(d.loc[order[1], "q5_ann_exc"])}、{signed(d.loc[order[2], "q5_ann_exc"])}个百分点。'
++        '三种方案五层年化净收益均随层号递增。'
++        f'按可加总的算术年化口径，MAD3毛多空下降{-100*d.loc[order[1], "ls_gross_arithmetic_ann"]:.2f}个百分点，'
++        f'双腿成本增加{100*d.loc[order[1], "ls_cost_arithmetic_ann"]:.2f}个百分点，净收益下降主要来自毛收益变化。'
++        '由此，原结论的正向关联与分层单调性得到支持，但收益幅度仍依赖去极值选择，不能称为完全稳健。'
++        '未进行方案差异的统计检验，也不据表现改选默认MAD5；以上仅适用于本次全部A股样本及这三种方案。'
++    )
++    assert 300 <= len(p) <= 450, len(p)
++    rows = []
++    values = []
++    for name, row in s.iterrows():
++        cells = [row.label, f'{row.rank_ic_mean:.4f}', f'{row.ic_ir:.3f}',
++                 f'{100*row.factor_ret_mean:.2f}', f'{100*row.long_short_ann:.2f}', f'{100*row.q5_ann_exc:.2f}']
++        values.append(dict(scheme=name, displayed=cells))
++        rows.append(' & '.join(x.replace('%', r'\%') for x in cells) + r' \\')
++    table = r'''\begingroup\small\setlength{\tabcolsep}{3pt}
++\begin{table}[H]\centering
++\caption*{\textbf{表S1　去极值方法敏感性}}
++\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lrrrrr@{}}\toprule
++去极值方案 & \makecell{Rank IC\\均值} & ICIR & \makecell{回归因子收益\\均值（\%/月）} & \makecell{多空年化\\净收益（\%）} & \makecell{Q5算术年化超额\\（百分点）} \\ \midrule
++''' + '\n'.join(rows) + r'''
++\bottomrule\end{tabular*}
++\par\smallskip\raggedright\footnotesize 全部 A 股，228期；仅改变去极值方法，其余设定及输入S样本不变。ICIR未年化；多空为扣除双腿成本后的CAGR；Q5超额为相对原内部等权毛收益基准的算术年化超额。分位点采用线性插值。
++\end{table}
++\endgroup
++'''
++    (latex / 'tables/S1.tex').write_text(table, encoding='utf-8')
++    body = '\\Needspace{85mm}\n\\subsection*{去极值方法敏感性}\n\\input{tables/S1}\n'
++    body += p.replace('%', r'\%').replace('−', '$-$') + '\n'
++    (latex / 'sections/05_winsor_sensitivity.tex').write_text(body, encoding='utf-8')
++    shutil.copy2(out / 'summary.csv', latex / 'source-data/winsor_sensitivity_summary.csv')
++    (out / 'supplement_paragraph.txt').write_text(p + '\n', encoding='utf-8')
++    record = dict(run_id=args.run_id, source='summary.csv', table_rows=values, paragraph_characters=len(p),
++                  paragraph=p, positive_direction=True, all_three_layer_orders='Q1<Q2<Q3<Q4<Q5',
++                  delta_source='difference_vs_mad5.csv', cost_decomposition='arithmetic annualization, not CAGR subtraction')
++    (out / 'report_values.json').write_text(json.dumps(record, ensure_ascii=False, indent=2), encoding='utf-8')
++    print(f'Generated only S1 and sensitivity paragraph ({len(p)} characters).')
++
++
++if __name__ == '__main__':
++    main()
+--- /dev/null
++++ b/latex-report/build-winsor-sensitivity.ps1
+@@ -0,0 +1,15 @@
++$ErrorActionPreference = 'Stop'
++Push-Location $PSScriptRoot
++try {
++    $buildDirectory = 'build/winsor-sensitivity-20261029'
++    $jobName = 'bp_single_factor_report_winsor_sensitivity_20261029'
++    New-Item -ItemType Directory -Force -Path $buildDirectory | Out-Null
++    foreach ($pass in 1..2) {
++        & xelatex -interaction=nonstopmode -halt-on-error -file-line-error "-output-directory=$buildDirectory" "-jobname=$jobName" main.tex *> "$buildDirectory/compile-$pass.txt"
++        if ($LASTEXITCODE -ne 0) { throw "XeLaTeX failed; see $buildDirectory/compile-$pass.txt" }
++    }
++    Copy-Item -LiteralPath "$buildDirectory/$jobName.pdf" -Destination "$jobName.pdf" -Force
++    Write-Output "Compiled $jobName.pdf; original PDFs retained."
++} finally {
++    Pop-Location
++}
+--- a/latex-report/sections/05_annual.tex
++++ b/latex-report/sections/05_annual.tex
+@@ -4,3 +4,7 @@
+ 2007年仅11期、2026年仅1期，为实际累计收益。18个完整年度中，多空收益为正14/18年，复利口径的多头超额为正13/18年，两条年度序列的相关系数为0.94，总体同步；多空不利年份为2010、2013、2020、2025。按第3.3节的判据，空头端驱动的年份为2015、2018和2019年：三年的多头部分为$-$0.21、2.09、$-$1.41个百分点，空头部分为14.42、8.12、3.95个百分点；2023年空头部分占64\%，接近该界限。2015年复利多头超额为8.35个百分点，算术多头部分为$-$0.21个百分点，差异来自逐月求和与复利运算的不同，而非仅由基准上涨放大造成。2025年多空接近零（$-$0.17\%），两端算术贡献4.32与$-$4.18个百分点相抵，但不能直接相加为年度复利收益；同年平均Rank IC为0.0495，排序关联仍在，最高层却跑输基准。
+ 
+ 本报告的稳健性证据来自三方面：三个股票池方向一致（第4.1、4.2节）；三个日历块的平均Rank IC均为正（第4.3节）；五层与十层的年化净收益排序一致（第4.5节）。预处理敏感性、IC衰减与样本外检验留待后续研究。
++
++% BEGIN WINSOR SENSITIVITY 20261029
++\input{sections/05_winsor_sensitivity}
++% END WINSOR SENSITIVITY 20261029

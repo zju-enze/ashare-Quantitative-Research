@@ -5,3 +5,8 @@ build/
 *.fls
 *.fdb_latexmk
 *.synctex.gz
+backup/
+reviews/*/packet/
+reviews/*/supporting/
+reviews/*/course-*.pdf
+reviews/*/*_work/

@@ -81,6 +81,36 @@ class CoreTests(unittest.TestCase):
         _, reason = bp.form_cross_section(self.panel.assign(pb=1).iloc[:80])
         self.assertEqual(reason, 'insufficient_sample_or_distinct_bp')
 
+    def test_winsor_schemes_refit_from_raw_bp_without_changing_sample(self):
+        raw = self.panel[self.panel.signal_month.eq('2020-01')].copy()
+        raw.loc[0, 'pb'] = .0001
+        formed = {}
+        for scheme in ['mad5', 'mad3', 'quantile_01_99']:
+            g, reason = bp.form_cross_section(raw, winsor=scheme)
+            self.assertEqual(reason, 'ok')
+            np.testing.assert_array_equal(g.ts_code, raw.ts_code)
+            bp_raw = 1 / raw.pb
+            if scheme == 'quantile_01_99':
+                bounds = bp_raw.quantile([.01, .99], interpolation='linear')
+            else:
+                k = 5 if scheme == 'mad5' else 3
+                med = bp_raw.median()
+                mad = (bp_raw - med).abs().median()
+                bounds = [med - k * mad, med + k * mad]
+            expected = bp_raw.clip(*bounds)
+            np.testing.assert_array_equal(g.bp_w, expected)
+            np.testing.assert_allclose(g.bp_z, (expected - expected.mean()) / expected.std(ddof=0))
+            model = sm.OLS(expected, bp.course._design(g, ['ln_mv'])).fit()
+            np.testing.assert_allclose(g.f_neu, model.resid, rtol=1e-10, atol=1e-13)
+            self.assertTrue(g.f_neu.lt(0).any())
+            shuffled, _ = bp.form_cross_section(raw.sample(frac=1, random_state=1), winsor=scheme)
+            pd.testing.assert_frame_equal(g, shuffled)
+            formed[scheme] = g
+        np.testing.assert_array_equal(formed['mad5'].f_neu, bp.course.neutralize(formed['mad5'], 'bp'))
+        self.assertFalse(formed['mad3'].f_neu.equals(formed['mad5'].f_neu))
+        self.assertFalse(formed['quantile_01_99'].f_neu.equals(formed['mad5'].f_neu))
+        self.assertGreater(formed['quantile_01_99'].bp_w.max(), formed['mad5'].bp_w.max())
+
 
 if __name__ == '__main__':
     unittest.main()

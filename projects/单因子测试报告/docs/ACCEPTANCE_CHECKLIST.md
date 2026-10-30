@@ -361,3 +361,21 @@
 ## 10. LaTeX交付复核（2026-10-26）
 
 用户追加要求已完成。开始前重新阅读教材原始页；最终报告为`latex-report/bp_single_factor_report.pdf`，16页，独立工程入口`latex-report/main.tex`。教材逐项页码见`latex-report/reviews/course_requirements.md`，三份隔离审阅及小修关闭见`latex-report/reviews/synthesis.md`，机器核对见`delivery_audit.json`。原Markdown交付与原始研究运行继续保留；没有以排版工作替代或更改实证结论。
+
+
+## 11. 去极值定向补充验收（2026-10-29）
+
+本节只记录新增任务，不回写前述历史验收。实验`bp-v05-20261029-winsor-sensitivity`已完成。
+
+- [x] 三方案同一去极值前S、同一228期与个股收益映射；唯一主动变化为缩尾规则。证据：`run_manifest.json`、`numerical_audit.json`。
+- [x] 每方案重新生成暴露、OLS残差、排名、持仓、换手及双腿成本；逐期缩尾边界及严格改变值的计数已保存。证券明细位于对应`.local/runs/`，汇总位于`outputs/runs/`。
+- [x] MAD5先复现通过再运行另两方案。日期、样本、全部持仓、月度结果与C1/C2的最大绝对差均为0。证据：`mad5_baseline_check.json`。
+- [x] 一张三行表S1、一段390字正文及短表注已加入第5节末尾；所有数值由本次结果生成，成本解释明确采用算术年化口径。证据：`report_values.json`、`supplement_paragraph.txt`。
+- [x] 本轮前正文、表C1–C4及其子表、图A/图B/图D1–D10与原主结果保持。移除第5节唯一新增引用块即可逐字节恢复原文件；两份原PDF均保留。证据：`delivery_audit.json`及`latex-report/backup/pre-winsor-20261029/`。
+- [x] 本机XeLaTeX两遍成功，17页；日志无溢出、缺字、未定义引用或过大浮动体。第15–17页实际渲染查看通过，前15页提取文本与原PDF一致。
+
+验收针对本次全部A股三种去极值方案；没有方案差异统计推断、IC衰减、中性化方案比较或样本外检验。既有历史字段版本和估值、交易成本近似的研究边界继续适用。
+
+## 12. 2026-10-30结项
+
+用户明确决定项目结束并同步远端。最终报告为`latex-report/main.pdf`，17页，含5.1/5.2结构和表S1未舍入差值说明。三份独立审阅均无重大或阻断事项；两条非阻断文字建议保留在审阅记录，未改写最终稿。结项前6项核心测试通过，独立目录中编译的正文与最终PDF一致。交付入口与记录见项目README及PROJECT_STATUS的结项条目。原始数据、点时性和真实执行等既有研究限制保持，不将可选扩展计为未完成的结项任务。

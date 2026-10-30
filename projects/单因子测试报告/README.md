@@ -1,10 +1,11 @@
 # BP 单因子测试报告
 
-方法版本0.5；2026-10-26完成P0–P7，并按用户追加要求交付独立LaTeX工程和16页PDF。按课程附录优秀标准交付C1–C4、D1–D10、行业中位数和市值相关诊断。三池共同228个完整持有期，行业比较采用事先冻结的54期。
+项目已于2026-10-30按用户决定结项。方法版本0.5；已完成P0–P7、全部A股去极值方法敏感性补充和最新版独立审阅。最终报告为17页LaTeX PDF，包含C1–C4、D1–D10、行业中位数、市值相关诊断及表S1。三池共同228个完整持有期，行业比较采用事先冻结的54期。
 
-- [LaTeX编译的PDF报告](latex-report/bp_single_factor_report.pdf)
+- [最终PDF报告](latex-report/main.pdf)
 - [独立LaTeX工程与编译说明](latex-report/README.md)
-- [三份隔离审阅及汇总](latex-report/reviews/synthesis.md)
+- [2026-10-30三份独立审阅及汇总](latex-report/reviews/codex-20261030/synthesis.md)
+- [去极值敏感性实验与未舍入结果](outputs/runs/bp-v05-20261029-winsor-sensitivity/README.md)
 - [原Markdown报告](report/bp_single_factor_report.md)
 - [正式运行结果索引](outputs/runs/bp-v05-20261026-main/README.md)
 - [最终证据审阅](outputs/validation/final_review.md)
@@ -12,6 +13,8 @@
 - [项目状态与决策记录](docs/PROJECT_STATUS.md)
 
 结论为保留BP作为后续研究候选，观察时变性与适用域。全A平均Rank IC为0.0566，五层年化净收益递增，多空年化13.00%；两指数池较弱，年度和行业存在反例。C4中30个行业有完整共同窗口，综合行业不足，未拼接年化。结果不构成严格PIT、实盘可交易性或未来收益保证。
+
+敏感性比较采用相同686,280个股票期和228个月。MAD5、MAD3与1%/99%分位数方案的多空CAGR分别为13.00%、12.34%、13.32%，三方案五层排序均递增；收益幅度仍受去极值选择影响。差值按未舍入结果计算。三份最新版审阅均无重大或阻断问题，两条非阻断文字建议保留在审阅记录，未据此改写最终稿。项目没有待自动执行的后续研究。
 
 ## 复现
 

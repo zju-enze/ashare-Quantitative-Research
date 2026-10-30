@@ -1,0 +1,64 @@
+{
+  "core": {
+    "ic_mean": 0.056583504115922126,
+    "ic_positive": 162,
+    "n": 228,
+    "ls_cagr": 0.12999911390050722,
+    "long_arithmetic_ann_pp": 5.308157774520334,
+    "short_arithmetic_ann_pp": 7.586043421229513,
+    "short_share": 0.5883298473526231
+  },
+  "recovery": {
+    "peak": "2019-04",
+    "start": "2019-05",
+    "end": "2021-08",
+    "underwater_observations": 28,
+    "recovery": "2021-09",
+    "elapsed_months_peak_to_recovery": 29
+  },
+  "ic": {
+    "negative_all": 66,
+    "negative_outside_two_named_intervals": 56,
+    "fall_201904_to_201909": -0.11540485845659279,
+    "fall_202003_to_202006": -0.39806807979460845
+  },
+  "2015_compounding": {
+    "sum_monthly_excess_pp": -0.20833993173070275,
+    "q5_wealth": 1.9124298084513298,
+    "benchmark_wealth": 1.8288935823818913,
+    "relative_wealth_growth_pct": 4.5675826562114,
+    "compound_return_difference_pp": 8.353622606943855,
+    "benchmark_wealth_times_relative_growth_pp": 8.353622606943862
+  },
+  "2025_decomposition": {
+    "long_part_pp": -4.17851286079321,
+    "short_part_pp": 4.318680884787749,
+    "sum_monthly_ls_pp": 0.14016802399451062,
+    "compound_ls_pct": -0.16576343534390192
+  },
+  "excess_monthly_sd_pp": {
+    "1": 1.3101800934315277,
+    "2": 1.29049761118889,
+    "3": 0.7717284251102239,
+    "4": 0.8969313059313483,
+    "5": 2.20975646758769
+  },
+  "low_size_mean_turnover_pct_after_first": {
+    "1": 21.115400863905943,
+    "2": 37.36548253070272,
+    "3": 47.68272217974708,
+    "4": 52.52630330258463,
+    "5": 54.552071065314024,
+    "6": 54.49790104772696,
+    "7": 50.63520158505715,
+    "8": 45.37124986969349,
+    "9": 36.45376930294983,
+    "10": 21.21018641283325
+  },
+  "coverage": {
+    "domain_rows": 684,
+    "bp_valid_equals_n": true,
+    "conditional_coverage_all_one": true,
+    "all_A_U_minus_F": 3602
+  }
+}
