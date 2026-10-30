@@ -9,7 +9,7 @@ from scipy.stats import spearmanr
 from qfbook.factor import single_test as course
 
 
-def form_cross_section(g):
+def form_cross_section(g, winsor="mad5"):
     # Select only formation-time fields: future columns cannot enter transforms.
     g = g[["ts_code", "pb", "total_mv", "circ_mv", "industry_code"]].copy()
     g = g.sort_values("ts_code").reset_index(drop=True)
@@ -22,22 +22,30 @@ def form_cross_section(g):
     mad = (g.bp - g.bp.median()).abs().median()
     if mad <= 0:
         return g, "zero_mad"
-    g["bp_w"] = course.mad_winsorize(g.bp)
+    if winsor in ("mad5", "mad3"):
+        g["bp_w"] = course.mad_winsorize(g.bp, k=5 if winsor == "mad5" else 3)
+    elif winsor == "quantile_01_99":
+        lower, upper = g.bp.quantile([.01, .99], interpolation="linear")
+        g["bp_w"] = g.bp.clip(lower, upper)
+    else:
+        raise ValueError(f"Unknown winsorization: {winsor}")
     if g.bp_w.std(ddof=0) <= 0:
         return g, "zero_std"
     g["bp_z"] = course.zscore(g.bp_w)
     x = course._design(g, ["ln_mv"])
     if len(g) <= x.shape[1] or np.linalg.matrix_rank(x) < x.shape[1]:
         return g, "neutralization_rank_or_df"
-    g["f_neu"] = course.neutralize(g, "bp")
+    # Course neutralize hardcodes MAD5; use its OLS algebra on this scheme's BP.
+    y = g.bp_w.to_numpy()
+    g["f_neu"] = y - x @ np.linalg.lstsq(x, y, rcond=None)[0]
     return g, "ok"
 
 
-def form_pool(panel, calendar):
+def form_pool(panel, calendar, winsor="mad5"):
     groups = dict(tuple(panel.groupby("signal_month")))
     formed, status = {}, {}
     for month in calendar.signal_month:
-        formed[month], status[month] = form_cross_section(groups.get(month, panel.iloc[:0]))
+        formed[month], status[month] = form_cross_section(groups.get(month, panel.iloc[:0]), winsor=winsor)
     return formed, status
 
 

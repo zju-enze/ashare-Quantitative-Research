@@ -1,0 +1,42 @@
+{
+  "status": "passed",
+  "checks": [
+    {
+      "scheme": "mad-k5",
+      "status": "passed",
+      "checked_stock_periods": 686280,
+      "months": 228,
+      "independent_ols_wls_months": [
+        "2007-01",
+        "2020-01",
+        "2025-12"
+      ],
+      "changed_layer_count": 0
+    },
+    {
+      "scheme": "mad-k3",
+      "status": "passed",
+      "checked_stock_periods": 686280,
+      "months": 228,
+      "independent_ols_wls_months": [
+        "2007-01",
+        "2020-01",
+        "2025-12"
+      ],
+      "changed_layer_count": 57326
+    },
+    {
+      "scheme": "quantile-p01-p99-linear",
+      "status": "passed",
+      "checked_stock_periods": 686280,
+      "months": 228,
+      "independent_ols_wls_months": [
+        "2007-01",
+        "2020-01",
+        "2025-12"
+      ],
+      "changed_layer_count": 22434
+    }
+  ],
+  "scope": "All raw inputs, clipping bounds/counts, z-scores, ranks, layers, returns, turnover and costs; OLS/WLS via statsmodels for three predefined months per scheme."
+}

@@ -1,0 +1,93 @@
+{
+  "run_id": "bp-v05-20261029-winsor-sensitivity",
+  "baseline_run": "bp-v05-20261026-main",
+  "method_version": "0.5 + winsor sensitivity",
+  "started_at": "2026-10-29T22:29:22.931054+08:00",
+  "status": "complete",
+  "source_version": "620888393754b3cf9c13167a41dedf9f312d5c4c",
+  "source_changes": [
+    "src/bp_core.py",
+    "scripts/run_winsor_sensitivity.py"
+  ],
+  "pool": "ALL_A",
+  "active_change": "winsorization only",
+  "schemes": [
+    {
+      "id": "mad-k5",
+      "method": "mad5",
+      "label": "MAD5",
+      "k": 5,
+      "scale": 1
+    },
+    {
+      "id": "mad-k3",
+      "method": "mad3",
+      "label": "MAD3",
+      "k": 3,
+      "scale": 1
+    },
+    {
+      "id": "quantile-p01-p99-linear",
+      "method": "quantile_01_99",
+      "label": "1%/99%分位数缩尾",
+      "lower": 0.01,
+      "upper": 0.99,
+      "interpolation": "linear"
+    }
+  ],
+  "cost_rt": 0.004,
+  "main_layers": 5,
+  "min_stocks": 50,
+  "min_distinct_bp": 20,
+  "zscore_ddof": 0,
+  "wls_objective_weight": "sqrt(circ_mv)",
+  "rf": 0,
+  "time_std_ddof": 1,
+  "ic_ir_annualized": false,
+  "numerical_tolerance": {
+    "rtol": 1e-07,
+    "atol": 1e-13
+  },
+  "inputs": [
+    {
+      "path": ".local\\preflight_repaired\\candidate_panel.parquet",
+      "bytes": 34212015,
+      "mtime_ns": 1793002823805799300
+    },
+    {
+      "path": "outputs\\runs\\bp-v05-20261026-main\\calendar.csv",
+      "bytes": 40360,
+      "mtime_ns": 1793019433953226200
+    },
+    {
+      "path": ".local\\runs\\bp-v05-20261026-main\\ALL_A_formations.parquet",
+      "bytes": 42220974,
+      "mtime_ns": 1793008363165360800
+    },
+    {
+      "path": ".local\\runs\\bp-v05-20261026-main\\ALL_A_holdings.parquet",
+      "bytes": 1230928,
+      "mtime_ns": 1793008370683479800
+    }
+  ],
+  "qfbook_source": "F:\\quant_lab\\量化投资课程资料包\\qfbook\\factor\\single_test.py",
+  "python": "F:\\quant_lab\\.venv\\Scripts\\python.exe",
+  "finished_at": "2026-10-29T22:29:44.746321+08:00",
+  "n_months": 228,
+  "n_stock_periods": 686280,
+  "first_signal": "20070131",
+  "last_signal": "20251231",
+  "first_entry": "20070201",
+  "last_exit": "20260202",
+  "environment": {
+    "python": "3.11.9",
+    "numpy": "2.4.6",
+    "pandas": "2.3.3",
+    "scipy": "1.17.1",
+    "statsmodels": "0.15.0"
+  },
+  "source_evidence": "implementation.patch",
+  "baseline_calendar_content_check": "228 complete rows exactly equal current preflight calendar; original run calendar used",
+  "unit_tests": "6 passed; includes three winsor rules and independent OLS check",
+  "report_pdf": "latex-report/bp_single_factor_report_winsor_sensitivity_20261029.pdf"
+}

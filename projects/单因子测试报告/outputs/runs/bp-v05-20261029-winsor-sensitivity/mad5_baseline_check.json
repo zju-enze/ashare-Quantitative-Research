@@ -1,0 +1,108 @@
+{
+  "status": "passed",
+  "baseline_run": "bp-v05-20261026-main",
+  "tolerance": {
+    "rtol": 1e-07,
+    "atol": 1e-13
+  },
+  "checks": [
+    {
+      "check": "pre_winsor_stock_periods_and_controls",
+      "status": "passed",
+      "rows": 686280,
+      "exact": true,
+      "max_abs_difference": 0.0
+    },
+    {
+      "check": "original_dates",
+      "status": "passed",
+      "rows": 228,
+      "exact": true,
+      "max_abs_difference": 0.0
+    },
+    {
+      "check": "all_formation_values",
+      "status": "passed",
+      "rows": 686280,
+      "exact": false,
+      "max_abs_difference": 0.0
+    },
+    {
+      "check": "all_holdings",
+      "status": "passed",
+      "rows": 686280,
+      "exact": true,
+      "max_abs_difference": 0.0
+    },
+    {
+      "check": "monthly",
+      "status": "passed",
+      "rows": 228,
+      "exact": false,
+      "max_abs_difference": 0.0
+    },
+    {
+      "check": "layers_gross",
+      "status": "passed",
+      "rows": 228,
+      "exact": false,
+      "max_abs_difference": 0.0
+    },
+    {
+      "check": "layers_net",
+      "status": "passed",
+      "rows": 228,
+      "exact": false,
+      "max_abs_difference": 0.0
+    },
+    {
+      "check": "turnover",
+      "status": "passed",
+      "rows": 228,
+      "exact": false,
+      "max_abs_difference": 0.0
+    },
+    {
+      "check": "counts",
+      "status": "passed",
+      "rows": 228,
+      "exact": true,
+      "max_abs_difference": 0.0
+    },
+    {
+      "check": "known_weight",
+      "status": "passed",
+      "rows": 228,
+      "exact": true,
+      "max_abs_difference": 0.0
+    },
+    {
+      "check": "layer_stats",
+      "status": "passed",
+      "rows": 5,
+      "exact": false,
+      "max_abs_difference": 0.0
+    },
+    {
+      "check": "issues",
+      "status": "passed",
+      "rows": 0,
+      "exact": true,
+      "max_abs_difference": 0.0
+    },
+    {
+      "check": "C1",
+      "status": "passed",
+      "rows": 1,
+      "exact": false,
+      "max_abs_difference": 0.0
+    },
+    {
+      "check": "C2",
+      "status": "passed",
+      "rows": 1,
+      "exact": false,
+      "max_abs_difference": 0.0
+    }
+  ]
+}
