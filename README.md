@@ -9,6 +9,11 @@ A repository for reproducible quantitative finance research. Each study has a de
 | **A-share value-signal robustness** | How robust is value-signal evidence after correcting measurement and changing the inferential framework? | Executed notebook, aggregate results, figures, and a local execution record are available. | [Study overview](VALUE_SIGNAL_RESEARCH.md) |
 | **A-share industry cointegration** | Which predefined within-industry A-share pairs have cointegration evidence, under which tests and multiple-testing corrections? | Stage 1 research and reporting completed: 67,678 candidates, nominal pair evidence, and six proposed pairs for subsequent exploration. Full-family calibration remains incomplete; stages 2 and 3 have not started. | [Stage 1 final report](projects/ashare-cointegration/results_final/STAGE1_FINAL_REPORT.md) |
 | **BP 单因子测试报告** | Does book-to-market predict subsequent returns after industry and size controls, and where does that association hold? | Closed on 2026-10-30: three pools over 228 holding periods, C1–C4 and D1–D10, three winsorization schemes, a final 17-page PDF, and three independent reviews with no major or blocking findings. Historical-version, valuation and execution limits remain explicit. | [Final PDF](projects/单因子测试报告/latex-report/main.pdf) · [Source and closure record](projects/单因子测试报告/README.md) |
+| **Deep learning statistical arbitrage** | How does the paper connect residual portfolios, learned time-series signals and trading allocation, and which results can be reproduced? | Initialized on 2026-10-31 with the arXiv v2 source and a reading/reproduction plan; no implementation or experiments yet. | [Project overview](projects/deep-learning-statistical-arbitrage/README.md) |
+
+## Deep learning statistical arbitrage
+
+The [paper study and reproduction project](projects/deep-learning-statistical-arbitrage/README.md) focuses on Guijarro-Ordonez, Pelger and Zanotti's *Deep Learning Statistical Arbitrage*. It starts from the supplied arXiv v2 manuscript (dated September 25, 2022), with a reading plan, initial source notes and a citation. The directory is initialized; detailed reading, data preparation, implementation and empirical reproduction remain pending.
 
 ## A-share value-signal robustness
 
@@ -63,6 +68,7 @@ New studies live in self-contained directories under `projects/`, with their own
 | `projects/ashare-cointegration/results_review/` | Supporting parameter-estimation and diagnostic evidence |
 | `projects/ashare-cointegration/archive/` | [Earlier designs, reports and reproducible historical output references](projects/ashare-cointegration/archive/README.md) |
 | `projects/单因子测试报告/` | [Completed BP study](projects/单因子测试报告/README.md), [standalone LaTeX project](projects/单因子测试报告/latex-report/README.md), aggregate results, and evidence-backed review records |
+| `projects/deep-learning-statistical-arbitrage/` | [Paper study and reproduction project](projects/deep-learning-statistical-arbitrage/README.md), reading notes, source references and a staged research plan |
 
 `main` is the published repository entry point. Use topic branches for active changes, merge completed work through a pull request, and retire merged branches. Research history remains available through commits and the archive index. Existing executable paths stay in place so earlier runs remain reproducible.
 
